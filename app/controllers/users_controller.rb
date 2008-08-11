@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
   
-  before_filter :login_required, :except => [ :new, :create ]
-  
   def new
     @user = User.new(params[:user])
     store_location(params[:return_to]) if params[:return_to]
@@ -16,6 +14,14 @@ class UsersController < ApplicationController
     
     redirect_back_or_default(root_url)
     flash[:notice] = "Thanks for signing up!  You have been logged in."
+  end
+  
+  def show
+    @user = User.find_by_login(params[:id])
+  end
+  
+  def index
+    @users = User.all
   end
   
 
