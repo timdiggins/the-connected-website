@@ -259,6 +259,7 @@ div.largeForm input[type="submit"] {
 div.largeForm .formOptions {
 	margin: 3em 0px 0.5em 40%;
 	color: #707880;
+	line-height: 1.5em;
 }
 
 
