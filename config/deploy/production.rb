@@ -4,6 +4,7 @@ set :deploy_to, "/var/www/apps/#{application}"
 set :domain, "209.20.82.7"
 
 set :user, 'republic'
+set :keep_db_backups, 100
 
 role :web, domain
 role :app, domain
@@ -27,5 +28,6 @@ end
 
 after "deploy:symlink", "post_deploy"
 before "deploy:update_code", "deploy:git:pending"
-before "backup_to_s3", "link_s3_yml"
 after "deploy:update", "install_gem_dependencies"
+before "deploy:migrate", "backup_to_s3"
+before "backup_to_s3", "link_s3_yml"
