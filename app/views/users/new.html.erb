@@ -1,0 +1,39 @@
+
+<div id="page">
+	<div class="largeForm">
+	  <h1><%= @page_title = "Signup" %></h1>
+  
+	  <% form_for @user do | f | -%>
+	    <%= f.error_messages %>
+    
+	    <fieldset>
+		    <p>
+		      <%= f.label :login, "Desired user name" %>
+		      <%= f.text_field :login, :class => "largeInput"  %>
+		    </p>
+  
+		    <p>
+		      <%= f.label :email, "Your email" %>
+		      <%= f.text_field :email, :class => "largeInput" %>
+		    </p>
+
+		    <p>
+		      <%= f.label :password %>
+		      <%= f.password_field :password, :class => "largeInput" %>
+		    </p>
+	    </fieldset>
+    
+	  	<p class="submitBlock">
+	  	  <%= submit_tag 'Sign up' %>
+	  	</p>
+  	
+	  	<p class="formOptions">
+	    	Already signed up? <%= link_to "Sign in here", login_url %>.
+	    </p>
+    
+	  <% end -%>
+  
+
+    
+	</div>
+</div>

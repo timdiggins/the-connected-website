@@ -1,0 +1,33 @@
+<div id="page">
+	<div class="largeForm">
+
+	  <h1><%= @page_title = "Login" %></h1>
+  
+	  <% form_tag sessions_path do %>
+	    <p>
+	      <%= label_tag "login", "User name" %>
+	      <%= text_field_tag 'login', params[:login], :class => "largeInput" %>
+	    </p>
+  
+	    <p>
+	      <%= label_tag "password" %>
+	    	<%= password_field_tag 'password', params[:password], :class => "largeInput" %>
+	    </p>  
+  
+	    <p class="rightLabel">
+	  	  <%= check_box_tag 'remember_me', "1", params[:remember_me] %>
+				<%= label_tag :remember_me, "Remember me on this computer", :class => :right %>
+	    </p>
+  
+	    <p class="submitBlock">
+	  	  <%= submit_tag 'Log in' %>
+	  	</p>
+	  <% end -%>
+
+	  <p class="formOptions">
+	    Not signed up yet? <%= link_to "Signup now", signup_url %><br />
+	    <%= link_to "Forgot your username or password?", forgot_password_url %>
+	  </p>
+
+	</div>
+</div>
