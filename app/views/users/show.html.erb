@@ -10,6 +10,9 @@
 
 		<div class="posts">
 			<h2><%=h @user.possessive_to_s %> posts</h2>
+			<% for post in @user.posts %>
+				<p><%= link_to post, post %></p>
+			<% end %>
 		</div>
 	</div>
 	<div class="clearThis"> </div>

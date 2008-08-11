@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
   
   has_one :avatar, :dependent => :destroy
+  has_many :posts
   alias_attribute :to_s, :login
   
   def self.authenticate(login, password)

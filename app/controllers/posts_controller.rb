@@ -12,6 +12,7 @@ class PostsController < ApplicationController
   
   def create
     @post = Post.new(params[:post])
+    @post.user = current_user
     return render(:action => :new) unless @post.save
     
     redirect_to @post
