@@ -16,4 +16,5 @@ Rails::Initializer.run do |config|
   config.gem "map_by_method", :version => '0.8.3'
   config.gem "colored", :version => '1.1'
   
+  
 end

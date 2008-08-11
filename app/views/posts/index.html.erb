@@ -2,11 +2,14 @@
 <% @current_tab = :posts %>
 
 <div id="sidebar">
+	<%= link_to "New Post", new_post_url %>
 </div>
   <div id="main">
 		<h1>Posts</h1>
 		<div class="posts">
-			<p>posts go in here</p>
+			<% for post in @posts %>
+				<p><%= link_to post, post %></p>
+			<% end %>
 		</div>
   </div>
 <div class="clearThis"> </div>

@@ -1,0 +1,18 @@
+<% form_for @post do | f | %>
+  <%= f.error_messages %>
+  
+	<p>
+	  <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+
+	<p>
+	  <%= f.label :detail %>
+    <%= f.text_area :detail %>
+  </p>
+
+  <p>
+    <%= submit_tag  'Save', :disable_with => "Saving..." %> or <%= link_to "Cancel", @post.new_record? ? posts_url : @post %>
+  </p> 
+
+<% end %>
