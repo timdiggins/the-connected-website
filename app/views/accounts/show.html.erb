@@ -32,7 +32,7 @@
           <%= avatar_for(@user, :large)  %>
         </p>
   
-        <div id="edit_avatar_form" <%= %Q{style="display:none"} if !@user.avatar || !@user.avatar.valid? %>>
+        <div id="edit_avatar_form" <%= %Q{style="display:none"} if @user.avatar && @user.avatar.valid? %>>
           <%= render :partial => 'edit_avatar_form' %>
         </div>
         
