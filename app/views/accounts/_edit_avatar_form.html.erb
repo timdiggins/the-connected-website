@@ -1,0 +1,21 @@
+
+<% form_for @user, :url => save_new_avatar_account_url, :html => { :method => :put, :multipart => true } do | f | %>
+
+  <p>
+    <%= f.file_field :user_avatar %> 
+  </p>
+  
+  <p class="submitBlock">
+    <%= submit_tag "Upload new avatar" %> or 
+    <% if @user.valid? %>
+      <%= link_to_function("Cancel", nil ) do | page | 
+            page[:edit_avatar_form].hide
+            page[:change_avatar_link].show
+          end 
+      %>
+    <% else %>
+      <%= link_to "Cancel", account_url %>
+    <% end %>
+    
+  </p>
+<% end %>
