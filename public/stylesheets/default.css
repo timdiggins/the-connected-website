@@ -1,0 +1,91 @@
+body {
+	font-size:0.8em;
+	font-family:arial, sans-serif;
+	background: #2D3831 url(/images/page_top.gif) top left repeat-x;
+	color: #666;
+	text-align:center;
+}
+
+#wrap {
+	width:925px;
+	margin:0px auto;
+	text-align:left;
+}
+
+#content {
+	padding: 23px 25px 50px;
+	background: #FFF url(/images/wrapper_bottom.gif) bottom left no-repeat;
+}
+
+#logo a {
+	overflow: hidden;
+	display: block;
+	text-indent: -1000px;
+	width: 260px;
+	background-image: url(/images/ci_logo2.jpg);
+	background-repeat: no-repeat;
+	margin: 25px 0px 0px 0px;
+	height:73px;
+}
+
+#topNavigation {
+	list-style:none;
+	margin:-10px 0px 0px 0px;
+	padding:0px;
+	float:right;
+}
+
+#topNavigation li {
+	display:inline;
+}
+
+#topNavigation a {
+	color: #ccc;
+	padding:0.5em;
+	text-decoration:none;
+}
+
+
+#topNavigation a:hover {
+	color: #EEE;
+	text-decoration:underline;
+}
+
+
+#mainNavigation {
+	margin: 20px 0px 0px 0px;
+	list-style: none;
+	padding: 0px 0.5em;
+	background: #1D2D23 url(/images/nav_bg.gif) top left no-repeat;
+	overflow: hidden;
+	}
+	
+#mainNavigation li {
+	float:left;
+	padding: 8px 0px 0px 0px;
+	}
+	
+#mainNavigation a {
+	float:left;
+	padding: 0.3em 1.5em;
+	color: #DDD;
+	font-size: 1.1em;
+	text-decoration: none;
+	background-image: url(/images/nav_pipe.gif);
+	background-repeat: no-repeat;
+	background-position: right bottom;
+	}
+
+#mainNavigation a:hover {
+	background-image: url(/images/nav_hover_bg.gif);
+}
+	
+#mainNavigation li.current a {
+	background-color: #FFF;
+	background-image: none;
+	color: #37454e;
+	 -moz-border-radius-topleft: 3px;
+-webkit-border-top-left-radius: 3px;
+-moz-border-radius-topright: 3px;
+-webkit-border-top-right-radius: 3px;
+	}
