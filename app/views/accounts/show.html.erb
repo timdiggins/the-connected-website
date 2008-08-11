@@ -1,8 +1,5 @@
 
-<%= error_messages_for(:user, :object => @user.avatar ? [@user.avatar, @user] : @user ) %>
-  
 
-   
 
      <div id="sidebar">
 	        <p>
@@ -27,9 +24,10 @@
 
     <div id="main">
     <h1><%= @page_title = "Your Account"  %></h1>
+		<%= error_messages_for(:user, :object => @user.avatar ? [@user.avatar, @user] : @user ) %>
+
       <div id="settings">
 				  <% form_for @user, :url => account_url do | f | %>
-				    <%= f.error_messages %>
 
 				    <p>
 				      <%= f.label :login, "Your user name" %>
