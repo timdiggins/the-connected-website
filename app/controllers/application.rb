@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
   before_filter :login_from_cookie
   
+  
+  private
   def verify_authenticity_token
     unless verified_request?
       flash[:warning] = "You must login to access that part of the site."
