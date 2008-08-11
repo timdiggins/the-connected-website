@@ -4,4 +4,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   alias_attribute :to_s, :title
   
+  named_scope :sorted_by_created, lambda { { :order => "updated_at DESC" }}
+  
+  
 end
