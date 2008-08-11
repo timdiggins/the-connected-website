@@ -25,12 +25,26 @@
 			<div id="logo"><a href="#">The Connected Republic</a></div>
 
 			<ul id="mainNavigation">
-				<li class="current"><a href="#">Home</a></li>
-				<li><a href="#">Coming soon</a></li>
+				<li  class="current"><a href="#">Content</a></li>
+				<li><a href="#">Activity</a></li>
+				<li><a href="#">Members</a></li>
 			</ul>	
 			<div id="content">
 				<%= render(:partial => '/layouts/flash_details') %>
-		    <%= yield %>
+				
+				<div id="sidebar">
+					<h2>Sidebar stuff</h2>
+				</div>
+				
+				<div id="main">
+					
+		    	<%= yield %>
+		
+				</div>
+				
+
+				
+				<div class="clearThis"> </div>
 			</div>
 			<div id="footer">
 				<p>Footer is forthcoming.</p>
