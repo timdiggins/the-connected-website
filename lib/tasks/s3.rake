@@ -163,7 +163,7 @@ module S3Backup
   def print_bucket(name)
     msg "#{bucket_name(name)} Bucket"
     AWS::S3::Bucket.find(bucket_name(name)).objects.each do |o| 
-      puts "size: #{o.size/1.megabyte}MB,  Name: #{o.key},  Last Modified: #{o.last_modified.to_s(:short)} UTC"
+      puts "size: #{o.size/1.kilobyte}KB,  Name: #{o.key},  Last Modified: #{o.last_modified.to_s(:short)} UTC"
     end
   rescue AWS::S3::NoSuchBucket
   end

@@ -8,6 +8,7 @@ require 'mongrel_cluster/recipes_2'
 set :application, "republic"
 set :rails_env, "production"
 set :ssh_options, {:forward_agent => true}
+set :use_sudo, false
 
 default_run_options[:pty] = true
 set :scm, "git"
