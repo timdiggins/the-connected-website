@@ -11,10 +11,17 @@
   
 	<body>
 		<div id="wrap">
-		 <ul id="topNavigation">
-			<li><a href="#">Login</a></li>
-			<li><a href="#">Sign Up</a></li>
+		
+		 	<ul id="topNavigation">
+				<li><a href="#">Login</a></li>
+				<li><a href="#">Sign Up</a></li>
 			</ul>
+			
+			<div id="search">
+				<form action="#" method="get">
+					<input id="s" name="s" onblur="resetTextfield(this)" onfocus="resetTextfield(this)" type="text" value="Search ..." />
+				</form>
+			</div
 			<div id="logo"><a href="#">The Connected Republic</a></div>
 
 			<ul id="mainNavigation">
@@ -24,6 +31,9 @@
 			<div id="content">
 				<%= render(:partial => '/layouts/flash_details') %>
 		    <%= yield %>
+			</div>
+			<div id="footer">
+				<p>Footer is forthcoming.</p>
 			</div>
 		</div>	
 	</body>
