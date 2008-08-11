@@ -1,6 +1,5 @@
 <ul id="topNavigation">
   <% if logged_in? %>
-		<li>Logged in as <%= current_user %></li>
 		<li><%= link_to('Logout', logout_url) %></li>
 
 	<% else %>
