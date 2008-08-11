@@ -1,4 +1,4 @@
-require 'spacesuit/recipes/backup'
+# require 'spacesuit/recipes/backup'
 
 set :deploy_to, "/var/www/apps/#{application}"
 set :domain, "209.20.82.7"
