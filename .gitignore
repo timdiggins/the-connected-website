@@ -1,0 +1,8 @@
+*.tmproj
+log/*.log
+config/database.yml
+vendor/rails
+.tm_last_run_ruby*
+.DS_Store
+.local_configuration
+public/.integration_test_output_for_browser.html
