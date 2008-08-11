@@ -8,8 +8,12 @@
       <ul id="memberList">
        <% for user in @users %>
          <li>
-           <%= link_to_avatar_for(user, :large) %>
-					<span class="userName"><%= link_to_user(user) %></span>
+					<span class="avatar">
+          	<%= link_to_avatar_for(user, :large) %>
+					</span>
+					<div class="memeberListProfileDetails">
+						<h2><%= link_to_user(user) %></h2>
+					</div>
          </li>
        <% end %>
     	</ul>
