@@ -1,6 +1,7 @@
 /* @override 
 	http://localhost:3000/stylesheets/default.css?1218459744
 	http://localhost:3000/stylesheets/default.css?1218467559
+	http://localhost:3000/stylesheets/default.css?1218472932
 */
 
 body {
@@ -21,6 +22,8 @@ a:hover {
 	text-decoration: underline;
 	color: #DD6900;
 }
+
+
 
 #wrap {
 	width:925px;
@@ -259,3 +262,39 @@ div.largeForm .formOptions {
 }
 
 
+
+
+
+
+
+ul#memberList {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+ul#memberList li {
+  clear: left;
+  padding-top: 1em;
+}
+
+ul#memberList .avatar {
+  float: left;
+}
+
+ul#memberList .avatar img {
+  padding: 5px;
+  border: 1px solid #DDD;
+  background-color: #FFF;
+    -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+
+.memeberListProfileDetails {
+  margin-left: 160px;
+}
+
+.memeberListProfileDetails h2 {
+  margin: 0px;
+  font-size: 1.5em;
+}
