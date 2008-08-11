@@ -267,6 +267,7 @@ div.largeForm label.right {
 	text-align: left;
 	font-size: 1em;
 	float: none;
+	display: inline;
 	margin: 0px 0px 0px 0.3em;
 }
 
