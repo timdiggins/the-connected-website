@@ -17,7 +17,6 @@ set :keep_releases, 30
 set :git_enable_submodules, 1
 
 #before "deploy:update_code", "deploy:git:pending"
-
-
 # set  :mongrel_conf, "#{current_path}/config/mongrel_cluster.yml"
-# set :rails_revision, '339491a6b37722497ebafe9998e17507f47e8fd6'
+
+set :rails_revision, 'eb4668b26ad4aacf79488d2bee553e9452971c35'
