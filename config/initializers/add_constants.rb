@@ -1,1 +1,1 @@
-APP_NAME = "No Kahuna"
+APP_NAME = "The Connected Republic"
