@@ -2,6 +2,7 @@
 	http://localhost:3000/stylesheets/default.css?1218459744
 	http://localhost:3000/stylesheets/default.css?1218467559
 	http://localhost:3000/stylesheets/default.css?1218472932
+	http://localhost:3000/stylesheets/default.css?1218481999
 */
 
 body {
@@ -36,9 +37,14 @@ a:hover {
 	padding: 23px 25px 50px;
 	background: #FFF url(/images/wrapper_bottom.gif) bottom left no-repeat;
 }
-#content.cms #main {
+
+#main {
 	float: left;
-	width:500px;
+	width:580px;
+}
+
+input#user_user_avatar {
+  font-size: 1em;
 }
 
 
@@ -186,8 +192,10 @@ div.largeForm form {
 	margin: 2em 1em;
 }
 
-div.largeForm p {
-	margin: 1em 0px;
+h1 {
+  color: #eda900;
+  font-size: 1.5em;
+  font-weight: normal;
 }
 
 div.largeForm p.note {
@@ -236,13 +244,11 @@ div.largeForm label.right {
 
 input.largeInput {
 	font-size: 1.6em;
-	width: 50%;
 }
 
 
 div.largeForm textarea {
 	font-size: 1.3em;
-	width: 280px;
 	height:100px;
 }
 
@@ -320,4 +326,26 @@ p.avatar img {
 
 #profile .posts {
   margin-top: 3em;
+}
+
+
+
+
+form label {
+  display: block;
+  margin-bottom: 0.3em;
+}
+
+form p {
+  margin: 1em 0px;
+}
+
+
+.submitBlock {
+  margin-top: 1.5em;
+}
+
+#settings form {
+  padding: 1em 0.5em;
+  background-color: #EEE;
 }
