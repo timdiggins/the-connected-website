@@ -314,3 +314,10 @@ p.avatar img {
     -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
 }
+
+
+
+
+#profile .posts {
+  margin-top: 3em;
+}
