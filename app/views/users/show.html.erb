@@ -1,17 +1,16 @@
 <% @page_title = "#{@user.possessive_to_s} Profile" %>
+<div id="sideBar">
 
-<div id="page" class="userProfile">
-	<div id="content">
-		<div class="main">
-			<p class="avatar">
-         <%= avatar_for(@user, :large) %>
-       </p>
+</div>
+<div id="main">
+	<p class="avatar">
+       <%= avatar_for(@user, :large) %>
+     </p>
 
-			<div class="profileBody">
-				<h1><%=h @user %></h1>
-			</div>
-		</div>
+	<div class="profileBody">
+		<h1><%=h @user %></h1>
 	</div>
 </div>
+<div class="clearThis"> </div>
 			
 
