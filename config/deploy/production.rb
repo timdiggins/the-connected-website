@@ -23,7 +23,7 @@ task :link_shared_stuff do
   run "ln -nfs #{shared_path}/config/cookie_secret #{release_path}/config/cookie_secret"
   run "ln -nfs #{shared_path}/avatars #{release_path}/public/avatars"
   
-  run "mkdir -p #{release_path}/tmp"
+  run "mkdir -p #{release_path}/tmp/attachment_fu"
   run "mkdir -p #{release_path}/db"
 end
 
