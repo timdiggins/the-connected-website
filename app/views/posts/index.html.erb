@@ -8,8 +8,19 @@
 		<h1>All Posts</h1>
 		<div class="posts">
 			<% for post in @posts %>
-				<p><%= link_to post, post %></p>
-				<p><%= post.brief %></p>
+				<div class="post">
+					<div class="postDetails">
+						<p class="avatar"><%= avatar_for(post.user, :medium) %></p>
+						<p>
+							<span class="author"><%= link_to_user(post.user) %></span>
+						</p>
+					</div>
+					<div class="postContent">
+						<h2><%= link_to post, post %></h2>
+						<p><%= post.brief %></p>
+						<p><span class="date">posted <%= time_ago_in_words(post.created_at) %> ago</span></p>
+					</div>
+				</div>
 			<% end %>
 		</div>
   </div>

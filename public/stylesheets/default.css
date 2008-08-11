@@ -396,6 +396,29 @@ form p {
 
 
 
-#post_detail {
+textarea#post_detail {
   width: 100%;
 }
+
+
+
+
+.post {
+  clear: left;
+  
+}
+
+.postDetails {
+  float: left;
+  width: 100px;
+  padding-bottom: 3em;}
+
+.postContent {
+  margin-left: 110px;
+  padding: 0px 0px 4em 2em;
+}
+
+
+
+
+
