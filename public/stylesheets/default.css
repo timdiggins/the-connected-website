@@ -298,3 +298,18 @@ ul#memberList .avatar img {
   margin: 0px;
   font-size: 1.5em;
 }
+
+
+
+p.avatar {
+  margin: 0px;
+  padding: 0px;
+}
+
+p.avatar img {
+  padding: 5px;
+  border: 1px solid #DDD;
+  background-color: #FFF;
+    -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
