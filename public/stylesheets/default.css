@@ -147,3 +147,100 @@ body {
   color: #000;
   background-color: #fff9ca;
 }
+
+
+
+
+
+
+
+
+
+
+div.largeForm {
+	padding: 1em 0px 1em 0px;
+	width: 68%;
+	margin: 1em auto 1em auto;
+	color: #404e5b;
+}
+
+div.largeForm form {
+	padding: 0px;
+	margin: 2em 1em;
+}
+
+div.largeForm p {
+	margin: 1em 0px;
+}
+
+div.largeForm p.note {
+	color: #666;
+	font-size: 90%;
+	margin:0.5em  1em 1.5em 40%;
+	margin-bottom: 1.5em;
+}
+
+#page div.largeForm h1 {
+	margin:0px 0px 1em 40%;
+	font-size: 1.4em;
+	color: #CCC;
+	font-weight: normal;
+	text-align: left;
+	border-bottom: 0px;
+}
+
+div.largeForm fieldset {
+	border-width: 0px;
+	padding:0px;
+	margin:0px 0px 2.5em 0px;
+}
+
+div.largeForm label {
+	width: 37%;
+	float: left;
+	text-align: right;
+	margin:0.5em 3% 0px 0px;
+	font-size: 1.2em;
+}
+
+div.largeForm p.rightLabel {
+	margin-left: 40%;	
+}
+
+
+div.largeForm label.right {
+	width: auto;
+	text-align: left;
+	font-size: 1em;
+	float: none;
+	margin: 0px 0px 0px 0.3em;
+}
+
+input.largeInput {
+	font-size: 1.6em;
+	width: 50%;
+}
+
+
+div.largeForm textarea {
+	font-size: 1.3em;
+	width: 280px;
+	height:100px;
+}
+
+div.largeForm .submitBlock {
+	margin:2em  0px 2em 40%;
+}
+
+
+div.largeForm input[type="submit"] {
+	font-size: 1.4em;
+	}
+
+
+div.largeForm .formOptions {
+	margin: 3em 0px 0.5em 40%;
+	color: #707880;
+}
+
+
