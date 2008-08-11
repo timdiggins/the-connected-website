@@ -14,9 +14,28 @@ body {
 	text-align:left;
 }
 
+
 #content {
 	padding: 23px 25px 50px;
 	background: #FFF url(/images/wrapper_bottom.gif) bottom left no-repeat;
+}
+#content.cms #main {
+	float: left;
+	width:500px;
+}
+
+
+#sidebar {
+	float: right;
+	width: 250px;
+}
+
+
+.clearThis {
+  height: 1px;
+  overflow:hidden;
+  margin: 0px;
+  clear: both;
 }
 
 #logo a {

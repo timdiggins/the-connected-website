@@ -15,7 +15,15 @@
 			<%= render :partial => 'layouts/header' %>
 			<div id="content">
 				<%= render(:partial => '/layouts/flash_details') %>
-		    <%= yield %>
+				<div id="sidebar">
+					<h2>Sidebar stuff</h2>
+				</div>
+				
+				<div id="main">
+		    	<%= yield %>
+				</div>
+				
+				<div class="clearThis"> </div>
 			</div>
 			
 			<%= render :partial => 'layouts/footer' %>
