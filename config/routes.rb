@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.forgot_password '/login/forgot_password', :controller => 'sessions', :action => 'forgot_password'
   map.reset_password 'rp/:reset_password_token', :controller => "sessions", :action => 'reset_password'
 
-  map.root :controller => "home"
+  map.root :controller => "posts"
   
 end
 
