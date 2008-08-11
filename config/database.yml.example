@@ -1,0 +1,23 @@
+development:
+  adapter: mysql
+  database: republic_development
+  username: root
+  password:
+  host: localhost
+  encoding: utf8
+
+test:
+  adapter: mysql
+  database: republic_development
+  username: root
+  password:
+  host: localhost
+  encoding: utf8
+
+production:
+  adapter: mysql
+  database: republic_development
+  username: root
+  password: 
+  host: localhost
+  encoding: utf8
