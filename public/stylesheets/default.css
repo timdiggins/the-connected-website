@@ -9,7 +9,7 @@ body {
 	font-size:0.8em;
 	font-family:arial, sans-serif;
 	background: #2D3831 url(/images/page_top.gif) top left repeat-x;
-	color: #666;
+	color: #333;
 	text-align:center;
 }
 
@@ -34,7 +34,7 @@ a:hover {
 
 
 #content {
-	padding: 23px 25px 50px;
+	padding: 1.5em 2em;
 	background: #FFF url(/images/wrapper_bottom.gif) bottom left no-repeat;
 }
 
@@ -148,7 +148,7 @@ input#user_user_avatar {
   float:right;
   margin: -10px 2em 0px 0px;
   padding: 0px 0px 0px 19px;
-  background: transparent url(../images/zoom.png) no-repeat 0px center;
+  background: transparent url(../images/famfam/zoom.png) no-repeat 0px center;
 }
 
 #search form {
@@ -198,6 +198,34 @@ h1 {
   font-weight: normal;
 }
 
+h2 {
+  font-size: 1.3em;
+  font-weight: normal;
+  color: #000;
+}
+
+#errorExplanation {
+  padding: 0.5em 1.5em;
+  margin: 0px 0px 1em 0px;
+  background-color: #fbfcd7;
+}
+
+#errorExplanation h2 {
+  color: #F00;
+  font-size: 1.1em;
+}
+
+.fieldWithErrors input, .fieldWithErrors select {
+	background-color: #fbfcd7;
+	}
+	
+.fieldWithErrors label { 	
+	background: url(../images/famfam/error.png) no-repeat 0px left;
+	padding-left: 20px;
+
+}	
+	
+
 div.largeForm p.note {
 	color: #666;
 	font-size: 90%;
@@ -239,6 +267,7 @@ div.largeForm label.right {
 	text-align: left;
 	font-size: 1em;
 	float: none;
+	display: inline;
 	margin: 0px 0px 0px 0.3em;
 }
 
@@ -346,6 +375,6 @@ form p {
 }
 
 #settings form {
-  padding: 1em 0.5em;
+  padding: 1em 1.5em;
   background-color: #EEE;
 }
