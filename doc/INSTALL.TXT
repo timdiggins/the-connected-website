@@ -1,0 +1,7 @@
+
+need to copy config/database.yml.example to config/database.yml
+
+need to symlink in edge rails
+
+need freeimage http://freeimage.sourceforge.net/
+  e.g. sudo port install freeimage
