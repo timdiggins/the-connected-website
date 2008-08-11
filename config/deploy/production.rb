@@ -17,3 +17,4 @@ task :post_deploy do
 end
 
 after "deploy:symlink", "post_deploy"
+before "deploy:update_code", "deploy:git:pending"

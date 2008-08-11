@@ -6,3 +6,4 @@ vendor/rails
 .DS_Store
 .local_configuration
 public/.integration_test_output_for_browser.html
+config/cookie_secret
