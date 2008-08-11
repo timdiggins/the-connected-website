@@ -1,4 +1,7 @@
-/* @override http://localhost:3000/stylesheets/default.css?1218459744 */
+/* @override 
+	http://localhost:3000/stylesheets/default.css?1218459744
+	http://localhost:3000/stylesheets/default.css?1218467559
+*/
 
 body {
 	font-size:0.8em;
@@ -6,6 +9,17 @@ body {
 	background: #2D3831 url(/images/page_top.gif) top left repeat-x;
 	color: #666;
 	text-align:center;
+}
+
+
+a {
+	color: #2A6B87;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+	color: #DD6900;
 }
 
 #wrap {
@@ -178,6 +192,7 @@ div.largeForm p.note {
 	font-size: 90%;
 	margin:0.5em  1em 1.5em 40%;
 	margin-bottom: 1.5em;
+	line-height: 1.5em;
 }
 
 #page div.largeForm h1 {
