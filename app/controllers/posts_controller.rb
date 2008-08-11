@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     return render(:action => :new) unless @post.save
     
-    redirect_to posts_url
+    redirect_to @post
   end
   
   def edit
