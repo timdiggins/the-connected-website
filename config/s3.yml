@@ -1,5 +1,0 @@
-connection:
-  access_key_id: "your aws access key"
-  secret_access_key: "your aws secret access key"
-  use_ssl: true
-project_name: connected_republic
