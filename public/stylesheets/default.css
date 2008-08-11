@@ -378,3 +378,16 @@ form p {
   padding: 1em 1.5em;
   background-color: #EEE;
 }
+
+#flash {
+  margin: -1.5em -2em 1em -2em;
+}
+
+#flash p {
+  background-color: #FE9;
+  padding: 0.5em 1em;
+  margin: 0px;
+  text-align: center;
+  border-top: 2px solid #c8bb78;
+  font-weight: bold;
+}
