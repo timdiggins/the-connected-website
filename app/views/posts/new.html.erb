@@ -1,18 +1,28 @@
+<h1><%= @page_title = "Create a new post" %></h1>
+
+<div id="sidebar">
+
+</div>
+<div id="main">
+
 <% form_for @post do | f | %>
   <%= f.error_messages %>
   
 	<p>
-	  <%= f.label :title %>
-    <%= f.text_field :title %>
+	  <%= f.label :title, "Title for this post" %>
+    <%= f.text_field :title, :class => "largeInput" %>
   </p>
 
 	<p>
-	  <%= f.label :detail %>
+	  <%= f.label :detail, "Post text" %>
     <%= f.text_area :detail %>
   </p>
 
-  <p>
-    <%= submit_tag  'Save', :disable_with => "Saving..." %> or <%= link_to "Cancel", @post.new_record? ? posts_url : @post %>
+  <p class="submitBlock">
+    <%= submit_tag  'Create new post', :disable_with => "Saving..." %> or <%= link_to "Cancel", @post.new_record? ? posts_url : @post %>
   </p> 
 
 <% end %>
+</div>
+
+<div class="clearThis"> </div>

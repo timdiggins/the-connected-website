@@ -196,6 +196,7 @@ h1 {
   color: #eda900;
   font-size: 1.5em;
   font-weight: normal;
+  margin-top: 1.5em;
 }
 
 h2 {
@@ -215,7 +216,7 @@ h2 {
   font-size: 1.1em;
 }
 
-.fieldWithErrors input, .fieldWithErrors select {
+.fieldWithErrors input, .fieldWithErrors select, .fieldWithErrors textarea {
 	background-color: #fbfcd7;
 	}
 	
@@ -383,6 +384,7 @@ form p {
   margin: -1.5em -2em 1em -2em;
 }
 
+
 #flash p {
   background-color: #FE9;
   padding: 0.5em 1em;
@@ -390,4 +392,10 @@ form p {
   text-align: center;
   border-top: 2px solid #c8bb78;
   font-weight: bold;
+}
+
+
+
+#post_detail {
+  width: 100%;
 }
