@@ -13,5 +13,10 @@ module LayoutHelper
     onload_str = @onload_event ? %{ onload="#{@onload_event}"} : ''
     "<body#{onload_str}>"
 	end
+	
+	def current_if(tab)
+	  return '' unless tab == @current_tab
+	  'class="current"'
+  end
   
 end
