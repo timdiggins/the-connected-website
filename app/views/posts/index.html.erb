@@ -9,6 +9,7 @@
 		<div class="posts">
 			<% for post in @posts %>
 				<p><%= link_to post, post %></p>
+				<p><%= post.brief %></p>
 			<% end %>
 		</div>
   </div>
