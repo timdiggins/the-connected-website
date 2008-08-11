@@ -11,7 +11,7 @@ role :app, domain
 role :db,  domain, :primary => true
 
 task :install_gem_dependencies do
-  run "cd #{current_path} && rake gems:install RAILS_ENV=#{rails_env}"
+  run "cd #{current_path} && sudo rake gems:install RAILS_ENV=#{rails_env}"
 end
 
 task :link_s3_yml do
@@ -26,8 +26,12 @@ task :post_deploy do
   run "mkdir -p #{release_path}/db"
 end
 
+task :setup_cron_backup do
+  puts backup_command
+end
+
 after "deploy:symlink", "post_deploy"
+after "deploy:symlink", "install_gem_dependencies"
 before "deploy:update_code", "deploy:git:pending"
-after "deploy:update", "install_gem_dependencies"
 before "deploy:migrate", "backup_to_s3"
 before "backup_to_s3", "link_s3_yml"

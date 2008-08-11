@@ -10,3 +10,4 @@ config/cookie_secret
 deploy_history.txt
 public/avatars
 tmp/attachment_fu
+db/*.sqlite3
