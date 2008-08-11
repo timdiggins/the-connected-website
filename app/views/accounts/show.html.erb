@@ -1,11 +1,32 @@
 
 <%= error_messages_for(:user, :object => @user.avatar ? [@user.avatar, @user] : @user ) %>
+  
 
-<div id="page">
-  <div id="content">   
-    <h1><%= @page_title = "Your Account"  %></h1>
    
-    <div class="main"> 
+
+    <div id="sidebar">
+        <p>
+          <%= avatar_for(@user, :large)  %>
+        </p>
+
+        <div id="edit_avatar_form" <%= %Q{style="display:none"} if !@user.avatar || !@user.avatar.valid? %>>
+          <%= render :partial => 'edit_avatar_form' %>
+        </div>
+
+        <p>
+          <%= link_to_function("Change avatar", nil, :id => :change_avatar_link) do | page | 
+                page[:change_avatar_link].hide
+                page[:edit_avatar_form].visual_effect(:appear)
+              end if @user.valid? 
+          %>
+
+
+        </p>
+
+   </div>
+
+    <div id="main">
+    <h1><%= @page_title = "Your Account"  %></h1>
       <div id="settings">
 				  <% form_for @user, :url => account_url do | f | %>
 				    <%= f.error_messages %>
@@ -27,27 +48,5 @@
       </div>
     </div>
       
-    <div class="second">
-        <p>
-          <%= avatar_for(@user, :large)  %>
-        </p>
-  
-        <div id="edit_avatar_form" <%= %Q{style="display:none"} if !@user.avatar || !@user.avatar.valid? %>>
-          <%= render :partial => 'edit_avatar_form' %>
-        </div>
-        
-        <p>
-          <%= link_to_function("Change avatar", nil, :id => :change_avatar_link) do | page | 
-                page[:change_avatar_link].hide
-                page[:edit_avatar_form].visual_effect(:appear)
-              end if @user.valid? 
-          %>
-          
-          
-        </p>
-  
-     </div>
+
    <div class="clearThis"> </div>
-     
-  </div>
-</div>
