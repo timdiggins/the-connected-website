@@ -60,6 +60,12 @@ class User < ActiveRecord::Base
     self.avatar = the_avatar unless it.to_s.blank?  
   end
   
+  def possessive_to_s
+    result = "#{self}'"
+    result += "s" unless to_s.ends_with?('s')
+    result
+  end
+  
   
   private
     def encrypt_password

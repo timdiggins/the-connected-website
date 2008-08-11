@@ -1,0 +1,16 @@
+<% @page_title = "Members" %>
+
+<div id="page">
+  <div id="content">
+    <div class="main">
+        <ul class="userList">
+	        <% for user in @users %>
+	          <li>
+	            <%= link_to_avatar_for(user, :small) %>
+							<span class="userName"><%= link_to_user(user) %></span>
+	          </li>
+	        <% end %>
+      	</ul>
+    </div>
+  </div>
+</div>
