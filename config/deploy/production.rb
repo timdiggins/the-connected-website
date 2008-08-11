@@ -26,10 +26,6 @@ task :post_deploy do
   run "mkdir -p #{release_path}/db"
 end
 
-task :setup_cron_backup do
-  puts backup_command
-end
-
 after "deploy:symlink", "post_deploy"
 after "deploy:symlink", "install_gem_dependencies"
 before "deploy:update_code", "deploy:git:pending"
