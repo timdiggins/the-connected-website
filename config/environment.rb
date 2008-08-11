@@ -11,5 +11,9 @@ Rails::Initializer.run do |config|
   }
   
   config.gem "image_science", :version => '1.1.3'
-  config.gem "aws-s3", :lib => "aws/s3", :version => '0.5.1'
+  config.gem "aws-s3", :lib => "aws/s3"
+  config.gem "redgreen" unless ENV['TM_MODE']
+  config.gem "map_by_method"
+  config.gem "colored"
+  
 end
