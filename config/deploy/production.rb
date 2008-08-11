@@ -9,6 +9,9 @@ role :web, domain
 role :app, domain
 role :db,  domain, :primary => true
 
+task :install_gem_dependencies do
+  run "cd #{current_path} && rake gems:install RAILS_ENV=#{rails_env}"
+end
 
 task :post_deploy do
   run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
@@ -20,3 +23,4 @@ end
 
 after "deploy:symlink", "post_deploy"
 before "deploy:update_code", "deploy:git:pending"
+after "deploy:update", "install_gem_dependencies"
