@@ -50,7 +50,7 @@ class SessionsController < ApplicationController
       @user.update_attribute(:reset_password_token, nil)
       flash[:notice] = "Your password has been changed and you've been logged in."
       self.current_user = @user
-      redirect_to projects_url
+      redirect_to root_url
     end
   end
   
