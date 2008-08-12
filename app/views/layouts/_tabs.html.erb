@@ -1,5 +1,6 @@
 <ul id="mainNavigation">
 	<li <%= current_if(:posts) %>><%= link_to "Content", posts_url %></li>
+	<li <%= current_if(:events) %>><%= link_to "Activity", events_url %></li>
 	<li <%= current_if(:users) %>><%= link_to "Members", users_url %></li>
 </ul>	
 

@@ -1,0 +1,11 @@
+<% content_tag_for(:li, event, :class => "eventPostCreated") do %>
+	<div class="author">
+	    <%= link_to_avatar_for(event.user, :small) %>
+	</div>
+	<div class="event">
+	  <p class="details">
+	    <%= link_to("#{h(event.user)} created a post", event.detail) %> 
+	    <span class="time"><%= time_ago_in_words(event.created_at) %> ago.</span>
+	  </p>
+	 </div> 
+<% end %>

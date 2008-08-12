@@ -1,2 +1,17 @@
-<% @page_title = "Members" %>
+<% @page_title = "Activity" %>
 <% @current_tab = :events %>
+
+<div id="main">
+	<h1>All Activity</h1>
+	<div class="events">
+
+		<ul>
+		 <% for event in @events %>
+		     <%= render :partial => "events/event", :locals => { :event => event } %>
+		 <% end %>
+		</ul>
+
+	</div>
+</div>
+
+<div class="clearThis"> </div>
