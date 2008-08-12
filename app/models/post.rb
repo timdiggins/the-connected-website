@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   has_many :comments
   alias_attribute :to_s, :title
   
-  named_scope :sorted_by_created, lambda { { :order => "updated_at DESC" }}
+  named_scope :sorted_by_created_at, lambda { { :order => "created_at DESC" }}
   
   def brief
     truncate(detail, 200)
