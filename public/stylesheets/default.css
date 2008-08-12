@@ -530,13 +530,26 @@ a#newContent {
 
 .events li {
   clear: left;
-  padding-top: 1em;
+  padding-top: 0.8em;
   border-top: 1px solid #EEE;
+}
+
+.events .commentBody {
+  background-color: #EEE;
+  padding: 0.2em 1em;
+  margin: 0.5em 0px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
 }
 
 .events .author {
   float: left;
   margin-right: 1em;
+  padding-bottom: 1em;
+}
+
+.eventBody {
+  margin-left: 60px;
   padding-bottom: 1em;
 }
 
@@ -550,7 +563,6 @@ a#newContent {
 .events p.details {
 	margin: 0px;
 	color: #999;
-	 padding-bottom: 1em;
 }
 
 .events p.details a {
