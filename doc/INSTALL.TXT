@@ -5,3 +5,7 @@ need to symlink in edge rails
 
 need freeimage http://freeimage.sourceforge.net/
   e.g. sudo port install freeimage
+
+
+in order to deploy need to get spacesuit:
+sudo gem install spacesuit --source http://terralien.biz
