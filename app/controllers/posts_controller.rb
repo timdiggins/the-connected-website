@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     
     Event.create_for(@post)
     
-    redirect_to @post
+    redirect_to posts_url
   end
   
   def edit
