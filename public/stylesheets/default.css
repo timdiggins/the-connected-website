@@ -204,7 +204,8 @@ h1 {
   color: #eda900;
   font-size: 1.5em;
   font-weight: normal;
-  margin-top: 1em;
+  margin-top: 1.5em;
+	margin-bottom:1em;
 }
 
 h2 {
@@ -522,16 +523,10 @@ a#newContent {
   padding: 0px;
 }
 
-.events ul {
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
-}
-
 .events li {
   clear: left;
   padding-top: 0.8em;
-  border-top: 1px solid #EEE;
+  border-top: 1px solid #DDD;
 }
 
 .events .commentBody {
