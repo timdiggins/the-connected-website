@@ -4,13 +4,13 @@
 		<%= error_messages_for(:user, :object => @user.avatar ? [@user.avatar, @user] : @user ) %>
 		
 		 <div id="settings">
-		<h2>Your public avatar (            <%= link_to('profile', user_url(@user)) %>
+		<h2>Your public avatar (            <%= link_to('profile', user_url(current_user)) %>
  image)</h2>
 	        <p>
 	          <%= avatar_for(@user, :large)  %>
 	        </p>
 
-	        <div id="edit_avatar_form" <%= %Q{style="display:none"} if @user.avatar && @user.avatar.valid? %>>
+	        <div id="edit_avatar_form" <%= %Q{style="display:none"} if hide_avatar_form  %>>
 	          <%= render :partial => 'edit_avatar_form' %>
 	        </div>
 
@@ -18,16 +18,10 @@
 	          <%= link_to_function("Change avatar", nil, :id => :change_avatar_link) do | page | 
 	                page[:change_avatar_link].hide
 	                page[:edit_avatar_form].visual_effect(:appear)
-	              end if @user.valid? 
+	              end if hide_avatar_form
 	          %>
 
 	        </p>
-
-
-
-					
-		
-
 
 			<h2>Your Account</h2>
 				  <% form_for @user, :url => account_url do | f | %>

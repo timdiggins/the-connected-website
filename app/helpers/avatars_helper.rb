@@ -16,4 +16,8 @@ module AvatarsHelper
     end 
   end
   
+  def hide_avatar_form
+    !@user.avatar || (@user.avatar && @user.avatar.valid?)
+  end
+  
 end
