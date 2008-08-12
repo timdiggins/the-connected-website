@@ -139,8 +139,13 @@ input#user_user_avatar {
 	text-align: center;
 	margin-bottom: 1em;
 	font-size: 0.9em;
-	color: #666;
+	color: #999;
 	line-height: 1.6em;
+}
+
+#footer a {
+	color: #BBB;
+	text-decoration: underline;
 }
 
 
