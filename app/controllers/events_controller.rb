@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   
   def index
-    @events = Event.all
+    @events = Event.sorted_by_created
   end
   
 end
