@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
   named_scope :sorted_by_created_at, lambda { { :order => "created_at DESC" }}
   
   def brief
-    truncate(detail, 200)
+    truncate(detail, 500)
   end
 
   private

@@ -4,7 +4,8 @@
 		<%= error_messages_for(:user, :object => @user.avatar ? [@user.avatar, @user] : @user ) %>
 		
 		 <div id="settings">
-		<h2>Your public avatar</h2>
+		<h2>Your public avatar (            <%= link_to('profile', user_url(@user)) %>
+ image)</h2>
 	        <p>
 	          <%= avatar_for(@user, :large)  %>
 	        </p>
@@ -19,7 +20,6 @@
 	                page[:edit_avatar_form].visual_effect(:appear)
 	              end if @user.valid? 
 	          %>
-
 
 	        </p>
 
