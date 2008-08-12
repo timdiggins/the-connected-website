@@ -11,3 +11,5 @@ deploy_history.txt
 public/avatars
 tmp/attachment_fu
 db/*.sqlite3
+.loadpath
+.project

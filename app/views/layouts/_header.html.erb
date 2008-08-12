@@ -1,7 +1,7 @@
 <ul id="topNavigation">
   <% if logged_in? %>
-		<li><%= link_to('Account', account_url) %></li>
-		<li><%= link_to('Profile', user_url(current_user)) %></li>
+		<li><%= link_to('Settings...', account_url) %></li>
+		<li><%= link_to('Your public profile', user_url(current_user)) %></li>
 		<li><%= link_to('Logout', logout_url) %></li>
 
 	<% else %>
