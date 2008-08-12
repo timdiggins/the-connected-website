@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :login_required, :except => [ :index, :show ]
   
   def index
-    @posts = Post.sorted_by_created
+    @posts = Post.sorted_by_created_at
   end
   
   def new
