@@ -9,7 +9,7 @@ public/.integration_test_output_for_browser.html
 config/cookie_secret
 deploy_history.txt
 public/avatars
-tmp/attachment_fu
+tmp/*
 db/*.sqlite3
 .loadpath
 .project
