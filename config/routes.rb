@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :sessions
-  map.resources :posts
+  map.resources :posts, :has_many => :comments
   map.resources :events
   map.resource  :account, :collection => { :save_new_avatar => :put }
 
