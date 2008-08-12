@@ -13,6 +13,15 @@
 	<div class="postBody">
 		<%= detail_format(@post.detail) %>
 	</div>
+	
+	<%= render :partial => 'posts/comment_form' %>
+  
+	
+	<% for comment in @post.comments %>
+		<p><%= link_to_avatar_for(comment.user) %></p>
+		<p><%= detail_format(comment.body) %></p>
+		
+	<% end %>
 </div>
 
 <div class="clearThis"> </div>

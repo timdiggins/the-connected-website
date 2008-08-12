@@ -1,0 +1,21 @@
+<div class="regForm">
+  <% if logged_in? %>
+      <% form_for [ @post, @comment ] do | f | %>
+        <%= f.error_messages %>
+  
+        <p>
+          <%= f.label :body, "Add a comment" %>
+          <%= f.text_area :body, :rows => 6 %>
+        </p>
+        <p>
+            <%= submit_tag "Post this comment" %>
+        </p>
+      <% end %>
+  <% else %>
+    <p class="loginRequired">
+			You need to <%= link_to "login", login_url %> to add comments.
+	    <br />
+		 	No account yet? <%= link_to("Sign up", signup_url) %> is quick and easy.
+		</p>
+  <% end %>
+</div>
