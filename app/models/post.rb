@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   
   validates_presence_of :title, :detail
   belongs_to :user
-  has_many :comments
+  has_many :comments, :order => 'created_at DESC'
   alias_attribute :to_s, :title
   
   named_scope :sorted_by_created_at, lambda { { :order => "created_at DESC" }}
