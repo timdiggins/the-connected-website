@@ -3,6 +3,7 @@
 	http://localhost:3000/stylesheets/default.css?1218467559
 	http://localhost:3000/stylesheets/default.css?1218472932
 	http://localhost:3000/stylesheets/default.css?1218481999
+	http://localhost:3000/stylesheets/default.css?1218539532
 */
 
 body {
@@ -563,13 +564,19 @@ a#newContent {
 
 .events p.details {
 	margin: 0px;
-	color: #999;
+	font-size: 1em;
+	color: #333;
+	font-weight: bold;
 }
 
-.events p.details a {
-	font-size: 1.2em;
+
+
+.events p.details span.time {
+	font-size: 0.9em ;
 	display: block;
-	margin-bottom: 0.2em;
+	margin-top: 0.3em;
+	color: #999;
+	font-weight: normal;
 }
 
 
