@@ -99,7 +99,7 @@ input#user_user_avatar {
 #mainNavigation {
 	margin: 20px 0px 0px 0px;
 	list-style: none;
-	padding: 0px 0.5em;
+	padding: 0px 2em;
 	background: #1D2D23 url(/images/nav_bg.gif) top left no-repeat;
 	overflow: hidden;
 	}
@@ -343,9 +343,9 @@ p.avatar {
   padding: 0px;
 }
 
-p.avatar img {
+img.profile_avatar {
   padding: 5px;
-  border: 1px solid #DDD;
+  border: 1px solid #CCC;
   background-color: #FFF;
     -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -408,17 +408,36 @@ textarea#post_detail {
   
 }
 
-.postDetails {
+.post p.avatar {
   float: left;
-  width: 100px;
-  padding-bottom: 3em;}
+  padding-bottom: 2em;
+  text-align: center;
+  overflow: visible;
+   margin: 0px;
+  }
+
 
 .postContent {
-  margin-left: 110px;
-  padding: 0px 0px 4em 2em;
+  margin-left: 80px;
+  padding: 0.8em 0px 3em 3em;
+  	background: url(../images/post.gif) no-repeat top left;
+  	line-height: 1.5em;
 }
 
+.postContent h2 {
+  font-size: 1.1em;
+  font-weight: bold;
+}
 
+.post .details {
+  font-size: 0.9em;
+  color: #999;
+  margin-top: 1.5em;
+}
+
+.post .details a {
+  font-weight: bold;
+}
 
 
 

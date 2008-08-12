@@ -9,16 +9,11 @@
 		<div class="posts">
 			<% for post in @posts %>
 				<div class="post">
-					<div class="postDetails">
-						<p class="avatar"><%= avatar_for(post.user, :medium) %></p>
-						<p>
-							<span class="author"><%= link_to_user(post.user) %></span>
-						</p>
-					</div>
+					<p class="avatar"><%= link_to_avatar_for(post.user, :medium) %></p>
 					<div class="postContent">
 						<h2><%= link_to post, post %></h2>
 						<p><%= post.brief %></p>
-						<p><span class="date">posted <%= time_ago_in_words(post.created_at) %> ago</span></p>
+						<p class="details"><span class="author">posted by <%= link_to_user(post.user) %>, <span class="date"><%= time_ago_in_words(post.created_at) %> ago</span></span></p>
 					</div>
 				</div>
 			<% end %>
