@@ -1,4 +1,5 @@
-<div class="regForm">
+<div id="commentForm">
+
   <% if logged_in? %>
       <% form_for [ @post, @comment ] do | f | %>
         <%= f.error_messages %>

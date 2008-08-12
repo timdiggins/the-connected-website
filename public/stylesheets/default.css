@@ -285,6 +285,11 @@ input.largeInput {
 }
 
 
+div.largeForm input.largeInput {
+	width: 50%;
+}
+
+
 div.largeForm textarea {
 	font-size: 1.3em;
 	height:100px;
@@ -371,7 +376,7 @@ img.profile_avatar {
 
 form label {
   display: block;
-  margin-bottom: 0.3em;
+  margin-bottom: 0.4em;
 }
 
 form p {
@@ -552,4 +557,32 @@ a#newContent {
 	font-size: 1.2em;
 	display: block;
 	margin-bottom: 0.2em;
+}
+
+
+
+
+
+p.loginRequired {
+  line-height: 1.5em;
+  margin-top: 3em;
+  padding: 1em;
+  background-color: #EEE;
+}
+
+
+#commentForm {
+  margin-top: 3em;
+  
+}
+
+
+#commentForm textarea {
+	font-size: 1.3em;
+	height:5em;
+	width: 100%;
+}
+
+#comments {
+  margin-top: 3em;
 }
