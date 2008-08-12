@@ -1,7 +1,10 @@
 
+    <h1><%= @page_title = "Your Settings"  %></h1>
 
-
-     <div id="sidebar">
+		<%= error_messages_for(:user, :object => @user.avatar ? [@user.avatar, @user] : @user ) %>
+		
+		 <div id="settings">
+		<h2>Your public avatar</h2>
 	        <p>
 	          <%= avatar_for(@user, :large)  %>
 	        </p>
@@ -20,13 +23,13 @@
 
 	        </p>
 
-	     </div>
 
-    <div id="main">
-    <h1><%= @page_title = "Your Account"  %></h1>
-		<%= error_messages_for(:user, :object => @user.avatar ? [@user.avatar, @user] : @user ) %>
 
-      <div id="settings">
+					
+		
+
+
+			<h2>Your Account</h2>
 				  <% form_for @user, :url => account_url do | f | %>
 
 				    <p>
@@ -44,7 +47,5 @@
 				    </p>
 				  <% end %>
       </div>
-    </div>
-      
-   <div class="clearThis"> </div>
+
 

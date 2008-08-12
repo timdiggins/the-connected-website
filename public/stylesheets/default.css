@@ -389,6 +389,12 @@ form p {
   margin-top: 1.5em;
 }
 
+#settings h2 {
+margin-top:2.5em;
+padding-bottom:0.5em;
+border-bottom:1px solid #DDD;
+}
+
 #settings form {
   padding: 1em 1.5em;
   background-color: #EEE;
