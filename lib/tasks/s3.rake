@@ -221,9 +221,11 @@ module S3Backup
   # then does a cleanup
   def send_to_s3(name, tmp_file)
     archive = "/tmp/#{archive_name(name)}.tar.gz"
-
+    tmp_dir = File.dirname(tmp_file)
+    tmp_basefile = File.basename(tmp_file)
+    
     msg "archiving #{name}"
-    cmd = "tar -cpzf #{archive} #{tmp_file}"
+    cmd = "tar -C #{tmp_dir} -cpzf #{archive} #{tmp_basefile}"
     puts cmd
     system cmd
 
