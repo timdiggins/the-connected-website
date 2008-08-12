@@ -1,11 +1,12 @@
 <% @page_title = "Content" %>
 <% @current_tab = :posts %>
-
+<h1>All Posts</h1>
+		
 <div id="sidebar">
-	<%= link_to "New Post", new_post_url %>
+	<%= link_to "Add a new post", new_post_url, :id=>"newContent" %>
 </div>
   <div id="main">
-		<h1>All Posts</h1>
+
 		<div class="posts">
 			<% for post in @posts %>
 				<div class="post">

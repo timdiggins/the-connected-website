@@ -470,7 +470,9 @@ textarea#post_detail {
 h2.author {
   font-size: 1em;
   color: #999;
+  padding-top: 0.5em;
 }
+
 
 h2.author a {
   display: block;
@@ -488,4 +490,66 @@ p.date {
 .postBody {
   line-height: 1.5em;
   font-size: 1.1em;
+}
+
+
+
+
+
+a#newContent {
+  float: left;
+  font-size: 1.2em;
+  padding: 0.6em 2em;
+  background-color: #2e659d;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  color: #FFF;
+}
+
+
+
+
+
+
+.events ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.events ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.events li {
+  clear: left;
+  padding-top: 1em;
+  border-top: 1px solid #EEE;
+}
+
+.events .author {
+  float: left;
+  margin-right: 1em;
+  padding-bottom: 1em;
+}
+
+.events img {
+  padding: 0px;
+  border-width: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+}
+
+.events p.details {
+	margin: 0px;
+	color: #999;
+	 padding-bottom: 1em;
+}
+
+.events p.details a {
+	font-size: 1.2em;
+	display: block;
+	margin-bottom: 0.2em;
 }
