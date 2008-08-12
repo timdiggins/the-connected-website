@@ -1,6 +1,17 @@
 
-<h1><%= @post %></h1>
+<div id="sidebar">
+	<h2 class="author">The author: <%= link_to_user(@post.user) %></h2>
+	<p class="avatar">
+    <%= link_to_avatar_for(@post.user, :large) %>
+  </p>
+</div>
 
+<div id="main">
+	<h1><%= @post %></h1>
+	<p class="date">Posted <%= time_ago_in_words(@post.created_at) %> ago.</p>
+	<div class="postBody">
+		<%= detail_format(@post.detail) %>
+	</div>
+</div>
 
-
-<%= detail_format(@post.detail) %>
+<div class="clearThis"> </div>

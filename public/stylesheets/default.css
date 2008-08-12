@@ -204,7 +204,7 @@ h1 {
   color: #eda900;
   font-size: 1.5em;
   font-weight: normal;
-  margin-top: 1.5em;
+  margin-top: 1em;
 }
 
 h2 {
@@ -459,3 +459,33 @@ textarea#post_detail {
 
 
 
+
+
+
+
+
+
+
+
+h2.author {
+  font-size: 1em;
+  color: #999;
+}
+
+h2.author a {
+  display: block;
+  font-size: 1.2em;
+  margin-top: 0.2em;
+}
+
+p.date {
+  color: #999;
+  font-size: 1.1em;
+  margin-top: -0.5em;
+}
+
+
+.postBody {
+  line-height: 1.5em;
+  font-size: 1.1em;
+}
