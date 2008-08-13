@@ -4,8 +4,8 @@
 		<%= error_messages_for(:user, :object => @user.avatar ? [@user.avatar, @user] : @user ) %>
 		
 		 <div id="settings">
-		<h2>Your public avatar (            <%= link_to('profile', user_url(current_user)) %>
- image)</h2>
+		<h2>Your <%= link_to('public profile', user_url(current_user)) %>
+ image ('avatar')</h2>
 	        <p>
 	          <%= avatar_for(@user, :large)  %>
 	        </p>
@@ -15,7 +15,7 @@
 	        </div>
 
 	        <p>
-	          <%= link_to_function("Change avatar", nil, :id => :change_avatar_link) do | page | 
+	          <%= link_to_function("Change public profile image", nil, :id => :change_avatar_link) do | page | 
 	                page[:change_avatar_link].hide
 	                page[:edit_avatar_form].visual_effect(:appear)
 	              end if hide_avatar_form
