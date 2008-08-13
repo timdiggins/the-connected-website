@@ -1,18 +1,20 @@
-/* @override 
-	http://localhost:3000/stylesheets/default.css?1218459744
-	http://localhost:3000/stylesheets/default.css?1218467559
-	http://localhost:3000/stylesheets/default.css?1218472932
-	http://localhost:3000/stylesheets/default.css?1218481999
-	http://localhost:3000/stylesheets/default.css?1218539532
-*/
 
 body {
-	font-size:0.8em;
-	font-family:arial, sans-serif;
-	background: #2D3831 url(/images/page_top.gif) top left repeat-x;
-	color: #333;
-	text-align:center;
+  font-family: arial, sans-serif;
+  font-size: 0.8em;
+  margin:0px;
+  padding:0px;
+ 	background: #2D3831 url(/images/page_top.gif) top left repeat-x;
 }
+
+
+#wrap {
+	width:925px;
+    margin:0px auto;
+}
+
+
+
 
 
 a {
@@ -26,12 +28,6 @@ a:hover {
 }
 
 
-
-#wrap {
-	width:925px;
-	margin:0px auto;
-	text-align:left;
-}
 
 
 #content {
