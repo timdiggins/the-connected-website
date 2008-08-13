@@ -1,16 +1,16 @@
-/* @override 
-	http://localhost:3000/stylesheets/default.css?1218459744
-	http://localhost:3000/stylesheets/default.css?1218467559
-	http://localhost:3000/stylesheets/default.css?1218472932
-	http://localhost:3000/stylesheets/default.css?1218481999
-*/
 
 body {
-	font-size:0.8em;
-	font-family:arial, sans-serif;
-	background: #2D3831 url(/images/page_top.gif) top left repeat-x;
-	color: #333;
-	text-align:center;
+  font-family: arial, sans-serif;
+  font-size: 0.8em;
+  margin:0px;
+  padding:0px;
+ 	background: #2D3831 url(/images/page_top.gif) top left repeat-x;
+}
+
+
+#wrap {
+	width:925px;
+    margin:0px auto;
 }
 
 
@@ -25,17 +25,15 @@ a:hover {
 }
 
 
-
-#wrap {
-	width:925px;
-	margin:0px auto;
-	text-align:left;
+#header {
+	position:relative;
+  padding-top:1px;
 }
-
 
 #content {
 	padding: 1.5em 2em;
 	background: #FFF url(/images/wrapper_bottom.gif) bottom left no-repeat;
+	clear:left;
 }
 
 #main {
@@ -74,9 +72,11 @@ input#user_user_avatar {
 
 #topNavigation {
 	list-style:none;
-	margin:-10px 0px 0px 0px;
+	margin:0px;
 	padding:0px;
-	float:right;
+	position:absolute;
+	right:0px;
+	top:15px;
 }
 
 #topNavigation li {
@@ -101,7 +101,8 @@ input#user_user_avatar {
 	list-style: none;
 	padding: 0px 2em;
 	background: #1D2D23 url(/images/nav_bg.gif) top left no-repeat;
-	overflow: hidden;
+	height:2.8em;
+	overflow:hidden;
 	}
 	
 #mainNavigation li {
@@ -563,13 +564,19 @@ a#newContent {
 
 .events p.details {
 	margin: 0px;
-	color: #999;
+	font-size: 1em;
+	color: #333;
+	font-weight: bold;
 }
 
-.events p.details a {
-	font-size: 1.2em;
+
+
+.events p.details span.time {
+	font-size: 0.9em ;
 	display: block;
-	margin-bottom: 0.2em;
+	margin-top: 0.3em;
+	color: #999;
+	font-weight: normal;
 }
 
 

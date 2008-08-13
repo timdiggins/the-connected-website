@@ -1,3 +1,4 @@
+<div id="header">
 <ul id="topNavigation">
   <% if logged_in? %>
 		<li><%= link_to('Settings', account_url) %></li>
@@ -14,12 +15,8 @@
 	<form action="#" method="get">
 		<input id="s" name="s" onblur="resetTextfield(this)" onfocus="resetTextfield(this)" type="text" value="Search ..." />
 	</form>
-</div
+</div>
 <div id="logo"><%= link_to "The Connected Republic", posts_url %></div>
 
 <%= render :partial => 'layouts/tabs' %>
-
-
-
-
-
+</div>
