@@ -10,7 +10,7 @@ class AccountsController < ApplicationController
     @user = current_user
     @user.attributes = params[:user]
     
-    return render(:action => :show) unless @user.avatar.valid? && @user.save
+    return render(:action => :show) unless @user.avatar && @user.avatar.valid? && @user.save
     
     flash[:notice] = "Saved new avatar."
     redirect_to account_url
