@@ -1,3 +1,4 @@
+<div id="header">
 <ul id="topNavigation">
   <% if logged_in? %>
 		<li><%= link_to('Settings', account_url) %></li>
@@ -18,8 +19,4 @@
 <div id="logo"><%= link_to "The Connected Republic", posts_url %></div>
 
 <%= render :partial => 'layouts/tabs' %>
-
-
-
-
-
+</div>

@@ -14,9 +14,6 @@ body {
 }
 
 
-
-
-
 a {
 	color: #2A6B87;
 	text-decoration: none;
@@ -28,11 +25,15 @@ a:hover {
 }
 
 
-
+#header {
+	position:relative;
+  padding-top:1px;
+}
 
 #content {
 	padding: 1.5em 2em;
 	background: #FFF url(/images/wrapper_bottom.gif) bottom left no-repeat;
+	clear:left;
 }
 
 #main {
@@ -71,9 +72,11 @@ input#user_user_avatar {
 
 #topNavigation {
 	list-style:none;
-	margin:-10px 0px 0px 0px;
+	margin:0px;
 	padding:0px;
-	float:right;
+	position:absolute;
+	right:0px;
+	top:15px;
 }
 
 #topNavigation li {
@@ -98,7 +101,8 @@ input#user_user_avatar {
 	list-style: none;
 	padding: 0px 2em;
 	background: #1D2D23 url(/images/nav_bg.gif) top left no-repeat;
-	overflow: hidden;
+	height:2.8em;
+	overflow:hidden;
 	}
 	
 #mainNavigation li {
