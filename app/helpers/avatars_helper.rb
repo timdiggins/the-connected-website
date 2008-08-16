@@ -9,7 +9,7 @@ module AvatarsHelper
   end
   
   def avatar_filename(user, size = :medium) 
-    if user.avatar && user.avatar.valid? 
+    if user.avatar
       user.avatar.public_filename(size)
     else 
       "default_avatar_#{size}.png"
