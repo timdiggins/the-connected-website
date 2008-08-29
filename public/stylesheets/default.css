@@ -32,7 +32,7 @@ a:hover {
 }
 
 #content {
-	padding: 1.5em 2em;
+	padding: 3em 2em 1.5em 2em;
 	background: #FFF url(/images/wrapper_bottom.gif) bottom left no-repeat;
 	clear:left;
 }
@@ -206,7 +206,7 @@ h1 {
   color: #eda900;
   font-size: 1.5em;
   font-weight: normal;
-  margin-top: 1.5em;
+  margin-top: 0px;
 	margin-bottom:1em;
 }
 
@@ -302,16 +302,28 @@ div.largeForm .submitBlock {
 	margin:2em  0px 2em 40%;
 }
 
+div.largeForm .submitBlock input[type="submit"] {
+	margin-right: 0.5em;
+}
+
 
 div.largeForm input[type="submit"] {
 	font-size: 1.4em;
 	}
 
 
-div.largeForm .formOptions {
-	margin: 3em 0px 0.5em 40%;
+.formOptions {
+	margin: 3.5em 0px 0.5em 40%;
 	color: #707880;
 	line-height: 1.5em;
+	font-size: 1.2em;
+	border-top: 1px solid #CCC;
+	padding-top: 0.5em;
+}
+
+
+.formOptions a {
+	text-decoration: underline;
 }
 
 
@@ -483,7 +495,6 @@ textarea#post_detail {
 h2.author {
   font-size: 1em;
   color: #999;
-  padding-top: 0.5em;
 }
 
 

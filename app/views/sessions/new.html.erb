@@ -20,13 +20,12 @@
 	    </p>
   
 	    <p class="submitBlock">
-	  	  <%= submit_tag 'Log in' %>
+	  	  <%= submit_tag 'Log in' %>  <%= link_to "Forgot your username or password?", forgot_password_url %>
 	  	</p>
 	  <% end -%>
 
 	  <p class="formOptions">
-	    Not signed up yet? <%= link_to "Signup now", signup_url %><br />
-	    <%= link_to "Forgot your username or password?", forgot_password_url %>
+	    Not signed up yet? <%= link_to "Join now!", signup_url %>
 	  </p>
 
 	</div>
