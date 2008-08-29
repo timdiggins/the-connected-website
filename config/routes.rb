@@ -14,7 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.info 'info/:action', :controller => 'info'
   
-  map.root :controller => "posts"
+  map.root :controller => "home"
   
 end
 
