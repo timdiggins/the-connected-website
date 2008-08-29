@@ -392,8 +392,8 @@ img.profile_avatar {
 }
 
 #profile div#bio {
-  font-size: 1.1em;
   line-height: 1.5em;
+  font-size: 1.1em;
 }
 
 p.homepage {
@@ -526,25 +526,33 @@ textarea#post_detail {
   background: url(../images/comment.gif) no-repeat top left;
 }
 
+#authorBlock {
+  border: 1px solid #DDD;
+  padding: 1em;
+  line-height: 1.5em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
 
+#authorBlock h2 {
+	font-size: 1.2em;
+	margin: 0px;
+}
 
-
-
-
-
-
-
-h2.author {
-  font-size: 1em;
-  color: #999;
+#authorBlock p.avatar {
+  float: left;
+  margin: 1em 1em 0.3em 0px;
 }
 
 
-h2.author a {
-  display: block;
-  font-size: 1.2em;
-  margin-top: 0.2em;
-}
+
+
+
+
+
+
+
+
 
 p.date {
   color: #999;
