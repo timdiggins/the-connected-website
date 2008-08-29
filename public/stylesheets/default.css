@@ -2,6 +2,7 @@
 	http://localhost:3000/stylesheets/default.css?1218620950
 	http://localhost:3000/stylesheets/default.css?1220011962
 	http://localhost:3000/stylesheets/default.css?1220030836
+	http://10.211.55.4:3004/stylesheets/default.css?1220039135
 */
 
 body {
@@ -702,7 +703,7 @@ p.date {
 
 
 
-a#newContent {
+a#newContent, a#joinButton {
   float: left;
   font-size: 1.2em;
   padding: 0.6em 2em;
@@ -711,8 +712,6 @@ a#newContent {
   -moz-border-radius: 3px;
   color: #FFF;
 }
-
-
 
 
 
