@@ -727,11 +727,18 @@ p.loginRequired {
 
 #settings ul a {
   display: block;
-  padding: 0.5em 1em;
+  padding: 1em 1.5em;
   background-color: #EEE;
-  margin-bottom: 3px;
+  margin-bottom: 5px;
    -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
+}
+
+#user_profile_text {
+  width: 100%;
+  font-size: 1.2em;
+  height: 15em;
+  line-height: 1.4em;
 }
 
 #settings ul li.current a {

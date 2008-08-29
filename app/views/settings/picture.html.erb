@@ -5,7 +5,6 @@
 	<div id="main">		
 			<%= error_messages_for(:user, :object => @user.avatar ? [@user.avatar, @user] : @user ) %>
 
-			<h2>Your Picture</h2>
       <p>
         <%= avatar_for(@user, :large)  %>
       </p>

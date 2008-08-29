@@ -5,21 +5,20 @@
 		<div id="main">		
 				<%= error_messages_for(:user) %>
 
-				<h2>Your Bio</h2>
 			  <% form_for @user, :url => settings_url do | f | %>
 
 			    <p>
-			      <%= f.label :home_page %>
+			      <%= f.label :home_page, "Your home page" %>
 			      <%= f.text_field :home_page, :class => "largeInput" %>
 			    </p>
 	
 			    <p>
-			      <%= f.label :profile_text %>
+			      <%= f.label :profile_text, "Text for your profile, e.g. Bio" %>
 			      <%= f.text_area :profile_text, :class => "largeInput" %>
 			    </p>
 
 			    <p class="submitBlock">
-			      <%= submit_tag "Update your account" %>
+			      <%= submit_tag "Save changes" %>
 			    </p>
 			  <% end %>
 		</div>
