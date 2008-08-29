@@ -16,14 +16,19 @@
 		<ul>
 			<% for topic in @post.topics %>
 				<li>
-					<%= link_to topic, topic %>
+					<%= link_to topic, topic %> 
+					<% if logged_in? %>
+						<%= link_to "[Delete]", post_topic_url(@post, topic), :method => :delete, :confirm => "Are you sure you'd like to remove this post from the topic '#{topic}'?" %>  
+					<% end %>
 				</li>
 			<% end %>
 		</ul>
 		
-		<% form_tag add_topic_post_url do | f | %>	  
-			<%= label_tag :topic_name, "Add Topic:" %>
-			<%= text_field_tag :topic_name %>
+		<% if logged_in? %>
+			<% form_tag post_topics_url(@post) do | f | %>	  
+				<%= label_tag :topic_name, "Add Topic:" %>
+				<%= text_field_tag :topic_name %>
+			<% end %>
 		<% end %>
 		
 	</div>
