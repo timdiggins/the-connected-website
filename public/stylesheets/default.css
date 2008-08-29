@@ -1,6 +1,7 @@
 /* @override 
 	http://localhost:3000/stylesheets/default.css?1218620950
 	http://localhost:3000/stylesheets/default.css?1220011962
+	http://localhost:3000/stylesheets/default.css?1220030836
 */
 
 body {
@@ -579,11 +580,48 @@ textarea#post_detail {
 
 #authorBlock {
   border: 1px solid #DDD;
-  padding: 1em 1em 0px 1em;
+  padding: 1em 1em 0.5em 1em;
   line-height: 1.5em;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   color: #666;
+}
+
+div.topics {
+  margin-top: 1em;
+  padding: 0px;
+  line-height: 1.5em;
+  background-color: #EEE;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+
+div.topics h2 {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0px;
+  padding: 0.5em 1em;
+}
+
+div.topics form {
+  border-top: 1px solid #DDD;
+  padding: 0.5em 1em 1em 1em;
+}
+
+div.topics ul {
+  list-style: none;
+  margin: 0px 0px 1em 0px;
+  padding: 0px 1em;
+}
+
+div.topics li {
+  font-size: 1.2em;
+  margin: 0.5em 0px;
+}
+
+div.topics input {
+  font-size: 1.1em;
 }
 
 

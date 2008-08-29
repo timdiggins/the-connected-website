@@ -1,5 +1,5 @@
 
-<h1><%= @page_title = "Posts in topic '#{@topic}'" %></h1>
+<h1><%= @page_title = @topic %></h1>
 		
 <div id="sidebar">
 	<%= link_to "Start a new posting", new_post_url, :id=>"newContent" %>
