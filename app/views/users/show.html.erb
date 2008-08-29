@@ -50,15 +50,15 @@
 			
 			
 						<div id="recentEvents" class="events">
-			                <h2>Recently, <%=h @user %>... </h2>
-			                <ul>
-			                <% for event in @user.events %>
+                <h2>Recently, <%=h @user %>... </h2>
+                <ul>
+                <% for event in @user.events %>
 
-														<%= render :partial => "users/event", :locals => { :event => event } %>
-			                <% end %>
-			                </ul>
-			            </div>
-			
+											<%= render :partial => "users/event", :locals => { :event => event } %>
+                <% end %>
+                </ul>
+            </div>
+
 			
 
 		</div>
