@@ -9,6 +9,8 @@
 
 			    <p>
 			      <% if @user.profile_text.blank? %>
+				  <p class="note">NB: You need to introduce yourself, or you won't show up in the <%= link_to "community page", users_url%></p>
+				  <p>
     				  <%= f.label :profile_text, "Introduce yourself to the community with text (e.g. a bio) that will appear on your <a href=\"#{user_path(@user)}\">profile page</a>" %>
 				  <% else%>
 				      <%= f.label :profile_text, "Introductory text for your profile (e.g. bio)" %>
