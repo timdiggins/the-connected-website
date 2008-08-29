@@ -211,7 +211,7 @@ h1 {
   font-size: 1.5em;
   font-weight: normal;
   margin-top: 0px;
-	margin-bottom:1em;
+margin-bottom:0.5em;
 }
 
 h2 {
@@ -420,6 +420,9 @@ img.profile_avatar {
   line-height: 1.5em;
   font-size: 1.1em;
 }
+
+
+
 
 #profile p.avatar {
   float: left;
@@ -752,6 +755,8 @@ a#newContent {
   -moz-border-radius: 0px;
 }
 
+
+
 .events p.details {
 	margin: 0px;
 	font-size: 1em;
@@ -823,12 +828,13 @@ p.loginRequired {
   -moz-border-radius: 2px;
 }
 
-#user_profile_text {
+#user_profile_text, #topic_description {
   width: 100%;
   font-size: 1.2em;
   height: 15em;
   line-height: 1.4em;
 }
+
 
 #settings ul li.current a {
   background-color: #2A6B87;
@@ -836,3 +842,32 @@ p.loginRequired {
 }
 
 
+
+
+
+
+
+
+#topicDescription p {
+  line-height: 1.5em;
+  font-size: 1.1em;
+}
+
+#topicDescription p.tinyOption {
+  font-size: 1em;
+  text-align: right;
+  margin: 0px;
+}
+
+#topicDescription {
+	border: 1px solid #c8d4df;
+	padding: 1em 1.5em 1px 1em;
+	margin-bottom: 3em;
+	-webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+     background-color: #dce9f5;
+}
+
+#topicDescription h1 {
+  color: #597a9d;
+}

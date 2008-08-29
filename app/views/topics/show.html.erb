@@ -1,17 +1,33 @@
 
-<h1><%= @page_title = @topic %></h1>
-<%= h(@topic.description) %>		
+
 
 <div id="sidebar">
 	<%= link_to "Start a new posting in \"#{@topic}\"", new_post_url, :id=>"newContent" %>
-	<% if @topic.description.blank?%>
-	   <%= link_to "Add description for topic", edit_topic_url  %>
-   <% else  %>
-	   <%= link_to "Edit description?", edit_topic_url  %>
-   <% end %>
 </div>
 
 <div id="main">
+
+	
+	<div id="topicDescription">
+		<h1><%= @page_title = @topic %></h1>
+	
+	
+
+		<% if @topic.description.blank?%>
+		   <p>This topic has no description, yet.</p>
+		<% else  %>
+		   <%= detail_format(@topic.description) %>
+		<% end %>
+		
+		<p class="tinyOption"><%= link_to "Edit this topic?", edit_topic_url  %><p>
+
+		
+	</div>
+	
+
+
+
+
 	<div class="posts">
 		<% for post in @topic.posts %>
 			<div class="post">
