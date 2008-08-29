@@ -10,7 +10,7 @@
 	<ul id="topicList">
 		<% for topic in @topics %>
 			<li>
-				<h2><%= link_to topic, topic %> <%= pluralize(topic.posts.count, "article") %></h2>
+				<h2><%= link_to "#{topic} <span class='count'>#{pluralize(topic.posts.count, "article")}</span>", topic %></h2>
 				<% unless !topic.description? %>
 					<p><%= truncate(topic.description, 200) %></p>
 				<% end %>

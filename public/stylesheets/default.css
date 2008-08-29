@@ -893,8 +893,13 @@ margin-bottom: 1.5em;
 }
 
 #topicList h2 {
+	padding: 0px;
+	margin: 0px;
+}
+
+#topicList h2 a {
+  display: block;
   font-size: 1.1em;
-  color: #666;
 margin-bottom: 0.5em;
 padding: 0.5em 1em 0.4em 1em;
 -webkit-border-radius: 2px;
@@ -902,7 +907,7 @@ padding: 0.5em 1em 0.4em 1em;
 background-color: #dce9f5;
 }
 
-#topicList h2 a {
-  font-size: 1.3em;
-  margin-right: 0.5em;
+#topicList h2 a:hover {
+  text-decoration: none;
+  background-color: #c2dcf5;
 }
