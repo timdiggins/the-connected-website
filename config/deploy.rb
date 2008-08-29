@@ -16,4 +16,4 @@ set :branch, "master"
 set :repository,  "git://github.com/red56/the-connected-website.git"
 set :keep_releases, 30
 set :git_enable_submodules, 1
-set :rails_revision, 'eb4668b26ad4aacf79488d2bee553e9452971c35'
+set :rails_revision, '6769d824f9c20812a0e6cd6e0c19742984b2450e'   #Fri Aug 29 15:23:28 2008 +0200
