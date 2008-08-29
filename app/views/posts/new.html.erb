@@ -18,6 +18,8 @@
     <%= f.text_area :detail %>
   </p>
 
+	<%= hidden_field_tag(:topic, @initial_topic.id) if @initial_topic  %>
+
   <p class="submitBlock">
     <%= submit_tag  'Create new post', :disable_with => "Saving..." %> or <%= link_to "Cancel", @post.new_record? ? posts_url : @post %>
   </p> 
