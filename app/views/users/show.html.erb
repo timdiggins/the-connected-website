@@ -28,9 +28,6 @@
 	    
 		<div id="profileDetails">
 			<h1><%=h @user %></h1>
-			<% unless  @user.home_page.blank? %>
-					<p class="homepage">is at home at <%= link_to @user.home_page, @user.home_page, :rel => "me" %>.</p>
-			<% end %>
 		
 
 			<% unless  @user.profile_text.blank? %>
@@ -38,17 +35,24 @@
 					<%= detail_format(@user.profile_text) %>
 				</div>
 			<% end %>
-			<% if logged_in? && @user==current_user%>
-				<% if  @user.profile_text.blank? %>
-					<p>Introduce yourself and <%= link_to('add a bio', bio_settings_url) %>.</p>
-				<% else %>
-				  <p class="tinyOption"><%= link_to('Edit your bio?', bio_settings_url) %></p>
-				<% end %>
+			
+			<% unless  @user.home_page.blank? %>
+              <p class="homepage"><%=h @user %> is at home at <%= link_to @user.home_page, @user.home_page, :rel => "me" %>.</p>
+      <% end %>
+
+			<% if logged_in? && @user==current_user && @user.profile_text.blank? %>
+					<p>Introduce yourself and <%= link_to('add a bio', bio_settings_url) %></p>
 			<% end %>
+      <% if logged_in? && @user==current_user && !@user.profile_text.blank? %>
+            <p class="tinyOption"><%= link_to('Edit your bio', bio_settings_url) %></p>
+      <% end %>
+			
+
 
 		</div>
 		<div class="clearThis"> </div>
 	
+            
 	
 	
 
