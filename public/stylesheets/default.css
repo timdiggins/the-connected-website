@@ -2,6 +2,7 @@
 	http://localhost:3000/stylesheets/default.css?1218620950
 	http://localhost:3000/stylesheets/default.css?1220011962
 	http://localhost:3000/stylesheets/default.css?1220030836
+	http://localhost:3000/stylesheets/default.css?1220042658
 */
 
 body {
@@ -454,8 +455,7 @@ p.homepage {
 }
 
 .tinyOption a {
-
-  color: #666;
+	text-decoration: underline;
 }
 
 #profile h1 {
@@ -848,6 +848,8 @@ p.loginRequired {
 
 
 
+
+
 #topicDescription p {
   line-height: 1.5em;
   font-size: 1.1em;
@@ -860,7 +862,6 @@ p.loginRequired {
 }
 
 #topicDescription {
-	border: 1px solid #c8d4df;
 	padding: 1em 1.5em 1px 1em;
 	margin-bottom: 3em;
 	-webkit-border-radius: 5px;
@@ -868,6 +869,46 @@ p.loginRequired {
      background-color: #dce9f5;
 }
 
+span.count {
+  font-size: 0.8em;
+  margin-left: 0.8em;
+  color: #999;
+}
+
 #topicDescription h1 {
-  color: #597a9d;
+  color: #000;
+}
+
+
+
+
+#topicList {
+  list-style: none;
+  padding:0px;
+  margin: 0px;
+}
+
+#topicList li {
+margin-bottom: 1.5em;
+}
+
+#topicList p {
+	font-size: 1.1em;
+	margin: 0.5em 0px 2em 0px;
+	padding: 0px 1em;;
+}
+
+#topicList h2 {
+  font-size: 1.1em;
+  color: #666;
+margin-bottom: 0.5em;
+padding: 0.5em 1em 0.4em 1em;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+background-color: #dce9f5;
+}
+
+#topicList h2 a {
+  font-size: 1.3em;
+  margin-right: 0.5em;
 }

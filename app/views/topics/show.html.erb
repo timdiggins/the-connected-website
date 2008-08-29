@@ -9,7 +9,7 @@
 
 	
 	<div id="topicDescription">
-		<h1><%= @page_title = @topic %></h1>
+		<h1><%= @page_title = @topic %> <span class="count"><%= pluralize(@topic.posts.count, "article") %></span></h1>
 	
 	
 
