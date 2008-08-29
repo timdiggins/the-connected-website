@@ -604,6 +604,18 @@ div.topics h2 {
   padding: 0.5em 1em 0px 1em;
 }
 
+a.topic {
+  background-color: #bbdaf3;
+  padding: 0.2em 0.7em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  float: left;
+}
+
+#recentEvents {
+  margin-top: 4em;
+}
+
 div.topics form {
   border-top: 1px solid #DDD;
   padding: 0.5em 1em 1em 1em;
@@ -616,7 +628,7 @@ div.topics ul {
 }
 
 div.topics li {
-  font-size: 1.2em;
+  font-size: 1.1em;
   margin: 0.5em 0px;
 }
 
