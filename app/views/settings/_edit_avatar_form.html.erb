@@ -6,7 +6,7 @@
   </p>
   
   <p class="submitBlock">
-    <%= submit_tag "Upload new avatar" %> or 
+    <%= submit_tag "Upload new picture" %> or 
     <% if @user.valid? %>
       <%= link_to_function("Cancel", nil ) do | page | 
             page[:edit_avatar_form].hide
