@@ -7,7 +7,4 @@ class Topic < ActiveRecord::Base
   has_many :posts, :through => :categorizations, :uniq => true
   alias_attribute :to_s, :name
   
-  named_scope :has_posts, lambda { {:include => :posts } }
-  
-  
 end

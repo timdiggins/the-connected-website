@@ -1,7 +1,5 @@
-class PostAddedToTopicEvent < ActiveRecord::Base
+class PostAddedToTopicEvent < PostCategorizationEvent
   
-  belongs_to :topic
-  belongs_to :post
-  belongs_to :user
+  set_table_name :post_categorization_events
 
 end
