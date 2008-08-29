@@ -33,7 +33,7 @@
 			<% end %>
 			<% if logged_in? && @user==current_user%>
 				<% if  @user.profile_text.blank? %>
-					<p>Introduce yourself and <%= link_to('add a bio', bio_settings_url) %></p>
+					<p>Introduce yourself and <%= link_to('add a bio', bio_settings_url) %>.</p>
 				<% else %>
 				  <p class="tinyOption"><%= link_to('Edit your bio?', bio_settings_url) %></p>
 				<% end %>
