@@ -19,12 +19,14 @@ class TopicsController < ApplicationController
     @post = Post.find(params[:post_id])
     @topic = Topic.find(params[:id])
     @post.topics.delete(@topic)
+
+    Event.create_for(PostRemovedFromTopicEvent.new(:user => current_user, :topic => @topic, :post => @post))
         
     redirect_to @post
   end
   
   def index
-    @topics = Topic.has_posts
+    @topics = Topic.all
   end
   
     def edit
