@@ -1,9 +1,5 @@
 require 'yaml'
 
-# require 'rubygems'
-# require 'ruby-debug'
-# debugger
-
 APPLICATION="republic"
 INTERVAL=5.seconds
 
@@ -22,26 +18,42 @@ mongrel_ports.each do |port|
     w.start = "mongrel_rails cluster::start -C #{mongrel_cluster_file} --clean --only #{port}"
     w.stop = "mongrel_rails cluster::stop -C #{mongrel_cluster_file} --clean --only #{port}"
     w.pid_file = mongrel_cluster['pid_file'] || File.join(RAILS_ROOT, "tmp/pids/mongrel.#{port}.pid")
-    w.behavior(:clean_pid_file)
     w.group = "#{APPLICATION}-mongrels"
-    
+    w.start_grace = w.restart_grace = 10.seconds # give mongrel time to start
+
+    #transition from :up to :start if we aren't running
     w.start_if do |start|
       start.condition(:process_running) do |c|
-        c.interval = INTERVAL
         c.running = false
       end
     end
-
+    
+    # # start if process is not running
+    # w.transition(:up, :start) do |on|
+    #   on.condition(:process_exits_polling) do |c|
+    #     c.notify = 'admins'
+    #   end
+    # end
+    
     w.restart_if do |restart|
       restart.condition(:memory_usage) do |c|
         c.above = 150.megabytes
         c.times = [3, 5] # 3 out of 5 intervals
       end
-
+      
       restart.condition(:cpu_usage) do |c|
         c.above = 50.percent
-        c.times = 5
+        c.times = [3, 5] # 3 out of 5 intervals
       end
+      
+      restart.condition(:http_response_code) do |c|
+        c.interval = 30.seconds
+        c.host = 'localhost'
+        c.path = '/'
+        c.port = port
+        c.code_is_not = [200, 302]
+        c.timeout = 10
+      end      
     end
 
     # lifecycle
