@@ -591,11 +591,14 @@ div.topics {
   margin-top: 1em;
   padding: 0px;
   line-height: 1.5em;
-  background-color: #EEE;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
+  background-color: #dce9f5;
 }
 
+p.topics {
+  color: #666;
+}
 
 div.topics h2 {
   font-size: 1em;
@@ -604,20 +607,30 @@ div.topics h2 {
   padding: 0.5em 1em 0px 1em;
 }
 
-a.topic {
-  background-color: #bbdaf3;
-  padding: 0.2em 0.7em;
+p.topics a.topic {
+  background-color: #dce9f5;
+  padding: 0.3em 0.7em;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
-  float: left;
+  margin-left: 0.3em;
 }
+
+div.topics a.topic {
+  float:left;
+}
+
+a.topic:hover {
+  color: #2A6B87;
+  text-decoration: underline;
+}
+
 
 #recentEvents {
   margin-top: 4em;
 }
 
 div.topics form {
-  border-top: 1px solid #DDD;
+  border-top: 1px solid #c0ccd6;
   padding: 0.5em 1em 1em 1em;
 }
 
