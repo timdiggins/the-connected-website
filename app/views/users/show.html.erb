@@ -1,7 +1,14 @@
 <% @page_title = "#{@user.possessive_to_s} Profile" %>
 <div id="profile">
 	<div id="sidebar">
-
+			<div id="recentPosts">
+				<h2><%=h @user.possessive_to_s %> recent posts</h2>
+				<ul>
+				<% for post in @user.posts %>
+					<li><%= link_to post, post %></li>
+				<% end %>
+				</ul>
+			</div>
 
 	</div>
 	<div id="main">
@@ -45,12 +52,7 @@
 	
 	
 
-		<div class="posts">
-			<h2><%=h @user.possessive_to_s %> posts</h2>
-			<% for post in @user.posts %>
-				<p><%= link_to post, post %></p>
-			<% end %>
-		</div>
+	
 		      
 
 	</div>
