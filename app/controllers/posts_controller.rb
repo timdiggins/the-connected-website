@@ -38,4 +38,11 @@ class PostsController < ApplicationController
     @comment = Comment.new
   end
   
+  def add_topic
+    @post = Post.find(params[:id])
+    @topic = Topic.find_by_name(params[:topic_name]) || Topic.new(:name => params[:topic_name])
+    @post.topics << @topic
+    redirect_to @post
+  end
+  
 end

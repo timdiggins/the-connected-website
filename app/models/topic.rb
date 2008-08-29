@@ -5,5 +5,6 @@ class Topic < ActiveRecord::Base
   
   has_many :categorizations
   has_many :posts, :through => :categorizations, :uniq => true
+  alias_attribute :to_s, :name
   
 end
