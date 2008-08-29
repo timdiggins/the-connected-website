@@ -2,7 +2,7 @@
 <h1><%= @page_title = @topic %></h1>
 		
 <div id="sidebar">
-	<%= link_to "Start a new posting", new_post_url, :id=>"newContent" %>
+	<%= link_to "Start a new posting in \"#{@topic}\"", new_post_url, :id=>"newContent" %>
 </div>
 
 <div id="main">
