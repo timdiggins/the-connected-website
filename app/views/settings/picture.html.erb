@@ -1,36 +1,27 @@
-		<div id="settings">
+<div id="settings">
 
-<h1><%= @page_title = "Your Settings"  %></h1>
-
-		<div id="sidebar">
-		  
-			<ul class="settings">
-				<li><%= link_to "Bio", bio_settings_url %></li>
-				<li class="current"><%= link_to "Picture", picture_settings_url %></li>
-				<li><%= link_to "User name and email", username_email_settings_url %></li>
-			</ul>
-		</div>
+	<%= render :partial => 'settings/header' %>
 		
-<div id="main">		
-		<%= error_messages_for(:user, :object => @user.avatar ? [@user.avatar, @user] : @user ) %>
+	<div id="main">		
+			<%= error_messages_for(:user, :object => @user.avatar ? [@user.avatar, @user] : @user ) %>
 
+			<h2>Your Picture</h2>
+      <p>
+        <%= avatar_for(@user, :large)  %>
+      </p>
 
-				<h2>Your Picture</h2>
-	      <p>
-	        <%= avatar_for(@user, :large)  %>
-	      </p>
+      <div id="edit_avatar_form" style="display:none">
+        <%= render :partial => 'edit_avatar_form' %>
+      </div>
 
-	      <div id="edit_avatar_form" style="display:none">
-	        <%= render :partial => 'edit_avatar_form' %>
-	      </div>
-
-	      <p>
-	        <%= link_to_function("Change public profile image", nil, :id => :change_avatar_link) do | page | 
-	              page[:change_avatar_link].hide
-	              page[:edit_avatar_form].visual_effect(:appear)
-	            end
-	        %>
-	      </p>
+      <p>
+        <%= link_to_function("Change public profile image", nil, :id => :change_avatar_link) do | page | 
+              page[:change_avatar_link].hide
+              page[:edit_avatar_form].visual_effect(:appear)
+            end
+        %>
+      </p>
+	</div>
 </div>
-		</div>
+
 <div class="clearThis"> </div>
