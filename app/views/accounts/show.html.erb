@@ -1,45 +1,56 @@
 
-    <h1><%= @page_title = "Your Settings"  %></h1>
 
-		<%= error_messages_for(:user, :object => @user.avatar ? [@user.avatar, @user] : @user ) %>
+
+
+		<div id="sidebar">
+		  <h1><%= @page_title = "Your Settings"  %></h1>
+			<ul>
+				<li><a href="#">Profile text</a></li>
+				<li><a href="#">Profile image</a></li>
+				<li><a href="#">User name and email</a></li>
+			</ul>
+		</div>
 		
-		 <div id="settings">
-		<h2>Your <%= link_to('public profile', user_url(current_user)) %>
- image ('avatar')</h2>
-	        <p>
-	          <%= avatar_for(@user, :large)  %>
-	        </p>
+<div id="main">		
+		<%= error_messages_for(:user, :object => @user.avatar ? [@user.avatar, @user] : @user ) %>
 
-	        <div id="edit_avatar_form" <%= %Q{style="display:none"} if hide_avatar_form  %>>
-	          <%= render :partial => 'edit_avatar_form' %>
-	        </div>
+		<div id="settings">
+			<h2>Your <%= link_to('public profile', user_url(current_user)) %> image ('avatar')</h2>
+		      <p>
+		        <%= avatar_for(@user, :large)  %>
+		      </p>
 
-	        <p>
-	          <%= link_to_function("Change public profile image", nil, :id => :change_avatar_link) do | page | 
-	                page[:change_avatar_link].hide
-	                page[:edit_avatar_form].visual_effect(:appear)
-	              end if hide_avatar_form
-	          %>
+		      <div id="edit_avatar_form" <%= %Q{style="display:none"} if hide_avatar_form  %>>
+		        <%= render :partial => 'edit_avatar_form' %>
+		      </div>
 
-	        </p>
+		      <p>
+		        <%= link_to_function("Change public profile image", nil, :id => :change_avatar_link) do | page | 
+		              page[:change_avatar_link].hide
+		              page[:edit_avatar_form].visual_effect(:appear)
+		            end if hide_avatar_form
+		        %>
 
-			<h2>Your Account</h2>
-				  <% form_for @user, :url => account_url do | f | %>
+		      </p>
 
-				    <p>
-				      <%= f.label :login, "Your user name" %>
-				      <%= f.text_field :login, :class => "largeInput" %>
-				    </p>
-				
-				    <p>
-				      <%= f.label :email %>
-				      <%= f.text_field :email, :class => "largeInput" %>
-				    </p>
+		<h2>Your Account</h2>
+			  <% form_for @user, :url => account_url do | f | %>
 
-				    <p class="submitBlock">
-				      <%= submit_tag "Update your account" %>
-				    </p>
-				  <% end %>
-      </div>
+			    <p>
+			      <%= f.label :login, "Your user name" %>
+			      <%= f.text_field :login, :class => "largeInput" %>
+			    </p>
+	
+			    <p>
+			      <%= f.label :email %>
+			      <%= f.text_field :email, :class => "largeInput" %>
+			    </p>
 
+			    <p class="submitBlock">
+			      <%= submit_tag "Update your account" %>
+			    </p>
+			  <% end %>
+		   </div>
+</div>
 
+<div class="clearThis"> </div>

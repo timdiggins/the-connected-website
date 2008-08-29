@@ -1,3 +1,4 @@
+/* @override http://localhost:3000/stylesheets/default.css?1218620950 */
 
 body {
   font-family: arial, sans-serif;
@@ -391,7 +392,6 @@ form p {
 }
 
 #settings h2 {
-margin-top:2.5em;
 padding-bottom:0.5em;
 border-bottom:1px solid #DDD;
 }
