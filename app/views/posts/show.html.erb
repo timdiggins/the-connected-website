@@ -43,7 +43,7 @@
 </div>
 
 <div id="main">
-	<h1><%= @post %></h1>
+	<h1 class="post"><%= @post %></h1>
 	<p class="date">Posted <%= time_ago_in_words(@post.created_at) %> ago, updated <%= time_ago_in_words(@post.updated_at) %> ago.</p>
 
 	<div class="postBody">
