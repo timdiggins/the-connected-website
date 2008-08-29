@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   
   alias_attribute :to_s, :login
   
+  named_scope :some_having_bio_and_avatar, lambda { {:conditions => "profile_text IS NOT NULL" , :limit => 5, :order => "updated_at DESC"} }
+
   def self.authenticate(login, password)
     u = find_by_login(login) 
     u && u.authenticated?(password) ? u : nil

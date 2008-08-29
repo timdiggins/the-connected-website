@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.all
+    @users = User.some_having_bio_and_avatar
   end
   
 
