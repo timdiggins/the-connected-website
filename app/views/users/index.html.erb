@@ -11,7 +11,13 @@
 					</span>
 					<div class="memeberListProfileDetails">
 						<h2><%= link_to_user(user) %></h2>
+						<% unless user.profile_text.blank? %>
+							<p><%= truncate(user.profile_text, 200) %></p>
+							
+						<% end %>
+						<p><%= link_to('View profile', user_url(user)) %></p>
 					</div>
+					<div class="clearThis"> </div>
          </li>
        <% end %>
     	</ul>
