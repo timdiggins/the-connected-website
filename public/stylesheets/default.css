@@ -601,7 +601,7 @@ div.topics h2 {
   font-size: 1em;
   font-weight: bold;
   margin: 0px;
-  padding: 0.5em 1em;
+  padding: 0.5em 1em 0px 1em;
 }
 
 div.topics form {
@@ -611,8 +611,8 @@ div.topics form {
 
 div.topics ul {
   list-style: none;
-  margin: 0px 0px 1em 0px;
-  padding: 0px 1em;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 1em 0.5em 1em;
 }
 
 div.topics li {
