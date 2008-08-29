@@ -343,11 +343,13 @@ ul#memberList {
 
 ul#memberList li {
   clear: left;
-  padding-top: 1em;
+  padding-bottom: 2.5em;
 }
 
 ul#memberList .avatar {
   float: left;
+  text-align: right;
+  width: 150px;
 }
 
 ul#memberList .avatar img {
@@ -359,12 +361,19 @@ ul#memberList .avatar img {
 }
 
 .memeberListProfileDetails {
-  margin-left: 160px;
+  margin-left: 170px;
+  line-height: 1.5em;
+}
+
+.memeberListProfileDetails p {
+  margin: 0px 0px 0.5em 0px;
 }
 
 .memeberListProfileDetails h2 {
   margin: 0px;
-  font-size: 1.5em;
+  font-size: 1.3em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
 }
 
 
@@ -689,13 +698,9 @@ p.loginRequired {
 
 
 #settings h2 {
-padding-bottom:0.5em;
-border-bottom:1px solid #DDD;
 }
 
 #settings form {
-  padding: 1em 1.5em;
-  background-color: #EEE;
 }
 
 #settings ul {
