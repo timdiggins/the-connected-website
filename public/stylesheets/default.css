@@ -410,6 +410,13 @@ img.profile_avatar {
   margin: 0px 0px 2em 0px;
 }
 
+#profile p.avatar a {
+  display: block;
+  margin-top: 1em;
+  font-size: 0.9em;
+  color: #666;
+}
+
 #profileDetails {
   margin-left: 160px;
   padding-bottom: 1em;
@@ -418,6 +425,15 @@ img.profile_avatar {
 p.homepage {
   margin-top: 0.5em;
   font-size: 1.3em;
+  color: #666;
+}
+
+.tinyOption {
+    font-size: 0.9em;
+}
+
+.tinyOption a {
+
   color: #666;
 }
 

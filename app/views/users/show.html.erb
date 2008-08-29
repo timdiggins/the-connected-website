@@ -1,11 +1,7 @@
 <% @page_title = "#{@user.possessive_to_s} Profile" %>
 <div id="profile">
 	<div id="sidebar">
-		<% if logged_in? && @user==current_user%>
-            <% if  !@user.avatar %>
-                <p>Please make yourself recognizable by <%= link_to('uploading a picture of yourself', picture_settings_url) %></p>
-            <% end %>
-        <% end %>
+
 
 	</div>
 	<div id="main">
@@ -13,10 +9,15 @@
 		
 		<p class="avatar">
 	    <%= avatar_for(@user, :large) %>
+			<% if logged_in? && @user==current_user%>
+				 <% if !@user.avatar %>
+	    		<%= link_to('Upload a picture?', picture_settings_url) %>
+				<% else %>
+					<%= link_to('Change picture?', picture_settings_url) %>
+				<% end %>
+			<% end %>
 	  </p>
-            <% if  @user.avatar %>
-                <p><%= link_to('Change your picture', picture_settings_url) %></p>
-            <% end %>
+
 	    
 		<div id="profileDetails">
 			<h1><%=h @user %></h1>
@@ -30,13 +31,13 @@
 					<%= detail_format(@user.profile_text) %>
 				</div>
 			<% end %>
-            <% if logged_in? && @user==current_user%>
-                <% if  @user.profile_text.blank? %>
-				    <p>Please introduce yourself to the community by <%= link_to('adding a bio', bio_settings_url) %></p>
-			    <% else %>
-                    <p><%= link_to('Edit your bio', bio_settings_url) %></p>
-			    <% end %>
-            <% end %>
+			<% if logged_in? && @user==current_user%>
+				<% if  @user.profile_text.blank? %>
+					<p>Introduce yourself and <%= link_to('add a bio', bio_settings_url) %></p>
+				<% else %>
+				  <p class="tinyOption"><%= link_to('Edit your bio?', bio_settings_url) %></p>
+				<% end %>
+			<% end %>
 
 		</div>
 		<div class="clearThis"> </div>
