@@ -1,7 +1,12 @@
 <% @page_title = "#{@user.possessive_to_s} Profile" %>
 <div id="profile">
 	<div id="sidebar">
-		none?
+		<% if logged_in? && @user==current_user%>
+            <% if  !@user.avatar %>
+                <p>Please make yourself recognizable by <%= link_to('uploading a picture of yourself', picture_settings_url) %></p>
+            <% end %>
+        <% end %>
+
 	</div>
 	<div id="main">
 		
@@ -9,6 +14,10 @@
 		<p class="avatar">
 	    <%= avatar_for(@user, :large) %>
 	  </p>
+            <% if  @user.avatar %>
+                <p><%= link_to('Change your picture', picture_settings_url) %></p>
+            <% end %>
+	    
 		<div id="profileDetails">
 			<h1><%=h @user %></h1>
 			<% unless  @user.home_page.blank? %>
@@ -21,6 +30,14 @@
 					<%= detail_format(@user.profile_text) %>
 				</div>
 			<% end %>
+            <% if logged_in? && @user==current_user%>
+                <% if  @user.profile_text.blank? %>
+				    <p>Please introduce yourself to the community by <%= link_to('adding a bio', bio_settings_url) %></p>
+			    <% else %>
+                    <p><%= link_to('Edit your bio', bio_settings_url) %></p>
+			    <% end %>
+            <% end %>
+
 		</div>
 		<div class="clearThis"> </div>
 	
@@ -34,9 +51,6 @@
 			<% end %>
 		</div>
 		      
-	   <% if logged_in? && @user==current_user%>
-            <p><i>This is you. <%= link_to('Edit your image or profile text', settings_url) %></i></p>
-       <% end %>
 
 	</div>
 	<div class="clearThis"> </div>
