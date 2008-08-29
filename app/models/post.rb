@@ -1,11 +1,15 @@
 class Post < ActiveRecord::Base
   
   validates_presence_of :title, :detail
+  
   belongs_to :user
   has_many :comments, :order => 'created_at DESC'
-  alias_attribute :to_s, :title
+  has_many :categorizations
+  has_many :topics, :through => :categorizations, :uniq => true
   
   named_scope :sorted_by_created_at, lambda { { :order => "created_at DESC" }}
+  
+  alias_attribute :to_s, :title
   
   def brief
     truncate(detail, 500)
