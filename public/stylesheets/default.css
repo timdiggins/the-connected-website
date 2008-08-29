@@ -391,9 +391,14 @@ img.profile_avatar {
   margin-top: 3em;
 }
 
+#profile div#bio {
+  font-size: 1.1em;
+  line-height: 1.5em;
+}
+
 p.homepage {
   margin-top: -0.8em;
-  font-size: 1.4em;
+  font-size: 1.3em;
   color: #666;
 }
 
@@ -466,6 +471,8 @@ textarea#post_detail {
   padding: 1px 3em 3em 0px;
   line-height: 1.5em;
 }
+
+
 
 .postContent h2 {
   font-size: 1em;

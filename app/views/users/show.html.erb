@@ -10,6 +10,14 @@
 		<% unless  @user.home_page.blank? %>
 				<p class="homepage">At home at <%= link_to @user.home_page, @user.home_page, :rel => "me" %>.</p>
 		<% end %>
+		
+		<% unless  @user.profile_text.blank? %>
+			<div id="bio">
+				<%= detail_format(@user.profile_text) %>
+			</div>
+		<% end %>
+	
+	
 	
 
 		<div class="posts">
