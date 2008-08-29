@@ -7,6 +7,10 @@
 	</div>
 	<div id="main">
 		<h1><%=h @user %></h1>
+		<% unless  @user.home_page.blank? %>
+				<p class="homepage">At home at <%= link_to @user.home_page, @user.home_page, :rel => "me" %>.</p>
+		<% end %>
+	
 
 		<div class="posts">
 			<h2><%=h @user.possessive_to_s %> posts</h2>
