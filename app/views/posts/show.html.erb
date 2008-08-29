@@ -1,5 +1,3 @@
-<h1><%= @post %></h1>
-<p class="date">Posted <%= time_ago_in_words(@post.created_at) %> ago.</p>
 
 <div id="sidebar">
 	<h2 class="author">The author: <%= link_to_user(@post.user) %></h2>
@@ -9,6 +7,8 @@
 </div>
 
 <div id="main">
+<h1><%= @post %></h1>
+<p class="date">Posted <%= time_ago_in_words(@post.created_at) %> ago.</p>
 
 	<div class="postBody">
 		<%= detail_format(@post.detail) %>

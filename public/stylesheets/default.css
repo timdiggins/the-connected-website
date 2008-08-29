@@ -32,7 +32,7 @@ a:hover {
 }
 
 #content {
-	padding: 1.5em 2em;
+	padding: 3em 2em 1.5em 2em;
 	background: #FFF url(/images/wrapper_bottom.gif) bottom left no-repeat;
 	clear:left;
 }
@@ -206,7 +206,7 @@ h1 {
   color: #eda900;
   font-size: 1.5em;
   font-weight: normal;
-  margin-top: 1.5em;
+  margin-top: 0px;
 	margin-bottom:1em;
 }
 
@@ -495,7 +495,6 @@ textarea#post_detail {
 h2.author {
   font-size: 1em;
   color: #999;
-  padding-top: 0.5em;
 }
 
 
