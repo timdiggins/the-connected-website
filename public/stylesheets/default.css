@@ -396,9 +396,24 @@ img.profile_avatar {
 
 
 
-#profile .posts {
-  margin-top: 3em;
+#recentPosts h2 {
+	font-size: 1.1em;
+	margin-top: 0px;
+	color: #333;
 }
+
+
+#recentPosts ul {
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+}
+
+#recentPosts li {
+	margin: 0.6em 0px;
+	line-height: 1.5em;
+}
+
 
 #profile div#bio {
   line-height: 1.5em;
@@ -424,7 +439,7 @@ img.profile_avatar {
 
 p.homepage {
   margin-top: 0.5em;
-  font-size: 1.3em;
+  font-size: 1.1em;
   color: #666;
 }
 
