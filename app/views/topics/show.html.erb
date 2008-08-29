@@ -1,8 +1,14 @@
 
 <h1><%= @page_title = @topic %></h1>
-		
+<%= h(@topic.description) %>		
+
 <div id="sidebar">
 	<%= link_to "Start a new posting in \"#{@topic}\"", new_post_url, :id=>"newContent" %>
+	<% if @topic.description.blank?%>
+	   <%= link_to "Add description for topic", edit_topic_url  %>
+   <% else  %>
+	   <%= link_to "Edit description?", edit_topic_url  %>
+   <% end %>
 </div>
 
 <div id="main">

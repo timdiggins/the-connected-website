@@ -1,0 +1,33 @@
+
+<h1><%= @page_title = "Edit #@topic" %></h1>
+		
+<div id="sidebar">
+
+</div>
+
+<div id="main">
+
+        <div id="main">     
+	            <%= error_messages_for(:topic) %>
+
+              <% form_for @topic, :url => topic_url do | f | %>
+
+                <p>
+                  <% if @topic.description.blank? %>
+                      <%= f.label :description, "Add a description for this topic" %>
+                  <% else%>
+                      <%= f.label :description, "Edit topic description" %>
+                  <% end%>
+                  <%= f.text_area :description, :class => "largeInput" %>
+                </p>
+    
+
+                <p class="submitBlock">
+                  <%= submit_tag "Save changes" %>
+                </p>
+              <% end %>
+        </div>
+
+
+</div>
+<div class="clearThis"> </div>

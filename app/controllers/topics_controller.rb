@@ -24,5 +24,18 @@ class TopicsController < ApplicationController
     @topics = Topic.has_posts
   end
   
+    def edit
+    @topic = Topic.find(params[:id])    
+  end
+
+  def update
+    @topic = Topic.find(params[:id])
+    return render(:action => :edit) unless @topic.update_attributes(params[:topic])
+    
+    flash[:notice] = "Successfully updated topic"
+    
+    redirect_to @topic
+  end
+
   
 end
