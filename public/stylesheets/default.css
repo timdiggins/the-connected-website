@@ -406,18 +406,10 @@ form p {
   margin-top: 1.5em;
 }
 
-#settings h2 {
-padding-bottom:0.5em;
-border-bottom:1px solid #DDD;
-}
 
-#settings form {
-  padding: 1em 1.5em;
-  background-color: #EEE;
-}
 
 #flash {
-  margin: -3em -2em 1em -2em;
+  margin: -3em -2em 3em -2em;
 }
 
 
@@ -650,3 +642,40 @@ p.loginRequired {
 #comments {
   margin-top: 4em;
 }
+
+
+
+
+
+
+#settings h2 {
+padding-bottom:0.5em;
+border-bottom:1px solid #DDD;
+}
+
+#settings form {
+  padding: 1em 1.5em;
+  background-color: #EEE;
+}
+
+#settings ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+#settings ul a {
+  display: block;
+  padding: 0.5em 1em;
+  background-color: #EEE;
+  margin-bottom: 3px;
+   -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+}
+
+#settings ul li.current a {
+  background-color: #2A6B87;
+  	color: #FFF;
+}
+
+

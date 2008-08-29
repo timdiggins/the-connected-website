@@ -1,12 +1,12 @@
+		<div id="settings">
 
-
-
+<h1><%= @page_title = "Your Settings"  %></h1>
 
 		<div id="sidebar">
-		  <h1><%= @page_title = "Your Settings"  %></h1>
-			<ul>
+		  
+			<ul class="settings">
 				<li><a href="#">Profile text</a></li>
-				<li><a href="#">Profile image</a></li>
+				<li class="current"><a href="#">Profile image</a></li>
 				<li><a href="#">User name and email</a></li>
 			</ul>
 		</div>
@@ -14,7 +14,7 @@
 <div id="main">		
 		<%= error_messages_for(:user, :object => @user.avatar ? [@user.avatar, @user] : @user ) %>
 
-		<div id="settings">
+
 				<h2>Your <%= link_to('public profile', user_url(current_user)) %> image ('avatar')</h2>
 	      <p>
 	        <%= avatar_for(@user, :large)  %>
@@ -59,7 +59,7 @@
 			      <%= submit_tag "Update your account" %>
 			    </p>
 			  <% end %>
-		</div>
-</div>
 
+</div>
+		</div>
 <div class="clearThis"> </div>
