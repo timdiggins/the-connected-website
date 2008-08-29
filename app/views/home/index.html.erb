@@ -1,10 +1,102 @@
 <% @current_tab = :home %>
 <div id="sidebar">
-	<h2>Sidebar stuff</h2>
+	<h2>More recent posts</h2>
+	           <% for post in @posts[1..5] %>
+                <div class="post">
+                    <p class="avatar">
+                        <%= link_to_avatar_for(post.user, :medium) %>
+                        <span class="author"><%= link_to_user(post.user) %>
+                    </p>
+                    <div class="postContent">
+                        <h2><%= link_to post, post %> <span class="date"><%if post.created_at==post.updated_at%>created <%= time_ago_in_words(post.created_at) %> ago<%else%>last updated <%= time_ago_in_words(post.updated_at) %> ago<%end%></span></h2>
+                        <p><%= post.brief %></p>
+                        
+                        <% if post.topics.size>0 %><p class="topics">posted in
+                            <% for topic in post.topics %>
+                                <%= link_to topic, topic, :class => "topic" %>
+                            <% end %>
+                            <%end %>
+                        </p>
+                    </div>
+                    
+                    
+                </div>
+                <% end%>
+   <h2>Recent Contributors</h2>
+   
+          <ul><% for user in @users[0..2] %>
+         <li>
+                    <span class="avatar">
+            <%= link_to_avatar_for(user, :large) %>
+                    </span>
+                    <div class="memeberListProfileDetails">
+                        <h2><%= link_to_user(user) %></h2>
+                        <% unless user.profile_text.blank? %>
+                            <p><%= truncate(user.profile_text, 200) %></p>
+                            
+                        <% end %>
+                        <p><%= link_to('View profile', user_url(user)) %></p>
+                    </div>
+                    <div class="clearThis"> </div>
+         </li>
+       <% end %>
+        </ul>
 </div>
 
 <div id="main">
 	<h1>The Connected Republic</h1>
+   <h2>A recent post: <%= @post %></h2>
+    <p class="date">Posted <%= time_ago_in_words(@post.created_at) %> ago, updated <%= time_ago_in_words(@post.updated_at) %> ago.</p>
+<div id="authorBlock">
+        <h2>by <%= link_to_user(@post.user) %></h2>
+        <p class="avatar">
+        <%= link_to_avatar_for(@post.user, :medium) %>
+      </p>
+        <% unless  @post.user.profile_text.blank? %>
+            <p><%= truncate(@post.user.profile_text, 200) %> <%= link_to("More by #{@post.user}", user_url(@post.user)) %></p>
+        <% end %>
+        <div class="clearThis"> </div>
+    </div>
+    
+    <div class="topics">
+        <h2>Belongs to (topics):</h2>
+        <ul>
+            <% for topic in @post.topics %>
+                <li>
+                    <%= link_to topic, topic, :class => "topic" %> 
+                    <% if logged_in? %>
+                        <%= link_to "[x]", post_topic_url(@post, topic), :class => "delete" ,:method => :delete, :confirm => "Are you sure you'd like to remove this post from the topic '#{topic}'?" %>  
+                    <% end %>
+                </li>
+            <% end %>
+        </ul>
+        
+        <% if logged_in? %>
+            <% form_tag post_topics_url(@post) do | f | %>    
+                <%= label_tag :topic_name, "Add item to #{@post.topics.size==0 ? 'a' : 'another'} topic:" %>
+                <%= text_field_tag :topic_name %>
+            <% end %>
+        <% end %>
+        
+    </div>
+
+	   <div class="postBody">
+        <%= detail_format(@post.detail) %>
+    </div>
+
+	
+	<h1>Most recent updates</h1>
+    <div class="events">
+
+        <ul>
+         <% for event in @events %>
+             <%= render :partial => "events/event", :locals => { :event => event } %>
+         <% end %>
+        </ul>
+
+    </div>
+
 </div>
 
 <div class="clearThis"> </div>
+
