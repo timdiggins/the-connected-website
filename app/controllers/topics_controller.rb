@@ -20,5 +20,9 @@ class TopicsController < ApplicationController
     redirect_to @post
   end
   
+  def index
+    @topics = Topic.has_posts
+  end
+  
   
 end

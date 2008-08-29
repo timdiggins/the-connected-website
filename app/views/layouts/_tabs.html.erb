@@ -1,6 +1,7 @@
 <ul id="mainNavigation">
 	<li <%= current_if_tab_is(:posts) %>><%= link_to "Home", posts_url %></li>
 	<li <%= current_if_tab_is(:events) %>><%= link_to "Recent Updates", events_url %></li>
+	<li <%= current_if_tab_is(:topics) %>><%= link_to "Topics", topics_url %></li>
 	<li <%= current_if_tab_is(:users) %>><%= link_to "Community", users_url %></li>
 </ul>	
 
