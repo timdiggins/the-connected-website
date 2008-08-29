@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :sessions
   map.resources :posts, :has_many => :comments
   map.resources :events
-  map.resource  :settings, :collection => { :save_new_avatar => :put, :picture => :any, :username_email => :any, :bio => :any }
+  map.resource  :settings, :collection => { :save_new_avatar => :put, :picture => :get, :username_email => :get, :bio => :get }
 
   map.login '/login', :controller => "sessions", :action => 'new'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
