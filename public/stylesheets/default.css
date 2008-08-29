@@ -1,9 +1,3 @@
-/* @override 
-	http://localhost:3000/stylesheets/default.css?1218620950
-	http://localhost:3000/stylesheets/default.css?1220011962
-	http://localhost:3000/stylesheets/default.css?1220030836
-	http://localhost:3000/stylesheets/default.css?1220042658
-*/
 
 body {
   font-family: arial, sans-serif;
@@ -702,7 +696,7 @@ p.date {
 
 
 
-a#newContent {
+a#newContent, a#joinButton {
   float: left;
   font-size: 1.2em;
   padding: 0.6em 2em;
@@ -711,8 +705,6 @@ a#newContent {
   -moz-border-radius: 3px;
   color: #FFF;
 }
-
-
 
 
 
