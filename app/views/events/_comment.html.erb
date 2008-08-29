@@ -1,10 +1,11 @@
 <% content_tag_for(:li, event, :class => "commentCreated") do %>
-	<div class="author">
+	<% if !@user %> <div class="author">
 	    <%= link_to_avatar_for(event.user, :tiny) %>
 	</div>
+	<% end %>
 	<div class="eventBody">
 	  <p class="details">
-	     <%= link_to_user(event.user) %> commented on <%= link_to(h(event.detail.post.title), event.detail.post) %> 
+	     <% if !@user %><%= link_to_user(event.user) %><%end%> commented on <%= link_to(h(event.detail.post.title), event.detail.post) %> 
 	    <span class="time"><%= time_ago_in_words(event.created_at) %> ago.</span>
 	  </p>
 	

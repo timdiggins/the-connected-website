@@ -54,7 +54,7 @@
                 <ul>
                 <% for event in @user.events %>
 
-											<%= render :partial => "events/event", :locals => { :event => event } %>
+											<%= render :partial => "events/event", :locals => { :event => event, :user => @user } %>
                 <% end %>
                 </ul>
             </div>
