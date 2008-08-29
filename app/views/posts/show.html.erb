@@ -11,8 +11,8 @@
 		<div class="clearThis"> </div>
 	</div>
 	
-	<div>
-		Topics:
+	<div class="topics">
+		<h2>Belongs to (topics):</h2>
 		<ul>
 			<% for topic in @post.topics %>
 				<li>
@@ -26,7 +26,7 @@
 		
 		<% if logged_in? %>
 			<% form_tag post_topics_url(@post) do | f | %>	  
-				<%= label_tag :topic_name, "Add Topic:" %>
+				<%= label_tag :topic_name, "Add item to another topic:" %>
 				<%= text_field_tag :topic_name %>
 			<% end %>
 		<% end %>
