@@ -1,3 +1,4 @@
+/* @override http://localhost:3000/stylesheets/default.css?1220042658 */
 
 body {
   font-family: arial, sans-serif;
@@ -704,6 +705,7 @@ a#newContent, a#joinButton {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   color: #FFF;
+  margin-bottom: 1em;
 }
 
 

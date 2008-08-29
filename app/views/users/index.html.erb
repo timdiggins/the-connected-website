@@ -2,8 +2,8 @@
 <% @current_tab = :users %>
 <div id="sidebar">
 	<% if ! logged_in? %>
-        <%= link_to "Join The Connected Republic", signup_url, :id => 'joinButton' %>
-	   <p>Or <%= link_to "login", login_url %>, if you're already a member.</p>
+     <p><%= link_to "Join The Connected Republic", signup_url, :id => 'joinButton' %>
+	   or <%= link_to "login", login_url %>, if you're already a member.</p>
 	<% end %>
 </div>
   <div id="main">
