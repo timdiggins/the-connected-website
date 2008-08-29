@@ -1,14 +1,24 @@
 <% @page_title = "#{@user.possessive_to_s} Profile" %>
 <div id="profile">
 	<div id="sidebar">
-			<div id="recentPosts">
-				<h2><%=h @user.possessive_to_s %> recent posts</h2>
-				<ul>
-				<% for post in @user.posts %>
-					<li><%= link_to post, post %></li>
-				<% end %>
-				</ul>
-			</div>
+			<!--<div id="recentPosts">
+                <h2><%=h @user.possessive_to_s %> recent posts</h2>
+                <ul>
+                <% for post in @user.posts %>
+                    <li><%= link_to post, post %></li>
+                <% end %>
+                </ul>
+            </div>
+			-->
+			<div id="recentEvents">
+                <h2>Recently, <%=h @user %>... </h2>
+                <ul>
+                <% for event in @user.events %>
+                    <li>             <%= render :partial => "users/event", :locals => { :event => event } %>
+</li>
+                <% end %>
+                </ul>
+            </div>
 
 	</div>
 	<div id="main">

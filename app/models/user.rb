@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   
   has_one :avatar, :dependent => :destroy
   has_many :posts
+  has_many :events
+  
   alias_attribute :to_s, :login
   
   def self.authenticate(login, password)
