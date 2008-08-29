@@ -396,8 +396,18 @@ img.profile_avatar {
   font-size: 1.1em;
 }
 
+#profile p.avatar {
+  float: left;
+  margin: 0px 0px 2em 0px;
+}
+
+#profileDetails {
+  margin-left: 160px;
+  padding-bottom: 1em;
+}
+
 p.homepage {
-  margin-top: -0.8em;
+  margin-top: 0.5em;
   font-size: 1.3em;
   color: #666;
 }
@@ -405,6 +415,7 @@ p.homepage {
 #profile h1 {
   font-weight: bold;
   font-size: 1.8em;
+  margin-bottom: 0px;
 }
 
 
@@ -534,6 +545,8 @@ textarea#post_detail {
   -moz-border-radius: 5px;
   color: #666;
 }
+
+
 
 #authorBlock h2 {
 	font-size: 1.2em;
