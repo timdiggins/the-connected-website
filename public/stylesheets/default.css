@@ -528,10 +528,11 @@ textarea#post_detail {
 
 #authorBlock {
   border: 1px solid #DDD;
-  padding: 1em;
+  padding: 1em 1em 0px 1em;
   line-height: 1.5em;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
+  color: #666;
 }
 
 #authorBlock h2 {
