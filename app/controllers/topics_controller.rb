@@ -10,6 +10,8 @@ class TopicsController < ApplicationController
     @post = Post.find(params[:post_id])
     @topic = Topic.find_by_name(params[:topic_name]) || Topic.new(:name => params[:topic_name])
     @post.topics << @topic
+    
+    Event.create_for(PostAddedToTopicEvent.new(:user => current_user, :topic => @topic, :post => @post))
     redirect_to @post
   end
   
@@ -17,6 +19,7 @@ class TopicsController < ApplicationController
     @post = Post.find(params[:post_id])
     @topic = Topic.find(params[:id])
     @post.topics.delete(@topic)
+        
     redirect_to @post
   end
   

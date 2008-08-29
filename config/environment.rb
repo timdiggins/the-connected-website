@@ -7,6 +7,7 @@ Rails::Initializer.run do |config|
   ENV['INLINEDIR'] = File.join(RAILS_ROOT, 'tmp')
 
   config.time_zone = 'UTC'
+  config.load_paths << "#{Rails.root}/app/models/events"
 
   config.action_controller.session = {
     :session_key => '_republic_site_session',

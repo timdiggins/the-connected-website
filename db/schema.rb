@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080829162725) do
+ActiveRecord::Schema.define(:version => 20080829203756) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "user_id"
@@ -43,6 +43,14 @@ ActiveRecord::Schema.define(:version => 20080829162725) do
     t.integer  "user_id"
     t.integer  "detail_id"
     t.string   "detail_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "post_added_to_topic_events", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
