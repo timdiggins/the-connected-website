@@ -3,6 +3,10 @@ module AuthenticatedSystem
     def logged_in?
       current_user != :false
     end
+    
+    def logged_in_as_editor?
+      logged_in? && current_user.editor
+    end
 
     def current_user
       @current_user ||= (session[:user] && User.find_by_id(session[:user])) || :false
@@ -22,6 +26,16 @@ module AuthenticatedSystem
       self.current_user ||= User.authenticate(username, password) || :false if username && password
       logged_in? && authorized? ? true : access_denied
     end
+    
+    def editor_login_required
+      return access_denied unless logged_in? && authorized?
+      return true if current_user.editor
+
+      flash[:error] = "You do not have permission to access that part of the site."
+      redirect_to root_url
+      false
+    end
+    
     
     def access_denied
       respond_to do |accepts|
@@ -49,7 +63,7 @@ module AuthenticatedSystem
     end
     
     def self.included(base)
-      base.send :helper_method, :current_user, :logged_in?
+      base.send :helper_method, :current_user, :logged_in?, :logged_in_as_editor?
     end
 
     def login_from_cookie

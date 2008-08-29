@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   
   before_filter :login_required, :except => [ :index, :show ]
+  before_filter :editor_login_required, :only => [ :feature, :unfeature ]
   
   def index
     @posts = Post.sorted_by_updated_at
@@ -40,6 +41,18 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])    
     @comment = Comment.new
+  end
+  
+  def feature
+    @post = Post.find(params[:id])    
+    @post.update_attribute(:featured, true)
+    redirect_to @post
+  end
+  
+  def unfeature
+    @post = Post.find(params[:id])    
+    @post.update_attribute(:featured, false)
+    redirect_to @post
   end
   
 end
