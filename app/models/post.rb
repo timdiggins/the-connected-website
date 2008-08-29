@@ -8,6 +8,7 @@ class Post < ActiveRecord::Base
   has_many :topics, :through => :categorizations, :uniq => true
   
   named_scope :sorted_by_created_at, lambda { { :order => "created_at DESC" }}
+  named_scope :sorted_by_updated_at, lambda { { :order => "updated_at DESC" }}
   
   alias_attribute :to_s, :title
   

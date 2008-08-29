@@ -11,6 +11,9 @@ class CommentsController < ApplicationController
     return render(:template => 'posts/show') unless @comment.valid?
     
     Event.create_for(@comment)
+    @post.updated_at = @comment.updated_at
+    @post.save
+    
     
     flash[:notice] = "Successfully posted comment"
     redirect_to @post
