@@ -442,7 +442,7 @@ textarea#post_detail {
 }
 
 .post p.avatar {
-  float: left;
+  float: right;
   padding-bottom: 2em;
   text-align: center;
   overflow: visible;
@@ -456,9 +456,9 @@ textarea#post_detail {
 
 
 .postContent {
-  margin-left: 80px;
-  padding: 0.8em 0px 3em 3em;
-  	background: url(../images/post.gif) no-repeat top left;
+  margin-right: 80px;
+  padding: 0.8em 3em 3em 1em;
+  	background: url(../images/post.gif) no-repeat top right;
   	line-height: 1.5em;
 }
 
@@ -483,6 +483,36 @@ textarea#post_detail {
 }
 
 
+
+
+
+
+
+
+
+.comment {
+  clear: left;
+}
+
+.comment p.avatar {
+  float: left;
+  padding-bottom: 2em;
+  text-align: center;
+  overflow: visible;
+  margin: 0px;
+  }
+  
+.comment p.avatar img {
+  display: block;
+  margin-bottom: 0.5em;
+  }
+
+
+.comment .postContent {
+  margin-left: 80px;
+  padding: 0.8em 0px 3em 3em;
+  background: url(../images/comment.gif) no-repeat top left;
+}
 
 
 
