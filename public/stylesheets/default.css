@@ -391,15 +391,31 @@ img.profile_avatar {
   margin-top: 3em;
 }
 
+#profile div#bio {
+  line-height: 1.5em;
+  font-size: 1.1em;
+}
+
+#profile p.avatar {
+  float: left;
+  margin: 0px 0px 2em 0px;
+}
+
+#profileDetails {
+  margin-left: 160px;
+  padding-bottom: 1em;
+}
+
 p.homepage {
-  margin-top: -0.8em;
-  font-size: 1.4em;
+  margin-top: 0.5em;
+  font-size: 1.3em;
   color: #666;
 }
 
 #profile h1 {
   font-weight: bold;
   font-size: 1.8em;
+  margin-bottom: 0px;
 }
 
 
@@ -463,9 +479,11 @@ textarea#post_detail {
 
 .postContent {
   margin-right: 80px;
-  padding: 0px 3em 4em 0px;
+  padding: 1px 3em 3em 0px;
   line-height: 1.5em;
 }
+
+
 
 .postContent h2 {
   font-size: 1em;
@@ -519,25 +537,36 @@ textarea#post_detail {
   background: url(../images/comment.gif) no-repeat top left;
 }
 
-
-
-
-
-
-
-
-
-h2.author {
-  font-size: 1em;
-  color: #999;
+#authorBlock {
+  border: 1px solid #DDD;
+  padding: 1em 1em 0px 1em;
+  line-height: 1.5em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  color: #666;
 }
 
 
-h2.author a {
-  display: block;
-  font-size: 1.2em;
-  margin-top: 0.2em;
+
+#authorBlock h2 {
+	font-size: 1.2em;
+	margin: 0px;
 }
+
+#authorBlock p.avatar {
+  float: left;
+  margin: 1em 1em 0.3em 0px;
+}
+
+
+
+
+
+
+
+
+
+
 
 p.date {
   color: #999;
