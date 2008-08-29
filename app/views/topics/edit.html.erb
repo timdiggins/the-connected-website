@@ -11,6 +11,11 @@
 	            <%= error_messages_for(:topic) %>
 
               <% form_for @topic, :url => topic_url do | f | %>
+							
+								<p>
+									<%= f.label :name %>
+									<%= f.text_field :name %>
+								</p>
 
                 <p>
                   <% if @topic.description.blank? %>
