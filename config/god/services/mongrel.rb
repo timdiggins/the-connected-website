@@ -10,7 +10,6 @@ number_of_servers = mongrel_cluster['servers']
 mongrel_ports = (starting_port...(starting_port+number_of_servers)).to_a
 RAILS_ROOT = mongrel_cluster['cwd'] || "/var/www/apps/#{APPLICATION}/current"
 
-mongrel_ports = ['8004']
 mongrel_ports.each do |port|
   God.watch do |w|
     w.name = "#{APPLICATION}-mongrel-#{port}"
@@ -21,21 +20,17 @@ mongrel_ports.each do |port|
     w.group = "#{APPLICATION}-mongrels"
     w.start_grace = w.restart_grace = 10.seconds # give mongrel time to start
 
-    #transition from :up to :start if we aren't running
+    # Transition from :up to :start if we aren't running(c.running=false)
+    # When we move to the :start state the start command gets run
     w.start_if do |start|
       start.condition(:process_running) do |c|
         c.running = false
       end
     end
-    
-    # # start if process is not running
-    # w.transition(:up, :start) do |on|
-    #   on.condition(:process_exits_polling) do |c|
-    #     c.notify = 'admins'
-    #   end
-    # end
-    
-    w.restart_if do |restart|
+        
+    # Transition from :up to :restart if any of the conditions are met.
+    # When we move to the :restart state the restart command is run or if none exists stop, then start
+    w.restart_if do |restart|      
       restart.condition(:memory_usage) do |c|
         c.above = 150.megabytes
         c.times = [3, 5] # 3 out of 5 intervals
@@ -56,8 +51,10 @@ mongrel_ports.each do |port|
       end      
     end
 
-    # lifecycle
-    w.lifecycle do |on|
+    # Transition to the unmonitored state if we have transitioned to :start or :restart
+    # 5 times within the last 5 minutes. Re-monitor the task in 10 minutes, but permantley unmonitor
+    # it if it transitions to :start or :restart 5 more times in 2 hours.
+    w.lifecycle do |on| # on is a metric
       on.condition(:flapping) do |c|
         c.to_state = [:start, :restart]
         c.times = 5

@@ -1,7 +1,5 @@
 require 'tlsmail'
 
-smtp_password_path = File.join(CONFIG_PATH, 'smtp_password')
-
 Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
 God::Contacts::Email.server_settings = {
   :address => 'smtp.gmail.com',
@@ -9,5 +7,5 @@ God::Contacts::Email.server_settings = {
   :port => 587,
   :authentication => :plain,
   :user_name => 'smtp@halethegeek.com',
-  :password => File.read(smtp_password_path)
+  :password => File.read(File.join(CONFIG_PATH, 'smtp_password'))
 }
