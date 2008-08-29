@@ -1,4 +1,7 @@
-/* @override http://localhost:3000/stylesheets/default.css?1220042658 */
+/* @override 
+	http://localhost:3000/stylesheets/default.css?1220042658
+	http://localhost:3000/stylesheets/default.css?1220047533
+*/
 
 body {
   font-family: arial, sans-serif;
@@ -505,7 +508,7 @@ textarea#post_detail {
 
 
 .post {
-  clear: left;
+  clear: both;
   background: url(../images/post.gif) no-repeat top right;
 }
 
@@ -550,6 +553,26 @@ textarea#post_detail {
 .post .details a {
   font-weight: bold;
 }
+
+
+
+
+
+
+#recentlyFeatured {
+  margin-bottom: 4em;
+}
+
+#recentlyFeatured .postContent {
+  margin-right: 60px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+}
+
+
+
+
+
 
 
 
@@ -749,7 +772,7 @@ a#newContent, a#joinButton {
 }
 
 .eventBody {
-  padding-bottom: 1em;
+  padding-bottom: 0.5em;
 }
 
 .events img {
