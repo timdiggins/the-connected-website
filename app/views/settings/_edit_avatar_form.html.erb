@@ -1,5 +1,5 @@
 
-<% form_for @user, :url => save_new_avatar_account_url, :html => { :method => :put, :multipart => true } do | f | %>
+<% form_for @user, :url => save_new_avatar_settings_url, :html => { :method => :put, :multipart => true } do | f | %>
 
   <p>
     <%= f.file_field :user_avatar %> 
@@ -14,7 +14,7 @@
           end 
       %>
     <% else %>
-      <%= link_to "Cancel", account_url %>
+      <%= link_to "Cancel", settings_url %>
     <% end %>
     
   </p>

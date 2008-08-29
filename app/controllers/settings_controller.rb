@@ -1,4 +1,4 @@
-class AccountsController < ApplicationController
+class SettingsController < ApplicationController
   
   before_filter :login_required
   
@@ -13,7 +13,7 @@ class AccountsController < ApplicationController
     return render(:action => :show) unless @user.avatar && @user.avatar.valid? && @user.save
     
     flash[:notice] = "Saved new avatar."
-    redirect_to account_url
+    redirect_to settings_url
   end
 
   def update

@@ -16,7 +16,7 @@
 		</div>
 		      
 	   <% if logged_in? && @user==current_user%>
-            <p><i>This is you. <%= link_to('Edit your image or profile text', account_url) %></i></p>
+            <p><i>This is you. <%= link_to('Edit your image or profile text', settings_url) %></i></p>
        <% end %>
 
 	</div>
