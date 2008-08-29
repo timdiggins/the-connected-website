@@ -2,7 +2,7 @@
 
 
 <div id="sidebar">
-	<%= link_to %Q{Start a new posting in "#{@topic}"}, new_post_url, :id => :newContent %>
+	<%= link_to %Q{Start a new posting in "#{@topic}"}, new_post_url(:topic => @topic), :id => :newContent %>
 </div>
 
 <div id="main">
