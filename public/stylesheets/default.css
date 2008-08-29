@@ -207,7 +207,12 @@ h1 {
   font-size: 1.5em;
   font-weight: normal;
   margin-top: 0px;
-margin-bottom:0.5em;
+margin-bottom:1.5em;
+}
+
+h1.post {
+  margin-bottom:0.7em;
+  background-image: none;
 }
 
 h2 {
@@ -637,6 +642,11 @@ a.delete:hover {
 
 #recentEvents {
   margin-top: 4em;
+  padding: 1em;
+  background-color: #f9f9f9;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border: 1px solid #dfdfdf;
 }
 
 div.topics form {
@@ -871,6 +881,7 @@ span.count {
 
 #topicDescription h1 {
   color: #000;
+  margin-bottom: 0px;
 }
 
 
