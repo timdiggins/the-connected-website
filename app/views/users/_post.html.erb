@@ -1,9 +1,0 @@
-<% content_tag_for(:li, event, :class => "eventPostCreated") do %>
-	    created <%= link_to(h(event.detail.title), event.detail) %> 
-	    <span class="time"><%= time_ago_in_words(event.created_at) %> ago.</span>
-	  
-	  <!--   <div class="commentBody">
-      <%= detail_format(event.detail.brief) %>
-    </div>-->
-
-<% end %>

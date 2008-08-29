@@ -36,8 +36,7 @@
 
 <div id="main">
 	<h1><%= @post %></h1>
-	<p class="date">Posted <%= time_ago_in_words(@post.created_at) %> ago.</p>
-	<p class="date">Updated <%= time_ago_in_words(@post.updated_at) %> ago.</p>
+	<p class="date">Posted <%= time_ago_in_words(@post.created_at) %> ago, updated <%= time_ago_in_words(@post.updated_at) %> ago.</p>
 
 	<div class="postBody">
 		<%= detail_format(@post.detail) %>

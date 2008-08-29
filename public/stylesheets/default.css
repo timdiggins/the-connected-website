@@ -438,6 +438,8 @@ img.profile_avatar {
   padding-bottom: 1em;
 }
 
+
+
 p.homepage {
   margin-top: 0.5em;
   font-size: 1.1em;
@@ -740,7 +742,6 @@ a#newContent {
 }
 
 .eventBody {
-  margin-left: 60px;
   padding-bottom: 1em;
 }
 
