@@ -14,7 +14,7 @@ module LayoutHelper
     "<body#{onload_str}>"
 	end
 	
-	def current_if(tab)
+	def current_if_tab_is(tab)
 	  return '' unless tab == @current_tab
 	  'class="current"'
   end
