@@ -1,21 +1,28 @@
 <% @page_title = "#{@user.possessive_to_s} Profile" %>
 <div id="profile">
 	<div id="sidebar">
+		none?
+	</div>
+	<div id="main">
+		
+		
 		<p class="avatar">
 	    <%= avatar_for(@user, :large) %>
 	  </p>
-	</div>
-	<div id="main">
-		<h1><%=h @user %></h1>
-		<% unless  @user.home_page.blank? %>
-				<p class="homepage">At home at <%= link_to @user.home_page, @user.home_page, :rel => "me" %>.</p>
-		<% end %>
+		<div id="profileDetails">
+			<h1><%=h @user %></h1>
+			<% unless  @user.home_page.blank? %>
+					<p class="homepage">is at home at <%= link_to @user.home_page, @user.home_page, :rel => "me" %>.</p>
+			<% end %>
 		
-		<% unless  @user.profile_text.blank? %>
-			<div id="bio">
-				<%= detail_format(@user.profile_text) %>
-			</div>
-		<% end %>
+
+			<% unless  @user.profile_text.blank? %>
+				<div id="bio">
+					<%= detail_format(@user.profile_text) %>
+				</div>
+			<% end %>
+		</div>
+		<div class="clearThis"> </div>
 	
 	
 	
