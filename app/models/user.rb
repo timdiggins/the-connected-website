@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   
   has_one :avatar, :dependent => :destroy
   has_many :posts
-  has_many :events
+  has_many :events, :order => 'created_at DESC'
   
   alias_attribute :to_s, :login
   
