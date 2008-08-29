@@ -14,7 +14,7 @@
 		<%= detail_format(@post.detail) %>
 	</div>
 	
-	<%= render :partial => 'posts/comment_form' %>
+
   
 	<div id="comments">
 	<h2>Comments</h2>
@@ -30,6 +30,7 @@
 				</div>
 		<% end %>
 	</div>
+		<%= render :partial => 'posts/comment_form' %>
 </div>
 
 <div class="clearThis"> </div>
