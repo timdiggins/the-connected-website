@@ -945,3 +945,15 @@ background-color: #dce9f5;
   text-decoration: none;
   background-color: #c2dcf5;
 }
+
+
+
+
+.error{
+  color: #F00;	
+}
+
+.error a {
+  color: #F00;	
+  text-decoration: underline;	
+}
