@@ -1,0 +1,14 @@
+<div id="comments">
+<h2>Comments</h2>
+	<% for comment in @post.comments %>
+			<div class="comment">
+				<p class="avatar">
+					<%= link_to_avatar_for(comment.user, :medium) %>
+					<span class="author"><%= link_to_user(comment.user) %>
+				</p>
+				<div class="postContent">
+					<%= detail_format(comment.body) %>
+				</div>
+			</div>
+	<% end %>
+</div>
