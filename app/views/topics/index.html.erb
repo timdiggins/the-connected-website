@@ -11,7 +11,7 @@
 		<% for topic in @topics %>
 			<li>
 				<h2><%= link_to "#{topic} <span class='count'>#{pluralize(topic.posts.count, "article")}</span>", topic %></h2>
-				<% unless !topic.description? %>
+				<% if topic.description %>
 					<p><%= truncate(topic.description, 200) %></p>
 				<% end %>
 			</li>
