@@ -1,58 +1,19 @@
-<div id="frontPage">
 <% @current_tab = :home %>
-<h1>Welcome to The Connected Republic</h1>
 
+<div id="frontPage">
 	
-<div id="sidebar">
+	<h1>Welcome to <%= APP_NAME %></h1>
 
-	<div id="recentlyFeatured">
-	<h2>Recent features</h2>
-	  <% for post in @featured %>
-	    <div class="post">
-	        <p class="avatar">
-	            <%= link_to_avatar_for(post.user, :tiny) %>
-	        </p>
-	        <div class="postContent">
-	            <h2><%= link_to post, post %> 
-								<span class="date">
-								<%if post.created_at==post.updated_at%>
-									created <%= time_ago_in_words(post.created_at) %> ago
-								<%else%>
-									last updated <%= time_ago_in_words(post.updated_at) %> ago
-								<%end%>
-							  </span></h2>
-	        </div>
-	    </div>
-	  <% end%>
-
+	<div id="sidebar">
+		<%= render :partial => 'recent_features' %>
+		<%= render :partial => 'home/users' %>
 	</div>
+
+	<div id="main">
+		<%= render :partial => 'home/current_feature' %>
+		<%= render :partial => 'home/recent_activity' %>
+	</div>
+
+	<div class="clearThis"> </div>
 	
-	<%= render :partial => 'home/users' %>
-</div>
-
-<div id="main">
-	<h2>Current feature</h2>
-  <div class="post">
-       <p class="avatar">
-           <%= link_to_avatar_for(@current_featured.user, :medium) %>
-       </p>
-       <div class="postContent">
-           <h2><%= link_to @current_featured, @current_featured %> <span class="date"><%if @current_featured.created_at==@current_featured.updated_at%>created <%= time_ago_in_words(@current_featured.created_at) %> ago<%else%>last updated <%= time_ago_in_words(@current_featured.updated_at) %> ago<%end%></span></h2>
-					 <%= detail_format(@current_featured.detail) %>
-					
-						<% if @current_featured.topics.size>0 %><p class="topics">posted in
-							<% for topic in @current_featured.topics %>
-								<%= link_to topic, topic, :class => "topic" %>
-							<% end %></p>
-						<%end %>
-       </div>
-   </div>
-    
-
-	<%= render :partial => 'home/recent_activity' %>
-
-</div>
-
-<div class="clearThis"> </div>
-
 </div>

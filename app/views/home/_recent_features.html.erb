@@ -1,0 +1,19 @@
+<div id="recentlyFeatured">
+<h2>Recent features</h2>
+  <% for post in @featured %>
+    <div class="post">
+        <p class="avatar">
+            <%= link_to_avatar_for(post.user, :tiny) %>
+        </p>
+        <div class="postContent">
+            <h2>
+							<%= link_to post, post %> 
+							<span class="date">
+								<%= when_changed(post) %>
+						  </span>
+						</h2>
+        </div>
+    </div>
+  <% end%>
+
+</div>
