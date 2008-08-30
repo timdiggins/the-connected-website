@@ -27,7 +27,11 @@
 					<span class="author"><%= link_to_user(post.user) %>
 				</p>
 				<div class="postContent">
-					<h2><%= link_to post, post %> <span class="date"><%= time_ago_in_words(post.created_at) %> ago</span></h2>
+					<h2><%= link_to post, post %> 
+						<span class="date">
+							<%= when_changed(post) %>
+						</span>
+					</h2>
 					<p><%= post.brief %></p>
 				</div>
 			</div>
