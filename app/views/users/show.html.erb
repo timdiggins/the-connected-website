@@ -1,30 +1,11 @@
 <% @page_title = "#{@user.possessive_to_s} Profile" %>
 <div id="profile">
 	<div id="sidebar">
-			<div id="recentPosts">
-                <h2><%=h @user.possessive_to_s %> recent posts</h2>
-                <ul>
-                <% for post in @user.posts %>
-                    <li><%= link_to post, post %></li>
-                <% end %>
-                </ul>
-            </div>
-
-
+		<%= render :partial => 'users/recent_posts' %>
 	</div>
+
 	<div id="main">
-		
-		
-		<p class="avatar">
-	    <%= avatar_for(@user, :large) %>
-			<% if logged_in? && @user==current_user%>
-				 <% if !@user.avatar %>
-	    		<%= link_to('Upload a picture?', picture_settings_url) %>
-				<% else %>
-					<%= link_to('Change picture?', picture_settings_url) %>
-				<% end %>
-			<% end %>
-	  </p>
+		<%= render :partial => 'users/avatar' %>
 
 	    
 		<div id="profileDetails">
@@ -63,13 +44,6 @@
 
 		</div>
 		<%= clear_this %>
-	
-            
-	
-	
-
-	
-		      
 
 	</div>
 	<%= clear_this %>

@@ -1,0 +1,10 @@
+<p class="avatar">
+  <%= avatar_for(@user, :large) %>
+	<% if logged_in? && @user==current_user%>
+		 <% if !@user.avatar %>
+  		<%= link_to('Upload a picture?', picture_settings_url) %>
+		<% else %>
+			<%= link_to('Change picture?', picture_settings_url) %>
+		<% end %>
+	<% end %>
+</p>
