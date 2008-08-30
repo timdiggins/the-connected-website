@@ -10,7 +10,7 @@
 	<div id="topicDescription">
 		<h1><%= @page_title = @topic %> <span class="count"><%= pluralize(@topic.posts.count, "article") %></span></h1>
 
-		<% if @topic.description.blank?%>
+		<% if @topic.description.blank? %>
 		   <p>This topic has no description, yet.</p>
 		<% else  %>
 		   <%= detail_format(@topic.description) %>
@@ -34,4 +34,4 @@
 		<% end %>
 	</div>
 </div>
-<div class="clearThis"> </div>
+<%= clear_this %>

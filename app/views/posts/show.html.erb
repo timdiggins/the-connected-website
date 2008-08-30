@@ -8,7 +8,7 @@
 		<% unless  @post.user.profile_text.blank? %>
 			<p><%= truncate(@post.user.profile_text, 200) %> <%= link_to("More about #{@post.user}", user_url(@post.user)) %></p>
 		<% end %>
-		<div class="clearThis"> </div>
+		<%= clear_this %>
 	</div>
 	
 	<div class="topics">
@@ -52,22 +52,9 @@
 		<%= detail_format(@post.detail) %>
 	</div>
 	
-	<div id="comments">
-	<h2>Comments</h2>
-		<% for comment in @post.comments %>
-				<div class="comment">
-					<p class="avatar">
-						<%= link_to_avatar_for(comment.user, :medium) %>
-						<span class="author"><%= link_to_user(comment.user) %>
-					</p>
-					<div class="postContent">
-						<%= detail_format(comment.body) %>
-					</div>
-				</div>
-		<% end %>
-	</div>
+	<%= render :partial => 'posts/comments' %>
 		
 	<%= render :partial => 'posts/comment_form' %>
 </div>
 
-<div class="clearThis"> </div>
+<%= clear_this %>
