@@ -628,6 +628,7 @@ textarea#post_detail {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   color: #666;
+  margin-bottom: 1em;
 }
 
 div.topics {
