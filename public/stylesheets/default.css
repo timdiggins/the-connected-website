@@ -218,6 +218,20 @@ h1.post {
   background-image: none;
 }
 
+#frontPage h1 {
+  margin-bottom:0.8em;
+  font-size: 2em;
+}
+
+#frontPage #main .postContent h2 {
+  font-size: 1.2em;
+}
+
+#frontPage #main .postContent .date {
+	margin-top: 0.3em;
+}
+
+
 h2 {
   font-size: 1.3em;
   font-weight: normal;
@@ -510,6 +524,7 @@ textarea#post_detail {
 .post {
   clear: both;
   background: url(../images/post.gif) no-repeat top right;
+  padding-bottom: 1px;
 }
 
 .post p.avatar {

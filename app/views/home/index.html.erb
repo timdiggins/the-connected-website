@@ -1,9 +1,12 @@
+<div id="frontPage">
 <% @current_tab = :home %>
-	<h1>Welcome to The Connected Republic</h1>
-	
+<h1>Welcome to The Connected Republic</h1>
+
 	
 <div id="sidebar">
+
 	<div id="recentlyFeatured">
+	<h2>Recent features</h2>
 	  <% for post in @posts[1..5] %>
 	    <div class="post">
 	        <p class="avatar">
@@ -18,28 +21,30 @@
 	</div>
 	
 	
-   <h2>People</h2>
-   				<ul>
+   <h2>Contributors</h2>
+
          <% for user in @users[0..2] %>
-         <li>
-                    <span class="avatar">
-            <%= link_to_avatar_for(user, :small) %>
-                    </span>
-                    <div class="memeberListProfileDetails">
-                        <h2><%= link_to_user(user) %></h2>
-                        <% unless user.profile_text.blank? %>
-                            <p><%= truncate(user.profile_text, 200) %></p>
-                            
-                        <% end %>
-                        <p><%= link_to('View profile', user_url(user)) %></p>
-                    </div>
-                    <div class="clearThis"> </div>
-         </li>
+
+
+							
+										<div id="authorBlock">
+											<h2><%= link_to_user(user) %></h2>
+											<p class="avatar">
+										    <%= link_to_avatar_for(user, :medium) %>
+										  </p>
+											<% unless user.profile_text.blank? %>
+												<p><%= truncate(user.profile_text, 200) %> <%= link_to("More about #{user}", user_url(user)) %></p>
+											<% end %>
+											<div class="clearThis"> </div>
+										</div>
+										
+										
        <% end %>
-        </ul>
+
 </div>
 
 <div id="main">
+		<h2>Current feature</h2>
    <div class="post">
        <p class="avatar">
            <%= link_to_avatar_for(@post.user, :medium) %>
@@ -73,3 +78,4 @@
 
 <div class="clearThis"> </div>
 
+</div>
