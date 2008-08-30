@@ -8,7 +8,7 @@
 		<% unless  @post.user.profile_text.blank? %>
 			<p><%= truncate(@post.user.profile_text, 200) %> <%= link_to("More about #{@post.user}", user_url(@post.user)) %></p>
 		<% end %>
-		<div class="clearThis"> </div>
+		<%= clear_this %>
 	</div>
 	
 	<div class="topics">
@@ -56,4 +56,4 @@
 	<%= render :partial => 'posts/comment_form' %>
 </div>
 
-<div class="clearThis"> </div>
+<%= clear_this %>
