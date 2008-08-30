@@ -45,13 +45,13 @@ class PostsController < ApplicationController
   
   def feature
     @post = Post.find(params[:id])    
-    @post.update_attribute(:featured, true)
+    @post.update_attribute(:featured_at, Time.now)
     redirect_to @post
   end
   
   def unfeature
     @post = Post.find(params[:id])    
-    @post.update_attribute(:featured, false)
+    @post.update_attribute(:featured_at, nil)
     redirect_to @post
   end
   
