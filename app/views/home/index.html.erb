@@ -27,27 +27,12 @@
 
 	</div>
 	
-	
-   <h2>People</h2>
-
-         <% for user in @users %>
-						<div id="authorBlock">
-							<h2><%= link_to_user(user) %></h2>
-							<p class="avatar">
-						    <%= link_to_avatar_for(user, :medium) %>
-						  </p>
-							<% unless user.profile_text.blank? %>
-								<p><%= truncate(user.profile_text, 200) %> <%= link_to("More about #{user}", user_url(user)) %></p>
-							<% end %>
-							<div class="clearThis"> </div>
-						</div>
-       <% end %>
-
+	<%= render :partial => 'home/users' %>
 </div>
 
 <div id="main">
-		<h2>Current feature</h2>
-   <div class="post">
+	<h2>Current feature</h2>
+  <div class="post">
        <p class="avatar">
            <%= link_to_avatar_for(@current_featured.user, :medium) %>
        </p>
@@ -64,15 +49,7 @@
    </div>
     
 
-	
-	<h2>Recent activity</h2>
-    <div class="events">
-        <ul>
-         <% for event in @events %>
-             <%= render :partial => "events/event", :locals => { :event => event } %>
-         <% end %>
-        </ul>
-    </div>
+	<%= render :partial => 'home/recent_activity' %>
 
 </div>
 

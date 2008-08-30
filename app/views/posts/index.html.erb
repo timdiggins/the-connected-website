@@ -14,10 +14,13 @@
 						<span class="author"><%= link_to_user(post.user) %>
 					</p>
 					<div class="postContent">
-						<h2><%= link_to post, post %> <span class="date"><%if post.created_at==post.updated_at%>created <%= time_ago_in_words(post.created_at) %> ago<%else%>last updated <%= time_ago_in_words(post.updated_at) %> ago<%end%></span></h2>
+						<h2><%= link_to post, post %> 
+							<span class="date"><%if post.created_at==post.updated_at%>created <%= time_ago_in_words(post.created_at) %> ago<%else%>last updated 
+								<%= time_ago_in_words(post.updated_at) %> ago<%end%></span></h2>
 						<p><%= post.brief %></p>
 						
-						<% if post.topics.size>0 %><p class="topics">posted in
+						<% unless post.topics.empty? %>
+							<p class="topics">posted in
 							<% for topic in post.topics %>
 								<%= link_to topic, topic, :class => "topic" %>
 							<% end %></p>
