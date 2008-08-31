@@ -1,6 +1,6 @@
 set daemon 10 
 set logfile syslog facility log_daemon 
-set mailserver localhost
+include /etc/monit/mailserver
 set mail-format { 
           from: monit@theconnectedrepublic.org 
        subject: [monit republic] $EVENT $SERVICE 
