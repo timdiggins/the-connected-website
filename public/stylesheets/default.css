@@ -973,3 +973,19 @@ background-color: #dce9f5;
   color: #F00;	
   text-decoration: underline;	
 }
+
+
+
+
+#peopleInfo {
+	line-height:1.5em;
+}
+
+#peopleInfo #joinButton {
+	margin-top:1em;
+	display:block;
+}
+
+#peopleInfo br {
+	clear:left;
+}
