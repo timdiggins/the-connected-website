@@ -1,73 +1,22 @@
 
 <div id="sidebar">
-	<div id="authorBlock">
-		<h2>by <%= link_to_user(@post.user) %></h2>
-		<p class="avatar">
-	    <%= link_to_avatar_for(@post.user, :medium) %>
-	  </p>
-		<% unless  @post.user.profile_text.blank? %>
-			<p><%= truncate(@post.user.profile_text, 200) %> <%= link_to("More about #{@post.user}", user_url(@post.user)) %></p>
-		<% end %>
-		<div class="clearThis"> </div>
-	</div>
-	
-	<div class="topics">
-		<h2>Belongs to (topics):</h2>
-		<ul>
-			<% for topic in @post.topics %>
-				<li>
-					<%= link_to topic, topic, :class => "topic" %> 
-					<% if logged_in? %>
-						<%= link_to "[x]", post_topic_url(@post, topic), :class => "delete" ,:method => :delete, :confirm => "Are you sure you'd like to remove this post from the topic '#{topic}'?" %>  
-					<% end %>
-				</li>
-			<% end %>
-		</ul>
-		
-		<% if logged_in? %>
-			<% form_tag post_topics_url(@post) do | f | %>	  
-				<%= label_tag :topic_name, "Add item to #{@post.topics.size==0 ? 'a' : 'another'} topic:" %>
-				<%= text_field_tag :topic_name %>
-			<% end %>
-		<% end %>
-		
-	</div>
-	
-	<% if logged_in_as_editor? %>
-		<p>
-		<% if @post.featured %>
-			<%= link_to "Unfeature this Posting", unfeature_post_url(@post), :method => :put %>
-		<% else %>
-			<%= link_to "Feature this Posting", feature_post_url(@post), :method => :put %>
-		<% end %>
-		</p>
-	<% end %>
+	<%= render :partial => 'posts/author' %>
+	<%= render :partial => 'posts/topics' %>
+	<%= render :partial => 'posts/feature' %>
 </div>
 
 <div id="main">
 	<h1 class="post"><%= @post %></h1>
-	<p class="date">Posted <%= time_ago_in_words(@post.created_at) %> ago, updated <%= time_ago_in_words(@post.updated_at) %> ago.</p>
+	<p class="date">
+		Posted <%= time_ago_in_words(@post.created_at) %> ago, updated <%= time_ago_in_words(@post.updated_at) %> ago.
+	</p>
 
 	<div class="postBody">
 		<%= detail_format(@post.detail) %>
 	</div>
 	
-	<div id="comments">
-	<h2>Comments</h2>
-		<% for comment in @post.comments %>
-				<div class="comment">
-					<p class="avatar">
-						<%= link_to_avatar_for(comment.user, :medium) %>
-						<span class="author"><%= link_to_user(comment.user) %>
-					</p>
-					<div class="postContent">
-						<%= detail_format(comment.body) %>
-					</div>
-				</div>
-		<% end %>
-	</div>
-		
+	<%= render :partial => 'posts/comments' %>
 	<%= render :partial => 'posts/comment_form' %>
 </div>
 
-<div class="clearThis"> </div>
+<%= clear_this %>

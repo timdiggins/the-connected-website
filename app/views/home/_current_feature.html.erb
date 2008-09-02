@@ -1,0 +1,21 @@
+<h2>Current feature</h2>
+<div class="post">
+     <p class="avatar">
+         <%= link_to_avatar_for(@current_featured.user, :medium) %>
+     </p>
+     <div class="postContent">
+         <h2>
+						<%= link_to @current_featured, @current_featured %> 
+						<span class="date">
+							<%= when_changed(@current_featured) %>
+					  </span>
+				</h2>
+				 <%= detail_format(@current_featured.detail) %>
+				
+					<% if @current_featured.topics.size>0 %><p class="topics">posted in
+						<% for topic in @current_featured.topics %>
+							<%= link_to topic, topic, :class => "topic" %>
+						<% end %></p>
+					<%end %>
+     </div>
+ </div>

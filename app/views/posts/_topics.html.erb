@@ -1,0 +1,21 @@
+<div class="topics">
+	<h2>Belongs to (topics):</h2>
+	<ul>
+		<% for topic in @post.topics %>
+			<li>
+				<%= link_to topic, topic, :class => "topic" %> 
+				<% if logged_in? %>
+					<%= link_to "[x]", post_topic_url(@post, topic), :class => "delete" ,:method => :delete, :confirm => "Are you sure you'd like to remove this post from the topic '#{topic}'?" %>  
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
+	
+	<% if logged_in? %>
+		<% form_tag post_topics_url(@post) do | f | %>	  
+			<%= label_tag :topic_name, "Add item to #{@post.topics.size==0 ? 'a' : 'another'} topic:" %>
+			<%= text_field_tag :topic_name %>
+		<% end %>
+	<% end %>
+	
+</div>

@@ -1,12 +1,10 @@
 class HomeController < ApplicationController
   def index
-    @posts = Post.featured 
-    if @posts.size < 1 
-      @posts = Post.sorted_by_updated_at
-    end
+    @featured = Post.featured 
+    @featured = Post.sorted_by_updated_at.find(:all, :limit => 5) if @featured.empty?
+    @current_featured = @featured.first
     
     @events = Event.sorted_by_created_at
     @users = User.some_having_bio_and_avatar
-    @post = @posts[0]
   end
 end

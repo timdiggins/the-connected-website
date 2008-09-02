@@ -9,12 +9,16 @@ class Post < ActiveRecord::Base
   
   named_scope :sorted_by_created_at, lambda { { :order => "created_at DESC" }}
   named_scope :sorted_by_updated_at, lambda { { :order => "updated_at DESC" }}
-  named_scope :featured, lambda { { :conditions => { :featured => true } }}
+  named_scope :featured, lambda { { :conditions => [ "featured_at IS NOT NULL" ], :order => "featured_at DESC", :limit => 5 }} 
   
   alias_attribute :to_s, :title
   
   def brief
     truncate(detail, 500)
+  end
+  
+  def featured?
+    !featured_at.nil?
   end
 
   private
