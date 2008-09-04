@@ -1,5 +1,5 @@
-set daemon 10 
-set logfile syslog facility log_daemon 
+set daemon 60
+set logfile syslog facility log_daemon
 set mailserver localhost
 set mail-format { 
           from: monit@theconnectedrepublic.org 

@@ -4,7 +4,7 @@ check process republic_mongrel_8002
   stop program = "/usr/bin/mongrel_rails cluster::stop -C /etc/mongrel_cluster/republic.yml --clean --only 8002"
 
   if failed host 127.0.0.1 port 8002 protocol http
-    with timeout 10 seconds
+    with timeout 60 seconds
     then restart
 
   if memory is greater than 50% for 4 cycles then restart
@@ -21,7 +21,7 @@ check process republic_mongrel_8003
   stop program = "/usr/bin/mongrel_rails cluster::stop -C /etc/mongrel_cluster/republic.yml --clean --only 8003"
 
   if failed host 127.0.0.1 port 8003 protocol http
-    with timeout 10 seconds
+    with timeout 60 seconds
     then restart
 
   if memory is greater than 50% for 4 cycles then restart
@@ -38,7 +38,7 @@ check process republic_mongrel_8004
   stop program = "/usr/bin/mongrel_rails cluster::stop -C /etc/mongrel_cluster/republic.yml --clean --only 8004"
 
   if failed host 127.0.0.1 port 8004 protocol http
-    with timeout 10 seconds
+    with timeout 60 seconds
     then restart
 
   if memory is greater than 50% for 4 cycles then restart
