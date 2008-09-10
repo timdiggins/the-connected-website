@@ -1,0 +1,48 @@
+check process republic_mongrel_8002
+  with pidfile /var/www/apps/republic/current/tmp/pids/mongrel.8002.pid
+  start program = "/usr/bin/mongrel_rails cluster::start -C /etc/mongrel_cluster/republic.yml --clean --only 8002"
+  stop program = "/usr/bin/mongrel_rails cluster::stop -C /etc/mongrel_cluster/republic.yml --clean --only 8002"
+
+  if failed host 127.0.0.1 port 8002 protocol http
+    with timeout 60 seconds
+    then restart
+
+  if memory is greater than 50% for 4 cycles then restart
+  if cpu is greater than 80% for 4 cycles then restart 
+  if 20 restarts within 20 cycles then timeout 
+
+  group republic_mongrels
+
+# ========================================================== #
+  
+check process republic_mongrel_8003
+  with pidfile /var/www/apps/republic/current/tmp/pids/mongrel.8003.pid
+  start program = "/usr/bin/mongrel_rails cluster::start -C /etc/mongrel_cluster/republic.yml --clean --only 8003"
+  stop program = "/usr/bin/mongrel_rails cluster::stop -C /etc/mongrel_cluster/republic.yml --clean --only 8003"
+
+  if failed host 127.0.0.1 port 8003 protocol http
+    with timeout 60 seconds
+    then restart
+
+  if memory is greater than 50% for 4 cycles then restart
+  if cpu is greater than 80% for 4 cycles then restart 
+  if 20 restarts within 20 cycles then timeout 
+
+  group republic_mongrels
+  
+# ========================================================== #
+
+check process republic_mongrel_8004
+  with pidfile /var/www/apps/republic/current/tmp/pids/mongrel.8004.pid
+  start program = "/usr/bin/mongrel_rails cluster::start -C /etc/mongrel_cluster/republic.yml --clean --only 8004"
+  stop program = "/usr/bin/mongrel_rails cluster::stop -C /etc/mongrel_cluster/republic.yml --clean --only 8004"
+
+  if failed host 127.0.0.1 port 8004 protocol http
+    with timeout 60 seconds
+    then restart
+
+  if memory is greater than 50% for 4 cycles then restart
+  if cpu is greater than 80% for 4 cycles then restart 
+  if 20 restarts within 20 cycles then timeout 
+
+  group republic_mongrels

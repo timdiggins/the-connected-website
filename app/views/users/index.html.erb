@@ -1,13 +1,15 @@
 <h1><%= @page_title = "Recent Contributors" %></h1>
 <% @current_tab = :users %>
 <div id="sidebar">
-    <p>Members of the Connected Republic who have recently contributed</p>
+	<div id="peopleInfo">
+  <p>Members of the Connected Republic who have recently contributed.</p>
 	<% if !logged_in? %>
-     <p><%= link_to "Join The Connected Republic", signup_url, :id => 'joinButton' %>
-	   or <%= link_to "login", login_url %>, if you're already a member.</p>
-	<% elsif current_user.profile_text.blank?%>
-        <p class="error note">You won't appear on this page, until you <%= link_to "add a brief bio", bio_settings_url%>.</p>
+     <p><%= link_to "Join?", signup_url, :id => 'joinButton' %><br />
+			<%= link_to "login", login_url %>, if you're already a member.</p>
+	<% else %>
+        <p>Make sure to add a <%= link_to "bio", bio_settings_url%> and a <%= link_to "picture", picture_settings_url%> in your settings if you would like to appear in this section, too.</p>
 	<% end %>
+	</div>
 </div>
   <div id="main">
       <ul id="memberList">
