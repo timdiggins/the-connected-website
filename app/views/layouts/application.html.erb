@@ -6,6 +6,8 @@
 
 		<%= javascript_include_tag :all, :cache => true %>
 		<%= stylesheet_link_tag :all, :cache => true %>
+		<%= javascript_include_tiny_mce_if_used %>
+		<%= tiny_mce if using_tiny_mce? %>
 	</head>
   
   

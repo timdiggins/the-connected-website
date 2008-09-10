@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :title, :detail
   
   belongs_to :user
-  has_many :comments, :order => 'created_at DESC'
+  has_many :comments, :order => 'created_at DESC', :dependent => :destroy
   has_many :categorizations
   has_many :topics, :through => :categorizations, :uniq => true
   

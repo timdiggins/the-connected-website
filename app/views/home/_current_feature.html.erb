@@ -10,7 +10,7 @@
 							<%= when_changed(@current_featured) %>
 					  </span>
 				</h2>
-				 <%= detail_format(@current_featured.detail) %>
+				 <%= @current_featured.detail %>
 				
 					<% if @current_featured.topics.size>0 %><p class="topics">posted in
 						<% for topic in @current_featured.topics %>

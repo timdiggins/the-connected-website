@@ -41,6 +41,5 @@ class TopicsController < ApplicationController
     
     redirect_to @topic
   end
-
   
 end

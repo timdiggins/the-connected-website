@@ -1,6 +1,6 @@
 <% unless  @user.profile_text.blank? %>
 	<div id="bio">
-		<%= detail_format(@user.profile_text) %>
+		<%= @user.profile_text %>
 	</div>
 <% end %>
 

@@ -15,7 +15,7 @@
 
 	<p>
 	  <%= f.label :detail, "Post text" %>
-    <%= f.text_area :detail %>
+    <%= f.text_area :detail, :class => "mceEditor" %>
   </p>
 
 	<%= hidden_field_tag(:topic, @initial_topic.id) if @initial_topic  %>
