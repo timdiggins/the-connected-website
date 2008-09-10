@@ -14,8 +14,7 @@ lines.each do | line |
   user.password = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{user.login}--") 
                   
   unless user.name.blank?
-    user.save 
-    puts "Saved #{user}"
+    puts "Saved #{user}" if user.save
   end
 
 end
