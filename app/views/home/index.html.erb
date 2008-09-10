@@ -10,7 +10,7 @@
 	</div>
 
 	<div id="main">
-		<%= render :partial => 'home/current_feature' %>
+		<%= render :partial => 'home/current_feature' if @current_featured %>
 		<%= render :partial => 'home/recent_activity' %>
 	</div>
 
