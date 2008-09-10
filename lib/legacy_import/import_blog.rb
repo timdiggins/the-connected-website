@@ -1,17 +1,15 @@
+require File.expand_path(File.dirname(__FILE__) + "/../../config/environment") 
 require "rubygems"
 require 'hpricot'
 
-xml = %{
-<status>
-  <id>1</id>
-  <created_at>a date</created_at>
-  <text>some text</text>
-</status> 
-}
+include ActionView::Helpers::TextHelper
+include ActionView::Helpers::TagHelper
+
 
 doc = open("blog.xml") { |f| Hpricot.XML(f) }
+i = 1
 (doc/:item).each do |item|
-  
+  puts i
   puts '-------------------------------'
   
   title = item.at(:title).inner_html
@@ -19,9 +17,21 @@ doc = open("blog.xml") { |f| Hpricot.XML(f) }
   creator = item.at("dc:creator").inner_html
   content = item.at("content:encoded").inner_html.sub(/^\<\!\[CDATA\[/, '').sub(/\]\]>$/, '')
   
-  puts title
+  next if title.blank?
+  next if content.blank?
+  next if creator == 'admin'
+  
+  puts title.inspect
   puts pub_date
   puts creator
-  puts content
+  user = User.find_by_login(creator) || User.find_by_name(creator)
+  raise "Oops! No user!" unless user
+
+  post = Post.new(:title => title, :detail => simple_format(content), :user => user)
+  puts post.inspect
+  post.save!
+
+  i += 1
+  
     # puts "#{item.innerHTML}" 
 end
