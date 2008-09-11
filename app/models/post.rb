@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   alias_attribute :to_s, :title
   
   def brief
-    truncate(detail, 500)
+    truncate(HTML::FullSanitizer.new.sanitize(detail), 500)
   end
   
   def featured?
