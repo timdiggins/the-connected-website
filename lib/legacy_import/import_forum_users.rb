@@ -24,6 +24,7 @@ def go
                   
     if user.save
       puts "Saved #{user}" 
+      puts user.inspect
     else
       puts "***Unable to save #{user}.  #{user.errors.full_messages}"
     end

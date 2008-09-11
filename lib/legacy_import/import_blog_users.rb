@@ -1,4 +1,5 @@
 
+
 def go
   require File.expand_path(File.dirname(__FILE__) + "/../../config/environment") 
 
@@ -15,12 +16,16 @@ def go
     user.home_page = parts[4].strip
     user.password = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{user.login}--") 
                   
-    unless user.name.blank?
-      puts "Saved #{user}" if user.save
+    if !user.name.blank? && user.save
+      puts "Saved #{user}" 
+      puts user.inspect
+    else
+      puts "***Unable to save #{user}.  #{user.errors.full_messages}"
     end
 
   end
 
+  
   User.create!(:login => 'unknown', :email => "duff@codora.com", :password => Digest::SHA1.hexdigest("--#{Time.now.to_s}--unknown--"))
   
 end
