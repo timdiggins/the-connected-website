@@ -17,7 +17,6 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.user = current_user
     @initial_topic = Topic.find_by_id(params[:topic])
-    puts @initial_topic.inspect.yellow
     return render(:action => :new) unless @post.valid?
     
     Event.create_for(@post)

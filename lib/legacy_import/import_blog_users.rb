@@ -26,7 +26,7 @@ def go
   end
 
   
-  User.create!(:login => 'unknown', :email => "duff@codora.com", :password => Digest::SHA1.hexdigest("--#{Time.now.to_s}--unknown--"))
+  User.create!(:login => 'Unknown User', :email => "duff@codora.com", :password => Digest::SHA1.hexdigest("--#{Time.now.to_s}--unknown--"))
   
 end
 
