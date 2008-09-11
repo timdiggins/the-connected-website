@@ -59,7 +59,7 @@ def go
         
         
         
-        comment = Comment.new(:body => new_content, :created_at => comment_date)
+        comment = Comment.new(:body => simple_format(new_content), :created_at => comment_date)
         comment.post = post
         comment.user = User.find_by_login("Unknown User")
 
