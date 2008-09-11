@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080910203508) do
+ActiveRecord::Schema.define(:version => 20080911135255) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "user_id"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20080910203508) do
     t.string   "home_page"
     t.boolean  "editor",                    :default => false
     t.string   "name"
+    t.string   "location"
   end
 
 end
