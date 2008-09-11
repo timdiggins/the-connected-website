@@ -32,6 +32,7 @@ def go
       post = Post.new(:title => title, :detail => simple_format(content), :user => user, :created_at => pub_date)
 
       post.class.record_timestamps = false
+      puts post.inspect
       event = Event.create_for(post)
       
       event.class.record_timestamps = false
