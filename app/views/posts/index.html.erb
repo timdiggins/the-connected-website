@@ -15,8 +15,16 @@
 					</p>
 					<div class="postContent">
 						<h2><%= link_to post, post %> 
-							<span class="date"><%if post.created_at==post.updated_at%>created <%= time_ago_in_words(post.created_at) %> ago<%else%>last updated 
-								<%= time_ago_in_words(post.updated_at) %> ago<%end%></span></h2>
+							<span class="date">
+								<% if post.created_at==post.updated_at%>
+									created <%= time_ago_in_words(post.created_at) %> ago
+								<% else %>
+									last updated 
+									<%= time_ago_in_words(post.updated_at) %> ago
+								<% end %>
+							</span>
+							<%= pluralize(post.comments.count, "Comment") %>
+						</h2>
 						<p><%= post.brief %></p>
 						
 						<% unless post.topics.empty? %>
