@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   
   before_filter :login_required
+  uses_tiny_mce :options => tiny_mce_options, :only => [:create]
 
   def create
     @post = Post.find(params[:post_id])
