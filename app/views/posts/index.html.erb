@@ -27,10 +27,10 @@
 						<%end %>
 						
 					</div>
-					
-					
 				</div>
 			<% end %>
+			
+			<%= will_paginate @posts, :prev_label => "Newer", :next_label => "Older", :inner_window => 2 %>
 		</div>
   </div>
 <%= clear_this %>

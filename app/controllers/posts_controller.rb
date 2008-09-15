@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   uses_tiny_mce :options => tiny_mce_options, :only => [:new, :show, :create, :update]
   
   def index
-    @posts = Post.sorted_by_updated_at
+    @posts = Post.sorted_by_updated_at.paginate(:page => params[:page], :per_page => 15)
   end
   
   def new
