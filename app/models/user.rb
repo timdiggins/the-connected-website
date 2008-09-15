@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   attr_accessor :password, :uploaded_avatar_data
   attr_writer :password_required
   
+  attr_protected            :admin
   validates_presence_of     :login, :email 
   validates_presence_of     :password, :if => :password_required?
   validates_uniqueness_of   :login, :email, :case_sensitive => false
