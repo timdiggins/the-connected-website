@@ -997,6 +997,21 @@ background-color: #dce9f5;
 
 #peopleInfo {
 	line-height:1.5em;
+	margin-bottom: 3em;
+}
+
+ul.miniUserList {
+  list-style: none;
+  margin:0px 0px 1em 0px;
+  padding: 0px;
+  border-top: 1px solid #DDD;
+}
+
+ul.miniUserList a {
+  display: block;
+  padding: 0.5em 0px;
+  font-weight: bold;
+  border-bottom: 1px solid #DDD;
 }
 
 #peopleInfo #joinButton {

@@ -9,11 +9,12 @@
 	<% else %>
         <p>Make sure to add a <%= link_to "bio", bio_settings_url%> and a <%= link_to "picture", picture_settings_url%> in your settings if you would like to appear in this section, too.</p>
 	<% end %>
+	</div>
 	
-	<h3>
+	<h2>
 		Recently signed up
-	</h3>
-		<ul>
+	</h2>
+		<ul class="miniUserList">
 			<% for user in User.recently_signed_up %>
 				<li>
 					<%= link_to user, user %>
@@ -22,7 +23,7 @@
 		</ul>
 		
 		<%= link_to "See all users", all_users_url %>
-	</div>
+
 </div>
   <div id="main">
       <ul id="memberList">
