@@ -13,7 +13,7 @@ class SettingsController < ApplicationController
   end
 
   def update
-    return render(:action => :show) unless @user.update_attributes(params[:user])
+    return render(:action => :username_email) unless @user.update_attributes(params[:user])
     
     flash[:notice] = "Saved account settings"
     redirect_to @user
