@@ -11,6 +11,8 @@
 			<h1><%=h @user %></h1>
 			<%= render :partial => 'users/profile' %>
 			<%= render :partial => 'users/recent_events' %>
+			
+			<%= link_to("Become #{@user} (since you're an admin)", become_user_url(@user), :method => :post) if logged_in_as_admin? %>
 		</div>
 		<%= clear_this %>
 

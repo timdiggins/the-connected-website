@@ -8,6 +8,10 @@ module AuthenticatedSystem
       logged_in? && current_user.editor
     end
 
+    def logged_in_as_admin?
+      logged_in? && current_user.admin
+    end
+
     def current_user
       @current_user ||= (session[:user] && User.find_by_id(session[:user])) || :false
     end
@@ -28,14 +32,12 @@ module AuthenticatedSystem
     end
     
     def editor_login_required
-      return access_denied unless logged_in? && authorized?
-      return true if current_user.editor
-
-      flash[:error] = "You do not have permission to access that part of the site."
-      redirect_to root_url
-      false
+      special_login_required { current_user.editor }
     end
     
+    def admin_login_required
+      special_login_required { current_user.admin }
+    end
     
     def access_denied
       respond_to do |accepts|
@@ -63,7 +65,7 @@ module AuthenticatedSystem
     end
     
     def self.included(base)
-      base.send :helper_method, :current_user, :logged_in?, :logged_in_as_editor?
+      base.send :helper_method, :current_user, :logged_in?, :logged_in_as_editor?, :logged_in_as_admin?
     end
 
     def login_from_cookie
@@ -84,4 +86,14 @@ module AuthenticatedSystem
       auth_data = request.env[auth_key].to_s.split unless auth_key.blank?
       return auth_data && auth_data[0] == 'Basic' ? Base64.decode64(auth_data[1]).split(':')[0..1] : [nil, nil] 
     end
+    
+    def special_login_required(&block)
+      return access_denied unless logged_in? && authorized?
+      return true if yield
+
+      flash[:error] = "You do not have permission to access that part of the site."
+      redirect_to root_url
+      false
+    end
+    
 end

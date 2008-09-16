@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   
+  before_filter :admin_login_required, :only => [ :become ]
+  
   def new
     @user = User.new(params[:user])
     store_location(params[:return_to]) if params[:return_to]
@@ -23,6 +25,15 @@ class UsersController < ApplicationController
   def index
     @users = User.some_having_bio_and_avatar
   end
+  
+  def become
+    @user = User.find_by_login(params[:id])
+    self.current_user = @user
+    session[:as_someone_else] = true
+    redirect_to root_url
+  end
+  
+  
   
 
 end

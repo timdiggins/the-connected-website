@@ -18,5 +18,13 @@
 </div>
 <div id="logo"><%= link_to "The Connected Republic", root_url %></div>
 
+
+
 <%= render :partial => 'layouts/tabs' %>
+
+<% if session[:as_someone_else] %>
+  <div style="color:red">
+    <h4><strong>CAREFUL!  You're logged in as <%= current_user %> !</strong></h4>
+  </div>
+<% end %>
 </div>

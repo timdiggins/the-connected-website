@@ -9,9 +9,8 @@
 				
 				<div class="postContent">
 					<%= comment.body %>
-					<%= link_to("Delete comment", post_comment_url(@post, comment), :method => :delete, :confirm => "Are you sure you'd like to delete this comment?") if current_user.admin %>
+					<%= link_to("Delete comment", post_comment_url(@post, comment), :method => :delete, :confirm => "Are you sure you'd like to delete this comment?") if logged_in_as_admin? %>
 				</div>
-
 				
 			</div>
 	<% end %>
