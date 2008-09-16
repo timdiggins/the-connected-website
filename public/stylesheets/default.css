@@ -1,6 +1,5 @@
 /* @override 
-	http://localhost:3000/stylesheets/default.css?1220042658
-	http://localhost:3000/stylesheets/default.css?1220047533
+	http://localhost:3000/stylesheets/default.css?1220360698
 */
 
 body {
@@ -17,6 +16,11 @@ body {
     margin:0px auto;
 }
 
+
+a {
+	color: #2A6B87;
+	text-decoration: none;
+}
 
 a {
 	color: #2A6B87;
@@ -988,4 +992,75 @@ background-color: #dce9f5;
 
 #peopleInfo br {
 	clear:left;
+}
+
+
+
+
+
+
+
+
+/* pagination */
+
+
+
+
+
+.pagination {
+	text-align: center;
+	font-size: 0.9em;
+	padding: 0px 0px 2.5em 0px;
+}
+.pagination a {
+  margin: 0px;
+  text-decoration: none;
+  padding: 2px 0.5em;
+  background-color: #FFF;
+  border: 1px solid #EEE;
+}
+.pagination a:hover, .pagination a:active {
+ text-decoration: underline;
+}
+.pagination span.current {
+  background-color: #2e659d;
+  margin: 0px 0.3em;
+  padding: 2px 0.4em;
+  color: #FFF;
+}
+.pagination span.disabled {
+  padding: 2px 0.5em;
+  color: #CCC;
+  background-color: #FFF;
+  border: 1px solid #EEE;
+}
+
+span.pages {
+	float: right;
+}
+
+
+
+p.pagination a.nextPage,p.pagination a.previousPage {
+  margin: 0px;
+  text-decoration: none;
+  padding: 2px 0.5em;
+  background-color: #FFF;
+  border: 1px solid #EEE;
+	float: left;
+		margin-right: 0.5em;
+}
+
+p.pagination a:hover {
+	background-color: #FFF;
+}
+
+
+span.nextPage,span.previousPage {
+  padding: 2px 0.5em;
+  color: #CCC;
+  background-color: #FFF;
+  border: 1px solid #EEE;
+	float: left;
+	margin-right: 0.5em;
 }
