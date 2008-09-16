@@ -555,6 +555,7 @@ textarea#post_detail {
 
 .postContent h2 {
   font-size: 1em;
+  margin-bottom: 0px;
 }
 
 .postContent h2 a {
@@ -562,11 +563,12 @@ textarea#post_detail {
   font-weight: bold;
 }
 
-.postContent h2 span.date {
-	color: #AAA;
+p.meta {
+	color: #999;
 	font-size: 0.9em;
 	font-weight: normal;
 	display: block;
+	margin-top: 0.3em;
 }
 
 .post .details a {
