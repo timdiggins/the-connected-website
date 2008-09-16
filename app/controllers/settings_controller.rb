@@ -19,6 +19,10 @@ class SettingsController < ApplicationController
     redirect_to @user
   end
   
+  def show
+    redirect_to bio_settings_url
+  end
+  
   private
     def set_user
       @user = current_user
