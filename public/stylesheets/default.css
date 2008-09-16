@@ -1,5 +1,6 @@
 /* @override 
 	http://localhost:3000/stylesheets/default.css?1220360698
+	http://localhost:3000/stylesheets/default.css?1221580629
 */
 
 body {
@@ -8,6 +9,17 @@ body {
   margin:0px;
   padding:0px;
  	background: #2D3831 url(/images/page_top.gif) top left repeat-x;
+}
+
+div#dangerAdmin {
+  background-color: #F00;
+  padding: 1em 2em;
+}
+
+div#dangerAdmin p {
+  margin: 0px;
+  color:#FFF;
+  font-size: 1.5em;
 }
 
 
