@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   alias_attribute :to_s, :login
   
   named_scope :some_having_bio_and_avatar, lambda { {:conditions => "profile_text IS NOT NULL AND profile_text <> ''" , :limit => 3, :order => "updated_at DESC"} }
+  named_scope :recently_signed_up, lambda { { :limit => 5, :order => "created_at DESC" } }
+  named_scope :order_by_created_at, lambda { { :order => "created_at DESC" } }
 
   def self.authenticate(login, password)
     u = find_by_login(login) 

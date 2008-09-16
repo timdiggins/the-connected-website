@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :users, :member => { :become => :post }
+  map.resources :users, :member => { :become => :post }, :collection => { :all => :get }
   map.resources :sessions
   map.resources :posts, :has_many => [ :comments, :topics ], :member => { :feature => :put, :unfeature => :put }
   map.resources :topics

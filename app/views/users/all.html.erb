@@ -1,27 +1,13 @@
-<h1><%= @page_title = "Recent Contributors" %></h1>
+<h1><%= @page_title = "All Contributors" %></h1>
 <% @current_tab = :users %>
 <div id="sidebar">
 	<div id="peopleInfo">
-  <p>Members of the Connected Republic who have recently contributed.</p>
+  <p>All of the members of the Connected Republic.</p>
 	<% if !logged_in? %>
      <p><%= link_to "Join?", signup_url, :id => 'joinButton' %><br />
 			<%= link_to "login", login_url %>, if you're already a member.</p>
-	<% else %>
-        <p>Make sure to add a <%= link_to "bio", bio_settings_url%> and a <%= link_to "picture", picture_settings_url%> in your settings if you would like to appear in this section, too.</p>
 	<% end %>
 	
-	<h3>
-		Recently signed up
-	</h3>
-		<ul>
-			<% for user in User.recently_signed_up %>
-				<li>
-					<%= link_to user, user %>
-				</li>
-			<% end %>
-		</ul>
-		
-		<%= link_to "See all users", all_users_url %>
 	</div>
 </div>
   <div id="main">
@@ -43,5 +29,8 @@
          </li>
        <% end %>
     	</ul>
+
+			<%= will_paginate(@users, :prev_label => "Newer", :next_label => "Older", :inner_window => 2) %>
+
   </div>
 <%= clear_this %>
