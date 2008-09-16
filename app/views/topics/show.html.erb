@@ -20,7 +20,7 @@
 	</div>
 	
 	<div class="posts">
-		<% for post in @topic.posts %>
+		<% for post in @topic.posts.sorted_by_created_at %>
 			<div class="post">
 				<p class="avatar">
 					<%= link_to_avatar_for(post.user, :medium) %>
