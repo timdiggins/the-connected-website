@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by_login(params[:id])
+    return render_404 unless @user
   end
   
   def index
