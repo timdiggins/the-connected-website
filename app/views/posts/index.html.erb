@@ -7,7 +7,7 @@
   <div id="main">
 
 		<div class="posts">
-			<%= will_paginate @posts, :prev_label => "Newer", :next_label => "Older", :inner_window => 2 %>
+			<%= will_paginate(@posts, :prev_label => "Newer", :next_label => "Older", :inner_window => 2) if params[:page] %>
 			<% for post in @posts %>
 				<div class="post">
 					<p class="avatar">
