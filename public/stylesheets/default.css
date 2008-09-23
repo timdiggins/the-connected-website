@@ -650,6 +650,10 @@ p.meta {
   margin-bottom: 1em;
 }
 
+p.more {
+  text-align: right;
+}
+
 div.topics {
   margin-top: 1em;
   padding: 0px;
