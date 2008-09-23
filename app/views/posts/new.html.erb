@@ -5,26 +5,8 @@
 </div>
 <div id="main">
 
-<% form_for @post do | f | %>
-  <%= f.error_messages %>
-  
-	<p>
-	  <%= f.label :title, "Title for this post" %>
-    <%= f.text_field :title, :class => "largeInput" %>
-  </p>
+	<%= render :partial => 'posts/form' %>
 
-	<p>
-	  <%= f.label :detail, "Post text" %>
-    <%= f.text_area :detail, :class => "mceEditor" %>
-  </p>
-
-	<%= hidden_field_tag(:topic, @initial_topic.id) if @initial_topic  %>
-
-  <p class="submitBlock">
-    <%= submit_tag  'Create new post', :disable_with => "Saving..." %> or <%= link_to "Cancel", @post.new_record? ? posts_url : @post %>
-  </p> 
-
-<% end %>
 </div>
 
 <%= clear_this %>

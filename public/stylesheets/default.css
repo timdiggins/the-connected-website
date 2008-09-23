@@ -1,6 +1,6 @@
 /* @override 
-	http://localhost:3000/stylesheets/default.css?1220042658
-	http://localhost:3000/stylesheets/default.css?1220047533
+	http://localhost:3000/stylesheets/default.css?1220360698
+	http://localhost:3000/stylesheets/default.css?1221580629
 */
 
 body {
@@ -11,12 +11,28 @@ body {
  	background: #2D3831 url(/images/page_top.gif) top left repeat-x;
 }
 
+div#dangerAdmin {
+  background-color: #F00;
+  padding: 1em 2em;
+}
+
+div#dangerAdmin p {
+  margin: 0px;
+  color:#FFF;
+  font-size: 1.5em;
+}
+
 
 #wrap {
 	width:925px;
     margin:0px auto;
 }
 
+
+a {
+	color: #2A6B87;
+	text-decoration: none;
+}
 
 a {
 	color: #2A6B87;
@@ -551,6 +567,7 @@ textarea#post_detail {
 
 .postContent h2 {
   font-size: 1em;
+  margin-bottom: 0px;
 }
 
 .postContent h2 a {
@@ -558,11 +575,12 @@ textarea#post_detail {
   font-weight: bold;
 }
 
-.postContent h2 span.date {
-	color: #AAA;
+p.meta {
+	color: #999;
 	font-size: 0.9em;
 	font-weight: normal;
 	display: block;
+	margin-top: 0.3em;
 }
 
 .post .details a {
@@ -979,6 +997,21 @@ background-color: #dce9f5;
 
 #peopleInfo {
 	line-height:1.5em;
+	margin-bottom: 3em;
+}
+
+ul.miniUserList {
+  list-style: none;
+  margin:0px 0px 1em 0px;
+  padding: 0px;
+  border-top: 1px solid #DDD;
+}
+
+ul.miniUserList a {
+  display: block;
+  padding: 0.5em 0px;
+  font-weight: bold;
+  border-bottom: 1px solid #DDD;
 }
 
 #peopleInfo #joinButton {
@@ -988,4 +1021,75 @@ background-color: #dce9f5;
 
 #peopleInfo br {
 	clear:left;
+}
+
+
+
+
+
+
+
+
+/* pagination */
+
+
+
+
+
+.pagination {
+	text-align: left;
+	font-size: 0.9em;
+	padding: 0px 0px 2.5em 0px;
+}
+.pagination a {
+  margin: 0px;
+  text-decoration: none;
+  padding: 2px 0.5em;
+  background-color: #FFF;
+  border: 1px solid #EEE;
+}
+.pagination a:hover, .pagination a:active {
+ text-decoration: underline;
+}
+.pagination span.current {
+  background-color: #2e659d;
+  margin: 0px 0.3em;
+  padding: 2px 0.4em;
+  color: #FFF;
+}
+.pagination span.disabled {
+  padding: 2px 0.5em;
+  color: #CCC;
+  background-color: #FFF;
+  border: 1px solid #EEE;
+}
+
+span.pages {
+	float: right;
+}
+
+
+
+p.pagination a.nextPage,p.pagination a.previousPage {
+  margin: 0px;
+  text-decoration: none;
+  padding: 2px 0.5em;
+  background-color: #FFF;
+  border: 1px solid #EEE;
+	float: left;
+		margin-right: 0.5em;
+}
+
+p.pagination a:hover {
+	background-color: #FFF;
+}
+
+
+span.nextPage,span.previousPage {
+  padding: 2px 0.5em;
+  color: #CCC;
+  background-color: #FFF;
+  border: 1px solid #EEE;
+	float: left;
+	margin-right: 0.5em;
 }

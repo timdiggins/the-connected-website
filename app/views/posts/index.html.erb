@@ -7,6 +7,7 @@
   <div id="main">
 
 		<div class="posts">
+			<%= will_paginate(@posts, :prev_label => "Newer", :next_label => "Older", :inner_window => 2) if params[:page] %>
 			<% for post in @posts %>
 				<div class="post">
 					<p class="avatar">
@@ -14,9 +15,20 @@
 						<span class="author"><%= link_to_user(post.user) %>
 					</p>
 					<div class="postContent">
-						<h2><%= link_to post, post %> 
-							<span class="date"><%if post.created_at==post.updated_at%>created <%= time_ago_in_words(post.created_at) %> ago<%else%>last updated 
-								<%= time_ago_in_words(post.updated_at) %> ago<%end%></span></h2>
+						<h2><%= link_to post, post %></h2>
+							<p class="meta">
+								<span class="date">
+									<% if post.created_at==post.updated_at%>
+										created <%= time_ago_in_words(post.created_at) %> ago,
+									<% else %>
+										last updated 
+										<%= time_ago_in_words(post.updated_at) %> ago,
+									<% end %>
+								</span>
+								<span class="commentCount">
+								<%= pluralize(post.comments.count, "Comment") %>
+								</span>
+							</p>
 						<p><%= post.brief %></p>
 						
 						<% unless post.topics.empty? %>
@@ -27,10 +39,10 @@
 						<%end %>
 						
 					</div>
-					
-					
 				</div>
 			<% end %>
+			
+			<%= will_paginate @posts, :prev_label => "Newer", :next_label => "Older", :inner_window => 2 %>
 		</div>
   </div>
 <%= clear_this %>

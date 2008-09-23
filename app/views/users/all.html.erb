@@ -1,0 +1,36 @@
+<h1><%= @page_title = "All Contributors" %></h1>
+<% @current_tab = :users %>
+<div id="sidebar">
+	<div id="peopleInfo">
+  <p>All of the members of the Connected Republic.</p>
+	<% if !logged_in? %>
+     <p><%= link_to "Join?", signup_url, :id => 'joinButton' %><br />
+			<%= link_to "login", login_url %>, if you're already a member.</p>
+	<% end %>
+	
+	</div>
+</div>
+  <div id="main">
+      <ul id="memberList">
+       <% for user in @users %>
+         <li>
+					<span class="avatar">
+          	<%= link_to_avatar_for(user, :large) %>
+					</span>
+					<div class="memeberListProfileDetails">
+						<h2><%= link_to_user(user) %></h2>
+						<% unless user.profile_text.blank? %>
+							<p><%= truncate(user.profile_text, 200) %></p>
+							
+						<% end %>
+						<p><%= link_to('View profile', user_url(user)) %></p>
+					</div>
+					<%= clear_this %>
+         </li>
+       <% end %>
+    	</ul>
+
+			<%= will_paginate(@users, :prev_label => "Newer", :next_label => "Older", :inner_window => 2) %>
+
+  </div>
+<%= clear_this %>

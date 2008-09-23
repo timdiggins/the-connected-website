@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   
-  validates_presence_of :title, :detail
+  validates_presence_of :title
+  validates_tiny_mce_presence_of :detail
   
   belongs_to :user
   has_many :comments, :order => 'created_at DESC', :dependent => :destroy

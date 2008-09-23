@@ -4,14 +4,20 @@
 			<div class="comment">
 				<p class="avatar">
 					<%= link_to_avatar_for(comment.user, :medium) %>
-					<span class="author"><%= link_to_user(comment.user) %>
+					<span class="author"><%= link_to_user(comment.user) %></span>
 				</p>
 				
-				<%= link_to("Delete comment", post_comment_url(@post, comment), :method => :delete, :confirm => "Are you sure you'd like to delete this comment?") if current_user.admin %>
-
 				<div class="postContent">
+					
 					<%= comment.body %>
+					<p class="meta"><span class="date">posted <%= time_ago_in_words(comment.created_at) %> ago</span> 
+						<% if logged_in_as_admin? %>
+							<br>
+							<%= link_to("Delete comment", post_comment_url(@post, comment), :method => :delete, :confirm => "Are you sure you'd like to delete this comment?")  %>
+						<% end %>
+					</p>
 				</div>
+				
 			</div>
 	<% end %>
 </div>
