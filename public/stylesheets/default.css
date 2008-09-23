@@ -1,6 +1,7 @@
 /* @override 
 	http://localhost:3000/stylesheets/default.css?1220360698
 	http://localhost:3000/stylesheets/default.css?1221580629
+	http://localhost:3000/stylesheets/default.css?1221584164
 */
 
 body {
@@ -652,6 +653,7 @@ p.meta {
 div.topics {
   margin-top: 1em;
   padding: 0px;
+  padding-bottom: 1em;
   line-height: 1.5em;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -708,7 +710,8 @@ a.delete:hover {
 
 div.topics form {
   border-top: 1px solid #c0ccd6;
-  padding: 0.5em 1em 1em 1em;
+  padding: 0.5em 1em 0px 1em;
+  margin-bottom: 0px;
 }
 
 div.topics ul {
@@ -720,6 +723,7 @@ div.topics ul {
 div.topics li {
   font-size: 1.1em;
   margin: 0.5em 0px;
+  clear: left;
 }
 
 div.topics input {
