@@ -938,6 +938,12 @@ p.loginRequired {
      background-color: #dce9f5;
 }
 
+
+p.none a {
+  margin-left: 0.5em;
+  text-decoration: underline;
+}
+
 span.count {
   font-size: 0.8em;
   margin-left: 0.8em;
