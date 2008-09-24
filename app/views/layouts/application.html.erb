@@ -6,6 +6,9 @@
 
 		<%= javascript_include_tag :all, :cache => true %>
 		<%= stylesheet_link_tag :all, :cache => true %>
+		<%= auto_discovery_link_tag(:rss, formatted_posts_url(:format => :rss), :title => "All Posts") %>
+		<%= auto_discovery_link_tag(:rss, formatted_featured_posts_url(:format => :rss), :title => "Featured Posts") %>
+
 		<%= javascript_include_tiny_mce_if_used %>
 		<%= tiny_mce if using_tiny_mce? %>
 	</head>

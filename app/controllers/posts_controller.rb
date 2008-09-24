@@ -1,11 +1,17 @@
 class PostsController < ApplicationController
   
-  before_filter :login_required, :except => [ :index, :show ]
+  before_filter :login_required, :except => [ :index, :show, :featured ]
   before_filter :editor_login_required, :only => [ :feature, :unfeature ]
   uses_tiny_mce :options => tiny_mce_options, :only => [ :new, :show, :create, :update, :edit ]
   
   def index
-    @posts = Post.sorted_by_updated_at.paginate(:page => params[:page], :per_page => 15)
+    respond_to do |format|
+      format.html { @posts = Post.sorted_by_updated_at.paginate(:page => params[:page], :per_page => 15) }
+      format.rss { 
+        @posts = Post.sorted_by_updated_at.limit_to(15)
+        render :layout => false 
+      }
+    end
   end
   
   def new
@@ -55,4 +61,15 @@ class PostsController < ApplicationController
     redirect_to @post
   end
   
+  def featured
+    respond_to do |format|
+      format.html { @posts = Post.featured.paginate(:page => params[:page], :per_page => 15) }
+      format.rss { 
+        @posts = Post.featured.limit_to(15)
+        render :layout => false 
+      }
+    end
+  end
+  
 end
+

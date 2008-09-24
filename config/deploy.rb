@@ -18,4 +18,4 @@ set :repository,  "git://github.com/red56/the-connected-website.git"
 set :keep_releases, 30
 set :git_enable_submodules, 1
 
-set :rails_revision, 'd4eb3c0b7d13d3898c14d6ea7bfbc1853394f4e8' # Thu Sep 4 16:31:40 2008 +0200  -   From 2-1-stable branch
+set :rails_revision, '79f55de9c5e3ff1f8d9e767c5af21ba31be4cfba' # Fri Sep 19 09:06:35 2008 -0500  -   From master branch
