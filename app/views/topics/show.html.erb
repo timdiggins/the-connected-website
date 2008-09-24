@@ -11,7 +11,7 @@
 		<h1><%= @page_title = @topic %> <span class="count"><%= pluralize(@topic.posts.count, "article") %></span></h1>
 
 		<% if @topic.description.blank? %>
-		   <p><%= link_to  "Add a description", edit_topic_url  %></p>
+		   <p class="tinyOption"><%= link_to  "Add a description", edit_topic_url  %></p>
 		<% else  %>
 		   <%= @topic.description %>
 		   <p class="tinyOption"><%= link_to "Edit this topic", edit_topic_url  %><p>
