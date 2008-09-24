@@ -55,4 +55,8 @@ class PostsController < ApplicationController
     redirect_to @post
   end
   
+  def featured
+    @posts = Post.featured.paginate(:page => params[:page], :per_page => 15)
+  end
+  
 end

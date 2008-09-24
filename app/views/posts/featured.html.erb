@@ -1,0 +1,10 @@
+<h1><%= @page_title = "Featured Postings" %></h1>
+		
+<div id="sidebar">
+	<%= link_to "Start a new posting", new_post_url, :id=>"newContent" %>
+</div>
+
+<div id="main">
+	<%= render :partial => 'posts/post_list' %>
+</div>
+<%= clear_this %>
