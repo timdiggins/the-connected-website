@@ -564,6 +564,10 @@ textarea#post_detail {
   line-height: 1.5em;
 }
 
+span.readmore a{
+  margin-left: 0.5em;
+}
+
 
 
 .postContent h2 {
