@@ -19,12 +19,17 @@
 				      <%= f.label :profile_text, "Introductory text for your profile (e.g. bio)" %>
           	<% end%>
 
-			      <%= f.text_area :profile_text, :class => "largeInput" %>
+			      <%= f.text_area :profile_text, :class => :largeInput %>
 			    </p>
 
           <p>
             <%= f.label :home_page, "Your home page, if you have one" %>
-            <%= f.text_field :home_page, :class => "largeInput" %>
+            <%= f.text_field :home_page, :class => :largeInput %>
+          </p>
+
+          <p>
+            <%= f.label :location, "Your location" %>
+            <%= f.text_field :location, :class => :largeInput %>
           </p>
     
 
