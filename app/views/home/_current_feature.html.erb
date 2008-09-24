@@ -6,13 +6,24 @@
      <div class="postContent">
          <h2>
 						<%= link_to @current_featured, @current_featured %> 
-						<span class="date">
-							<%= when_changed(@current_featured) %>
-					  </span>
+						
 				</h2>
-				 <%= @current_featured.brief %>
-				<span class="readmore"><%= link_to "Read more...", @current_featured %></span> 
-                        
+				<p class="meta">
+					<span class="date">
+						<% if @current_featured.created_at==@current_featured.updated_at%>
+							created <%= time_ago_in_words(@current_featured.created_at) %> ago,
+						<% else %>
+							last updated 
+							<%= time_ago_in_words(@current_featured.updated_at) %> ago,
+						<% end %>
+					</span>
+					<span class="commentCount">
+					<%= pluralize(@current_featured.comments.count, "Comment") %>
+					</span>
+			  </p>
+                 <%= @current_featured.brief %>
+                <span class="readmore"><%= link_to "Read more...", @current_featured %></span> 
+				
 					<% if @current_featured.topics.size>0 %><p class="topics">posted in
 						<% for topic in @current_featured.topics %>
 							<%= link_to topic, topic, :class => "topic" %>
