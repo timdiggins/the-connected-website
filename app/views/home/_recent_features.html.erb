@@ -1,6 +1,6 @@
 <div id="recentlyFeatured">
 <h2>Recent features</h2>
-  <% for post in @featured %>
+  <% for post in @featured[1.. @featured.size()-1] %>
     <div class="post">
         <p class="avatar">
             <%= link_to_avatar_for(post.user, :tiny) %>
