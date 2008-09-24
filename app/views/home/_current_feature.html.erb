@@ -10,8 +10,9 @@
 							<%= when_changed(@current_featured) %>
 					  </span>
 				</h2>
-				 <%= @current_featured.detail %>
-				
+				 <%= @current_featured.brief %>
+				<span class="readmore"><%= link_to "Read more...", @current_featured %></span> 
+                        
 					<% if @current_featured.topics.size>0 %><p class="topics">posted in
 						<% for topic in @current_featured.topics %>
 							<%= link_to topic, topic, :class => "topic" %>
