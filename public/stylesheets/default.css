@@ -3,6 +3,7 @@
 	http://localhost:3000/stylesheets/default.css?1221580629
 	http://localhost:3000/stylesheets/default.css?1221584164
 	http://localhost:3004/stylesheets/default.css?1222241762
+	http://localhost:3000/stylesheets/default.css?1222255860
 */
 
 body {
@@ -661,6 +662,9 @@ p.info{
 
 p.more {
   text-align: right;
+  clear:both;
+  margin-top: 0px;
+  padding-top: 0.5em;
 }
 
 div.topics {
