@@ -2,6 +2,7 @@
 	http://localhost:3000/stylesheets/default.css?1220360698
 	http://localhost:3000/stylesheets/default.css?1221580629
 	http://localhost:3000/stylesheets/default.css?1221584164
+	http://localhost:3004/stylesheets/default.css?1222241762
 */
 
 body {
@@ -588,6 +589,10 @@ p.meta {
 	margin-top: 0.3em;
 }
 
+p.info{
+	color: #999;
+	font-size: 0.9em;
+}
 .post .details a {
   font-weight: bold;
 }
@@ -777,7 +782,7 @@ p.date {
 
 
 a#newContent, a#joinButton {
-  float: left;
+ /*float: left;*/
   font-size: 1.2em;
   padding: 0.6em 2em;
   background-color: #2e659d;
