@@ -979,7 +979,7 @@ p.loginRequired {
 }
 
 #topicDescription {
-	padding: 1em 1.5em 1px 1em;
+	padding: 1em 1.5em 0.5em 1em;
 	margin-bottom: 3em;
 	-webkit-border-radius: 5px;
    -moz-border-radius: 5px;
