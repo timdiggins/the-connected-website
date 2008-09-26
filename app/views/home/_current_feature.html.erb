@@ -22,7 +22,7 @@
 					</span>
 			  </p>
                  <%= @current_featured.brief %>
-                <span class="readmore"><%= link_to "Read more...", @current_featured %></span> 
+                <span class="readmore"><%= link_to "Read more", @current_featured %></span> 
 				
 					<% if @current_featured.topics.size>0 %><p class="topics">posted in
 						<% for topic in @current_featured.topics %>

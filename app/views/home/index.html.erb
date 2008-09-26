@@ -10,6 +10,12 @@
     </div>
 	<div id="sidebar">
 		<%= render :partial => 'recent_features' %>
+		
+		<div id="subscribe">
+		  <h2>Subscribe</h2>
+		  <p><a href="<%= formatted_posts_url(:format => :rss) %>" class="rss">All postings</a></p>
+		  <p><a href="<%= formatted_featured_posts_url(:format => :rss) %>" class="rss">Featured postings only</a></p>
+		</div>
 		<%= render :partial => 'home/users' %>
 	</div>
 

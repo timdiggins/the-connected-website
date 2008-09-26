@@ -3,6 +3,7 @@
 	http://localhost:3000/stylesheets/default.css?1221580629
 	http://localhost:3000/stylesheets/default.css?1221584164
 	http://localhost:3004/stylesheets/default.css?1222241762
+	http://localhost:3000/stylesheets/default.css?1222255860
 */
 
 body {
@@ -31,15 +32,36 @@ div#dangerAdmin p {
 }
 
 
-a {
-	color: #2A6B87;
-	text-decoration: none;
-}
 
 a {
 	color: #2A6B87;
 	text-decoration: none;
 }
+
+#subscribe {
+  margin-bottom: 3em;
+}
+
+
+#subscribe h2 {
+}
+
+
+
+a.rss {
+	padding:0.4em 0.8em 0.4em 28px;
+   background: #FFF url(/images/feed-icon.gif) no-repeat 8px center;
+   	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	margin: 0px 0px 0.5em 0px;
+	text-decoration: underline;
+	border: 1px solid #DDD;
+	display: block;
+	font-size: 1.2em;
+}
+
+
+
 
 a:hover {
 	text-decoration: underline;
@@ -565,6 +587,10 @@ textarea#post_detail {
   line-height: 1.5em;
 }
 
+span.readmore a{
+  margin-left: 0.5em;
+}
+
 
 
 .postContent h2 {
@@ -599,7 +625,7 @@ p.info{
 
 
 #recentlyFeatured {
-  margin-bottom: 4em;
+  margin-bottom: 3em;
 }
 
 #recentlyFeatured .postContent {
@@ -657,6 +683,15 @@ p.info{
 
 p.more {
   text-align: right;
+  clear:both;
+  margin-top: 0px;
+  padding-top: 0.5em;
+}
+
+p.featuredSelet {
+  margin-bottom: 3em;
+  font-size: 1.2em;
+  line-height: 1.5em;
 }
 
 div.topics {
@@ -775,11 +810,13 @@ p.date {
 
 
 
+#newContent {
+  margin: 0.6em 0px 3em 0px;
+    font-size: 1.2em;
+}
 
-
-a#newContent, a#joinButton {
+#newContent a, #joinButton a.joinLink {
  /*float: left;*/
-  font-size: 1.2em;
   padding: 0.6em 2em;
   background-color: #2e659d;
   -webkit-border-radius: 3px;
@@ -789,6 +826,12 @@ a#newContent, a#joinButton {
 }
 
 
+#joinButton {
+  margin: 1.5em 0px 2em 0px;
+  line-height: 2.3em;
+  font-size: 1.2em;
+  color: #666;
+}
 
 
 .events ul {
@@ -1033,10 +1076,6 @@ ul.miniUserList a {
   border-bottom: 1px solid #DDD;
 }
 
-#peopleInfo #joinButton {
-	margin-top:1em;
-	display:block;
-}
 
 #peopleInfo br {
 	clear:left;
