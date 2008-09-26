@@ -4,6 +4,7 @@
 	http://localhost:3000/stylesheets/default.css?1221584164
 	http://localhost:3004/stylesheets/default.css?1222241762
 	http://localhost:3000/stylesheets/default.css?1222255860
+	http://localhost:3000/stylesheets/default.css?1222441587
 */
 
 body {
@@ -39,12 +40,11 @@ a {
 }
 
 #subscribe {
-  margin-bottom: 3em;
-    padding: 0px 3em 0px 1.5em;
+  padding-bottom: 1em;
 }
 
 #peopleTeaser {
-      padding: 0px 3em 0px 1.5em;
+
 }
 
 
@@ -99,12 +99,20 @@ input#user_user_avatar {
 #sidebar {
 	float: right;
 	width: 300px;
-	padding: 1em 0px;
+	padding: 1em 0px 1em 0px;
 	background-color: #EEE;
 		 -moz-border-radius-topleft: 5px;
 -webkit-border-top-left-radius: 5px;
 -moz-border-radius-bottomleft: 5px;
 -webkit-border-bottom-left-radius: 5px;
+}
+
+#sidebar div {
+	margin: 0px 3em 1em 2em;	
+}
+
+div#authorBlock {
+  margin: 0px;
 }
 
 
@@ -621,10 +629,6 @@ p.meta {
 	margin-top: 0.3em;
 }
 
-p.info{
-	color: #999;
-	font-size: 0.9em;
-}
 .post .details a {
   font-weight: bold;
 }
@@ -681,9 +685,9 @@ p.info{
   background: url(../images/comment.gif) no-repeat top left;
 }
 
-#authorBlock {
+#sideBar #authorBlock {
   border: 1px solid #DDD;
-  padding: 1em 1em 0.5em 1em;
+  padding: 0px;
   line-height: 1.5em;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -700,10 +704,8 @@ p.more {
 }
 
 p.featuredSelet {
-  margin-bottom: 3em;
   font-size: 1.2em;
   line-height: 1.5em;
-      padding: 0px 3em 0px 1.5em;
 }
 
 div.topics {
@@ -713,7 +715,7 @@ div.topics {
   line-height: 1.5em;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  background-color: #dce9f5;
+  background-color: #FFF;
 }
 
 p.topics {
@@ -765,7 +767,7 @@ a.delete:hover {
 }
 
 div.topics form {
-  border-top: 1px solid #c0ccd6;
+  border-top: 1px solid #EEE;
   padding: 0.5em 1em 0px 1em;
   margin-bottom: 0px;
 }
@@ -823,10 +825,7 @@ p.date {
 
 
 #newContent {
-  margin: 0.6em 0px 3em 0px;
-    font-size: 1.2em;
-        padding: 1em 3em 0px 1.5em;
-    
+   padding: 1em 3em 2em 2em;
 }
 
 #newContent a, #joinButton a.joinLink {
@@ -837,16 +836,13 @@ p.date {
   -moz-border-radius: 3px;
   color: #FFF;
   margin-bottom: 1em;
+      font-size: 1.2em;
 }
-
 
 #joinButton {
-  margin: 1.5em 0px 2em 0px;
-  line-height: 2.3em;
-  font-size: 1.2em;
+  line-height: 2.5em;
   color: #666;
 }
-
 
 .events ul {
   list-style: none;
@@ -1002,8 +998,8 @@ p.loginRequired {
   line-height: 1.5em;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
-  margin-bottom: 2em;
-  padding: 0px 3em 0px 1.5em;
+  padding-bottom: 1em;
+  
 }
 
 
@@ -1089,7 +1085,7 @@ background-color: #dce9f5;
 
 #peopleInfo {
 	line-height:1.5em;
-	margin-bottom: 3em;
+	padding-bottom: 1em;
 }
 
 ul.miniUserList {

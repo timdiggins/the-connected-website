@@ -1,29 +1,34 @@
 <h1><%= @page_title = "Recent Contributors" %></h1>
 <% @current_tab = :users %>
 <div id="sidebar">
-	<div id="peopleInfo">
+	
 	<% if !logged_in? %>
+	    <div>
      <p id="joinButton"><%= link_to "Join?", signup_url, :class => "joinLink" %><br />
 			<%= link_to "login", login_url %>, if you're already a member.</p>
+			</div>
 	<% else %>
+	§<div id="peopleInfo">
 	      <p>Members of the Connected Republic who have recently contributed.</p>
         <p>Make sure to add a <%= link_to "bio", bio_settings_url%> and a <%= link_to "picture", picture_settings_url%> in your settings if you would like to appear in this section, too.</p>
+  	</div>
 	<% end %>
-	</div>
-	
-	<h2>
-		Recently signed up
-	</h2>
-		<ul class="miniUserList">
-			<% for user in User.recently_signed_up %>
-				<li>
-					<%= link_to user, user %>
-				</li>
-			<% end %>
-		</ul>
-		
-		<%= link_to "See all users", all_users_url %>
 
+	
+	<div>
+  	<h2>
+  		Recently signed up
+  	</h2>
+  		<ul class="miniUserList">
+  			<% for user in User.recently_signed_up %>
+  				<li>
+  					<%= link_to user, user %>
+  				</li>
+  			<% end %>
+  		</ul>
+		
+  		<p class="more"><%= link_to "See all users", all_users_url %></p>
+    </div>
 </div>
   <div id="main">
       <ul id="memberList">

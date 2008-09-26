@@ -10,11 +10,14 @@
 	  <p><a href="<%= formatted_featured_posts_url(:format => :rss) %>" class="rss">Subcribe to featured postings</a></p>
 	</div>
 	
-	<p class="featuredSelet">You are browsing featured postings. <%= link_to "Show all postings?", posts_url %></p>
+	<div>
+	  <p class="featuredSelet">You are browsing featured postings. <%= link_to "Show all postings?", posts_url %></p>
+	</div>
 	
 </div>
 
 <div id="main">
 	<%= render :partial => 'posts/post_list' %>
 </div>
+
 <%= clear_this %>
