@@ -1,17 +1,26 @@
 <div id="recentlyFeatured">
-<h2>Recent features</h2>
   <% for post in @featured %>
     <div class="post">
         <p class="avatar">
             <%= link_to_avatar_for(post.user, :tiny) %>
         </p>
         <div class="postContent">
-            <h2>
+            <h3>
 							<%= link_to post, post %> 
-							<span class="date">
-								<%= when_changed(post) %>
-						  </span>
-						</h2>
+						</h3>
+						<p class="meta">
+    					<span class="date">
+    						<% if post.created_at==post.updated_at%>
+    							created <%= time_ago_in_words(post.created_at) %> ago,
+    						<% else %>
+    							last updated 
+    							<%= time_ago_in_words(post.updated_at) %> ago,
+    						<% end %>
+    					</span>
+    					<span class="commentCount">
+    					<%= pluralize(post.comments.count, "Comment") %>
+    					</span>
+    			  </p>
         </div>
     </div>
   <% end%>

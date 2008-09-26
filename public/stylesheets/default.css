@@ -40,10 +40,16 @@ a {
 
 #subscribe {
   margin-bottom: 3em;
+    padding: 0px 3em 0px 1.5em;
+}
+
+#peopleTeaser {
+      padding: 0px 3em 0px 1.5em;
 }
 
 
 #subscribe h2 {
+	display: none;
 }
 
 
@@ -51,8 +57,8 @@ a {
 a.rss {
 	padding:0.4em 0.8em 0.4em 28px;
    background: #FFF url(/images/feed-icon.gif) no-repeat 8px center;
-   	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
+   	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
 	margin: 0px 0px 0.5em 0px;
 	text-decoration: underline;
 	border: 1px solid #DDD;
@@ -75,7 +81,7 @@ a:hover {
 }
 
 #content {
-	padding: 3em 2em 3em 2em;
+	padding: 3em 0em 3em 2em;
 	background: #FFF url(/images/wrapper_bottom.gif) bottom left no-repeat;
 	clear:left;
 }
@@ -92,7 +98,13 @@ input#user_user_avatar {
 
 #sidebar {
 	float: right;
-	width: 250px;
+	width: 300px;
+	padding: 1em 0px;
+	background-color: #EEE;
+		 -moz-border-radius-topleft: 5px;
+-webkit-border-top-left-radius: 5px;
+-moz-border-radius-bottomleft: 5px;
+-webkit-border-bottom-left-radius: 5px;
 }
 
 
@@ -263,19 +275,17 @@ h1.post {
   font-size: 2em;
 }
 
-#frontPage #main .postContent h2 {
+#frontPage #main .postContent h2, .postContent h3 {
   font-size: 1.2em;
 }
 
-#frontPage #main .postContent .date {
-	margin-top: 0.3em;
-}
 
 
 h2 {
   font-size: 1.3em;
   font-weight: normal;
   color: #000;
+  margin-top: 0px;
 }
 
 #errorExplanation {
@@ -593,12 +603,12 @@ span.readmore a{
 
 
 
-.postContent h2 {
+.postContent h2, .postContent h3 {
   font-size: 1em;
   margin-bottom: 0px;
 }
 
-.postContent h2 a {
+.postContent h2 a, .postContent h3 a {
   font-size: 1.2em;
   font-weight: bold;
 }
@@ -679,6 +689,7 @@ p.info{
   -moz-border-radius: 5px;
   color: #666;
   margin-bottom: 1em;
+  background-color: #FFF;
 }
 
 p.more {
@@ -692,6 +703,7 @@ p.featuredSelet {
   margin-bottom: 3em;
   font-size: 1.2em;
   line-height: 1.5em;
+      padding: 0px 3em 0px 1.5em;
 }
 
 div.topics {
@@ -813,6 +825,8 @@ p.date {
 #newContent {
   margin: 0.6em 0px 3em 0px;
     font-size: 1.2em;
+        padding: 1em 3em 0px 1.5em;
+    
 }
 
 #newContent a, #joinButton a.joinLink {
@@ -847,12 +861,9 @@ p.date {
 }
 
 .events .commentBody {
-  background-color: #EEE;
-  padding: 1px 1.3em;
+  padding: 0px;
   margin: 0.5em 0px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  line-height: 1.4em;
+  line-height: 1.5em;
 }
 
 .events .author {
@@ -863,6 +874,7 @@ p.date {
 
 .eventBody {
   padding-bottom: 0.5em;
+  margin-left: 40px;
 }
 
 .events img {
@@ -985,6 +997,24 @@ p.loginRequired {
    -moz-border-radius: 5px;
      background-color: #dce9f5;
 }
+
+#missionStatement {
+  line-height: 1.5em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  margin-bottom: 2em;
+  padding: 0px 3em 0px 1.5em;
+}
+
+
+#strapline {
+  font-size: 1.4em;
+  line-height: 1.5em;
+  color: #666;
+  margin: -0.8em 0px 2.5em 0px;
+}
+
+
 
 
 p.none a {

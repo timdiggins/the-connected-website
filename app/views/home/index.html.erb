@@ -2,25 +2,37 @@
 
 <div id="frontPage">
 	
-	<h1>Welcome to <%= APP_NAME %></h1>
 
-    <div id="missionStatement">
-            <p id="strapline">How can creators and users of public services gain from our increasingly connected world?</span>
-			<p>The Connected Republic, initiated by Cisco's Internet Business Solutions Group, is a community space where people with ideas can meet, share their thinking and link up with each other</p>
-    </div>
+
 	<div id="sidebar">
-		<%= render :partial => 'recent_features' %>
+	
+
+  <div id="missionStatement">
+    <h2>What is this?</h2>
+		<p>A community space, initiated by Cisco's Internet Business Solutions Group, where people with ideas can meet, share their thinking and link up with each other.</p>
+  </div>
+		
 		
 		<div id="subscribe">
 		  <h2>Subscribe</h2>
-		  <p><a href="<%= formatted_posts_url(:format => :rss) %>" class="rss">All postings</a></p>
-		  <p><a href="<%= formatted_featured_posts_url(:format => :rss) %>" class="rss">Featured postings only</a></p>
+		  <p><a href="<%= formatted_posts_url(:format => :rss) %>" class="rss">Subcribe to all postings</a></p>
+		  <p><a href="<%= formatted_featured_posts_url(:format => :rss) %>" class="rss">Subcribe to featured postings</a></p>
 		</div>
+		
+
+    
 		<%= render :partial => 'home/users' %>
 	</div>
 
 	<div id="main">
+	
+	<h1>Welcome to <%= APP_NAME %></h1>
+	<p id="strapline">How can creators and users of public services gain from our increasingly connected world?</span>
+	
+  <h2>Featured postings</h2>
+  
 		<%= render :partial => 'home/current_feature' if @current_featured %>
+		<%= render :partial => 'recent_features' %>
 		<%= render :partial => 'home/recent_activity' %>
 	</div>
 
