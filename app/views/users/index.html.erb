@@ -5,13 +5,13 @@
 	<% if !logged_in? %>
 	    <div>
      <p id="joinButton"><%= link_to "Join?", signup_url, :class => "joinLink" %><br />
-			<%= link_to "login", login_url %>, if you're already a member.</p>
+			<%= link_to "Login", login_url %>, if you're already a member.</p>
 			</div>
 	<% else %>
-	§<div id="peopleInfo">
-	      <p>Members of the Connected Republic who have recently contributed.</p>
-        <p>Make sure to add a <%= link_to "bio", bio_settings_url%> and a <%= link_to "picture", picture_settings_url%> in your settings if you would like to appear in this section, too.</p>
-  	</div>
+		<div id="peopleInfo">
+		      <p>Members of the Connected Republic who have recently contributed.</p>
+	        <p>Make sure to add a <%= link_to "bio", bio_settings_url%> and a <%= link_to "picture", picture_settings_url%> in your settings if you would like to appear in this section, too.</p>
+	  	</div>
 	<% end %>
 
 	
