@@ -19,16 +19,16 @@
 
                 <p>
                   <% if @topic.description.blank? %>
-                      <%= f.label :description, "Add a description for this topic" %>
+                      <%= f.label :description, "Add a description" %>
                   <% else%>
-                      <%= f.label :description, "Edit topic description" %>
+                      <%= f.label :description, "Edit description" %>
                   <% end%>
                   <%= f.text_area :description, :class => "largeInput" %>
                 </p>
     
 
                 <p class="submitBlock">
-                  <%= submit_tag "Update topic description" %> or <%= link_to "Cancel", @topic %>
+                  <%= submit_tag "Update description" %> or <%= link_to "Cancel", @topic %>
                 </p>
               <% end %>
         </div>
