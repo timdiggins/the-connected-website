@@ -1,11 +1,11 @@
 <div class="topics">
-	<h2>Belongs to (topics):</h2>
+	<h2>Belongs to (tags):</h2>
 	<ul>
 		<% for topic in @post.topics %>
 			<li>
 				<%= link_to topic, topic, :class => "topic" %> 
 				<% if logged_in? %>
-					<%= link_to "[x]", post_topic_url(@post, topic), :class => "delete" ,:method => :delete, :confirm => "Are you sure you'd like to remove this post from the topic '#{topic}'?" %>  
+					<%= link_to "[x]", post_topic_url(@post, topic), :class => "delete" ,:method => :delete, :confirm => "Are you sure you'd like to remove this post from the tag '#{topic}'?" %>  
 				<% end %>
 			</li>
 		<% end %>
@@ -13,7 +13,7 @@
 	
 	<% if logged_in? %>
 		<% form_tag post_topics_url(@post) do | f | %>	  
-			<%= label_tag :topic_name, "Add item to #{@post.topics.size==0 ? 'a' : 'another'} topic:" %>
+			<%= label_tag :topic_name, "Add item to #{@post.topics.size==0 ? 'a' : 'another'} tag:" %>
 			<%= text_field_tag :topic_name %>
 		<% end %>
 	<% end %>
