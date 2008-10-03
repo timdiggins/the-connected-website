@@ -1,9 +1,12 @@
-<div id="recentEvents" class="events">
-    <h2>Recently, <%=h @user %>... </h2>
-    <ul>
-    <% for event in @user.events %>
-
-					<%= render :partial => "events/event", :locals => { :event => event, :user => @user } %>
-    <% end %>
-    </ul>
-</div>
+<% if @user.events.empty? %>
+<% else %>
+		<div id="recentEvents" class="events">
+		    <h2>Recently, <%=h @user %>... </h2>
+		    <ul>
+		    <% for event in @user.events %>
+		
+							<%= render :partial => "events/event", :locals => { :event => event, :user => @user } %>
+		    <% end %>
+		    </ul>
+		</div>
+<% end %>

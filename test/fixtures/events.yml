@@ -1,0 +1,10 @@
+
+alex_interesting_article_created:
+    user: alex
+    detail: alex_interesting_article (Post)
+    created_at: <%= 1.hours.ago.to_s :db %>
+    
+alex_boring_link_created:
+    user: alex
+    detail: alex_boring_link (Post)
+    created_at: <%= 1.days.ago.to_s :db %>
