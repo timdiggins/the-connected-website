@@ -11,5 +11,8 @@
 		<li <%= current_if_context_is(:username_email) %>>
 			<%= link_to "User name and email", username_email_settings_url %>
 		</li>
+		<li <%= current_if_context_is(:password) %>>
+			<%= link_to "Password", password_settings_url %>
+		</li>
 	</ul>
 </div>

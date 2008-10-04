@@ -11,6 +11,23 @@ class SettingsController < ApplicationController
     flash[:notice] = "Saved new avatar."
     redirect_to picture_settings_url
   end
+  
+  def password
+    return if request.get?
+    @user.password_required = true
+    return unless @user.update_attributes(params[:user])
+    
+    flash[:notice] = "Saved password"
+    redirect_to @user
+  end
+  
+  def username_email
+    return if request.get?
+    return unless @user.update_attributes(params[:user])
+    
+    flash[:notice] = "Saved username and email"
+    redirect_to @user
+  end
 
   def update
     return render(:action => :username_email) unless @user.update_attributes(params[:user])

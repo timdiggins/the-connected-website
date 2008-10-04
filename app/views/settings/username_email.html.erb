@@ -5,7 +5,7 @@
 	<div id="main">		
 			<%= error_messages_for(:user) %>
 
-		  <% form_for @user, :url => settings_url do | f | %>
+		  <% form_for @user, :url => username_email_settings_url do | f | %>
 
 		    <p>
 		      <%= f.label :login, "Your user name" %>
@@ -18,7 +18,7 @@
 		    </p>
 	
 		    <p class="submitBlock">
-		      <%= submit_tag "Update your account" %>
+		      <%= submit_tag "Save changes" %>
 		    </p>
 		  <% end %>
 	</div>
