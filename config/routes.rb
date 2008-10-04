@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.forgot_password '/login/forgot_password', :controller => 'sessions', :action => 'forgot_password'
   map.reset_password 'rp/:reset_password_token', :controller => "sessions", :action => 'reset_password'
+  map.admin_emails 'admin/emails', :controller => 'admin', :action => 'emails'
   
   map.info 'info/:action', :controller => 'info'
   
