@@ -10,7 +10,6 @@ class Event < ActiveRecord::Base
     event = Event.new(:user => detail.user)
     event.detail = detail
     event.save
-    detail.user.updated_at = detail.updated_at
     detail.user.save
     event
   end

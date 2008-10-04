@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.some_having_bio_and_avatar
+    @users = User.recently_contributed
     @recently_signed_up = User.recently_signed_up
   end
   

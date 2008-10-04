@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
     
     Event.create_for(@comment)
     @post.update_attribute(:updated_at, @comment.updated_at)
+    current_user.update_attribute(:contributed_at, Time.now)
     
     flash[:notice] = "Successfully posted comment"
     redirect_to @post

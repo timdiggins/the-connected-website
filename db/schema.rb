@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080915204300) do
+ActiveRecord::Schema.define(:version => 20081004054339) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "user_id"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20080915204300) do
     t.string   "name"
     t.string   "location"
     t.boolean  "admin",                     :default => false
+    t.datetime "contributed_at"
   end
 
 end

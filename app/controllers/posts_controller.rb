@@ -26,6 +26,7 @@ class PostsController < ApplicationController
     return render(:action => :new) unless @post.valid?
     
     Event.create_for(@post)
+    current_user.update_attribute(:contributed_at, Time.now)
     @post.topics << @initial_topic if @initial_topic
     
     redirect_to posts_url
