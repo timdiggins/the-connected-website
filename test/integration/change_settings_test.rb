@@ -19,7 +19,7 @@ class ChangeSettingsTest < ActionController::IntegrationTest
       put 'settings/password', { :user => { :password => 'new_password'} }
       assert_redirected_to '/users/duff'
       follow_redirect!
-      assert_flash 'Saved account settings'
+      assert_flash 'Saved password'
     end
     
     assert !login(:duff)
@@ -44,7 +44,6 @@ class ChangeSettingsTest < ActionController::IntegrationTest
 
       assert_select "input#user_email[value=duffer@omelia.org]"
       assert_select "input#user_login[value=duffer]"
-      view
     end
   end
 
