@@ -23,10 +23,10 @@
 					</p>
 					<p><%= post.brief %></p>
 				
-					<% unless post.topics.empty? %>
-						<p class="topics">posted in
-						<% for topic in post.topics %>
-							<%= link_to topic, topic, :class => "topic" %>
+					<% unless post.tags.empty? %>
+						<p class="tags">posted in
+						<% for tag in post.tags %>
+							<%= link_to tag, tag, :class => "tag" %>
 						<% end %></p>
 					<%end %>
 			</div>

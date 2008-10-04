@@ -23,9 +23,9 @@
                  <%= @current_featured.brief %>
                 <span class="readmore"><%= link_to "Read more", @current_featured %></span> 
 				
-					<% if @current_featured.topics.size>0 %><p class="topics">posted in
-						<% for topic in @current_featured.topics %>
-							<%= link_to topic, topic, :class => "topic" %>
+					<% if @current_featured.tags.size>0 %><p class="tags">posted in
+						<% for tag in @current_featured.tags %>
+							<%= link_to tag, tag, :class => "tag" %>
 						<% end %></p>
 					<%end %>
      </div>

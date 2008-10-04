@@ -16,18 +16,18 @@ class PostsController < ApplicationController
   
   def new
     @post = Post.new
-    @initial_topic = Topic.find_by_id(params[:topic])
+    @initial_tag = Tag.find_by_id(params[:tag])
   end
   
   def create
     @post = Post.new(params[:post])
     @post.user = current_user
-    @initial_topic = Topic.find_by_id(params[:topic])
+    @initial_tag = Tag.find_by_id(params[:tag])
     return render(:action => :new) unless @post.valid?
     
     Event.create_for(@post)
     current_user.update_attribute(:contributed_at, Time.now)
-    @post.topics << @initial_topic if @initial_topic
+    @post.tags << @initial_tag if @initial_tag
     
     redirect_to posts_url
   end

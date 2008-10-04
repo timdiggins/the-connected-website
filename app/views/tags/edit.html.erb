@@ -1,5 +1,5 @@
 
-<h1><%= @page_title = "Edit #@topic" %></h1>
+<h1><%= @page_title = "Edit #@tag" %></h1>
 		
 <div id="sidebar">
 
@@ -8,9 +8,9 @@
 <div id="main">
 
         <div id="main">     
-	            <%= error_messages_for(:topic) %>
+	            <%= error_messages_for(:tag) %>
 
-              <% form_for @topic, :url => topic_url do | f | %>
+              <% form_for @tag, :url => tag_url do | f | %>
 							
 								<p>
 									<%= f.label :name %>
@@ -18,7 +18,7 @@
 								</p>
 
                 <p>
-                  <% if @topic.description.blank? %>
+                  <% if @tag.description.blank? %>
                       <%= f.label :description, "Add a description" %>
                   <% else%>
                       <%= f.label :description, "Edit description" %>
@@ -28,7 +28,7 @@
     
 
                 <p class="submitBlock">
-                  <%= submit_tag "Update description" %> or <%= link_to "Cancel", @topic %>
+                  <%= submit_tag "Update description" %> or <%= link_to "Cancel", @tag %>
                 </p>
               <% end %>
         </div>

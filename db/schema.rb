@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081004054339) do
+ActiveRecord::Schema.define(:version => 20081004060913) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "user_id"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20081004054339) do
   end
 
   create_table "categorizations", :force => true do |t|
-    t.integer  "topic_id"
+    t.integer  "tag_id"
     t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20081004054339) do
 
   create_table "post_categorization_events", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "topic_id"
+    t.integer  "tag_id"
     t.integer  "post_id"
     t.string   "type"
     t.datetime "created_at"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20081004054339) do
     t.datetime "featured_at"
   end
 
-  create_table "topics", :force => true do |t|
+  create_table "tags", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at"

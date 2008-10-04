@@ -708,7 +708,7 @@ p.featuredSelet {
   line-height: 1.5em;
 }
 
-div.topics {
+div.tags {
   margin-top: 1em;
   padding: 0px;
   padding-bottom: 1em;
@@ -718,18 +718,18 @@ div.topics {
   background-color: #FFF;
 }
 
-p.topics {
+p.tags {
   color: #666;
 }
 
-div.topics h2 {
+div.tags h2 {
   font-size: 1em;
   font-weight: bold;
   margin: 0px;
   padding: 0.5em 1em 0px 1em;
 }
 
-p.topics a.topic {
+p.tags a.tag {
   background-color: #dce9f5;
   padding: 0.3em 0.7em;
   -webkit-border-radius: 2px;
@@ -737,11 +737,11 @@ p.topics a.topic {
   margin-left: 0.3em;
 }
 
-div.topics a.topic {
+div.tags a.tag {
   float:left;
 }
 
-a.topic:hover {
+a.tag:hover {
   color: #2A6B87;
   text-decoration: underline;
 }
@@ -766,25 +766,25 @@ a.delete:hover {
   border: 1px solid #dfdfdf;
 }
 
-div.topics form {
+div.tags form {
   border-top: 1px solid #EEE;
   padding: 0.5em 1em 0px 1em;
   margin-bottom: 0px;
 }
 
-div.topics ul {
+div.tags ul {
   list-style: none;
   margin: 0px 0px 0px 0px;
   padding: 0px 1em 0.5em 1em;
 }
 
-div.topics li {
+div.tags li {
   font-size: 1.1em;
   margin: 0.5em 0px;
   clear: left;
 }
 
-div.topics input {
+div.tags input {
   font-size: 1.1em;
 }
 
@@ -953,7 +953,7 @@ p.loginRequired {
   -moz-border-radius: 2px;
 }
 
-#user_profile_text, #topic_description {
+#user_profile_text, #tag_description {
   width: 100%;
   font-size: 1.2em;
   height: 15em;
@@ -975,18 +975,18 @@ p.loginRequired {
 
 
 
-#topicDescription p {
+#tagDescription p {
   line-height: 1.5em;
   font-size: 1.1em;
 }
 
-#topicDescription p.tinyOption {
+#tagDescription p.tinyOption {
   font-size: 1em;
   text-align: right;
   margin: 0px;
 }
 
-#topicDescription {
+#tagDescription {
 	padding: 1em 1.5em 0.5em 1em;
 	margin-bottom: 3em;
 	-webkit-border-radius: 5px;
@@ -1024,7 +1024,7 @@ span.count {
   color: #666;
 }
 
-#topicDescription h1 {
+#tagDescription h1 {
   color: #000;
   margin-bottom: 0px;
 }
@@ -1032,28 +1032,28 @@ span.count {
 
 
 
-#topicList {
+#tagList {
   list-style: none;
   padding:0px;
   margin: 0px;
 }
 
-#topicList li {
+#tagList li {
 margin-bottom: 1.5em;
 }
 
-#topicList p {
+#tagList p {
 	font-size: 1.1em;
 	margin: 0.5em 0px 2em 0px;
 	padding: 0px 1em;;
 }
 
-#topicList h2 {
+#tagList h2 {
 	padding: 0px;
 	margin: 0px;
 }
 
-#topicList h2 a {
+#tagList h2 a {
   display: block;
   font-size: 1.1em;
 margin-bottom: 0.5em;
@@ -1063,7 +1063,7 @@ padding: 0.5em 1em 0.4em 1em;
 background-color: #dce9f5;
 }
 
-#topicList h2 a:hover {
+#tagList h2 a:hover {
   text-decoration: none;
   background-color: #c2dcf5;
 }

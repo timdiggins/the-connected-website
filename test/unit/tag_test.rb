@@ -1,0 +1,73 @@
+require File.dirname(__FILE__) + '/../test_helper'
+
+class TagTest < ActiveSupport::TestCase
+
+  should "enforce name uniqueness without case sensitivity" do
+    tag = Tag.create!(:name => "Here")
+    another = Tag.new(:name => "HerE")
+    assert !another.valid?
+  end
+  
+  should "handle basic relationship with post" do
+    tag = Tag.create!(:name => "Cool")
+    post = Post.create!(:title => "My Post", :detail => "Here it be")
+    
+    assert_equal([], tag.posts)
+    assert_equal([], post.tags)
+    
+    post.tags << tag
+    post.reload
+    tag.reload
+    assert_equal([tag], post.tags)
+    assert_equal([post], tag.posts)
+    
+    another_post = Post.create!(:title => "My Second Post", :detail => "Here it be again")
+    another_tag = Tag.create!(:name => "Really Cool")
+    
+    tag.posts << another_post
+    another_post.reload
+    tag.reload
+    assert_equal([tag], post.tags)
+    assert_equal([tag], another_post.tags)
+    assert_equal([post, another_post], tag.posts)
+    assert_equal([], another_tag.posts)
+    
+    post.tags << another_tag
+    post.tags << another_tag
+    post.tags << another_tag
+    post.reload
+    another_tag.reload
+    assert_equal([tag, another_tag], post.tags)
+    assert_equal([tag], another_post.tags)
+    assert_equal([post, another_post], tag.posts)
+    assert_equal([post], another_tag.posts)
+    
+    assert_difference("Categorization.count", -3) do
+      assert_no_difference("Tag.count") do
+        assert_no_difference("Post.count") do
+          post.tags.delete(another_tag)
+        end
+      end
+    end
+    
+    another_tag.reload
+    
+    assert_equal([tag], post.tags)
+    assert_equal([tag], another_post.tags)
+    assert_equal([post, another_post], tag.posts)
+    assert_equal([], another_tag.posts)
+    
+    assert_difference("Categorization.count", -2) do
+      assert_no_difference("Tag.count") do
+        assert_no_difference("Post.count") do
+          post.tags.delete(tag)
+          another_post.tags.delete(tag)
+        end
+      end
+    end
+    
+  end
+
+
+  
+end

@@ -1,0 +1,23 @@
+<% @current_tab = :tags %>
+<h1><%= @page_title = "Tags" %></h1>
+
+<div id="sidebar">
+    <div>
+      <p class="info">To create a new tag, just add the tag to the appropriate posting.</p>
+    </div>
+</div>	
+	
+<div id="main">
+	<ul id="tagList">
+		<% for tag in @tags %>
+			<li>
+				<h2><%= link_to "#{tag} <span class='count'>#{pluralize(tag.posts.count, "article")}</span>", tag %></h2>
+				<% if tag.description %>
+					<p><%= truncate(tag.description, 200) %></p>
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
+
+</div>
+<%= clear_this %>
