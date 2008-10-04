@@ -3,11 +3,11 @@
 <div id="sidebar">
 	
 	<% if !logged_in? %>
-	    <div>
-     <p id="joinButton"><%= link_to "Join?", signup_url, :class => "joinLink" %><br />
+	   <div>
+        <p id="joinButton"><%= link_to "Join?", signup_url, :class => "joinLink" %><br />
 			<%= link_to "Login", login_url %>, if you're already a member.</p>
-			</div>
-	<% else %>
+	   </div>
+    <% else %>
 		<div id="peopleInfo">
 		      <p>Members of the Connected Republic who have recently contributed.</p>
 	  	</div>
@@ -27,7 +27,10 @@
   		</ul>
 		
   		<p class="more"><%= link_to "See all users", all_users_url %></p>
-    </div>
+  		<%if logged_in? && current_user.admin %>
+		  <p class="more"><%= link_to "See all users' email addresses", admin_emails_url %></p>
+		  <% end %>
+</div>
 </div>
   <div id="main">
       <ul id="memberList">
