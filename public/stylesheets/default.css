@@ -444,13 +444,13 @@ ul#memberList .avatar img {
 }
 
 .memeberListProfileDetails p {
-  margin: 0px 0px 0.5em 0px;
+  margin: 0.8em 0px 0.5em 0px;
 }
 
 .memeberListProfileDetails h2 {
   margin: 0px;
   font-size: 1.3em;
-  margin-bottom: 0.5em;
+  margin-bottom: 0px;
   font-weight: bold;
 }
 
@@ -565,7 +565,14 @@ p.location {
   font-size: 1.1em;
   margin-top: 0.2em;
   font-weight: bold;
-  color: #999;
+  color: #666;
+}
+
+ul p.location {
+  font-size: 1em;
+  margin-top: 0px;
+  font-weight: normal;
+  color: #666;
 }
 
 
