@@ -2,7 +2,7 @@
   <h2>People</h2>
 
   <% for user in @users %>
-  	<div id="authorBlock">
+  	<div class="authorBlock">
   		<h2><%= link_to_user(user) %></h2>
   		<p class="avatar">
   	    <%= link_to_avatar_for(user, :medium) %>

@@ -1,3 +1,5 @@
+/* @override http://localhost:3000/stylesheets/default.css?1223227096 */
+
 body {
   font-family: arial, sans-serif;
   font-size: 0.8em;
@@ -34,9 +36,7 @@ a {
   padding-bottom: 1em;
 }
 
-#peopleTeaser {
 
-}
 
 
 #subscribe h2 {
@@ -102,8 +102,12 @@ input#user_user_avatar {
 	margin: 0px 3em 1em 2em;	
 }
 
-div#authorBlock {
-  margin: 0px;
+
+#peopleTeaser div.authorBlock {
+  margin: 0.5em 0px;
+  border-top: 1px solid #DDD;
+  padding-top: 0.5em;
+
 }
 
 
@@ -691,16 +695,6 @@ p.meta {
   background: url(../images/comment.gif) no-repeat top left;
 }
 
-#sideBar #authorBlock {
-  border: 1px solid #DDD;
-  padding: 0px;
-  line-height: 1.5em;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  color: #666;
-  margin-bottom: 1em;
-  background-color: #FFF;
-}
 
 p.more {
   text-align: right;
@@ -714,8 +708,8 @@ p.featuredSelet {
   line-height: 1.5em;
 }
 
-div.tags {
-  margin-top: 1em;
+#sidebar div.tags {
+  margin-top: 3em;
   padding: 0px;
   padding-bottom: 1em;
   line-height: 1.5em;
@@ -796,14 +790,19 @@ div.tags input {
 
 
 
-#authorBlock h2 {
+.authorBlock h2 {
 	font-size: 1.2em;
 	margin: 0px;
 }
 
-#authorBlock p.avatar {
+.authorBlock p.avatar {
   float: left;
-  margin: 1em 1em 0.3em 0px;
+  margin: 0.5em 1em 0.3em 0px;
+}
+
+.authorBlock p {
+  margin: 0.5em 0px 0px 0px;
+    line-height: 1.4em;
 }
 
 
