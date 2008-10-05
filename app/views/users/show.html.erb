@@ -9,6 +9,9 @@
 
 		<div id="profileDetails">
 			<h1><%=h @user %></h1>
+			<% if @user.location != "" %>
+			  <p class="location"><%=h @user.location %></p>
+			<% end %>
 			<%= render :partial => 'users/profile' %>
 			<%= render :partial => 'users/recent_events' %>
 			

@@ -561,6 +561,13 @@ form p {
   margin: -3em 0px 3em -2em;
 }
 
+p.location {
+  font-size: 1.1em;
+  margin-top: 0.2em;
+  font-weight: bold;
+  color: #999;
+}
+
 
 #flash p {
   background-color: #FE9;
