@@ -5,6 +5,7 @@
 	http://localhost:3004/stylesheets/default.css?1222241762
 	http://localhost:3000/stylesheets/default.css?1222255860
 	http://localhost:3000/stylesheets/default.css?1222441587
+	http://localhost:3000/stylesheets/default.css?1223227096
 */
 
 body {
@@ -557,7 +558,7 @@ form p {
 
 
 #flash {
-  margin: -3em -2em 3em -2em;
+  margin: -3em 0px 3em -2em;
 }
 
 
