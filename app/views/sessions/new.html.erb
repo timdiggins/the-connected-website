@@ -1,10 +1,11 @@
 <div id="page">
+
 	<div class="largeForm">
 
 	  <h1><%= @page_title = "Login" %></h1>
-  
+    
 	   <% if !flash_value.blank? %>
-		  <p>
+		  <p class="passwordChanged">
 		    Please note that passwords had to be reset on October 6th, to move to the new site. <%= link_to "Click here", forgot_password_url %> to retrieve your login name and new password.
 		  </p>
 		<% end %>

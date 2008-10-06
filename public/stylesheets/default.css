@@ -348,6 +348,10 @@ div.largeForm label {
 div.largeForm p.rightLabel {
 	margin-left: 40%;	
 }
+div.largeForm p.passwordChanged {
+  		margin-left: 40%;
+  		font-style: italic;	
+}
 
 
 div.largeForm label.right {
