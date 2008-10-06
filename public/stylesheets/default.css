@@ -32,7 +32,6 @@ div#dangerAdmin p {
 
 a {
 	color: #2A6B87;
-	text-decoration: none;
 }
 
 #subscribe {
@@ -54,7 +53,7 @@ a.rss {
    	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	margin: 0px 0px 0.5em 0px;
-	text-decoration: underline;
+	text-decoration: none;
 	border: 1px solid #DDD;
 	display: block;
 	font-size: 1.2em;
@@ -456,6 +455,10 @@ ul#memberList .avatar img {
   font-weight: bold;
 }
 
+.memeberListProfileDetails h2 a {
+  text-decoration: none;
+}
+
 
 
 p.avatar {
@@ -636,6 +639,7 @@ span.readmore a{
 .postContent h2 a, .postContent h3 a {
   font-size: 1.2em;
   font-weight: bold;
+  	text-decoration: none;
 }
 
 p.meta {
@@ -1073,6 +1077,7 @@ padding: 0.5em 1em 0.4em 1em;
 -webkit-border-radius: 2px;
 -moz-border-radius: 2px;
 background-color: #dce9f5;
+	text-decoration: none;
 }
 
 #tagList h2 a:hover {
@@ -1229,3 +1234,20 @@ span.nextPage,span.previousPage {
 	float: right;
 	padding: 0px;
 }
+
+#pageNotFound {
+  margin: 1em auto;
+  font-size: 1.3em;
+  width: 500px;
+
+  padding: 2em;
+  background-color: #fff9db;
+  
+}
+
+#pageNotFound h1 {
+  font-size: 1.3em;
+  color:#000;
+  font-weight: bold;
+}
+
