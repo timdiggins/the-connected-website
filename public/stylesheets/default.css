@@ -1212,6 +1212,7 @@ span.nextPage,span.previousPage {
 	background-color: #EEE;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
+	border: 1px solid #DDD;
 }
 
 #news a {
