@@ -16,5 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.root :controller => "home"
   
+  # If the user has typed an Invalid URL
+  map.connect "*path", :controller => "www", :action => "unrecognized404"
 end
 
