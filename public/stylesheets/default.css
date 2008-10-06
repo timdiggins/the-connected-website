@@ -1186,3 +1186,42 @@ span.nextPage,span.previousPage {
 	float: left;
 	margin-right: 0.5em;
 }
+
+
+
+
+
+
+/* news */
+
+#news {
+	margin: 0px;
+	background-color: #FFF;
+	overflow:hidden;
+	white-space: nowrap;
+}
+
+
+#news p {
+	padding: 0.5em 1em 0.5em 1em;
+	text-align: left;
+	margin: 1em 2em;
+	background-color: #EEE;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+
+#news a {
+	text-decoration: underline;
+}
+
+#news b {
+	color: #D33;
+	text-transform: uppercase;
+	font-size: 0.9em;
+}
+
+#news a.dismis {
+	float: right;
+	padding: 0px;
+}

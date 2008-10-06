@@ -22,9 +22,15 @@
 
 <%= render :partial => 'layouts/tabs' %>
 
+
+
 <% if session[:as_someone_else] %>
   <div id="dangerAdmin">
     <p><strong>CAREFUL!  You're logged in as <%= current_user %> !</strong></p>
   </div>
 <% end %>
+</div>
+
+<div id="news">
+	<p><b>New:</b> message! <a href="#" class="dismis">Hide<a></p>
 </div>
