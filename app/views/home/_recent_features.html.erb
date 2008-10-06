@@ -9,6 +9,7 @@
 							<%= link_to h(post), post %> 
 						</h3>
 						<p class="meta">
+						  Featured, 
     					<span class="date">
     						<% if post.created_at==post.updated_at%>
     							created <%= time_ago_in_words(post.created_at) %> ago,
