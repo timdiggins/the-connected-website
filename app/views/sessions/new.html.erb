@@ -3,6 +3,12 @@
 
 	  <h1><%= @page_title = "Login" %></h1>
   
+	   <% if !flash_value.blank? %>
+		  <p>
+		    Please note that passwords had to be reset on October 6th, to move to the new site. <%= link_to "Click here", forgot_password_url %> to retrieve your login name and new password.
+		  </p>
+		<% end %>
+
 	  <% form_tag sessions_path do %>
 	    <p>
 	      <%= label_tag "login", "User name" %>
@@ -22,7 +28,9 @@
 	    <p class="submitBlock">
 	  	  <%= submit_tag 'Log in' %>  <%= link_to "Forgot your username or password?", forgot_password_url %>
 	  	</p>
+		
 	  <% end -%>
+
 
 	  <p class="formOptions">
 	    Not signed up yet? <%= link_to "Join now!", signup_url %>
