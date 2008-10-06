@@ -28,7 +28,7 @@
 					<span class="author"><%= link_to_user(post.user) %>
 				</p>
 				<div class="postContent">
-					<h2><%= link_to post, post %> 
+					<h2><%= link_to h(post), post %> 
 						<span class="date">
 							<%= when_changed(post) %>
 						</span>
