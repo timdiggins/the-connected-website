@@ -7,4 +7,14 @@ class Tag < ActiveRecord::Base
   has_many :posts, :through => :categorizations, :uniq => true
   alias_attribute :to_s, :name
   
+  def to_param
+    name
+  end
+  
+  def self.find_by_name!(name)
+    tag = self.find(:first, :conditions => { :name => name })
+    raise ActiveRecord::RecordNotFound, "Couldn't find Tag named '#{name}'" unless tag
+    tag
+  end
+  
 end

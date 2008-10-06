@@ -68,6 +68,13 @@ class TagTest < ActiveSupport::TestCase
     
   end
 
-
+  should "raise RecordNotFound if there's no tag with the name" do
+    assert_raises(ActiveRecord::RecordNotFound) { Tag.find_by_name!("CoolStuff") }
+    
+    t = Tag.create!(:name => "CoolStuff")
+    assert_nothing_raised {  
+      assert_equal(t, Tag.find_by_name!("CoolStuff"))
+    }
+  end
   
 end

@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   before_filter :login_required, :only => [ :create, :destroy ]
   
   def show
-    @tag = Tag.find(params[:id])
+    @tag = Tag.find_by_name!(params[:id])
   end
   
   def create
@@ -17,7 +17,7 @@ class TagsController < ApplicationController
   
   def destroy
     @post = Post.find(params[:post_id])
-    @tag = Tag.find(params[:id])
+    @tag = Tag.find_by_name!(params[:id])
     @post.tags.delete(@tag)
 
     Event.create_for(PostRemovedFromTagEvent.new(:user => current_user, :tag => @tag, :post => @post))
@@ -29,12 +29,12 @@ class TagsController < ApplicationController
     @tags = Tag.all
   end
   
-    def edit
-    @tag = Tag.find(params[:id])    
+  def edit
+    @tag = Tag.find_by_name!(params[:id])    
   end
 
   def update
-    @tag = Tag.find(params[:id])
+    @tag = Tag.find_by_name!(params[:id])
     return render(:action => :edit) unless @tag.update_attributes(params[:tag])
     
     flash[:notice] = "Successfully updated tag"
