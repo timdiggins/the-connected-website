@@ -1,4 +1,7 @@
-/* @override http://localhost:3000/stylesheets/default.css?1223227096 */
+/* @override 
+	http://localhost:3000/stylesheets/default.css?1223227096
+	http://localhost:3000/stylesheets/default.css?1223292850
+*/
 
 body {
   font-family: arial, sans-serif;
@@ -72,7 +75,7 @@ a:hover {
 }
 
 #content {
-	padding: 3em 0em 3em 2em;
+	padding: 2.5em 0em 3em 2em;
 	background: #FFF url(/images/wrapper_bottom.gif) bottom left no-repeat;
 	clear:left;
 }
@@ -1196,6 +1199,7 @@ span.nextPage,span.previousPage {
 
 #news {
 	margin: 0px;
+	border-bottom: 1px solid #EEE;
 	background-color: #FFF;
 	overflow:hidden;
 	white-space: nowrap;
@@ -1203,12 +1207,10 @@ span.nextPage,span.previousPage {
 
 
 #news p {
-	padding: 0.5em 1em 0.5em 1em;
+	padding: 0.5em 2em 0.5em 2em;
 	text-align: left;
-	margin: 1em 2em;
-	background-color: #EEE;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
+	margin: 0.5em 0px;
+	color: #666;
 }
 
 #news a {
