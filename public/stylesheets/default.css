@@ -1229,3 +1229,20 @@ span.nextPage,span.previousPage {
 	float: right;
 	padding: 0px;
 }
+
+#pageNotFound {
+  margin: 1em auto;
+  font-size: 1.3em;
+  width: 500px;
+
+  padding: 2em;
+  background-color: #fff9db;
+  
+}
+
+#pageNotFound h1 {
+  font-size: 1.3em;
+  color:#000;
+  font-weight: bold;
+}
+
