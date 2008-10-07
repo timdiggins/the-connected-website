@@ -23,7 +23,12 @@ class User < ActiveRecord::Base
 
   def self.authenticate(login, password)
     u = find_by_login(login) 
-    u && u.authenticated?(password) ? u : nil
+    if u && u.authenticated?(password)
+      u.track_login
+      u
+    else
+      nil
+    end
   end
   
   def self.encrypt(password, salt)
@@ -72,6 +77,11 @@ class User < ActiveRecord::Base
     result = "#{self}'"
     result += "s" unless to_s.ends_with?('s')
     result
+  end
+  
+  def track_login
+    self.update_attribute(:last_login_at, Time.now)
+    self.increment!(:login_count)
   end
   
   def self.find_by_login!(login)

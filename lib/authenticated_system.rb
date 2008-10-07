@@ -74,6 +74,7 @@ module AuthenticatedSystem
       if user && user.remember_token?
         user.remember_me
         self.current_user = user
+        user.track_login
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
         flash[:notice] = "Logged in successfully"
       end
