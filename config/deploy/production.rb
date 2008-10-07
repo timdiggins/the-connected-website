@@ -1,7 +1,7 @@
 require 'spacesuit/recipes/backup'
 
 set :deploy_to, "/var/www/apps/#{application}"
-set :domain, "next.theconnectedrepublic.org"
+set :domain, "theconnectedrepublic.org"
 
 set :user, 'republic'
 set :keep_db_backups, 100
