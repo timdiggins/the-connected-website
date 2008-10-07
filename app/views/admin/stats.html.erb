@@ -1,0 +1,22 @@
+<p>
+Total user count: <strong><%= number_with_delimiter(User.count) %> </strong>
+</p>
+
+<p>
+New users in past 24 hours: <strong><%= number_with_delimiter(User.created_since(24.hours.ago).count) %></strong>
+</p>
+
+
+<p>
+New users in past 7 days: <strong><%= number_with_delimiter(User.created_since(7.days.ago).count) %></strong>
+</p>
+
+
+<p>
+Logins in past 24 hours: <strong><%= number_with_delimiter(User.count(:conditions => ["last_login_at > ?", 24.hours.ago])) %></strong> 
+</p>
+
+
+<p>
+Logins in past 7 days: <strong><%= number_with_delimiter(User.count(:conditions => ["last_login_at > ?", 7.days.ago])) %></strong> 
+</p>

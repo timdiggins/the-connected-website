@@ -5,4 +5,8 @@ class AdminController < ApplicationController
     @users = User.all
   end
   
+  def stats
+    
+  end
+  
 end
