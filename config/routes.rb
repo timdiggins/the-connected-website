@@ -10,7 +10,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :users, :member => { :become => :post }, :collection => { :all => :get }, :requirements => { :id => /.*/ }
   map.resources :sessions
-  map.resources :posts, :has_many => [ :comments, :tags ], :member => { :feature => :put, :unfeature => :put }, :collection => { :featured => :get }
+  map.resources :posts, :has_many => [ :comments], :member => { :feature => :put, :unfeature => :put }, :collection => { :featured => :get } do | post |
+    post.resources :tags, :requirements => { :id => /.*/ }
+  end
+  
   map.resources :tags, :requirements => { :id => /.*/ }
   map.resource  :settings, :collection => { :save_new_avatar => :put, :picture => :get, :username_email => :any, :bio => :any, :password => :any }
   
