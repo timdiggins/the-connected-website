@@ -19,8 +19,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find_by_login(params[:id])
-    return render_404 unless @user
+    @user = User.find_by_login!(params[:id])
   end
   
   def index
@@ -38,8 +37,5 @@ class UsersController < ApplicationController
     session[:as_someone_else] = true
     redirect_to root_url
   end
-  
-  
-  
 
 end

@@ -74,6 +74,12 @@ class User < ActiveRecord::Base
     result
   end
   
+  def self.find_by_login!(login)
+    user = self.find(:first, :conditions => { :login => login })
+    raise ActiveRecord::RecordNotFound, "Couldn't find User with login '#{login}'" unless user
+    user
+  end
+  
   
   private
     def encrypt_password

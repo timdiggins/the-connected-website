@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.admin_emails 'admin/emails', :controller => 'admin', :action => 'emails'
   map.info 'info/:action', :controller => 'info'
 
-  map.resources :users, :member => { :become => :post }, :collection => { :all => :get }
+  map.resources :users, :member => { :become => :post }, :collection => { :all => :get }, :requirements => { :id => /.*/ }
   map.resources :sessions
   map.resources :posts, :has_many => [ :comments, :tags ], :member => { :feature => :put, :unfeature => :put }, :collection => { :featured => :get }
   map.resources :tags, :requirements => { :id => /.*/ }

@@ -66,6 +66,16 @@ class UserTest < ActiveSupport::TestCase
     assert_equal("login_ending_with_s'", user.possessive_to_s)
   end
   
+  should "raise RecordNotFound if there's no user with the login" do
+    assert_raises(ActiveRecord::RecordNotFound) { User.find_by_login!("CoolGuy") }
+    
+    t = new_valid_user(:login => "CoolGuy")
+    t.save!
+    assert_nothing_raised {  
+      assert_equal(t, User.find_by_login!("CoolGuy"))
+    }
+  end
+  
 
   private
     def new_valid_user(options = {})
