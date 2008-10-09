@@ -5,6 +5,6 @@ class HomeController < ApplicationController
     @current_featured = @featured.shift
     
     @events = Event.sorted_by_created_at.limit_to(15)
-    @users = User.recently_contributed
+    @users = User.recently_contributed(3)
   end
 end

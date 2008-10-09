@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.recently_contributed
+    @users = User.recently_contributed(10)
     @recently_signed_up = User.recently_signed_up
   end
   

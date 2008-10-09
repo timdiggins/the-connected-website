@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   
   alias_attribute :to_s, :login
   
-  named_scope :recently_contributed, :limit => 3, :order => "contributed_at DESC"
+  named_scope :recently_contributed, lambda { | limit | { :limit => limit, :order => "contributed_at DESC" } }
   named_scope :recently_signed_up, :limit => 10, :order => "created_at DESC" 
   named_scope :order_by_created_at, :order => "created_at DESC" 
   named_scope :created_since, lambda { | the_date | { :conditions => [ "created_at > ?", the_date ] } }
