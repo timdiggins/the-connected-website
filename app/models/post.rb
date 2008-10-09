@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   validates_tiny_mce_presence_of :detail
   
   belongs_to :user
-  has_many :comments, :order => 'created_at DESC', :dependent => :destroy
+  has_many :comments, :order => 'created_at', :dependent => :destroy
   has_many :categorizations
   has_many :tags, :through => :categorizations, :uniq => true
   
