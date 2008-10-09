@@ -27,7 +27,8 @@ class ApplicationController < ActionController::Base
         :editor_selector => 'mceEditor',
         :theme_advanced_buttons1 => %w{ bold italic strikethrough separator bullist numlist separator indent outdent separator image link unlink},
         :theme_advanced_buttons2 =>  "",
-        :theme_advanced_buttons3 =>  ""
+        :theme_advanced_buttons3 =>  "",
+        :plugins => "autolink"
       } 
     end
   
