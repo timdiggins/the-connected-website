@@ -4,8 +4,8 @@
 	</div>
 <% end %>
 
-<% unless  @user.home_page.blank? %>
-   <p class="homepage"><%=h @user %> is at home at <%= link_to @user.home_page, @user.home_page, :rel => "me" %>.</p>
+<% unless @user.home_page.blank? %>
+   <p class="homepage"><%=h @user %> is at home at <%= user_home_page(@user) %>.</p>
 <% end %>
 
 <% if logged_in? && @user == current_user && @user.profile_text.blank? %>
