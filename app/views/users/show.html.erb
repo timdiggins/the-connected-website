@@ -9,7 +9,7 @@
 
 		<div id="profileDetails">
 			<h1><%=h @user %></h1>
-			<% if @user.location != "" %>
+			<% unless @user.location.blank? %>
 			  <p class="location"><%=h @user.location %></p>
 			<% end %>
 			<%= render :partial => 'users/profile' %>
