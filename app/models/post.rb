@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+
+  include Truncator
   
   validates_presence_of :title
   validates_tiny_mce_presence_of :detail
@@ -16,19 +18,11 @@ class Post < ActiveRecord::Base
   alias_attribute :to_s, :title
   
   def brief
-    truncate(HTML::FullSanitizer.new.sanitize(detail), 500)
+    truncate_html_text(detail)
   end
   
   def featured?
     !featured_at.nil?
   end
-
-  private
-    def truncate(text, length)
-      truncate_string = "..."
-      l = length - truncate_string.chars.length
-      (text.chars.length > length ? text.chars[0...l] + truncate_string : text).to_s
-    end
-  
   
 end
