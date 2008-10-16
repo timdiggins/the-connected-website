@@ -56,6 +56,18 @@ class PostsController < ApplicationController
     redirect_to @post
   end
   
+  def subscribe
+    @post = Post.find(params[:id])    
+    @post.subscribers << current_user
+    redirect_to @post
+  end
+  
+  def unsubscribe
+    @post = Post.find(params[:id])    
+    @post.subscribers.delete(current_user)
+    redirect_to @post
+  end
+  
   def unfeature
     @post = Post.find(params[:id])    
     @post.update_attribute(:featured_at, nil)

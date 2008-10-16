@@ -1,0 +1,10 @@
+<% if logged_in? %>
+	<div>
+		<% if @post.subscribers.find_by_id(current_user) %>
+			<p>You receive emails on updates to this discussion.</p> 
+			<p><%= link_to "Stop following?", unsubscribe_post_url(@post), :method => :post %></p>
+		<% else %>
+			<%= link_to "Follow this discussion by email", subscribe_post_url(@post), :method => :post %>
+		<% end %>
+	</div>
+<% end %>

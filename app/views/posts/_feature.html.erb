@@ -1,9 +1,11 @@
-<% if logged_in_as_editor? %>
-	<p>
-		<% if @post.featured? %>
-			<%= link_to "Unfeature this Posting", unfeature_post_url(@post), :method => :put %>
-		<% else %>
-			<%= link_to "Feature this Posting", feature_post_url(@post), :method => :put %>
-		<% end %>
-	</p>
-<% end %>
+<div>
+	<% if logged_in_as_editor? %>
+		<p>
+			<% if @post.featured? %>
+				<%= link_to "Unfeature this Posting", unfeature_post_url(@post), :method => :put %>
+			<% else %>
+				<%= link_to "Feature this Posting", feature_post_url(@post), :method => :put %>
+			<% end %>
+		</p>
+	<% end %>
+</div>
