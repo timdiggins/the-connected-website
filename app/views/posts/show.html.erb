@@ -10,15 +10,13 @@
 
 <div id="main">
 	<h1 class="post"><%=h @post %></h1>
-	<p class="date">
-		Posted <%= time_ago_in_words(@post.created_at) %> ago, updated <%= time_ago_in_words(@post.updated_at) %> ago.
+	<p class="meta">
+		Posted <%= time_ago_in_words(@post.created_at) %> ago, updated <%= time_ago_in_words(@post.updated_at) %> ago. <%= link_to("Edit this post", edit_post_url(@post)) if logged_in? && current_user == @post.user %>
 	</p>
 
 	<div class="postBody">
 		<%= @post.detail %>
 	</div>
-	
-	<%= link_to("Edit this post", edit_post_url(@post)) if logged_in? && current_user == @post.user %>
 	
 	<%= render :partial => 'posts/comments' %>
 	<%= render :partial => 'posts/comment_form' %>

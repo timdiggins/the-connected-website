@@ -275,8 +275,10 @@ margin-bottom:1.5em;
 }
 
 h1.post {
-  margin-bottom:0.7em;
+  margin-bottom:0px;
   background-image: none;
+  font-weight: bold;
+  	color: #2A6B87;
 }
 
 #frontPage h1 {
@@ -639,7 +641,7 @@ span.readmore a{
 
 
 .postContent h2, .postContent h3 {
-  font-size: 1em;
+  font-size: 1.2em;
   margin-bottom: 0px;
 }
 
@@ -651,7 +653,7 @@ span.readmore a{
 
 p.meta {
 	color: #999;
-	font-size: 0.9em;
+	font-size: 1.1em;
 	font-weight: normal;
 	display: block;
 	margin-top: 0.3em;
@@ -831,12 +833,6 @@ div.tags input {
 
 
 
-
-p.date {
-  color: #999;
-  font-size: 1.1em;
-  margin-top: -0.5em;
-}
 
 
 .postBody {
