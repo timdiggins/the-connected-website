@@ -28,12 +28,28 @@
 					<span class="author"><%= link_to_user(post.user) %>
 				</p>
 				<div class="postContent">
-					<h2><%= link_to h(post), post %> 
-						<span class="date">
-							<%= when_changed(post) %>
-						</span>
-					</h2>
-					<p><%= post.brief %></p>
+						<h2><%= link_to h(post), post %></h2>
+						<p class="meta">
+							<span class="date">
+								<% if post.created_at==post.updated_at%>
+									created <%= time_ago_in_words(post.created_at) %> ago,
+								<% else %>
+									last updated 
+									<%= time_ago_in_words(post.updated_at) %> ago,
+								<% end %>
+							</span>
+							<span class="commentCount">
+							<%= pluralize(post.comments.count, "Comment") %>
+							</span>
+						</p>
+						<p><%= post.brief %></p>
+
+						<% unless post.tags.empty? %>
+							<p class="tags">posted in
+							<% for tag in post.tags %>
+								<%= link_to tag, tag, :class => "tag" %>
+							<% end %></p>
+						<%end %>
 				</div>
 			</div>
 		<% end %>
