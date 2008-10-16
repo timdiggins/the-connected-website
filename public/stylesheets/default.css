@@ -281,6 +281,7 @@ h1.post {
   	color: #2A6B87;
 }
 
+
 #frontPage h1 {
   margin-bottom:0.8em;
   font-size: 2em;
@@ -657,6 +658,11 @@ p.meta {
 	font-weight: normal;
 	display: block;
 	margin-top: 0.3em;
+}
+
+
+#comments p.meta {
+  font-size: 1em;
 }
 
 .post .details a {
