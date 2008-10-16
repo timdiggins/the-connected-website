@@ -1,6 +1,7 @@
 /* @override 
 	http://localhost:3000/stylesheets/default.css?1223227096
 	http://localhost:3000/stylesheets/default.css?1223292850
+	http://localhost:3000/stylesheets/default.css?1223463791
 */
 
 body {
@@ -291,9 +292,9 @@ h1.post {
 
 h2 {
   font-size: 1.3em;
-  font-weight: normal;
+  font-weight: bold;
   color: #000;
-  margin-top: 0px;
+  margin-top: 0.5em;
 }
 
 #errorExplanation {
@@ -623,8 +624,12 @@ textarea#post_detail {
 
 .postContent {
   margin-right: 80px;
-  padding: 1px 3em 3em 0px;
+  padding: 1px 3em 2em 0px;
   line-height: 1.5em;
+}
+
+#frontPage .postContent {
+  padding: 1px 3em 1em 0px;
 }
 
 span.readmore a{
@@ -712,8 +717,7 @@ p.meta {
 p.more {
   text-align: right;
   clear:both;
-  margin-top: 0px;
-  padding-top: 0.5em;
+  margin-top: 0.5em;
 }
 
 p.featuredSelet {
@@ -1022,10 +1026,10 @@ p.loginRequired {
 
 
 #strapline {
-  font-size: 1.4em;
+  font-size: 1.3em;
   line-height: 1.5em;
   color: #666;
-  margin: -0.8em 0px 2.5em 0px;
+  margin: -0.8em 0px 2em 0px;
 }
 
 
