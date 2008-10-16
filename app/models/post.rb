@@ -7,7 +7,11 @@ class Post < ActiveRecord::Base
   
   belongs_to :user
   has_many :comments, :order => 'created_at', :dependent => :destroy
-  has_many :categorizations
+  
+  has_many :subscriptions, :dependent => :destroy
+  has_many :subscribers, :through => :subscriptions, :source => :user
+  
+  has_many :categorizations, :dependent => :destroy
   has_many :tags, :through => :categorizations, :uniq => true
   
   named_scope :sorted_by_created_at, lambda { { :order => "created_at DESC" }}
