@@ -14,5 +14,12 @@ class Event < ActiveRecord::Base
     event
   end
   
+  def broadcast
+    # if detail.should_broadcast
+    #   event_name = detail.class.to_s.sub(/Event$/, '').underscore
+    #   mail = EventMailer.send("create_#{event_name}", self)
+    #   EventMailer.deliver(mail) if mail.to_addrs
+    # end
+  end
     
 end
