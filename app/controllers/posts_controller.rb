@@ -28,6 +28,7 @@ class PostsController < ApplicationController
     Event.create_for(@post)
     current_user.update_attribute(:contributed_at, Time.now)
     @post.tags << @initial_tag if @initial_tag
+    @post.subscribers << current_user
     
     redirect_to posts_url
   end
