@@ -1,0 +1,19 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'daemons'
+
+root = File.expand_path(File.dirname(__FILE__) + '/../')
+
+Daemons.run_proc("email_notifier", :dir_mode => :normal, :dir => (root + '/tmp/pids'), :log_output => true, :backtrace => true) do
+  require root + '/config/environment'
+  
+  loop do
+    QueuedEmail.all.each do | each |
+      each.process
+    end
+    
+    sleep(5)
+  end
+  
+end

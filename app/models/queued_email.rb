@@ -10,7 +10,6 @@ class QueuedEmail < ActiveRecord::Base
   
   def self.create_for(comment)
     created = self.create(:comment => comment)
-    created.process if Rails.env == 'development'# && ENV['EVENT_EMAILS'] == 'true'
   end
   
 end
