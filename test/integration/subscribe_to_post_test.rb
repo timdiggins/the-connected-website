@@ -45,7 +45,14 @@ class SubscribeTo_PostTest < ActionController::IntegrationTest
     new_session_as(:duff) do
       post_via_redirect "/posts", :post => { :title => "Seasteading is the only way", :detail => "And some wonderful detail" }
       click_link "Seasteading is the only way"
-      view
+      assert_link_does_not_exist "Follow this discussion by email"
+      assert_link_exists "Stop following?"
+    end
+  end
+  
+  should "automatically subscribe to a post when it's created" do
+    new_session_as(:alex) do
+      post_via_redirect "/posts/#{posts(:cool_article).id}/comments", :comment => { :body => "YoYo" }
       assert_link_does_not_exist "Follow this discussion by email"
       assert_link_exists "Stop following?"
     end
