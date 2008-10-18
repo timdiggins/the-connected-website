@@ -33,18 +33,9 @@ class SubscribeTo_PostTest < ActionController::IntegrationTest
     end
   end
   
-  should "not queue up any emails when a comment is added to a post that has no subscribers." do
-    assert_no_difference("QueuedEmail.count") do 
-      new_session_as(:alex) do
-        post_via_redirect "/posts/#{posts(:cool_article).id}/comments", :comment => { :body => "YoYo" }
-      end
-    end
-  end
-  
-  should "queue up emails when a comment is added to a post that has subscribers." do
+  should "queue up an email when a comment is added to a post." do
     assert_difference("QueuedEmail.count") do 
       new_session_as(:alex) do
-        post_via_redirect "/posts/#{posts(:cool_article).id}/subscribe"
         post_via_redirect "/posts/#{posts(:cool_article).id}/comments", :comment => { :body => "YoYo" }
       end
     end
