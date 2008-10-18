@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
   has_many :comments, :order => 'created_at', :dependent => :destroy
   
   has_many :subscriptions, :dependent => :destroy
-  has_many :subscribers, :through => :subscriptions, :source => :user
+  has_many :subscribers, :through => :subscriptions, :source => :user, :uniq => true
   
   has_many :categorizations, :dependent => :destroy
   has_many :tags, :through => :categorizations, :uniq => true
