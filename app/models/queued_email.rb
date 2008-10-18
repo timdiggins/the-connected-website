@@ -3,8 +3,11 @@ class QueuedEmail < ActiveRecord::Base
   belongs_to :comment
   
   def process
-    mail = Mailer.create_comment_created(comment)
-    Mailer.deliver(mail) if mail.to_addrs
+    recipients = comment.post.subscribers.map_by_email - [comment.user.email]
+    recipients.each do | recipient |
+      Mailer.deliver_comment_created(comment, recipient)
+    end
+    
     self.destroy
   end
   
