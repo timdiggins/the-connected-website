@@ -4,11 +4,11 @@
 		<div class="post">
 			<p class="avatar">
 				<%= link_to_avatar_for(post.user, :medium) %>
-				<span class="author"><%= link_to_user(post.user) %>
 			</p>
 			<div class="postContent">
 					<h2><%= link_to h(post), post %></h2>
 					<p class="meta">
+						<span class="author">by <%= link_to_user(post.user) %>,</span>
 						<span class="date">
 							<% if post.created_at==post.updated_at%>
 								created <%= time_ago_in_words(post.created_at) %> ago,
