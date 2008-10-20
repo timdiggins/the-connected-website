@@ -2,6 +2,7 @@
 	http://localhost:3000/stylesheets/default.css?1223227096
 	http://localhost:3000/stylesheets/default.css?1223292850
 	http://localhost:3000/stylesheets/default.css?1223463791
+	http://localhost:3000/stylesheets/default.css?1224169914
 */
 
 body {
@@ -105,6 +106,22 @@ input#user_user_avatar {
 
 #sidebar div {
 	margin: 0px 3em 1em 2em;	
+}
+
+div#emailsettings {
+  border: 1px solid #DDD;
+  background-color: #FFF;
+  padding: 0.5em 1em;
+    -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+div#emailsettings h2 {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0px;
+  padding: 0.5em 0px 0px 22px;
+    background: transparent url(../images/famfam/email.png) no-repeat left 0.5em;
 }
 
 
@@ -741,6 +758,7 @@ p.featuredSelet {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   background-color: #FFF;
+  border: 1px solid #DDD;
 }
 
 p.tags {
