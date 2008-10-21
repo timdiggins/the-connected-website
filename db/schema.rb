@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081007155519) do
+ActiveRecord::Schema.define(:version => 20081018102243) do
 
   create_table "avatars", :force => true do |t|
     t.integer  "user_id"
@@ -63,6 +63,19 @@ ActiveRecord::Schema.define(:version => 20081007155519) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "featured_at"
+  end
+
+  create_table "queued_emails", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "comment_id"
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tags", :force => true do |t|

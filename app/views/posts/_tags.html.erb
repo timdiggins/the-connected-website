@@ -12,7 +12,7 @@
 	</ul>
 	
 	<% if logged_in? %>
-		<% form_tag post_tags_url(@post) do | f | %>	  
+		<% form_tag post_tags_url(@post) do %>	  
 			<%= label_tag :tag_name, "Add item to #{@post.tags.size==0 ? 'a' : 'another'} tag:" %>
 			<%= text_field_tag :tag_name %>
 		<% end %>

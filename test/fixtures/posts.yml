@@ -1,9 +1,14 @@
 alex_interesting_article:
-    user: alex
-    title: My interesting article
-    detail: Some interesting facts about penguins
+  user: alex
+  title: My interesting article
+  detail: Some interesting facts about penguins
     
 alex_boring_link:
-    user: alex
-    title: My boring link
-    detail: http://myboringlink.com
+  user: alex
+  title: My boring link
+  detail: http://myboringlink.com
+  
+cool_article:
+  user: duff
+  title: Government is Bogus
+  detail: Whatever

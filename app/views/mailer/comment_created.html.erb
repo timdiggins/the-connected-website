@@ -1,0 +1,15 @@
+<%= @comment.user %> wrote a comment on <%= @comment.post %>. 
+
+You can see the full post and all comments here:
+<%= @post_url %>
+
+New comment by <%= @comment.user %>:
+
+<%= @comment.brief %>
+
+
+
+______________________________________________
+
+If you do not want to receive email updates about this post you can unsubscribe from this page:
+<%= @post_url %>

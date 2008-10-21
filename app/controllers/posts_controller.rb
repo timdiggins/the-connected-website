@@ -28,6 +28,7 @@ class PostsController < ApplicationController
     Event.create_for(@post)
     current_user.update_attribute(:contributed_at, Time.now)
     @post.tags << @initial_tag if @initial_tag
+    @post.subscribers << current_user
     
     redirect_to posts_url
   end
@@ -53,6 +54,18 @@ class PostsController < ApplicationController
   def feature
     @post = Post.find(params[:id])    
     @post.update_attribute(:featured_at, Time.now)
+    redirect_to @post
+  end
+  
+  def subscribe
+    @post = Post.find(params[:id])    
+    @post.subscribers << current_user
+    redirect_to @post
+  end
+  
+  def unsubscribe
+    @post = Post.find(params[:id])    
+    @post.subscribers.delete(current_user)
     redirect_to @post
   end
   

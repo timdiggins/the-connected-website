@@ -4,7 +4,6 @@ require 'capistrano/ext/multistage'
 require 'spacesuit/recipes/multistage_patch'
 require 'spacesuit/recipes/common'
 require 'mongrel_cluster/recipes_2'
-require 'config/recipes/monit'
 
 set :application, "republic"
 set :rails_env, "production"
@@ -19,3 +18,8 @@ set :keep_releases, 30
 set :git_enable_submodules, 1
 
 set :rails_revision, '79f55de9c5e3ff1f8d9e767c5af21ba31be4cfba' # Fri Sep 19 09:06:35 2008 -0500  -   From master branch
+
+
+before "deploy:stop", "republic_services:stop"
+before "deploy:restart", "republic_services:restart" 
+after  "deploy:start",  "republic_services:start"

@@ -14,5 +14,4 @@ class Event < ActiveRecord::Base
     event
   end
   
-    
 end
