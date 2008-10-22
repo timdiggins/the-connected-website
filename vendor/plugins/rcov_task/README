@@ -1,0 +1,13 @@
+Rcov rake task plugin for Rails
+====
+
+This plugin adds a simple task to rake for creating Rcov C0 coverage statistics for your Rails project.
+
+
+Example
+=======
+
+(project directory)$ rake test:coverage
+
+
+Copyright (c) 2008 Andrew Bloom, released under the MIT license
