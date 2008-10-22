@@ -6,7 +6,7 @@ module TinyMCEValidator
   
   module ClassMethods
     def validates_tiny_mce_presence_of(*attr_names)
-      configuration = { :message => ActiveRecord::Errors.default_error_messages[:blank], :on => :save }
+      configuration = { :message => I18n.translate('activerecord.errors.messages')[:blank], :on => :save }
       configuration.update(attr_names.extract_options!)
 
       send(validation_method(configuration[:on]), configuration) do |record|
