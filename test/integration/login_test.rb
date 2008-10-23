@@ -17,5 +17,18 @@ class LoginTest < ActionController::IntegrationTest
     assert_logged_in(:duff)    
     alex_session.assert_logged_in(:alex)
   end
+  
+  should "be able to signup" do
+    get '/signup'
+    assert_select 'h1', 'Join'
+    
+    post '/users', { :user => { :password => "  ", :login => "freddy", :email => "freddy@codora.com" } }
+    assert_validation_error "Password can't be blank"
+    
+    post_via_redirect '/users', { :user => { :password => "aa", :login => "freddy", :email => "freddy@codora.com" } }
+    assert_flash "Thanks for signing up!  You have been logged in."
+    assert_logged_in User.find_by_login("freddy")
+  end
+  
     
 end
