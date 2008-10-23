@@ -1,7 +1,6 @@
 require "#{File.dirname(__FILE__)}/../test_helper"
 
 class LoginTest < ActionController::IntegrationTest
-  fixtures :users
 
   should "handle invalid login" do
     login(:duff, "wrong_password")
