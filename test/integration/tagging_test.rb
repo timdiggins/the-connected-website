@@ -1,6 +1,6 @@
 require "#{File.dirname(__FILE__)}/../test_helper"
 
-class TagginTest < ActionController::IntegrationTest
+class TaggingTest < ActionController::IntegrationTest
 
   should "show no tags for the post" do
     post_id = posts(:cool_article).id
@@ -97,6 +97,23 @@ class TagginTest < ActionController::IntegrationTest
       
       get '/tags'
       assert_select "ul#tagList>li>h2>a", /Lame Government.*0 articles/ 
+    end
+  end
+  
+  should "Be able to edit a tag" do
+    new_session_as(:duff) do
+      post_id = posts(:cool_article).id
+      post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
+      
+      get 'tags/Lame%20Government'
+      click_link "Add a description"
+      assert_select "h1", "Edit tag: Lame Government"
+      
+      put_via_redirect "tags/Lame%20Government", :tag => { :name => "Super Lame Stuff", :description => "Here is the description" }
+      assert_flash "Successfully updated tag"
+      assert_select "h1", :text => /Lame Government/, :count => 0
+      assert_select "h1", /Super Lame Stuff 1 article/
+      assert_select "div#tagDescription", /Here is the description/
     end
   end
   
