@@ -1,6 +1,6 @@
 require "#{File.dirname(__FILE__)}/../test_helper"
 
-class TagTest < ActionController::IntegrationTest
+class TagginTest < ActionController::IntegrationTest
 
   should "show no tags for the post" do
     post_id = posts(:cool_article).id
