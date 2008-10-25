@@ -18,5 +18,12 @@ class LoginTest < ActionController::IntegrationTest
     alex_session.assert_logged_in(:alex)
   end
   
-    
+  should "be able to logout" do
+    login(:duff)
+    click_link "Logout"
+    assert_not_logged_in
+    assert_flash "You have been logged out."
+    assert_select "h1", "Login"
+  end
+  
 end
