@@ -7,6 +7,9 @@ class TagTest < ActionController::IntegrationTest
     get "/posts/#{post_id}"
     assert_select "div.tags>ul>li", :count => 0
     assert_select 'label', :text => /Add item to a tag/, :count => 0
+    
+    get '/tags'
+    assert_select "ul#tagList>li", :count => 0
   end
 
   should "be able to add tags to a post" do
@@ -60,6 +63,16 @@ class TagTest < ActionController::IntegrationTest
       
       get '/posts'
       assert_select "p.tags>a", "Lame Government"
+    end
+  end
+  
+  should "see the tags of a post on the tags page" do
+    new_session_as(:duff) do
+      post_id = posts(:cool_article).id
+      post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
+      get '/tags'
+      assert_select "ul#tagList>li", :count => 1
+      assert_select "ul#tagList>li>h2>a", /Lame Government.*1 article/ 
     end
   end
   
