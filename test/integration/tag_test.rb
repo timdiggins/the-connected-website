@@ -87,5 +87,18 @@ class TagTest < ActionController::IntegrationTest
       assert_select "div.eventBody>p.details>a", "Lame Government"
     end
   end
+  
+  should "be able to delete a tag" do
+    new_session_as(:duff) do
+      post_id = posts(:cool_article).id
+      post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
+      delete_via_redirect "posts/#{post_id}/tags/Lame%20Government"
+      assert_select "div.tags>ul>li", :count => 0
+      
+      get '/tags'
+      assert_select "ul#tagList>li>h2>a", /Lame Government.*0 articles/ 
+    end
+  end
+  
 end
 
