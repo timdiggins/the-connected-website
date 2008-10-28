@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by_login!(params[:id])
+    @hide_user_in_events = true
   end
   
   def index
