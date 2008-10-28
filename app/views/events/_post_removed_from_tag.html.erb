@@ -9,7 +9,12 @@
 	    <% unless @hide_user_in_events %>
 	    	<%= link_to_user(event.user) %> 
 			<% end %>
-			removed <%= link_to(h(event.detail.post.title), event.detail.post) %> 
+			 
+			<% if event.detail.post %>
+				removed <%= link_to(h(event.detail.post.title), event.detail.post) %> 
+			<% else %>
+				removed a post which has since been deleted
+			<% end %>
 			from the tag <%= link_to event.detail.tag, event.detail.tag %>  
 	    <span class="time"><%= time_ago_in_words(event.created_at) %> ago.</span>
 	  </p>

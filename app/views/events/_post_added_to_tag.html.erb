@@ -10,7 +10,12 @@
 	    	<%= link_to_user(event.user) %>
 			<% end %> 
 			
-			tagged <%= link_to(h(event.detail.post.title), event.detail.post) %> 
+			tagged 
+			<% if event.detail.post %>
+				<%= link_to(h(event.detail.post.title), event.detail.post) %> 
+			<% else %>
+				a post which has since been deleted
+			<% end %>
 			with the tag <%= link_to event.detail.tag, event.detail.tag %>  
 	    <span class="time"><%= time_ago_in_words(event.created_at) %> ago.</span>
 	  </p>
