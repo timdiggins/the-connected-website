@@ -19,7 +19,7 @@ namespace :test do
   
   desc "Measures test coverage using rcov."
   task :coverage do
-    run_coverage Dir["test/**/*.rb"]
+    run_coverage Dir["test/**/*_test.rb"]
   end
   
 end
