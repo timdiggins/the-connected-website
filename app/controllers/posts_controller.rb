@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   
   before_filter :login_required, :except => [ :index, :show, :featured ]
   before_filter :editor_login_required, :only => [ :feature, :unfeature ]
+  before_filter :admin_login_required, :only => [ :destroy ]
   uses_tiny_mce :options => tiny_mce_options, :only => [ :new, :show, :create, :update, :edit ]
   
   def index
@@ -35,6 +36,13 @@ class PostsController < ApplicationController
   
   def edit
     @post = Post.find(params[:id])    
+  end
+  
+  def destroy
+    @post = Post.find(params[:id])    
+    @post.destroy
+    flash[:notice] = "Successfully deleted the post."
+    redirect_to posts_url
   end
 
   def update

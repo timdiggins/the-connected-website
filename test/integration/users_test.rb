@@ -18,11 +18,11 @@ class UsersTest < ActionController::IntegrationTest
   should "see the users page and the users/all page" do
     get "/users"
     assert_select "h1", "Recent Contributors"
-    assert_select "ul#memberList>li", :count => 4
+    assert_select "ul#memberList>li", :count => 5
 
     get "/users/all"
     assert_select "h1", "All Contributors"
-    assert_select "ul#memberList>li", :count => 4
+    assert_select "ul#memberList>li", :count => 5
   end
 
 end
