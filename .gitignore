@@ -1,6 +1,7 @@
 *.tmproj
 log/*.log
 config/database.yml
+config/amazon_s3.yml
 vendor/rails
 .tm_last_run_ruby*
 .DS_Store
