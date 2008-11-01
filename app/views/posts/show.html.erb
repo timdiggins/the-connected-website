@@ -19,6 +19,10 @@
 		<%= @post.detail %>
 	</div>
 	
+	<p>
+		<%= link_to "See attachment", @post.attachment.public_filename if @post.attachment %>
+	</p>
+	
 	<%= render :partial => 'posts/comments' %>
 	<%= render :partial => 'posts/comment_form' %>
 </div>

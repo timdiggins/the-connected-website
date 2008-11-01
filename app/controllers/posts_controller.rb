@@ -31,7 +31,12 @@ class PostsController < ApplicationController
     @post.user = current_user
     @initial_tag = Tag.find_by_id(params[:tag])
     @upload = params[:upload]
-    return render(:action => :new) unless @post.valid?
+    @post.valid?
+    if @upload
+      return render(:action => :new) unless @post.attachment && @post.attachment.valid? && @post.valid?
+    else
+      return render(:action => :new) unless @post.valid?
+    end
     
     Event.create_for(@post)
     current_user.update_attribute(:contributed_at, Time.now)
@@ -40,10 +45,10 @@ class PostsController < ApplicationController
     
     redirect_to posts_url
   end
-  
+    
   def edit
     @post = Post.find(params[:id])    
-    # @upload = true
+    @upload = !@post.attachment.nil?
   end
   
   def destroy
@@ -56,10 +61,16 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @upload = params[:upload]
-    return render(:action => :edit) unless @post.update_attributes(params[:post])
+    
+    @post.attributes = params[:post]
+    @post.valid?
+    if @upload
+      return render(:action => :edit) unless @post.attachment && @post.attachment.valid? && @post.save
+    else
+      return render(:action => :edit) unless @post.save
+    end
     
     flash[:notice] = "Successfully updated post"
-    
     redirect_to @post
   end
   

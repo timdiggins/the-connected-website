@@ -3,11 +3,13 @@ class Post < ActiveRecord::Base
   include Truncator
   
   validates_presence_of :title
+  validate :must_have_attachment
   validates_tiny_mce_presence_of :detail
   
   belongs_to :user
   has_many :comments, :order => 'created_at', :dependent => :destroy
   
+  has_one  :attachment, :dependent => :destroy
   has_many :subscriptions, :dependent => :destroy
   has_many :subscribers, :through => :subscriptions, :source => :user, :uniq => true
   
@@ -28,5 +30,18 @@ class Post < ActiveRecord::Base
   def featured?
     !featured_at.nil?
   end
+  
+  def post_attachment=(it)  
+    @in_upload_mode = true
+    the_attachment = self.attachment || Attachment.new
+    the_attachment.uploaded_data = it
+    self.attachment = the_attachment unless it.to_s.blank?  
+  end
+  
+  private
+    def must_have_attachment
+      errors.add_to_base("Must select a file to upload") if @in_upload_mode && (!attachment || attachment.filename.blank?)
+    end
+  
   
 end

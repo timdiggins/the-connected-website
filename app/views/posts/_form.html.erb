@@ -1,10 +1,11 @@
-<% form_for @post do | f | %>
-  <%= f.error_messages %>
+<% form_for @post, :html => { :multipart => true } do | f | %>
+
+	<%= error_messages_for(:post, :object => @post.attachment ? [@post.attachment, @post] : @post ) %>
 
   <% if @upload %>
 	  <p class="fileUpload">
 	    <label>Select File to upload</label>
-	    <input type="file" />
+	    <%= f.file_field :post_attachment %> 
 	  </p>
 	<% end %>
 	
