@@ -30,6 +30,7 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.user = current_user
     @initial_tag = Tag.find_by_id(params[:tag])
+    @upload = params[:upload]
     return render(:action => :new) unless @post.valid?
     
     Event.create_for(@post)
@@ -42,6 +43,7 @@ class PostsController < ApplicationController
   
   def edit
     @post = Post.find(params[:id])    
+    # @upload = true
   end
   
   def destroy
@@ -53,6 +55,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    @upload = params[:upload]
     return render(:action => :edit) unless @post.update_attributes(params[:post])
     
     flash[:notice] = "Successfully updated post"

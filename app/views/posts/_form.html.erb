@@ -19,6 +19,7 @@
   </p>
 
 	<%= hidden_field_tag(:tag, @initial_tag.id) if @initial_tag  %>
+	<%= hidden_field_tag(:upload, @upload) if @upload %>
 
   <p class="submitBlock">
     <%= submit_tag  'Save post', :disable_with => "Saving..." %> or <%= link_to "Cancel", @post.new_record? ? posts_url : @post %>
