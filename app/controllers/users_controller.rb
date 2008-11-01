@@ -20,10 +20,11 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by_login!(params[:id])
+    @hide_user_in_events = true
   end
   
   def index
-    @users = User.recently_contributed(10)
+    @users = User.has_bio_and_avatar.recently_contributed(10)
     @recently_signed_up = User.recently_signed_up
   end
   

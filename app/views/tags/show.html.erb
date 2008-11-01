@@ -10,14 +10,8 @@
 	<div id="tagDescription">
 		<h1><%= @page_title = @tag %> <span class="count"><%= pluralize(@tag.posts.count, "article") %></span></h1>
 
-		<% if @tag.description.blank? %>
-		   <p class="tinyOption"><%= link_to  "Add a description", edit_tag_url  %></p>
-		<% else  %>
-		   <%= @tag.description %>
-		   <p class="tinyOption"><%= link_to "Edit description", edit_tag_url  %><p>
-		<% end %>
-		
-		
+		<%= @tag.description unless @tag.description.blank? %>
+		<p class="tinyOption"><%= link_to(@tag.description.blank? ? "Add a description" : "Edit description", edit_tag_url) if logged_in? %></p>
 	</div>
 	
 	<div class="posts">
@@ -25,7 +19,7 @@
 			<div class="post">
 				<p class="avatar">
 					<%= link_to_avatar_for(post.user, :medium) %>
-					<span class="author"><%= link_to_user(post.user) %>
+					<span class="author"><%= link_to_user(post.user) %></span>
 				</p>
 				<div class="postContent">
 						<h2><%= link_to h(post), post %></h2>

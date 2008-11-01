@@ -36,7 +36,7 @@ module BasicsDsl
   end
   
   def assert_flash(expected_flash_value)
-    assert_select("div#flash p", expected_flash_value, "Expected the flash to be '#{expected_flash_value}'")
+    assert_select("div#flash>p", expected_flash_value, "Expected the flash to be '#{expected_flash_value}'")
   end
   
   def assert_validation_error(error_text)

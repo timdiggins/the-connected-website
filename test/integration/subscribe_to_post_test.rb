@@ -50,7 +50,7 @@ class SubscribeTo_PostTest < ActionController::IntegrationTest
     end
   end
   
-  should "automatically subscribe to a post when it's created" do
+  should "automatically subscribe to a post when it's commented on." do
     new_session_as(:alex) do
       post_via_redirect "/posts/#{posts(:cool_article).id}/comments", :comment => { :body => "YoYo" }
       assert_link_does_not_exist "Follow this discussion by email"

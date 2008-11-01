@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   named_scope :recently_signed_up, :limit => 10, :order => "created_at DESC" 
   named_scope :order_by_created_at, :order => "created_at DESC" 
   named_scope :created_since, lambda { | the_date | { :conditions => [ "created_at > ?", the_date ] } }
+  named_scope :has_bio_and_avatar, :include => :avatar, :conditions => [ "profile_text <> ? AND avatars.filename <> ?", '', '']
 
   def self.authenticate(login, password)
     u = find_by_login(login) 

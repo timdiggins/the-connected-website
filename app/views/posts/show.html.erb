@@ -10,7 +10,9 @@
 <div id="main">
 	<h1 class="post"><%=h @post %></h1>
 	<p class="meta">
-		Posted <%= time_ago_in_words(@post.created_at) %> ago, updated <%= time_ago_in_words(@post.updated_at) %> ago. <%= link_to("Edit post", edit_post_url(@post)) if logged_in? && current_user == @post.user %>
+		Posted <%= time_ago_in_words(@post.created_at) %> ago, updated <%= time_ago_in_words(@post.updated_at) %> ago. 
+		<%= link_to("Edit post", edit_post_url(@post)) if logged_in? && current_user == @post.user %> 
+		<%= link_to("Delete post", post_url(@post), :method => :delete, :confirm => "Are you sure you'd like to delete this post?") if logged_in_as_admin? %> 
 	</p>
 
 	<div class="postBody">

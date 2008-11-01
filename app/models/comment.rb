@@ -11,4 +11,8 @@ class Comment < ActiveRecord::Base
     truncate_html_text(body)
   end
   
+  def email_brief
+    brief.gsub(/&nbsp;/, "\r\n")
+  end
+  
 end

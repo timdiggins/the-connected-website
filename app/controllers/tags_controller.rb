@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   
-  before_filter :login_required, :only => [ :create, :destroy ]
+  before_filter :login_required, :only => [ :create, :destroy, :edit, :update ]
   
   def show
     @tag = Tag.find_by_name!(params[:id])

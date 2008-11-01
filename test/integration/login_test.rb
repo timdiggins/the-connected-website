@@ -1,7 +1,6 @@
 require "#{File.dirname(__FILE__)}/../test_helper"
 
 class LoginTest < ActionController::IntegrationTest
-  fixtures :users
 
   should "handle invalid login" do
     login(:duff, "wrong_password")
@@ -18,5 +17,13 @@ class LoginTest < ActionController::IntegrationTest
     assert_logged_in(:duff)    
     alex_session.assert_logged_in(:alex)
   end
-    
+  
+  should "be able to logout" do
+    login(:duff)
+    click_link "Logout"
+    assert_not_logged_in
+    assert_flash "You have been logged out."
+    assert_select "h1", "Login"
+  end
+  
 end

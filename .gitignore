@@ -13,3 +13,5 @@ tmp/*
 db/*.sqlite3
 .loadpath
 .project
+doc/coverage
+coverage
