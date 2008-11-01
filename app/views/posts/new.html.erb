@@ -4,20 +4,12 @@
 <div id="main">
   
   <p id="selectType">
-    <a href="#" class="current">Write text</a> <a href="#">Upload a pdf file</a>
+    <%= link_to("Write text", new_post_url(:tag => @initial_tag ? @initial_tag.id : nil), :class => @upload ? nil : 'current') %> 
+		<%= link_to("Upload a pdf file", upload_new_post_url(:tag => @initial_tag ? @initial_tag.id : nil), :class => @upload ? 'current' : nil) %>
   </p>  
 	
 	<%= render :partial => 'posts/form' %>
 	
-	<br />
-	<br />
-	<br />
-	
-	<p id="selectType">
-    <a href="#">Write text</a> <a href="#" class="current">Upload a pdf file</a>
-  </p>  
-	
-	<%= render :partial => 'posts/upload' %>
 
 </div>
 

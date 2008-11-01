@@ -1,13 +1,20 @@
 <% form_for @post do | f | %>
   <%= f.error_messages %>
-  
+
+  <% if @upload %>
+	  <p class="fileUpload">
+	    <label>Select File to upload</label>
+	    <input type="file" />
+	  </p>
+	<% end %>
+	
 	<p>
 	  <%= f.label :title, "Title for this post" %>
     <%= f.text_field :title, :class => "largeInput" %>
   </p>
 
 	<p>
-	  <%= f.label :detail, "Post text" %>
+	  <%= f.label :detail, @upload ? "Description" : "Post text" %>
     <%= f.text_area :detail, :class => "mceEditor" %>
   </p>
 
