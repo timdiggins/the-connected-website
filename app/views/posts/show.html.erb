@@ -20,7 +20,7 @@
 	</div>
 	
 	<p>
-		<%= link_to "See attachment", @post.attachment.public_filename if @post.attachment %>
+		<%= link_to("See attachment", @post.attachment.public_filename) if @post.attachment %>
 	</p>
 	
 	<%= render :partial => 'posts/comments' %>
