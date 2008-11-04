@@ -53,7 +53,7 @@ a {
 
 a.rss {
 	padding:0.4em 0.8em 0.4em 28px;
-   background: #FFF url(/images/feed-icon.gif) no-repeat 8px center;
+   background: #FFF url(/images/feed-icon.gif) no-repeat 8px 0.6em;
    	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	margin: 0px 0px 0.5em 0px;
@@ -931,8 +931,6 @@ div.tags input {
 .events img {
   padding: 0px;
   border-width: 0px;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
 }
 
 
@@ -950,6 +948,30 @@ a.file {
 	margin-left: 0.3em;
 }
 
+
+p.download {
+padding: 0.5em 0px;
+border-top: 1px dashed #DDD;
+border-bottom: 1px dashed #DDD;
+}
+
+p.download a {
+  	background: url(../images/famfam/page_white_text.png) no-repeat top left;
+  	padding-left: 23px;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+.fileBody {
+  line-height: 1.5em;
+  font-size: 1.1em;
+  margin-left: 70px;
+}
+
+a.PDFpreview {
+  float: left;
+  padding: 0.5em 0px 2em 0px;
+}
 
 
 .events p.details span.time {
@@ -1304,65 +1326,66 @@ span.nextPage,span.previousPage {
 
 
 #selectType {
-	height: 2.5em;
+	height: 3em;
 	padding: 0px;
     margin:0px;
-    font-size: 1.2em;
+    font-size: 1em;
+    background: #FFF url(/images/stripeone.gif) bottom left repeat-x;
+    overflow: hidden;
     }
     
     
 #selectType a {
 	border-bottom: 0px;
 	float: left;
-	height: 2.5em;
-	line-height: 2.5em;
+	height: 3em;
+	line-height: 3em;
 	margin: 0px 3px 0px 0px;
-	padding: 0px 30px;
+	padding: 0px 1.5em;
 	text-decoration: underline;
 	-moz-border-radius-topleft: 3px;
 	-webkit-border-top-left-radius: 3px;
 	-moz-border-radius-topright: 3px;
 	-webkit-border-top-right-radius: 3px;
-	background-color: #e9f6ff;
+	 background: #EEE url(/images/stripeone.gif) bottom left repeat-x;
+
 }    
 
 #selectType a.current {
-	background-color: #abcfe3;
+	background: none;
+	background-color: #FFF;
 	color: #0d3a53;
 	text-decoration: none;
 	font-weight: bold;
+    border: 1px solid #CCC;
+	border-bottom-width: 0px;
 	}
 
 .new_post {
-  padding: 1em 30px;
+  padding: 1em 2em;
   margin: 0px;
-  background-color: #abcfe3;
-  	-moz-border-radius-bottomleft: 3px;
-	-webkit-border-bottom-left-radius: 3px;
-	-moz-border-radius-topright: 3px;
-	-webkit-border-top-right-radius: 3px;
-	  	-moz-border-radius-bottomright: 3px;
-	-webkit-border-bottom-right-radius: 3px;
+  background-color: #FFF;
+	border: 1px solid #CCC;
+	border-top-width: 0px;
+
 }
 
 .edit_post {
-  padding: 1em 30px;
+  padding: 1em 2em;
   margin: 0px;
-  background-color: #abcfe3;
-   -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
+  background-color: #FFF;
+  border: 1px solid #CCC;
 }    
 
 
 .fileUpload {
-  background-color: rgba(255,255,255,0.48);
-  padding: 1em;
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
 -webkit-border-radius: 4px;
 -moz-border-radius: 4px;
 }
 
 .fileUpload label {
-  font-size: 1.2em;
+  font-size: 1em;
   margin-bottom: 1em;
+  font-weight: bold;
 }
