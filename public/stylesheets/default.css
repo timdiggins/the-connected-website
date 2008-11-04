@@ -686,6 +686,21 @@ p.meta {
 	margin-top: 0.3em;
 }
 
+a.option {
+  background-color: #AAA;
+  padding: 0.2em 0.5em;
+  margin-left: 0.5em;
+  text-decoration: none;
+  color: #FFF;
+      -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  font-size: 0.9em;
+}
+
+a.option:hover {
+  background-color: #2A6B87;
+}
+
 
 #comments p.meta {
   font-size: 1em;
