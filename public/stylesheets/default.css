@@ -924,6 +924,10 @@ div.tags input {
   margin-left: 40px;
 }
 
+#profile .eventBody {
+  margin-left: 0px;
+}
+
 .events img {
   padding: 0px;
   border-width: 0px;
