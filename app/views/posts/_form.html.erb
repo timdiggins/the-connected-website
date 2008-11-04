@@ -14,7 +14,7 @@
     <%= f.text_field :title, :class => "largeInput" %>
   </p>
 
-	<p>
+	<p class="<%= @upload ? "description" : "Post" %>">
 	  <%= f.label :detail, @upload ? "Description" : "Post text" %>
     <%= f.text_area :detail, :class => "mceEditor" %>
   </p>
@@ -23,7 +23,7 @@
 	<%= hidden_field_tag(:upload, @upload) if @upload %>
 
   <p class="submitBlock">
-    <%= submit_tag  'Save post', :disable_with => "Saving..." %> or <%= link_to "Cancel", @post.new_record? ? posts_url : @post %>
+    <%= submit_tag  @upload ? "Upload file" : "Save post", :disable_with => "Saving..." %> or <%= link_to "Cancel", @post.new_record? ? posts_url : @post %>
   </p> 
 
 <% end %>

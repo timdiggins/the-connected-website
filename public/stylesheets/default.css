@@ -4,6 +4,7 @@
 	http://localhost:3000/stylesheets/default.css?1223463791
 	http://localhost:3000/stylesheets/default.css?1224169914
 	http://localhost:3000/stylesheets/default.css?1224520108
+	http://localhost:3000/stylesheets/default.css?1225300662
 */
 
 body {
@@ -393,6 +394,10 @@ input.largeInput {
 	font-size: 1.6em;
 }
 
+p.description textarea {
+  
+}
+
 
 div.largeForm input.largeInput {
 	width: 50%;
@@ -402,6 +407,10 @@ div.largeForm input.largeInput {
 div.largeForm textarea {
 	font-size: 1.3em;
 	height:100px;
+}
+
+p.description textarea {
+  height: 50px;
 }
 
 div.largeForm .submitBlock {
@@ -1286,44 +1295,53 @@ span.nextPage,span.previousPage {
 
 
 #selectType {
-	height: 2em;
+	height: 2.5em;
 	padding: 0px;
     margin:0px;
-    font-size: 1.3em;
+    font-size: 1.2em;
     }
     
     
 #selectType a {
 	border-bottom: 0px;
 	float: left;
-	height: 2em;
-	line-height: 2em;
+	height: 2.5em;
+	line-height: 2.5em;
 	margin: 0px 3px 0px 0px;
-	padding: 0px 1em;
+	padding: 0px 30px;
 	text-decoration: underline;
 	-moz-border-radius-topleft: 3px;
 	-webkit-border-top-left-radius: 3px;
 	-moz-border-radius-topright: 3px;
 	-webkit-border-top-right-radius: 3px;
-	background-color: #bbc6d0;
+	background-color: #e9f6ff;
 }    
 
 #selectType a.current {
-	background-color: #dce9f5;
-	color: #2A6B87;
+	background-color: #abcfe3;
+	color: #0d3a53;
 	text-decoration: none;
+	font-weight: bold;
 	}
 
-#new_post {
-  padding: 1em 2em;
+.new_post {
+  padding: 1em 30px;
   margin: 0px;
-  background-color: #dce9f5;
+  background-color: #abcfe3;
   	-moz-border-radius-bottomleft: 3px;
 	-webkit-border-bottom-left-radius: 3px;
 	-moz-border-radius-topright: 3px;
 	-webkit-border-top-right-radius: 3px;
 	  	-moz-border-radius-bottomright: 3px;
 	-webkit-border-bottom-right-radius: 3px;
+}
+
+.edit_post {
+  padding: 1em 30px;
+  margin: 0px;
+  background-color: #abcfe3;
+   -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
 }    
 
 
