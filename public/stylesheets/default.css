@@ -337,7 +337,6 @@ h2 {
 .fieldWithErrors label { 	
 	background: url(../images/famfam/error.png) no-repeat 0px left;
 	padding-left: 20px;
-
 }	
 	
 
@@ -939,6 +938,12 @@ div.tags input {
 	font-size: 1em;
 	color: #333;
 	font-weight: bold;
+}
+
+a.file {
+  	background: url(../images/famfam/page_white_text.png) no-repeat 50% left;
+	padding: 0.2em 0px 0.2em 20px;
+	margin-left: 0.3em;
 }
 
 
