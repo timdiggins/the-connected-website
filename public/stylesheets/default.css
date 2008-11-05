@@ -1,6 +1,4 @@
-/* @override 
-	http://localhost:3000/stylesheets/default.css?1225828825
-*/
+/* @override http://localhost:3000/stylesheets/default.css?1225828825 */
 
 body {
   font-family: arial, sans-serif;
@@ -47,15 +45,15 @@ a {
 
 
 a.rss {
-	padding:0.4em 0.8em 0.4em 28px;
-   background: #FFF url(/images/feed-icon.gif) no-repeat 8px 0.6em;
+	padding:0.7em 0.8em 0.7em 28px;
+   background: #FFF url(/images/feed-icon.gif) no-repeat 8px 0.8em;
    	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	margin: 0px 0px 0.5em 0px;
 	text-decoration: none;
 	border: 1px solid #DDD;
 	display: block;
-	font-size: 1.2em;
+	font-size: 1.1em;
 }
 
 

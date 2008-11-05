@@ -2,7 +2,12 @@
 <h1><%= @page_title = "TCR Blog" %></h1>
 		
 <div id="sidebar">
-	<p id="newContent"><%= link_to "Start a new posting", new_post_url %></p>
+  <div id="missionStatement">
+    <h2>Who is blogging?</h2>
+		<p>
+		  The blog features selected postings from the <%= link_to "Discussion section", posts_url %>. Everybody can <%= link_to "contribute", new_post_url %>!
+    </p>
+  </div>
 	
 	
 	<div id="subscribe">
