@@ -953,13 +953,13 @@ div.tags input {
 }
 
 a.file {
-  	background: url(../images/famfam/page_white_text.png) no-repeat 50% left;
+  	background: url(../images/famfam/page_white_text.png) no-repeat left top;
 	padding: 0.2em 0px 0.2em 20px;
 	margin-left: 0.3em;
 }
 
 h2.file a {
-  	background: url(../images/famfam/page_white_text.png) no-repeat 50% left;
+  	background: url(../images/famfam/page_white_text.png) no-repeat left 0.3em;
 	padding: 0.2em 0px 0.2em 20px;
 }
 
@@ -986,6 +986,10 @@ p.download a {
 a.PDFpreview {
   float: left;
   padding: 0.5em 0px 2em 0px;
+}
+
+a.PDFpreview img {
+  border-width: 0px;
 }
 
 
