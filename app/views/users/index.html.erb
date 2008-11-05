@@ -3,7 +3,13 @@
 <div id="sidebar">
 	
 	<% if logged_in? %>
-	   
+	    <div id="missionStatement">
+        <h2>Who is featured here?</h2>
+    		<p>
+    		  Just make sure to add an image and something about yourself to <%= link_to('your profile', user_url(current_user)) %> to appear here.</p>
+    		  <p>Users are listed by most recent contributions to the discussion.
+        </p>
+  	  </div>
     <% else %>
 		  <div id="missionStatement">
         <h2>You can join, too!</h2>

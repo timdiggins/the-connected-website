@@ -160,9 +160,9 @@ div#emailsettings h2 {
 }
 
 #topNavigation a {
-	color: #ccc;
+	color: #DDD;
 	padding:0.5em;
-	text-decoration:none;
+	font-size: 1.2em;
 }
 
 
