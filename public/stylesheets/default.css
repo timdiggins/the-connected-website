@@ -1,10 +1,5 @@
 /* @override 
-	http://localhost:3000/stylesheets/default.css?1223227096
-	http://localhost:3000/stylesheets/default.css?1223292850
-	http://localhost:3000/stylesheets/default.css?1223463791
-	http://localhost:3000/stylesheets/default.css?1224169914
-	http://localhost:3000/stylesheets/default.css?1224520108
-	http://localhost:3000/stylesheets/default.css?1225300662
+	http://localhost:3000/stylesheets/default.css?1225828825
 */
 
 body {
@@ -961,6 +956,11 @@ a.file {
   	background: url(../images/famfam/page_white_text.png) no-repeat 50% left;
 	padding: 0.2em 0px 0.2em 20px;
 	margin-left: 0.3em;
+}
+
+h2.file a {
+  	background: url(../images/famfam/page_white_text.png) no-repeat 50% left;
+	padding: 0.2em 0px 0.2em 20px;
 }
 
 
