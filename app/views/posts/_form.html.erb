@@ -2,11 +2,15 @@
 
 	<%= error_messages_for(:post, :object => @post.attachment ? [@post.attachment, @post] : @post ) %>
 
-  <% if @upload %>
+  <% if @upload  %>
+	 <% if @post.new_record? %>
 	  <p class="fileUpload">
 	    <label>Select a PDF file to upload</label>
 	    <%= f.file_field :post_attachment %> 
 	  </p>
+		<%else%>
+      <p class="download"><%= link_to "Download this PDF file", @post.attachment.public_filename %> (can't be changed)</p>
+		<%end%>
 	<% end %>
 	
 	<p>

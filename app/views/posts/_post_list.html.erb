@@ -6,17 +6,29 @@
 				<%= link_to_avatar_for(post.user, :medium) %>
 			</p>
 			<div class="postContent">
-					<h2><%= link_to h(post), post %></h2>
+					<h2>
+						 <% if post.attachment %>
+                <%= link_to h(post), post, :class => "file" %></h2>
+						<%else %>
+                <%= link_to h(post), post %></h2>
+						 <% end%>
 					<p class="meta">
-						<span class="author">by <%= link_to_user(post.user) %>,</span>
+						<% if post.attachment %>
+              <span class="author">uploaded by <%= link_to_user(post.user) %></span>
+							<span class="date">
+		              <%= time_ago_in_words(post.created_at) %> ago,
+								</span>
+            <%else%> 
+              <span class="author">by <%= link_to_user(post.user) %>,</span>
 						<span class="date">
-							<% if post.created_at==post.updated_at%>
+		        <% if post.created_at==post.updated_at%>
 								created <%= time_ago_in_words(post.created_at) %> ago,
 							<% else %>
 								last updated 
-								<%= time_ago_in_words(post.updated_at) %> ago,
+							<%= time_ago_in_words(post.updated_at) %> ago,
 							<% end %>
 						</span>
+						<%end%>
 						<span class="commentCount">
 						<%= pluralize(post.comments.count, "Comment") %>
 						</span>
