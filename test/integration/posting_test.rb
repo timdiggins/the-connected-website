@@ -10,7 +10,8 @@ class PostingTest < ActionController::IntegrationTest
   should "be able to see the new post page if you're logged in" do
     new_session_as(:duff) do
       get '/posts/new'
-      assert_select "h1", "Create a new post"
+      assert_response :success
+      assert_select "h1"
     end
   end
   
