@@ -1,16 +1,17 @@
-<h1><%= @page_title = "Recent Contributors" %></h1>
+<h1><%= @page_title = "TCR Community" %></h1>
 <% @current_tab = :users %>
 <div id="sidebar">
 	
-	<% if !logged_in? %>
-	   <div>
-        <p id="joinButton"><%= link_to "Join?", signup_url, :class => "joinLink" %><br />
-			<%= link_to "Login", login_url %>, if you're already a member.</p>
-	   </div>
+	<% if logged_in? %>
+	   
     <% else %>
-		<div id="peopleInfo">
-		      <p>Members of the Connected Republic who have recently contributed.</p>
-	  	</div>
+		  <div id="missionStatement">
+        <h2>You can join, too!</h2>
+    		<p>
+    		  If your are interested in the public sector and its transformation you can <%= link_to "join TCR", signup_url %> to meet others and share your ideas.</p>
+    		  <p>Everybody is welcome.	
+        </p>
+  	  </div>
 	<% end %>
 
 	
