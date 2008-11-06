@@ -10,7 +10,7 @@
 	    <% unless @hide_user_in_events %>
 				<%= link_to_user(event.user) %>
 			<% end %> 
-			<% if event.detail.attachment %>
+			<% if event.detail && event.detail.attachment %>
     	  uploaded a PDF file:
     	<% else %>
         created
