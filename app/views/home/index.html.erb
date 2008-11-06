@@ -18,11 +18,8 @@
   <% end %>  
 		
 		
-		<div id="subscribe">
-		  <h2>Subscribe</h2>
-		  <p><a href="<%= formatted_posts_url(:format => :rss) %>" class="rss">Subscribe to all postings</a></p>
-		  <p><a href="<%= formatted_featured_posts_url(:format => :rss) %>" class="rss">Subscribe to the blog</a></p>
-		</div>
+		  <%=render :partial=>'posts/subscription' %> 
+
 		
 
     

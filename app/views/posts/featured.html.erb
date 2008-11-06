@@ -1,5 +1,5 @@
 <% @current_tab = :blog %>
-<h1><%= @page_title = "TCR Blog" %></h1>
+<h1><%= @page_title = "Blog: Featured articles, postings and discussions" %></h1>
 		
 <div id="sidebar">
   <div id="missionStatement">
@@ -10,12 +10,7 @@
   </div>
 	
 	
-	<div id="subscribe">
-	  <h2>Subscribe</h2>
-	  <p><a href="<%= formatted_posts_url(:format => :rss) %>" class="rss">Subcribe to all postings</a></p>
-	  <p><a href="<%= formatted_featured_posts_url(:format => :rss) %>" class="rss">Subcribe to featured postings</a></p>
-	</div>
-	
+  <%=render :partial=>'posts/subscription' %>	
 	<div>
 	  <p class="featuredSelet">You are browsing the blog. <%= link_to "Show all discussions?", posts_url %></p>
 	</div>
