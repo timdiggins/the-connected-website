@@ -11,7 +11,7 @@ class PostingTest < ActionController::IntegrationTest
     new_session_as(:duff) do
       get '/posts/new'
       assert_response :success
-      assert_select "h1"
+      assert_select "form#new_post"
     end
   end
   
