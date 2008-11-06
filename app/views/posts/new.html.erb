@@ -4,7 +4,7 @@
 <div id="main">
   
   <p id="selectType">
-    <%= link_to("Write text", new_post_url(:tag => @initial_tag ? @initial_tag.id : nil), :class => @upload ? nil : 'current') %> 
+    <%= link_to("Write a posting", new_post_url(:tag => @initial_tag ? @initial_tag.id : nil), :class => @upload ? nil : 'current') %> 
 		<%= link_to("Share a document", upload_new_post_url(:tag => @initial_tag ? @initial_tag.id : nil), :class => @upload ? 'current' : nil) %>
   </p>  
 	
