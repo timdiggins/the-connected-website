@@ -19,7 +19,7 @@
   </p>
 
 	<p class="<%= @upload ? "description" : "Post" %>">
-	  <%= f.label :detail, @upload ? "Description" : "Post text" %>
+	  <%= f.label :detail, @upload ? "Description" : "Text (idea, link, article, provocation)" %>
     <%= f.text_area :detail, :class => "mceEditor" %>
   </p>
 
