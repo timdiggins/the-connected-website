@@ -1,6 +1,6 @@
 <% form_for @post, :html => { :multipart => true } do | f | %>
 
-	<%= error_messages_for(:post, :object => @post.attachment ? [@post.attachment, @post] : @post ) %>
+	<%= error_messages_for(:post, :object => @post.has_attachment? ? [@post.attachment, @post] : @post ) %>
 
   <% if @upload  %>
 	 <% if @post.new_record? %>
@@ -8,18 +8,26 @@
 	    <label>Select a PDF file to upload</label>
 	    <%= f.file_field :post_attachment %> 
 	  </p>
-		<%else%>
+		<% else %>
       <p class="download"><%= link_to "Download this PDF file", @post.attachment.public_filename %> (can't be changed)</p>
-		<%end%>
+		<% end %>
+	<% end %>
+	
+	<% if @video %>
+		<p>
+			<%= f.label :video %>
+			<%= f.text_area :video, :rows => 3 %>
+		</p>
+	
 	<% end %>
 	
 	<p>
 	  <%= f.label :title, "Title" %>
-    <%= f.text_field :title, :class => "largeInput" %>
+    <%= f.text_field :title, :class => :largeInput %>
   </p>
 
-	<p class="<%= @upload ? "description" : "Post" %>">
-	  <%= f.label :detail, @upload ? "Description" : "Text (idea, link, article, provocation)" %>
+	<p class="<%= @upload || @video ? "description" : "Post" %>">
+	  <%= f.label :detail, @upload || @video ? "Description" : "Text (idea, link, article, provocation)" %>
     <%= f.text_area :detail, :class => "mceEditor" %>
   </p>
 

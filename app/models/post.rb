@@ -38,6 +38,18 @@ class Post < ActiveRecord::Base
     self.attachment = the_attachment unless it.to_s.blank?  
   end
   
+  def video_embed_tags
+    video
+  end
+  
+  def has_attachment?
+    !attachment.nil?
+  end
+  
+  def has_video?
+    !video.blank?
+  end
+  
   private
     def must_have_attachment
       errors.add_to_base("Must select a file to upload") if @in_upload_mode && (!attachment || attachment.filename.blank?)

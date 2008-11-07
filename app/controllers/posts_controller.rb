@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :login_required, :except => [ :index, :show, :featured ]
   before_filter :editor_login_required, :only => [ :feature, :unfeature ]
   before_filter :admin_login_required, :only => [ :destroy ]
-  uses_tiny_mce :options => tiny_mce_options, :only => [ :new, :show, :create, :update, :edit, :upload ]
+  uses_tiny_mce :options => tiny_mce_options, :only => [ :new, :show, :create, :update, :edit, :upload, :video ]
   
   def index
     respond_to do |format|
@@ -23,6 +23,12 @@ class PostsController < ApplicationController
   def upload
     new
     @upload = true
+    render(:action => :new)
+  end
+  
+  def video
+    new
+    @video = true
     render(:action => :new)
   end
   
@@ -48,7 +54,7 @@ class PostsController < ApplicationController
     
   def edit
     @post = Post.find(params[:id])    
-    @upload = !@post.attachment.nil?
+    @upload = @post.has_attachment?
   end
   
   def destroy

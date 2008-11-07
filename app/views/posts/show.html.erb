@@ -10,12 +10,18 @@
 <div id="main">
 	<h1 class="post"><%=h @post %></h1>
 	<p class="meta">
-		<%if @post.attachment%>Uploaded<%else%>Posted<%end%> <%= time_ago_in_words(@post.created_at) %> ago, updated <%= time_ago_in_words(@post.updated_at) %> ago. 
+		<% if @post.has_attachment? %>
+			Uploaded
+		<% else %>
+			Posted
+		<% end %> 
+		
+		<%= time_ago_in_words(@post.created_at) %> ago, updated <%= time_ago_in_words(@post.updated_at) %> ago. 
 		<%= link_to("Edit post", edit_post_url(@post), :class => "option") if logged_in? && current_user == @post.user %> 
 		<%= link_to("Delete post", post_url(@post), :class => "option", :method => :delete, :confirm => "Are you sure you'd like to delete this post?") if logged_in_as_admin? %> 
 	</p>
 	
-	<% if @post.attachment %>
+	<% if @post.has_attachment? %>
 	  <%= link_to "<img src=\"/images/pdf.gif\" width=\"54px\" height=\"66px\" alt=\"PDF preview\" />", @post.attachment.public_filename, :class => "PDFpreview" %>
   	<div class="fileBody">
   		<%= @post.detail %>
@@ -27,7 +33,7 @@
   	</div>
 	<% end %>
 	
-
+	<%= @post.video_embed_tags %>
 	
 	<%= render :partial => 'posts/comments' %>
 	<%= render :partial => 'posts/comment_form' %>

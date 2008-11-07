@@ -6,12 +6,12 @@
 				<%= link_to_avatar_for(post.user, :medium) %>
 			</p>
 			<div class="postContent">
-					<h2<% if post.attachment %> class="file"<% end%>>
-                <%= link_to h(post), post %>
+					<h2<% if post.has_attachment? %> class="file"<% end %>>
+          		<%= link_to h(post), post %>
           </h2>
 						 
 					<p class="meta">
-						<% if post.attachment %>
+						<% if post.has_attachment? %>
               <span class="author">PDF uploaded by <%= link_to_user(post.user) %></span>
 							<span class="date">
 		              <%= time_ago_in_words(post.created_at) %> ago,
