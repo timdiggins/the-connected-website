@@ -704,7 +704,7 @@ p.meta a {
 	color: #999;
 }
 
-a.option {
+p.meta a.option, a.option {
   background-color: #AAA;
   padding: 0.2em 0.5em;
   margin-left: 0.5em;
