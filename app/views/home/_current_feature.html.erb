@@ -38,14 +38,27 @@
       	  </div>
       	<% end %>
       	
-                 <%= @current_featured.brief %>
-                <span class="readmore"><%= link_to "Read more", @current_featured %></span> 
-				
-					<% if @current_featured.tags.size>0 %><p class="tags">posted in
+      	<% if @current_featured.has_attachment? %>
+      	  <%= link_to "<img src=\"/images/pdf.gif\" width=\"54px\" height=\"66px\" alt=\"PDF preview\" />", @current_featured.attachment.public_filename, :class => "PDFpreview" %>
+        	<div class="fileBody">
+        		<%= @current_featured.brief %>
+          	<span class="readmore"><%= link_to "Read more", @current_featured %></span>
+          	<% if @current_featured.tags.size>0 %><p class="tags">posted in
+  						<% for tag in @current_featured.tags %>
+  							<%= link_to tag, tag, :class => "tag" %>
+  						<% end %></p>
+  					<%end %>
+        	</div>
+      	<% else %>
+      	  <%= @current_featured.brief %>
+          <span class="readmore"><%= link_to "Read more", @current_featured %></span>
+          <% if @current_featured.tags.size>0 %><p class="tags">posted in
 						<% for tag in @current_featured.tags %>
 							<%= link_to tag, tag, :class => "tag" %>
 						<% end %></p>
 					<%end %>
+      	<% end %>
+
      </div>
 
 			<p class="more"><%= link_to "Previous featured postings", featured_posts_url %></p>
