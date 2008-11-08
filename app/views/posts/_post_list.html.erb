@@ -16,7 +16,7 @@
 							<span class="date">
 		              <%= time_ago_in_words(post.created_at) %> ago,
 								</span>
-            <% elsif post.video_embed_tags %> 
+            <% elsif post.has_video? %> 
               <span class="author">Video shared by <%= link_to_user(post.user) %>,</span>
             <%else%> 
               <span class="author">by <%= link_to_user(post.user) %>,</span>

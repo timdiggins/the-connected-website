@@ -20,10 +20,13 @@
 			
 			<% if event.detail %>
 			    <% if event.detail.has_attachment? %>
-        	  <%= link_to(h(event.detail.title), event.detail, :class => "file") %> 
+        	  <%= link_to(h(event.detail.title), event.detail, :class => "file") %>
+        	<% elsif event.detail.has_video? %> 
+        	  <%= link_to(h(event.detail.title), event.detail, :class => "video") %>
         	<% else %>
             <%= link_to(h(event.detail.title), event.detail) %> 
     			<% end %>
+    			
 			<% else %>
 					a post which has since been deleted.
 			<% end %>

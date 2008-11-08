@@ -14,7 +14,7 @@
 						<span class="date">
 	              <%= time_ago_in_words(@current_featured.created_at) %> ago,
 							</span>
-          <% elsif @current_featured.video_embed_tags %> 
+          <% elsif @current_featured.has_video? %> 
             <span class="author">Video shared by <%= link_to_user(@current_featured.user) %>,</span>
           <%else%> 
             <span class="author">by <%= link_to_user(@current_featured.user) %>,</span>
