@@ -700,6 +700,10 @@ p.meta {
 	margin-top: 0.3em;
 }
 
+p.meta a {
+	color: #999;
+}
+
 a.option {
   background-color: #AAA;
   padding: 0.2em 0.5em;
