@@ -15,17 +15,16 @@
 	
 	<% if @video %>
 		<p>
-			<%= f.label :video %>
+			<%= f.label :video, "Paste in the URL of a YouTube video or the raw Embed-tag from any video/flash site" %>
 			<%= f.text_area :video, :rows => 3 %>
 		</p>
-	
 	<% end %>
-	
+  
 	<p>
 	  <%= f.label :title, "Title" %>
     <%= f.text_field :title, :class => :largeInput %>
   </p>
-
+  
 	<p class="<%= @upload || @video ? "description" : "Post" %>">
 	  <%= f.label :detail, @upload || @video ? "Description" : "Text (idea, link, article, provocation)" %>
     <%= f.text_area :detail, :class => "mceEditor" %>

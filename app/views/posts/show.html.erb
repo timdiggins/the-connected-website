@@ -21,6 +21,12 @@
 		<%= link_to("Delete post", post_url(@post), :class => "option", :method => :delete, :confirm => "Are you sure you'd like to delete this post?") if logged_in_as_admin? %> 
 	</p>
 	
+	<% if @post.video_embed_tags %>
+	  <div class="video">
+	    <%= @post.video_embed_tags %>
+	  </div>
+	<% end %>
+	
 	<% if @post.has_attachment? %>
 	  <%= link_to "<img src=\"/images/pdf.gif\" width=\"54px\" height=\"66px\" alt=\"PDF preview\" />", @post.attachment.public_filename, :class => "PDFpreview" %>
   	<div class="fileBody">
@@ -33,7 +39,7 @@
   	</div>
 	<% end %>
 	
-	<%= @post.video_embed_tags %>
+	
 	
 	<%= render :partial => 'posts/comments' %>
 	<%= render :partial => 'posts/comment_form' %>
