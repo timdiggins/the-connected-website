@@ -3,9 +3,8 @@
          <%= link_to_avatar_for(@current_featured.user, :medium) %>
      </p>
      <div class="postContent">
-         <h2>
+         <h2<% if @current_featured.has_attachment? %> class="file"<% elsif @current_featured.video_embed_tags %> class="video"<%end%>>
 						<%= link_to h(@current_featured), @current_featured %> 
-						
 				</h2>
 			  <p class="meta">
 			    <strong>Featured</strong>, 
