@@ -403,6 +403,10 @@ div.video {
   -moz-border-radius: 3px;
 }
 
+.watch a {
+ padding-left: 0.5em;
+}
+
 p.description textarea {
   
 }
@@ -644,7 +648,7 @@ textarea#post_detail {
 .post {
   clear: both;
   background: url(../images/post.gif) no-repeat top right;
-  padding-bottom: 1px;
+  padding-bottom: 1.5em;
 }
 
 .post p.avatar {
@@ -663,7 +667,7 @@ textarea#post_detail {
 
 .postContent {
   margin-right: 80px;
-  padding: 1px 3em 2em 0px;
+  padding: 1px 3em 0.5em 0px;
   line-height: 1.5em;
 }
 
@@ -975,6 +979,11 @@ a.file {
 
 h2.file a {
   	background: url(../images/famfam/page_white_text.png) no-repeat left 0.3em;
+	padding: 0.2em 0px 0.2em 20px;
+}
+
+h2.video a {
+  	background: url(../images/famfam/film.png) no-repeat left 0.3em;
 	padding: 0.2em 0px 0.2em 20px;
 }
 

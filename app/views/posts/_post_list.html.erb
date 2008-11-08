@@ -6,7 +6,7 @@
 				<%= link_to_avatar_for(post.user, :medium) %>
 			</p>
 			<div class="postContent">
-					<h2<% if post.has_attachment? %> class="file"<% end %>>
+					<h2<% if post.has_attachment? %> class="file"<% elsif post.video_embed_tags %> class="video"<%end%>>
           		<%= link_to h(post), post %>
           </h2>
 						 
@@ -16,8 +16,11 @@
 							<span class="date">
 		              <%= time_ago_in_words(post.created_at) %> ago,
 								</span>
+            <% elsif post.video_embed_tags %> 
+              <span class="author">Video shared by <%= link_to_user(post.user) %>,</span>
             <%else%> 
               <span class="author">by <%= link_to_user(post.user) %>,</span>
+            <%end%>
 						<span class="date">
 		        <% if post.created_at==post.updated_at%>
 								created <%= time_ago_in_words(post.created_at) %> ago,
@@ -26,12 +29,21 @@
 							<%= time_ago_in_words(post.updated_at) %> ago,
 							<% end %>
 						</span>
-						<%end%>
+						
 						<span class="commentCount">
-						<%= pluralize(post.comments.count, "Comment") %>
+						  <%= link_to pluralize(post.comments.count, "Comment"), post %>
 						</span>
 					</p>
-					<p><%= post.brief %></p>
+					
+					<p><%= post.brief %>
+					
+					<% if post.video_embed_tags %>
+        	  <span class="watch">
+        	    <%= link_to "Watch video", post %>
+        	  </span>
+        	<% end %>
+        	
+        	</p>
 				
 					<% unless post.tags.empty? %>
 						<p class="tags">posted in
