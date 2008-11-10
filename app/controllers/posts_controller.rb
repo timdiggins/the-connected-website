@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :login_required, :except => [ :index, :show, :featured ]
   before_filter :editor_login_required, :only => [ :feature, :unfeature ]
   before_filter :admin_login_required, :only => [ :destroy ]
-  uses_tiny_mce :options => tiny_mce_options, :only => [ :new, :show, :create, :update, :edit, :upload ]
+  uses_tiny_mce :options => tiny_mce_options, :only => [ :new, :show, :create, :update, :edit, :upload, :video ]
   
   def index
     respond_to do |format|
@@ -14,28 +14,35 @@ class PostsController < ApplicationController
       }
     end
   end
-  
+
   def new
     @post = Post.new
     @initial_tag = Tag.find_by_id(params[:tag])
   end
   
+  def text
+    new
+  end
+  
   def upload
     new
-    @upload = true
-    render(:action => :new)
+    @post.specifying_upload = true
+  end
+  
+  def video
+    new
+    @post.specifying_video = true
   end
   
   def create
     @post = Post.new(params[:post])
     @post.user = current_user
     @initial_tag = Tag.find_by_id(params[:tag])
-    @upload = params[:upload]
     @post.valid?
-    if @upload
-      return render(:action => :new) unless @post.attachment && @post.attachment.valid? && @post.valid?
+    if @post.specifying_upload
+      return render(:action => :upload) unless @post.attachment && @post.attachment.valid? && @post.valid?
     else
-      return render(:action => :new) unless @post.valid?
+      return render(:action => @post.specifying_video ? :video : :text) unless @post.valid?
     end
     
     Event.create_for(@post)
@@ -43,12 +50,13 @@ class PostsController < ApplicationController
     @post.tags << @initial_tag if @initial_tag
     @post.subscribers << current_user
     
-    redirect_to posts_url
+    redirect_to @post
   end
     
   def edit
     @post = Post.find(params[:id])    
-    @upload = !@post.attachment.nil?
+    @post.specifying_upload = @post.has_attachment?
+    @post.specifying_video = !@post.video.blank?
   end
   
   def destroy
@@ -60,15 +68,16 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @upload = params[:upload]
     
     @post.attributes = params[:post]
     @post.valid?
-    if @upload
+    if @post.specifying_upload
       return render(:action => :edit) unless @post.attachment && @post.attachment.valid? && @post.save
     else
       return render(:action => :edit) unless @post.save
     end
+    
+    Event.create_for(PostChangedEvent.new(:user => current_user, :post => @post))
     
     flash[:notice] = "Successfully updated post"
     redirect_to @post

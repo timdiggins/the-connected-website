@@ -1,0 +1,27 @@
+<h1><%= @page_title = "All discussion events of The Connected Republic Community" %></h1>
+
+
+<div id="sidebar">
+  <div>
+    <p>Whenever a discussion is started, commented, edited, or tagged, The Connected Republic website tracks the event. This makes it easy to see what has happenend recently.</p>
+  </div>
+</div>
+
+
+<div id="main">
+
+	<%= will_paginate(@events, :prev_label => "Newer", :next_label => "Older", :inner_window => 2) if params[:page] %>
+
+  <div class="events">
+      <ul>
+      	<% for event in @events %>
+        	<%= render :partial => "events/event", :locals => { :event => event } %>
+      	<% end %>
+	    </ul>
+	</div>
+	
+	<%= will_paginate @events, :prev_label => "Newer", :next_label => "Older", :inner_window => 2 %>
+	
+</div>
+
+<%= clear_this %>

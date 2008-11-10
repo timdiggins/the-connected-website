@@ -1,0 +1,10 @@
+<h1><%= @page_title = @initial_tag ? "Create a new posting in tag '#{@initial_tag}'" : "Create a new posting" %></h1>
+
+
+<div id="main">
+  
+	<%= render :partial => 'posts/form' %>
+	
+</div>
+
+<%= clear_this %>

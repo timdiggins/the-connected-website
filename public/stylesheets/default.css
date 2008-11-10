@@ -1,5 +1,3 @@
-/* @override http://localhost:3000/stylesheets/default.css?1225828825 */
-
 body {
   font-family: arial, sans-serif;
   font-size: 0.8em;
@@ -386,6 +384,24 @@ input.largeInput {
 	font-size: 1.6em;
 }
 
+#post_video {
+  width: 100%;
+  height: 6em;
+}
+
+div.video {
+  margin: 1.5em 0px 1em 0px;
+  padding: 10px;
+  background-color: #000;
+  text-align: center;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+
+.watch a {
+ padding-left: 0.5em;
+}
+
 p.description textarea {
   
 }
@@ -627,7 +643,7 @@ textarea#post_detail {
 .post {
   clear: both;
   background: url(../images/post.gif) no-repeat top right;
-  padding-bottom: 1px;
+  padding-bottom: 1.5em;
 }
 
 .post p.avatar {
@@ -646,7 +662,7 @@ textarea#post_detail {
 
 .postContent {
   margin-right: 80px;
-  padding: 1px 3em 2em 0px;
+  padding: 1px 3em 0.5em 0px;
   line-height: 1.5em;
 }
 
@@ -679,7 +695,11 @@ p.meta {
 	margin-top: 0.3em;
 }
 
-a.option {
+p.meta a {
+	color: #999;
+}
+
+p.meta a.option, a.option {
   background-color: #AAA;
   padding: 0.2em 0.5em;
   margin-left: 0.5em;
@@ -906,7 +926,7 @@ div.tags input {
 .events ul {
   list-style: none;
   margin: 0px;
-  padding: 0px;
+  padding: 0px 0px 2em 0px;
 }
 
 .events li {
@@ -956,8 +976,19 @@ a.file {
 	margin-left: 0.3em;
 }
 
+a.video {
+  	background: url(../images/famfam/film.png) no-repeat left 0.1em;
+	padding: 0.2em 0px 0.2em 20px;
+	margin-left: 0.3em;
+}
+
 h2.file a {
   	background: url(../images/famfam/page_white_text.png) no-repeat left 0.3em;
+	padding: 0.2em 0px 0.2em 20px;
+}
+
+h2.video a {
+  	background: url(../images/famfam/film.png) no-repeat left 0.3em;
 	padding: 0.2em 0px 0.2em 20px;
 }
 
@@ -1338,60 +1369,15 @@ span.nextPage,span.previousPage {
 
 
 
-
-
-
-
-#selectType {
-	height: 3em;
-	padding: 0px;
-    margin:0px;
-    font-size: 1em;
-    background: #FFF url(/images/stripeone.gif) bottom left repeat-x;
-    overflow: hidden;
-    }
-    
-    
-#selectType a {
-	border-bottom: 0px;
-	float: left;
-	height: 3em;
-	line-height: 3em;
-	margin: 0px 3px 0px 0px;
-	padding: 0px 1.5em;
-	text-decoration: underline;
-	-moz-border-radius-topleft: 3px;
-	-webkit-border-top-left-radius: 3px;
-	-moz-border-radius-topright: 3px;
-	-webkit-border-top-right-radius: 3px;
-	 background: #EEE url(/images/stripeone.gif) bottom left repeat-x;
-
-}    
-
-#selectType a.current {
-	background: none;
-	background-color: #FFF;
-	color: #0d3a53;
-	text-decoration: none;
-	font-weight: bold;
-    border: 1px solid #CCC;
-	border-bottom-width: 0px;
-	}
-
 .new_post {
-  padding: 1em 2em;
   margin: 0px;
   background-color: #FFF;
-	border: 1px solid #CCC;
-	border-top-width: 0px;
 
 }
 
 .edit_post {
-  padding: 1em 2em;
   margin: 0px;
   background-color: #FFF;
-  border: 1px solid #CCC;
 }    
 
 

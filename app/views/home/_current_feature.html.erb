@@ -3,32 +3,62 @@
          <%= link_to_avatar_for(@current_featured.user, :medium) %>
      </p>
      <div class="postContent">
-         <h2>
+         <h2<% if @current_featured.has_attachment? %> class="file"<% elsif @current_featured.video_embed_tags %> class="video"<%end%>>
 						<%= link_to h(@current_featured), @current_featured %> 
-						
 				</h2>
-				<p class="meta">
-				  <strong>Featured</strong>, 
+			  <p class="meta">
+			    <strong>Featured</strong>, 
+					<% if @current_featured.has_attachment? %>
+            <span class="author">PDF uploaded by <%= link_to_user(@current_featured.user) %></span>
+						<span class="date">
+	              <%= time_ago_in_words(@current_featured.created_at) %> ago,
+							</span>
+          <% elsif @current_featured.has_video? %> 
+            <span class="author">Video shared by <%= link_to_user(@current_featured.user) %>,</span>
+          <%else%> 
+            <span class="author">by <%= link_to_user(@current_featured.user) %>,</span>
+          <%end%>
 					<span class="date">
-						<% if @current_featured.created_at==@current_featured.updated_at%>
+	        <% if @current_featured.created_at==@current_featured.updated_at%>
 							created <%= time_ago_in_words(@current_featured.created_at) %> ago,
 						<% else %>
 							last updated 
-							<%= time_ago_in_words(@current_featured.updated_at) %> ago,
+						<%= time_ago_in_words(@current_featured.updated_at) %> ago,
 						<% end %>
 					</span>
+					
 					<span class="commentCount">
-					<%= pluralize(@current_featured.comments.count, "Comment") %>
+					  <%= link_to pluralize(@current_featured.comments.count, "Comment"), @current_featured %>
 					</span>
-			  </p>
-                 <%= @current_featured.brief %>
-                <span class="readmore"><%= link_to "Read more", @current_featured %></span> 
+				</p>
 				
-					<% if @current_featured.tags.size>0 %><p class="tags">posted in
+				<% if @current_featured.video_embed_tags %>
+      	  <div class="video">
+      	    <%= @current_featured.video_embed_tags %>
+      	  </div>
+      	<% end %>
+      	
+      	<% if @current_featured.has_attachment? %>
+      	  <%= link_to "<img src=\"/images/pdf.gif\" width=\"54px\" height=\"66px\" alt=\"PDF preview\" />", @current_featured.attachment.public_filename, :class => "PDFpreview" %>
+        	<div class="fileBody">
+        		<%= @current_featured.brief %>
+          	<span class="readmore"><%= link_to "Read more", @current_featured %></span>
+          	<% if @current_featured.tags.size>0 %><p class="tags">posted in
+  						<% for tag in @current_featured.tags %>
+  							<%= link_to tag, tag, :class => "tag" %>
+  						<% end %></p>
+  					<%end %>
+        	</div>
+      	<% else %>
+      	  <%= @current_featured.brief %>
+          <span class="readmore"><%= link_to "Read more", @current_featured %></span>
+          <% if @current_featured.tags.size>0 %><p class="tags">posted in
 						<% for tag in @current_featured.tags %>
 							<%= link_to tag, tag, :class => "tag" %>
 						<% end %></p>
 					<%end %>
+      	<% end %>
+
      </div>
 
 			<p class="more"><%= link_to "More from the blog", featured_posts_url %></p>

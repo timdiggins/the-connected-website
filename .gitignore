@@ -11,6 +11,7 @@ config/cookie_secret
 deploy_history.txt
 public/avatars
 tmp/*
+test/tmp
 db/*.sqlite3
 .loadpath
 .project

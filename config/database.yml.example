@@ -5,15 +5,13 @@ development:
   password:
   host: localhost
   encoding: utf8
-
 test:
   adapter: mysql
-  database: republic_development
+  database: republic_test
   username: root
   password:
   host: localhost
   encoding: utf8
-
 production:
   adapter: mysql
   database: republic_development

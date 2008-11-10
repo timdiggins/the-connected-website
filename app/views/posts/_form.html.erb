@@ -1,33 +1,43 @@
 <% form_for @post, :html => { :multipart => true } do | f | %>
 
-	<%= error_messages_for(:post, :object => @post.attachment ? [@post.attachment, @post] : @post ) %>
+	<%= error_messages_for(:post, :object => @post.has_attachment? ? [@post.attachment, @post] : @post ) %>
 
-  <% if @upload  %>
-	 <% if @post.new_record? %>
-	  <p class="fileUpload">
+  <% if @post.specifying_upload  %>
+		<%= link_to_function("Change the PDF", nil, :id => :change_pdf) do | page | 
+          page[:change_pdf].hide
+          page[:fileUploadArea].visual_effect(:appear)
+        end unless @post.new_record?
+    %>
+    
+	  <p class="fileUpload" id="fileUploadArea" <%= %Q{style="display:none"} unless @post.new_record? %>>
 	    <label>Select a PDF file to upload</label>
 	    <%= f.file_field :post_attachment %> 
 	  </p>
-		<%else%>
-      <p class="download"><%= link_to "Download this PDF file", @post.attachment.public_filename %> (can't be changed)</p>
-		<%end%>
+		<%= hidden_field_tag("post[specifying_upload]", @post.specifying_upload) %>
 	<% end %>
 	
+	<% if @post.specifying_video %>
+		<p>
+			<%= f.label :video, "Paste in the URL of a YouTube video or the raw Embed-tag from any video/flash site" %>
+			<%= f.text_area :video, :rows => 3 %>
+		</p>
+		<%= hidden_field_tag("post[specifying_video]", @post.specifying_video) %>
+	<% end %>
+  
 	<p>
 	  <%= f.label :title, "Title" %>
-    <%= f.text_field :title, :class => "largeInput" %>
+    <%= f.text_field :title, :class => :largeInput %>
   </p>
-
-	<p class="<%= @upload ? "description" : "Post" %>">
-	  <%= f.label :detail, @upload ? "Description" : "Post text" %>
+  
+	<p class="<%= @post.specifying_upload || @post.specifying_video ? "description" : "Post" %>">
+	  <%= f.label :detail, @post.specifying_upload || @post.specifying_video ? "Description" : "Text (idea, link, article, provocation)" %>
     <%= f.text_area :detail, :class => "mceEditor" %>
   </p>
 
 	<%= hidden_field_tag(:tag, @initial_tag.id) if @initial_tag  %>
-	<%= hidden_field_tag(:upload, @upload) if @upload %>
 
   <p class="submitBlock">
-    <%= submit_tag  @upload ? "Upload file" : "Save post", :disable_with => "Saving..." %> or <%= link_to "Cancel", @post.new_record? ? posts_url : @post %>
+    <%= submit_tag  @post.specifying_upload ? "Upload file" : "Save post", :disable_with => "Saving..." %> or <%= link_to "Cancel", @post.new_record? ? new_post_url : @post %>
   </p> 
 
 <% end %>
