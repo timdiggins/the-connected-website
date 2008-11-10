@@ -2,9 +2,11 @@ class Post < ActiveRecord::Base
 
   include Truncator
   
+  attr_accessor :specifying_video, :specifying_upload
   validates_presence_of :title
+  validates_presence_of :video, :if => :specifying_video
   validate :must_have_attachment
-  validates_tiny_mce_presence_of :detail
+  validates_tiny_mce_presence_of :detail, :unless => :specifying_video
   
   belongs_to :user
   has_many :comments, :order => 'created_at', :dependent => :destroy

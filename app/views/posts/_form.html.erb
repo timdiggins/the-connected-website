@@ -2,22 +2,24 @@
 
 	<%= error_messages_for(:post, :object => @post.has_attachment? ? [@post.attachment, @post] : @post ) %>
 
-  <% if @upload  %>
-	 <% if @post.new_record? %>
-	  <p class="fileUpload">
-	    <label>Select a PDF file to upload</label>
-	    <%= f.file_field :post_attachment %> 
-	  </p>
+  <% if @post.specifying_upload  %>
+	 	<% if @post.new_record? %>
+		  <p class="fileUpload">
+		    <label>Select a PDF file to upload</label>
+		    <%= f.file_field :post_attachment %> 
+		  </p>
 		<% else %>
       <p class="download"><%= link_to "Download this PDF file", @post.attachment.public_filename %> (can't be changed)</p>
 		<% end %>
+		<%= hidden_field_tag("post[specifying_upload]", @post.specifying_upload) %>
 	<% end %>
 	
-	<% if @video %>
+	<% if @post.specifying_video %>
 		<p>
 			<%= f.label :video, "Paste in the URL of a YouTube video or the raw Embed-tag from any video/flash site" %>
 			<%= f.text_area :video, :rows => 3 %>
 		</p>
+		<%= hidden_field_tag("post[specifying_video]", @post.specifying_video) %>
 	<% end %>
   
 	<p>
@@ -25,16 +27,15 @@
     <%= f.text_field :title, :class => :largeInput %>
   </p>
   
-	<p class="<%= @upload || @video ? "description" : "Post" %>">
-	  <%= f.label :detail, @upload || @video ? "Description" : "Text (idea, link, article, provocation)" %>
+	<p class="<%= @post.specifying_upload || @post.specifying_video ? "description" : "Post" %>">
+	  <%= f.label :detail, @post.specifying_upload || @post.specifying_video ? "Description" : "Text (idea, link, article, provocation)" %>
     <%= f.text_area :detail, :class => "mceEditor" %>
   </p>
 
 	<%= hidden_field_tag(:tag, @initial_tag.id) if @initial_tag  %>
-	<%= hidden_field_tag(:upload, @upload) if @upload %>
 
   <p class="submitBlock">
-    <%= submit_tag  @upload ? "Upload file" : "Save post", :disable_with => "Saving..." %> or <%= link_to "Cancel", @post.new_record? ? posts_url : @post %>
+    <%= submit_tag  @post.specifying_upload ? "Upload file" : "Save post", :disable_with => "Saving..." %> or <%= link_to "Cancel", @post.new_record? ? posts_url : @post %>
   </p> 
 
 <% end %>

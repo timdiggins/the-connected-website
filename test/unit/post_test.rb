@@ -51,4 +51,21 @@ class PostTest < ActiveSupport::TestCase
     post.video = %Q{http://www.youtube.com/watch?v=FG2PUZoukfA}
     assert_equal(%Q{<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/FG2PUZoukfA&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/FG2PUZoukfA&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>} , post.video_embed_tags)
   end
+  
+  should "require video appropriately" do
+    post = Post.new(:title => "Whatever", :detail => "Whatever")
+    assert post.valid?
+    
+    post.specifying_video = true
+    assert !post.valid?
+    assert_equal(["Video can't be blank"], post.errors.full_messages)
+    
+    post.video = "HereHere"
+    assert post.valid?
+    
+    post.detail = '   '
+    assert post.valid?
+    
+  end
+  
 end

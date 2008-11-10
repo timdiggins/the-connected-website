@@ -22,13 +22,13 @@ class PostsController < ApplicationController
   
   def upload
     new
-    @upload = true
+    @post.specifying_upload = true
     render(:action => :new)
   end
   
   def video
     new
-    @video = true
+    @post.specifying_video = true
     render(:action => :new)
   end
   
@@ -36,9 +36,8 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     @post.user = current_user
     @initial_tag = Tag.find_by_id(params[:tag])
-    @upload = params[:upload]
     @post.valid?
-    if @upload
+    if @post.specifying_upload
       return render(:action => :new) unless @post.attachment && @post.attachment.valid? && @post.valid?
     else
       return render(:action => :new) unless @post.valid?
@@ -54,7 +53,8 @@ class PostsController < ApplicationController
     
   def edit
     @post = Post.find(params[:id])    
-    @upload = @post.has_attachment?
+    @post.specifying_upload = @post.has_attachment?
+    @post.specifying_video = !@post.video.blank?
   end
   
   def destroy
@@ -66,11 +66,10 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @upload = params[:upload]
     
     @post.attributes = params[:post]
     @post.valid?
-    if @upload
+    if @post.specifying_upload
       return render(:action => :edit) unless @post.attachment && @post.attachment.valid? && @post.save
     else
       return render(:action => :edit) unless @post.save
