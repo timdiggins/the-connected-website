@@ -7,16 +7,36 @@
 	<div class="eventBody">
 	  <p class="details">
 	    <% unless @hide_user_in_events %>
-	    	<%= link_to_user(event.user) %> 
-			<% end %>
-			 
-			<% if event.detail.post %>
-				edited <%= link_to(h(event.detail.post.title), event.detail.post) %> 
+				<%= link_to_user(event.user) %>
+			<% end %> 
+			<% if event.detail && event.detail.has_attachment? %>
+    	  edited a PDF file:
+			<% elsif event.detail && event.detail.has_video? %>
+				edited a video: 
+    	<% else %>
+        edited
+			<% end %> 
+			
+			<% if event.detail %>
+			    <% if event.detail.has_attachment? %>
+        	  <%= link_to(h(event.detail.title), event.detail, :class => "file") %>
+        	<% elsif event.detail.has_video? %> 
+        	  <%= link_to(h(event.detail.title), event.detail, :class => "video") %>
+        	<% else %>
+            <%= link_to(h(event.detail.title), event.detail) %> 
+    			<% end %>
+    			
 			<% else %>
-				edited a post which has since been deleted
+					a post which has since been deleted.
 			<% end %>
 	    <span class="time"><%= time_ago_in_words(event.created_at) %> ago.</span>
 	  </p>
 	  
-	 </div> 
+	  <div class="commentBody">
+			<% if event.detail %>
+	      <%= event.detail.brief %>
+			<% end %>
+    </div>
+
+	 </div>
 <% end %>
