@@ -50,7 +50,7 @@ class PostsController < ApplicationController
     @post.tags << @initial_tag if @initial_tag
     @post.subscribers << current_user
     
-    redirect_to posts_url
+    redirect_to @post
   end
     
   def edit
