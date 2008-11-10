@@ -15,14 +15,10 @@
 	<% end %>
 	
 	<% if @post.specifying_video %>
- 		<% if @post.new_record? %>
-			<p>
-				<%= f.label :video, "Paste in the URL of a YouTube video or the raw Embed-tag from any video/flash site" %>
-				<%= f.text_area :video, :rows => 3 %>
-			</p>
-		<% else %>
-			<p>The video you specified cannot be changed.</p>
-		<% end %>
+		<p>
+			<%= f.label :video, "Paste in the URL of a YouTube video or the raw Embed-tag from any video/flash site" %>
+			<%= f.text_area :video, :rows => 3 %>
+		</p>
 		<%= hidden_field_tag("post[specifying_video]", @post.specifying_video) %>
 	<% end %>
   
