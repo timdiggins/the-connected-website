@@ -3,15 +3,18 @@
 
 <div id="main">
   
-  <p id="selectType">
-    <%= link_to("Write a posting", new_post_url(:tag => @initial_tag ? @initial_tag.id : nil), :class => @post.specifying_upload || @post.specifying_video ? nil : 'current') %> 
-		<%= link_to("Share a document", upload_new_post_url(:tag => @initial_tag ? @initial_tag.id : nil), :class => @post.specifying_upload ? 'current' : nil) %>
-		<%= link_to("Share a video", video_new_post_url(:tag => @initial_tag ? @initial_tag.id : nil), :class => @post.specifying_video ? 'current' : nil) %>
+  <p>
+    <%= link_to("Write a posting", text_new_post_url(:tag => @initial_tag ? @initial_tag.id : nil)) %> 
   </p>  
-	
-	<%= render :partial => 'posts/form' %>
-	
 
+  <p>
+		<%= link_to("Share a document", upload_new_post_url(:tag => @initial_tag ? @initial_tag.id : nil)) %>
+	</p>
+	
+	<p>
+		<%= link_to("Share a video", video_new_post_url(:tag => @initial_tag ? @initial_tag.id : nil)) %>
+	</p>
+	
 </div>
 
 <%= clear_this %>

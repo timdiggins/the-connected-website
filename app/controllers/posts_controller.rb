@@ -15,21 +15,21 @@ class PostsController < ApplicationController
     end
   end
   
-  def new
+  def text
     @post = Post.new
     @initial_tag = Tag.find_by_id(params[:tag])
   end
   
   def upload
-    new
+    @post = Post.new
+    @initial_tag = Tag.find_by_id(params[:tag])
     @post.specifying_upload = true
-    render(:action => :new)
   end
   
   def video
-    new
+    @post = Post.new
+    @initial_tag = Tag.find_by_id(params[:tag])
     @post.specifying_video = true
-    render(:action => :new)
   end
   
   def create
@@ -38,9 +38,9 @@ class PostsController < ApplicationController
     @initial_tag = Tag.find_by_id(params[:tag])
     @post.valid?
     if @post.specifying_upload
-      return render(:action => :new) unless @post.attachment && @post.attachment.valid? && @post.valid?
+      return render(:action => :upload) unless @post.attachment && @post.attachment.valid? && @post.valid?
     else
-      return render(:action => :new) unless @post.valid?
+      return render(:action => @post.specifying_video ? :video : :text) unless @post.valid?
     end
     
     Event.create_for(@post)
