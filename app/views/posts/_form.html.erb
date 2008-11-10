@@ -3,14 +3,16 @@
 	<%= error_messages_for(:post, :object => @post.has_attachment? ? [@post.attachment, @post] : @post ) %>
 
   <% if @post.specifying_upload  %>
-	 	<% if @post.new_record? %>
-		  <p class="fileUpload">
-		    <label>Select a PDF file to upload</label>
-		    <%= f.file_field :post_attachment %> 
-		  </p>
-		<% else %>
-      <p class="download"><%= link_to "Download this PDF file", @post.attachment.public_filename %> (can't be changed)</p>
-		<% end %>
+		<%= link_to_function("Change the PDF", nil, :id => :change_pdf) do | page | 
+          page[:change_pdf].hide
+          page[:fileUploadArea].visual_effect(:appear)
+        end unless @post.new_record?
+    %>
+    
+	  <p class="fileUpload" id="fileUploadArea" <%= %Q{style="display:none"} unless @post.new_record? %>>
+	    <label>Select a PDF file to upload</label>
+	    <%= f.file_field :post_attachment %> 
+	  </p>
 		<%= hidden_field_tag("post[specifying_upload]", @post.specifying_upload) %>
 	<% end %>
 	
