@@ -1,0 +1,15 @@
+<h1><%= @page_title = "Activity" %></h1>
+
+<div id="main">
+
+	<%= will_paginate(@events, :prev_label => "Newer", :next_label => "Older", :inner_window => 2) if params[:page] %>
+	
+	<% for event in @events %>
+  	<%= render :partial => "events/event", :locals => { :event => event } %>
+	<% end %>
+	
+	<%= will_paginate @events, :prev_label => "Newer", :next_label => "Older", :inner_window => 2 %>
+	
+</div>
+
+<%= clear_this %>
