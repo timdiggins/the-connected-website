@@ -7,15 +7,16 @@
 	<div id="sidebar">
 	<% if logged_in? %>
 	  <p id="newContent"><%= link_to "Start a discussion", new_post_url %></p>
-  <% else %>  
-    <div id="missionStatement">
+      <div id="missionStatement">
+<% else %>  
       <h2>What is this?</h2>
   		<p>
   		  A community space, initiated by Cisco's Internet Business Solutions Group, where people interested in public sector transformation can meet each other and share their ideas.	
       </p>
 
-    </div>
   <% end %>  
+  <p>We are regularly updating how the site works. Please <%=link_to "share your feedback and suggestions", "tags/The Connected Republic"%>.</p>
+  </div>
 		
 		
 		  <%=render :partial=>'posts/subscription' %> 
