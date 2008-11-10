@@ -44,7 +44,7 @@ class Post < ActiveRecord::Base
     return nil if video.blank?
     return video if video.strip.starts_with?("<object")
     
-    uri = URI.parse(video)  
+    uri = URI.parse(video.strip)   
     return nil unless uri.query
 
     host_parts = uri.host.split('.')
@@ -57,6 +57,8 @@ class Post < ActiveRecord::Base
     v_value = v_param[/v=(.*)/, 1]
     
     %Q{<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/#{v_value}&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/#{v_value}&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>}
+    
+    rescue URI::InvalidURIError    
   end
   
   def has_attachment?

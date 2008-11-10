@@ -42,10 +42,16 @@ class PostTest < ActiveSupport::TestCase
     post.video = %Q{http://www.youtube.com/watch?feature=related}
     assert_nil(post.video_embed_tags)
     
+    post.video = "Totally BogusUrl"
+    assert_nil(post.video_embed_tags)
+    
     post.video = %Q{http://www.youtube.com/watch?v=ez5robAWmu4&feature=related}
     assert_equal(%Q{<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/ez5robAWmu4&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/ez5robAWmu4&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>}, post.video_embed_tags)
     
     post.video = %Q{http://youtube.com/watch?v=FG2PUZoukfA}
+    assert_equal(%Q{<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/FG2PUZoukfA&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/FG2PUZoukfA&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>} , post.video_embed_tags)
+
+    post.video = %Q{http://youtube.com/watch?v=FG2PUZoukfA\r\n\n}
     assert_equal(%Q{<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/FG2PUZoukfA&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/FG2PUZoukfA&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>} , post.video_embed_tags)
     
     post.video = %Q{http://www.youtube.com/watch?v=FG2PUZoukfA}
