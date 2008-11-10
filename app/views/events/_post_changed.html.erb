@@ -9,21 +9,21 @@
 	    <% unless @hide_user_in_events %>
 				<%= link_to_user(event.user) %>
 			<% end %> 
-			<% if event.detail && event.detail.has_attachment? %>
+			<% if event.detail && event.detail.post.has_attachment? %>
     	  edited a PDF file:
-			<% elsif event.detail && event.detail.has_video? %>
+			<% elsif event.detail && event.detail.post.has_video? %>
 				edited a video: 
     	<% else %>
         edited
 			<% end %> 
 			
 			<% if event.detail %>
-			    <% if event.detail.has_attachment? %>
-        	  <%= link_to(h(event.detail.title), event.detail, :class => "file") %>
-        	<% elsif event.detail.has_video? %> 
-        	  <%= link_to(h(event.detail.title), event.detail, :class => "video") %>
+			    <% if event.detail.post.has_attachment? %>
+        	  <%= link_to(h(event.detail.post.title), event.detail.post, :class => "file") %>
+        	<% elsif event.detail.post.has_video? %> 
+        	  <%= link_to(h(event.detail.post.title), event.detail.post, :class => "video") %>
         	<% else %>
-            <%= link_to(h(event.detail.title), event.detail) %> 
+            <%= link_to(h(event.detail.post.title), event.detail.post) %> 
     			<% end %>
     			
 			<% else %>
@@ -34,7 +34,7 @@
 	  
 	  <div class="commentBody">
 			<% if event.detail %>
-	      <%= event.detail.brief %>
+	      <%= event.detail.post.brief %>
 			<% end %>
     </div>
 
