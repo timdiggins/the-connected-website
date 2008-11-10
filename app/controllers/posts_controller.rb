@@ -14,21 +14,23 @@ class PostsController < ApplicationController
       }
     end
   end
-  
-  def text
+
+  def new
     @post = Post.new
     @initial_tag = Tag.find_by_id(params[:tag])
   end
   
+  def text
+    new
+  end
+  
   def upload
-    @post = Post.new
-    @initial_tag = Tag.find_by_id(params[:tag])
+    new
     @post.specifying_upload = true
   end
   
   def video
-    @post = Post.new
-    @initial_tag = Tag.find_by_id(params[:tag])
+    new
     @post.specifying_video = true
   end
   
