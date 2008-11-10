@@ -1,12 +1,25 @@
-<h1><%= @page_title = "Activity" %></h1>
+<h1><%= @page_title = "All activity of The Connected Republic Community" %></h1>
+
+
+<div id="sidebar">
+  <div>
+    <p>Whenever a posting is created, a comment is made, something is edited, etc ... - The Connected Republic tracks the event.</p>
+    <p>This makes it easy to find out what is happening.</p>
+  </div>
+</div>
+
 
 <div id="main">
 
 	<%= will_paginate(@events, :prev_label => "Newer", :next_label => "Older", :inner_window => 2) if params[:page] %>
-	
-	<% for event in @events %>
-  	<%= render :partial => "events/event", :locals => { :event => event } %>
-	<% end %>
+
+  <div class="events">
+      <ul>
+      	<% for event in @events %>
+        	<%= render :partial => "events/event", :locals => { :event => event } %>
+      	<% end %>
+	    </ul>
+	</div>
 	
 	<%= will_paginate @events, :prev_label => "Newer", :next_label => "Older", :inner_window => 2 %>
 	

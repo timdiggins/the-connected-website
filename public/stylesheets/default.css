@@ -932,7 +932,7 @@ div.tags input {
 .events ul {
   list-style: none;
   margin: 0px;
-  padding: 0px;
+  padding: 0px 0px 2em 0px;
 }
 
 .events li {
