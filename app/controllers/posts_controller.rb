@@ -77,6 +77,8 @@ class PostsController < ApplicationController
       return render(:action => :edit) unless @post.save
     end
     
+    Event.create_for(PostChangedEvent.new(:user => current_user, :post => @post))
+    
     flash[:notice] = "Successfully updated post"
     redirect_to @post
   end
