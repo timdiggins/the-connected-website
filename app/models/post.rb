@@ -42,7 +42,8 @@ class Post < ActiveRecord::Base
   
   def video_embed_tags
     return nil if video.blank?
-    return video if video.strip.starts_with?("<object")
+    object_tag = video.strip[/^<object.*<\/object>$/]
+    return object_tag if object_tag
     
     uri = URI.parse(video.strip)   
     return nil unless uri.query
