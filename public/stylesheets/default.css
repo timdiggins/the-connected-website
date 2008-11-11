@@ -158,13 +158,13 @@ div#emailsettings h2 {
 
 #add a {
 	display: block;
-	padding: 0.5em 1em 0.5em 2.5em;
+	padding: 0.5em 1em 0.5em 2em;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	margin-bottom: 1em;
 	font-size: 1.1em;
 	font-weight: bold;
-	background: #FFF url(../images/addLarge.gif) no-repeat 0.8em 0.5em;
+	background: #ffd670 url(../images/addLarge.gif) no-repeat 0.5em 0.5em;
 }
 
 #topNavigation {
