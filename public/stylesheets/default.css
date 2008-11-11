@@ -151,7 +151,7 @@ div#emailsettings h2 {
 
 #add {
 	position:absolute;
-	right:0px;
+	right:8px;
 	bottom:40px;
 	margin: 0px;
 }
@@ -164,7 +164,6 @@ div#emailsettings h2 {
 	margin-bottom: 1em;
 	font-size: 1.1em;
 	font-weight: bold;
-	text-decoration: none;
 	background: #FFF url(../images/addLarge.gif) no-repeat 0.8em 0.5em;
 }
 
@@ -314,6 +313,7 @@ margin-bottom:1em;
 h1.post {
   margin-bottom:0px;
   background-image: none;
+  padding-bottom: 0px;
   font-weight: bold;
   	color: #2A6B87;
 }
