@@ -7,9 +7,9 @@ class PostsController < ApplicationController
   
   def index
     respond_to do |format|
-      format.html { @posts = Post.sorted_by_updated_at.paginate(:page => params[:page], :per_page => 15) }
+      format.html { @posts = Post.sorted_by_commented_at.paginate(:page => params[:page], :per_page => 15) }
       format.rss { 
-        @posts = Post.sorted_by_updated_at.limit_to(15)
+        @posts = Post.sorted_by_commented_at.limit_to(15)
         render :layout => false 
       }
     end

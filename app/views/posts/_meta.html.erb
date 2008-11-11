@@ -1,0 +1,33 @@
+<p class="meta">
+    <% if post.has_attachment? %>
+      <span class="author">PDF uploaded by <%= link_to_user(post.user) %>,</span>
+    <% elsif post.has_video? %> 
+      <span class="author">Video shared by <%= link_to_user(post.user) %>,</span>
+    <%else%> 
+      <span class="author">by <%= link_to_user(post.user) %>,</span>
+    <%end%>
+    
+    <% if post.comments.empty? %>
+      <span class="date">
+        <!--<%if !post.has_attachment? && !post.has_video?%>created<%end%>-->
+        <%= time_ago_in_words(post.created_at) %> ago,
+      </span>
+    <% else %>
+      <span class="date">
+         last comment <%= time_ago_in_words(post.commented_at) %> ago,
+      </span>
+    <% end %>
+    
+   <%if post.featured?%>
+     <strong>added to <%=link_to 'blog', featured_posts_url%></strong> <%=time_ago_in_words(post.featured_at)%> ago, 
+   <%end%>
+
+    <span class="commentCount">
+      <% if post.comments.empty? %>
+         no comments yet
+       <% else %>
+        <%= link_to pluralize(post.comments.count, "Comment"), post_path(post, :anchor=>"comments") %>
+      <% end %>
+    </span>
+</p>
+  

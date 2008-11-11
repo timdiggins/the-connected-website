@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081110201421) do
+ActiveRecord::Schema.define(:version => 20081111101404) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "post_id"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20081110201421) do
     t.datetime "updated_at"
     t.datetime "featured_at"
     t.text     "video"
+    t.datetime "commented_at"
   end
 
   create_table "queued_emails", :force => true do |t|

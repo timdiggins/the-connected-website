@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     return render(:template => 'posts/show') unless @comment.valid?
     
     Event.create_for(@comment)
-    @post.update_attribute(:updated_at, @comment.updated_at)
+    @post.update_attribute(:commented_at, @comment.updated_at)
     current_user.update_attribute(:contributed_at, Time.now)
     @post.subscribers << current_user
     QueuedEmail.create_for(@comment)

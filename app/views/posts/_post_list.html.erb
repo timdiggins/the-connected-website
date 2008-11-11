@@ -10,31 +10,7 @@
           		<%= link_to h(post), post %>
           </h2>
 						 
-					<p class="meta">
-						<% if post.has_attachment? %>
-              <span class="author">PDF uploaded by <%= link_to_user(post.user) %></span>
-							<span class="date">
-		              <%= time_ago_in_words(post.created_at) %> ago,
-								</span>
-            <% elsif post.has_video? %> 
-              <span class="author">Video shared by <%= link_to_user(post.user) %>,</span>
-            <%else%> 
-              <span class="author">by <%= link_to_user(post.user) %>,</span>
-            <%end%>
-						<span class="date">
-		        <% if post.created_at==post.updated_at%>
-								created <%= time_ago_in_words(post.created_at) %> ago,
-							<% else %>
-								last updated 
-							<%= time_ago_in_words(post.updated_at) %> ago,
-							<% end %>
-						</span>
-						
-						<span class="commentCount">
-						  <%= link_to pluralize(post.comments.count, "Comment"), post %>
-						</span>
-					</p>
-					
+					<%=render :partial => 'meta', :locals=>{:post=>post}%>
 					<p><%= post.brief %>
 					
 					<% if post.video_embed_tags %>
