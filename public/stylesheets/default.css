@@ -1,3 +1,5 @@
+/* @override http://localhost:3000/stylesheets/default.css?1226349891 */
+
 body {
   font-family: arial, sans-serif;
   font-size: 0.8em;
@@ -691,7 +693,7 @@ span.readmore a{
 
 p.meta {
 	color: #999;
-	font-size: 1.1em;
+	font-size: 1em;
 	font-weight: normal;
 	display: block;
 	margin-top: 0.3em;
@@ -1035,8 +1037,8 @@ h2.file a {
 }
 
 h2.video a {
-  	background: url(../images/famfam/film.png) no-repeat left 0.3em;
-	padding: 0.2em 0px 0.2em 20px;
+  	background: url(../images/famfam/film.png) no-repeat -2px 0.3em;
+	padding: 0.2em 0px 0.2em 18px;
 }
 
 
