@@ -1,4 +1,4 @@
-<% @page_title = @initial_tag ? "Create a new post in tag '#{@initial_tag}'" : "Create a new post" %>
+
 
 <div id="sidebar">
   <div id="missionStatement">
@@ -10,18 +10,23 @@
 </div>
 
 <div id="main">
-  
-  <p>
-    <%= link_to("Write a posting", text_new_post_url(:tag => @initial_tag ? @initial_tag.id : nil)) %> 
-  </p>  
+  <div id="contentTypes">
+    <h1><%= @page_title = "Select type of content to add" %>:</h1>
+    <ul>
 
-  <p>
-		<%= link_to("Share a document", upload_new_post_url(:tag => @initial_tag ? @initial_tag.id : nil)) %>
-	</p>
+      <li class="write">
+        <%= link_to("Write a posting", text_new_post_url(:tag => @initial_tag ? @initial_tag.id : nil)) %> 
+      </li>  
+
+      <li class="file">
+    		<%= link_to("Share a document", upload_new_post_url(:tag => @initial_tag ? @initial_tag.id : nil)) %>
+    	</li>
 	
-	<p>
-		<%= link_to("Share a video", video_new_post_url(:tag => @initial_tag ? @initial_tag.id : nil)) %>
-	</p>
+    	<li class="video">
+    		<%= link_to("Share a video", video_new_post_url(:tag => @initial_tag ? @initial_tag.id : nil)) %>
+    	</li>
+  	</ul>
+	</div>
 	
 </div>
 
