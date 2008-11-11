@@ -6,16 +6,18 @@
 
 	<div id="sidebar">
 	<% if logged_in? %>
-	  <p id="newContent"><%= link_to "Start a discussion", new_post_url %></p>
-      <div id="missionStatement">
-<% else %>  
+	  <p id="newContent"><%= link_to "Start a discussion", new_post_url %></p>  
+  <% end %>
+  <div id="missionStatement">
+  <% if !logged_in? %>
+      
       <h2>What is this?</h2>
   		<p>
   		  A community space, initiated by Cisco's Internet Business Solutions Group, where people interested in public sector transformation can meet each other and share their ideas.	
       </p>
 
   <% end %>  
-  <p>We are regularly updating how the site works. Please <%=link_to "share your feedback and suggestions", "tags/The Connected Republic"%>.</p>
+  <p>We are regularly updating the site. Please <%=link_to "share your feedback and suggestions", "tags/The Connected Republic"%>.</p>
   </div>
 		
 		

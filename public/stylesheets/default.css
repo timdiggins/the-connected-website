@@ -1,3 +1,5 @@
+/* @override http://localhost:3000/stylesheets/default.css?1226349891 */
+
 body {
   font-family: arial, sans-serif;
   font-size: 0.8em;
@@ -281,8 +283,10 @@ h1 {
   font-size: 1.5em;
   font-weight: normal;
   margin-top: 0px;
-margin-bottom:1.5em;
+margin-bottom:1em;
 }
+
+
 
 h1.post {
   margin-bottom:0px;
@@ -689,7 +693,7 @@ span.readmore a{
 
 p.meta {
 	color: #999;
-	font-size: 1.1em;
+	font-size: 1em;
 	font-weight: normal;
 	display: block;
 	margin-top: 0.3em;
@@ -901,6 +905,51 @@ div.tags input {
   font-size: 1.1em;
 }
 
+#contentTypes {
+  padding: 2em 2em;
+  text-align: center;
+}
+
+#contentTypes ul {
+  list-style: none;
+  margin: 3em 0px;
+  padding: 0px;
+}
+
+#contentTypes li {
+	display: inline;
+}
+
+#contentTypes h1 {
+  color: #666;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#contentTypes a {
+  padding: 0.6em 1em 0.6em 2.3em;
+  background-color: #FFF;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  margin: 0px 0.3em;
+  font-size: 1.1em;
+  text-decoration: none;
+  border: 1px solid #AAA;
+  font-weight: bold;
+}
+
+#contentTypes li.file a {
+  	background: url(../images/famfam/page_white_add.png) no-repeat 0.8em 0.5em;
+  	}
+
+
+#contentTypes li.video a {
+  	background: url(../images/famfam/film_add.png) no-repeat 0.8em 0.5em;
+  	}
+  	
+#contentTypes li.write a {
+  	background: url(../images/famfam/pencil.png) no-repeat 0.8em 0.5em;
+  	}
 
 
 #newContent {
@@ -988,8 +1037,8 @@ h2.file a {
 }
 
 h2.video a {
-  	background: url(../images/famfam/film.png) no-repeat left 0.3em;
-	padding: 0.2em 0px 0.2em 20px;
+  	background: url(../images/famfam/film.png) no-repeat -2px 0.3em;
+	padding: 0.2em 0px 0.2em 18px;
 }
 
 
