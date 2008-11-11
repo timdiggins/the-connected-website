@@ -2,7 +2,11 @@
 <h1><%= @page_title = "Lastest articles, postings and discussions" %></h1>
 		
 <div id="sidebar">
-	<%=render :partial=>'posts/subscription' %> 
+	<div id="missionStatement">
+    <p>All discussions started by members of <%= link_to "the Connected Republic community", :controller=>'users'%> are here, with the most recent commented one at the top.</p>
+    <p>You can <%=link_to "start a discussion", :action=>'new'%> by writing some text, or sharing an article or whitepaper (a pdf file) or a video.</p>
+	</div>
+  <%=render :partial=>'posts/subscription' %> 
 </div>
 
 <div id="main">
