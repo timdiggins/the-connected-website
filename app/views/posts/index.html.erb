@@ -3,7 +3,10 @@
 		
 <div id="sidebar">
   <p id="newContent"><%= link_to "Start a discussion", new_post_url %></p>
-	
+	<div id="missionStatement">
+    <p>All discussions started by members of <%= link_to "the Connected Republic community", :controller=>'users'%> are here, with the most recent commented one at the top.</p>
+    <p>You can <%=link_to "start a discussion", :action=>'new'%> by writing some text, or sharing an article or whitepaper (a pdf file) or a video.</p>
+	</div>
   <%=render :partial=>'posts/subscription' %> 
 </div>
 
