@@ -80,7 +80,7 @@ class TaggingTest < ActionController::IntegrationTest
     new_session_as(:duff) do
       post_id = posts(:cool_article).id
       post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
-      get '/'
+      get '/events'
       assert_select "div.eventBody>p.details", /duff.*tagged.*Government is Bogus.*with the tag Lame Government.*less than a minute ago/m
       assert_select "div.eventBody>p.details>a", "duff"
       assert_select "div.eventBody>p.details>a", "Government is Bogus"

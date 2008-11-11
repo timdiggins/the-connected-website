@@ -11,6 +11,15 @@ class PostingTest < ActionController::IntegrationTest
     new_session_as(:duff) do
       get '/posts/new'
       assert_response :success
+      assert_select "#contentTypes"
+      assert_select "ul li.video"
+      assert_select "ul li.file"
+    end
+  end
+  should "be able to see the new create a text post page if you're logged in" do
+    new_session_as(:duff) do
+      get '/posts/new/text'
+      assert_response :success
       assert_select "form#new_post"
     end
   end
