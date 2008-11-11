@@ -1,4 +1,7 @@
-/* @override http://localhost:3000/stylesheets/default.css?1226349891 */
+/* @override 
+	http://localhost:3000/stylesheets/default.css?1226349891
+	http://localhost:3000/stylesheets/default.css?1226361882
+*/
 
 body {
   font-family: arial, sans-serif;
@@ -61,7 +64,6 @@ a.rss {
 
 a:hover {
 	text-decoration: underline;
-	color: #DD6900;
 }
 
 
@@ -146,6 +148,26 @@ div#emailsettings h2 {
 	height:73px;
 }
 
+
+#add {
+	position:absolute;
+	right:0px;
+	bottom:40px;
+	margin: 0px;
+}
+
+#add a {
+	display: block;
+	padding: 0.5em 1em 0.5em 2.5em;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	margin-bottom: 1em;
+	font-size: 1.1em;
+	font-weight: bold;
+	text-decoration: none;
+	background: #FFF url(../images/addLarge.gif) no-repeat 0.8em 0.5em;
+}
+
 #topNavigation {
 	list-style:none;
 	margin:0px;
@@ -162,7 +184,8 @@ div#emailsettings h2 {
 #topNavigation a {
 	color: #DDD;
 	padding:0.5em;
-	font-size: 1.2em;
+	font-size: 1em;
+	text-decoration: none;
 }
 
 
@@ -1441,3 +1464,6 @@ span.nextPage,span.previousPage {
   margin-bottom: 1em;
   font-weight: bold;
 }
+
+
+
