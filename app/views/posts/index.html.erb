@@ -3,8 +3,8 @@
 		
 <div id="sidebar">
 	<div id="missionStatement">
-    <p>All discussions started by members of <%= link_to "the Connected Republic community", :controller=>'users'%> are here, with the most recent commented one at the top.</p>
-    <p>You can <%=link_to "start a discussion", :action=>'new'%> by writing some text, or sharing an article or whitepaper (a pdf file) or a video.</p>
+    <p>All discussions are started by members of <%= link_to "the Connected Republic community", :controller=>'users'%>. The ones with the latest comments are shown first.</p>
+    <p><%=link_to "Start your own discussion", :action=>'new'%> by writing some text, or sharing an article or whitepaper (a pdf file) or a video.</p>
 	</div>
   <%=render :partial=>'posts/subscription' %> 
 </div>
