@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_filter :login_required, :except => [ :index, :show, :featured ]
   before_filter :editor_login_required, :only => [ :feature, :unfeature ]
   before_filter :admin_login_required, :only => [ :destroy ]
-  uses_tiny_mce :options => tiny_mce_options, :only => [ :new, :show, :create, :update, :edit, :upload, :video ]
+  uses_tiny_mce :options => tiny_mce_options, :only => [ :new, :show, :create, :update, :edit, :text, :upload, :video ]
   
   def index
     respond_to do |format|
