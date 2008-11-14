@@ -18,13 +18,14 @@
 	  <% if post.comments.empty? %>
       <span class="commentCount">No comments yet.</span>
     <% else %>
-      <span class="commentCount">
-	     <%= link_to pluralize(post.comments.count, "Comment"), post_path(post, :anchor=>"comments") %>
-	    </span>, 
+      <br />
 			<span class="date">
-	      last comment <%= time_ago_in_words(post.commented_at) %> ago.
+	      Last comment <%= time_ago_in_words(post.commented_at) %> ago,
 	      </span>
-	    <% end %>
+      <span class="commentCount">
+       <%= link_to pluralize(post.comments.count, "Comment"), post_path(post, :anchor=>"comments") %>.
+      </span> 
+    <% end %>
 
 </p>
   
