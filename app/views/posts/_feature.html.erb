@@ -2,9 +2,9 @@
 	<% if logged_in_as_editor? %>
 		<p>
 			<% if @post.featured? %>
-				<%= link_to "Remove from blog", unfeature_post_url(@post), :method => :put %>
+				<%= link_to "Remove from features", unfeature_post_url(@post), :method => :put %>
 			<% else %>
-				<%= link_to "Add this posting to the blog", feature_post_url(@post), :method => :put %>
+				<%= link_to "Add this posting to features", feature_post_url(@post), :method => :put %>
 			<% end %>
 		</p>
 	<% end %>

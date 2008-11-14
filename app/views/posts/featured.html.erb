@@ -1,18 +1,19 @@
-<% @current_tab = :blog %>
-<h1><%= @page_title = "Blog: Featured articles, postings and discussions" %></h1>
+
+<% @current_tab = :features %>
+<h1><%= @page_title = "Featured postings and discussions" %></h1>
 		
 <div id="sidebar">
   <div id="missionStatement">
-    <h2>Who is blogging?</h2>
+    <h2>What is featured?</h2>
 		<p>
-		  The blog features selected postings from the <%= link_to "discussion section", posts_url %>. Everybody can <%= link_to "contribute", new_post_url %>!
+		  This section highlights the best of the <%= link_to "discussions", posts_url %>. Everybody can contribute - just <%= link_to "start an interesting discussion", new_post_url %> and we'll feature it!
     </p>
   </div>
 	
 	
   <%=render :partial=>'posts/subscription' %>	
 	<div>
-	  <p class="featuredSelet">You are browsing the blog. <%= link_to "Show all discussions?", posts_url %></p>
+	  <p class="featuredSelet">You are browsing the featured postings. <%= link_to "Show all discussions?", posts_url %></p>
 	</div>
 	
 </div>

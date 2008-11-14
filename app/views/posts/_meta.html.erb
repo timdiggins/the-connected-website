@@ -19,7 +19,7 @@
     <% end %>
     
    <%if post.featured?%>
-     <strong>added to <%=link_to 'blog', featured_posts_url%></strong> <%=time_ago_in_words(post.featured_at)%> ago, 
+     <strong><%=link_to 'featured', featured_posts_url%></strong> <%=time_ago_in_words(post.featured_at)%> ago, 
    <%end%>
 
     <span class="commentCount">
