@@ -1,5 +1,5 @@
 class Post < ActiveRecord::Base
-
+  
   include Truncator
   
   attr_accessor :specifying_video, :specifying_upload
@@ -25,6 +25,10 @@ class Post < ActiveRecord::Base
   named_scope :limit_to, lambda { | limit | { :limit => limit } }
   
   alias_attribute :to_s, :title
+
+  before_create do |post|
+    post.commented_at = post.created_at
+  end
   
   def brief
     truncate_html_text(detail)
@@ -48,11 +52,11 @@ class Post < ActiveRecord::Base
     
     uri = URI.parse(video.strip)   
     return nil unless uri.query
-
+    
     host_parts = uri.host.split('.')
     domain = host_parts[-2]
     return nil unless domain == "youtube"
-
+    
     query_parts = uri.query.split('&')
     v_param = query_parts.select { | each | each.starts_with?("v=") }.first
     return nil unless v_param
@@ -60,7 +64,7 @@ class Post < ActiveRecord::Base
     
     %Q{<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/#{v_value}&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/#{v_value}&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>}
     
-    rescue URI::InvalidURIError    
+  rescue URI::InvalidURIError    
   end
   
   def has_attachment?
@@ -72,9 +76,8 @@ class Post < ActiveRecord::Base
   end
   
   private
-    def must_have_attachment
-      errors.add_to_base("Must select a file to upload") if @in_upload_mode && (!attachment || attachment.filename.blank?)
-    end
-  
-  
+  def must_have_attachment
+    errors.add_to_base("Must select a file to upload") if @in_upload_mode && (!attachment || attachment.filename.blank?)
+  end
+   
 end

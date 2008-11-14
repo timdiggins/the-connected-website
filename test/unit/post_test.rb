@@ -63,7 +63,7 @@ class PostTest < ActiveSupport::TestCase
     post.video = %Q{http://www.youtube.com/watch?v=FG2PUZoukfA}
     assert_equal(%Q{<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/FG2PUZoukfA&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/FG2PUZoukfA&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>} , post.video_embed_tags)
   end
-  
+
   should "require video appropriately" do
     post = Post.new(:title => "Whatever", :detail => "Whatever")
     assert post.valid?
@@ -77,7 +77,18 @@ class PostTest < ActiveSupport::TestCase
     
     post.detail = '   '
     assert post.valid?
-    
+  end
+
+
+  
+   should "initialize date fields correctly" do
+    post = Post.new(:title => "Whatever", :detail => "Whatever")
+    assert post.valid?
+    post.save!
+    assert !post.created_at.nil?, "expected created at not to be nil"
+    assert !post.updated_at.nil?, "expected updated at not to be nil"
+    assert !post.commented_at.nil?, "expected commented at not to be nil"
+    assert_equal post.created_at, post.commented_at
   end
   
 end
