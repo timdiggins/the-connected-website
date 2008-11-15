@@ -45,11 +45,8 @@ class Post < ActiveRecord::Base
     self.attachment = the_attachment unless it.to_s.blank?  
   end
   
-  def video_embed_tags
+  def youtube_id
     return nil if video.blank?
-    object_tag = video.strip[/^<object.*<\/object>$/]
-    return object_tag if object_tag
-    
     uri = URI.parse(video.strip)   
     return nil unless uri.query
     
@@ -60,11 +57,26 @@ class Post < ActiveRecord::Base
     query_parts = uri.query.split('&')
     v_param = query_parts.select { | each | each.starts_with?("v=") }.first
     return nil unless v_param
-    v_value = v_param[/v=(.*)/, 1]
+    v_param[/v=(.*)/, 1]
+  rescue URI::InvalidURIError    
+  end
+  
+  def video_embed_tags
+    return nil if video.blank?
+    object_tag = video.strip[/^<object.*<\/object>$/]
+    return object_tag if object_tag
     
+    v_value = youtube_id
+    return nil unless v_value
     %Q{<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/#{v_value}&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/#{v_value}&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>}
     
-  rescue URI::InvalidURIError    
+  end
+  
+  def preview_image
+      return nil if video.blank?
+      v_id = youtube_id
+      return nil unless v_id   
+      %Q{http://img.youtube.com/vi/#{v_id}/2.jpg}
   end
   
   def has_attachment?

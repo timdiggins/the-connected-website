@@ -81,6 +81,26 @@ class PostTest < ActiveSupport::TestCase
 
 
   
+  should "calculate preview_image for video" do
+    post = Post.new
+    expectedPreviewImage = nil 
+    assert_equal(expectedPreviewImage, post.preview_image)
+  end
+  
+  should "calculate preview_image_src for video" do
+    post = Post.new
+    expectedPreviewImage = %Q{http://img.youtube.com/vi/FG2PUZoukfA/2.jpg} 
+
+    post.video = %Q{http://youtube.com/watch?v=FG2PUZoukfA}
+    assert_equal(expectedPreviewImage, post.preview_image)
+
+    post.video = %Q{http://youtube.com/watch?v=FG2PUZoukfA\r\n\n}
+    assert_equal(expectedPreviewImage, post.preview_image)
+
+    post.video = %Q{http://www.youtube.com/watch?v=FG2PUZoukfA}
+    assert_equal(expectedPreviewImage, post.preview_image)
+  end
+  
    should "initialize date fields correctly" do
     post = Post.new(:title => "Whatever", :detail => "Whatever")
     assert post.valid?
