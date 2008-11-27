@@ -1,0 +1,3 @@
+useful for checking: 
+download sql backup from amazon s3
+import into republic_development using mysql republic_development < ~/Desktop/...

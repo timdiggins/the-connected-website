@@ -11,6 +11,9 @@
           </h2>
 						 
 					<%=render :partial => 'meta', :locals=>{:post=>post}%>
+          <% if post.preview_image %>
+          <a href="<%= url_for post %>"><img src="<%=post.preview_image%>" class="previewImage" /></a>
+          <% end%>
 					<p><%= post.brief %>
 					
 					<% if post.video_embed_tags %>
@@ -20,9 +23,6 @@
         	<% end %>
         	
         	</p>
-					<% if post.preview_image %>
-				  <a href="<%= url_for post %>"><img src="<%=post.preview_image%>" class="previewImage" /></a>
-					<% end%>
 					<% unless post.tags.empty? %>
 						<p class="tags">posted in
 						<% for tag in post.tags %>
