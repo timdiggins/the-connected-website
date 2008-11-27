@@ -10,9 +10,10 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :login, :email, :case_sensitive => false
   
   before_save :encrypt_password
-  
+  before_destroy :has_no_creations!
   has_one :avatar, :dependent => :destroy
   has_many :posts
+  has_many :comments
   has_many :events, :order => 'created_at DESC'
   
   alias_attribute :to_s, :login
@@ -22,7 +23,7 @@ class User < ActiveRecord::Base
   named_scope :order_by_created_at, :order => "created_at DESC" 
   named_scope :created_since, lambda { | the_date | { :conditions => [ "created_at > ?", the_date ] } }
   named_scope :has_bio_and_avatar, :include => :avatar, :conditions => [ "profile_text <> ? AND avatars.filename <> ?", '', '']
-
+  
   def self.authenticate(login, password)
     u = find_by_login(login) 
     if u && u.authenticated?(password)
@@ -36,31 +37,31 @@ class User < ActiveRecord::Base
   def self.encrypt(password, salt)
     Digest::SHA1.hexdigest("--#{salt}--#{password}--")
   end
-
+  
   def encrypt(password)
     self.class.encrypt(password, salt)
   end
-
+  
   def authenticated?(password)
     crypted_password == encrypt(password)
   end
-
+  
   def remember_token?
     remember_token_expires_at && Time.now.utc < remember_token_expires_at 
   end
-
+  
   def remember_me
     self.remember_token_expires_at = Time.mktime(2035)
     self.remember_token            = encrypt("#{email}--#{remember_token_expires_at}")
     save(false)
   end
-
+  
   def forget_me
     self.remember_token_expires_at = nil
     self.remember_token            = nil
     save(false)
   end
-
+  
   def make_reset_password_token
     self.update_attribute(:reset_password_token, Digest::SHA1.hexdigest(Time.now.to_s.split(//).concat(login.split(//)).sort_by { rand }.join))
   end 
@@ -93,15 +94,30 @@ class User < ActiveRecord::Base
   end
   
   
-  private
-    def encrypt_password
-      return if password.blank?
-      self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
-      self.crypted_password = encrypt(password)
-    end
-    
-    def password_required?
-      @password_required || crypted_password.blank? || !@password.blank?
-    end
+  def has_creations
+    posts.count > 0 || comments.count > 0 || events.count > 0
+  end
+  
+  def has_no_creations!
+    raise "Has creations (dependencies)" if has_creations
+  end
 
+  def destroy_creations
+    posts.destroy_all
+    comments.destroy_all
+    events.destroy_all
+  end
+  
+  
+  private
+  def encrypt_password
+    return if password.blank?
+    self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
+    self.crypted_password = encrypt(password)
+  end
+  
+  def password_required?
+    @password_required || crypted_password.blank? || !@password.blank?
+  end
+  
 end
