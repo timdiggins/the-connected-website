@@ -3,6 +3,7 @@
 	http://localhost:3000/stylesheets/default.css?1226361882
 	http://localhost:3000/stylesheets/default.css?1226399346
 	http://localhost:3004/stylesheets/default.css?1226665314
+	http://localhost:3000/stylesheets/republic.css?1227890664
 */
 
 body {
@@ -340,6 +341,11 @@ h2 {
   color: #000;
   margin-top: 0.5em;
 }
+
+#sidebar h2 {
+  font-size: 1.1em;
+}
+
 
 #errorExplanation {
   padding: 0.5em 1.5em;
@@ -716,6 +722,10 @@ span.readmore a{
   font-size: 1.2em;
   font-weight: bold;
   	text-decoration: none;
+}
+
+span.featured {
+    font-size: 1.2em;
 }
 
 p.meta {
