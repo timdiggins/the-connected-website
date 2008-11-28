@@ -4,6 +4,7 @@
 <div id="sidebar">
 	<p id="newContent"><%= link_to %Q{New posting with this tag}, new_post_url(:tag => @tag.id), :id => :newContent %></p>
 	<div class="tagCloud">
+	  <h2>Popular Tags</h2>
 	  <%= render :partial=>'tags/tag_cloud'%>
 	  <p class="more"><%= link_to "View more tags", tags_url %></p>
   </div>

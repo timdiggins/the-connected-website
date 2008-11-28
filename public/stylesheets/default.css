@@ -815,6 +815,10 @@ p.more {
   -moz-border-radius: 5px;
  }
 
+#main div.post div.postContent p.meta  {
+	display: none;
+}
+
 p.featuredSelet {
   font-size: 1.2em;
   line-height: 1.5em;

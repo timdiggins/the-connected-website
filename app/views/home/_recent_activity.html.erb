@@ -1,4 +1,6 @@
-<h2>Recent discussion events</h2>
+<h2>Selected discussion events 
+  <%= link_to "latest event #{time_ago_in_words(@latest_event.created_at)} ago", events_url %>
+</h2>
   <div class="events">
       <ul>
        <% for event in @events %>
