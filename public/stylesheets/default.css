@@ -337,6 +337,9 @@ h1.post {
   font-size: 1.2em;
 }
 
+#frontPage #main .postContent h2 {
+	margin-bottom: 1em;
+}
 
 
 h2 {
@@ -1017,6 +1020,15 @@ div.tags input {
   margin: 0px;
   padding: 0px 0px 2em 0px;
 }
+
+a.recent {
+  font-size: 0.9em;
+  font-weight: normal;
+  margin-left: 0.3em;
+  padding-left: 0.5em;
+  border-left: 1px solid #DDD;
+}
+
 
 .events li {
   clear: left;

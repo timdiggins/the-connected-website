@@ -1,5 +1,5 @@
 <h2>Selected discussion events 
-  <%= link_to "latest event #{time_ago_in_words(@latest_event.created_at)} ago", events_url %>
+  <%= link_to "latest event #{time_ago_in_words(@latest_event.created_at)} ago", events_url, :class => "recent" %>
 </h2>
   <div class="events">
       <ul>
