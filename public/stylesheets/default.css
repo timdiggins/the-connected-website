@@ -130,6 +130,13 @@ div#emailsettings h2 {
 
 }
 
+#peopleTeaser div.authorBlock h2 a {
+  text-decoration: none;
+
+}
+
+
+
 
 .clearThis {
   height: 1px;
