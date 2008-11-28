@@ -821,10 +821,15 @@ p.more {
   text-align: right;
   clear:both;
   margin-top: 0.5em;
-  background-color: #eee;
-  padding: 8px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
+ }
+ 
+ #main p.more {
+  text-align: right;
+  clear:both;
+  margin-top: 0.5em;
+border-bottom: 1px solid #DDD;
+  padding-bottom: 8px;
+  font-weight: bold;
  }
 
 #frontPage div.post div.postContent p.meta  {
@@ -1035,7 +1040,6 @@ a.recent {
 .events li {
   clear: left;
   padding-top: 0.8em;
-  border-top: 1px solid #DDD;
 }
 
 .events .commentBody {
