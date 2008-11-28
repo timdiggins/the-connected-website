@@ -7,14 +7,17 @@ class PostsController < ApplicationController
   
   def index
     respond_to do |format|
-      format.html { @posts = Post.sorted_by_commented_at.paginate(:page => params[:page], :per_page => 15) }
+      format.html { 
+        @posts = Post.sorted_by_commented_at.paginate(:page => params[:page], :per_page => 15) 
+        @tags = Tag.all_with_count :limit=>20
+      }
       format.rss { 
         @posts = Post.sorted_by_commented_at.limit_to(15)
         render :layout => false 
       }
     end
   end
-
+  
   def new
     @post = Post.new
     @initial_tag = Tag.find_by_id(params[:tag])
@@ -52,7 +55,7 @@ class PostsController < ApplicationController
     
     redirect_to @post
   end
-    
+  
   def edit
     @post = Post.find(params[:id])    
     @post.specifying_upload = @post.has_attachment?
@@ -65,7 +68,7 @@ class PostsController < ApplicationController
     flash[:notice] = "Successfully deleted the post."
     redirect_to posts_url
   end
-
+  
   def update
     @post = Post.find(params[:id])
     
@@ -123,4 +126,3 @@ class PostsController < ApplicationController
   end
   
 end
-

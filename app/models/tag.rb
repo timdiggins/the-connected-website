@@ -18,7 +18,8 @@ class Tag < ActiveRecord::Base
   end
   
   def self.all_with_count(options = {})
-    query =  'SELECT tags.id, name, count(*) as count FROM categorizations, tags '
+    #based loosely (but TDD) on http://www.juixe.com/techknow/index.php/2006/07/15/acts-as-taggable-tag-cloud/
+    query =  'SELECT tags.id, name, description, count(*) as count FROM categorizations, tags '
     query << ' WHERE tags.id = tag_id GROUP BY tag_id'
     query << " ORDER BY count DESC "
     query << " LIMIT #{options[:limit].to_i} " if options[:limit] != nil 

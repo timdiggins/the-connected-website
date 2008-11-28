@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class TagTest < ActiveSupport::TestCase
-
+  
   should "enforce name uniqueness without case sensitivity" do
     tag = Tag.create!(:name => "Here")
     another = Tag.new(:name => "HerE")
@@ -67,7 +67,7 @@ class TagTest < ActiveSupport::TestCase
     end
     
   end
-
+  
   should "raise RecordNotFound if there's no tag with the name" do
     assert_raises(ActiveRecord::RecordNotFound) { Tag.find_by_name!("CoolStuff") }
     
@@ -80,11 +80,28 @@ class TagTest < ActiveSupport::TestCase
   should "be able to count all" do
     assert_equal 4, Tag.count
   end
-
+  
   should "be able to get all (for tag cloud)" do
     tags = Tag.all_with_count
     assert_equal 4, tags.size
     assert_equal ['bogus','boring','interesting','penguin'], tags.collect{|tag| tag.name }
     assert_equal [2, 1, 1, 1], tags.collect{|tag| tag.count }
+  end
+  
+  include ApplicationHelper
+  should "be able to generate tag_cloud" do
+    tags = Tag.all_with_count
+    gotTags = []
+    gotCss = []
+    tag_cloud tags, %w(one two) do |tag, css|
+      gotTags << tag
+      gotCss << css
+    end
+    
+    assert_equal 4, gotTags.size
+    assert_equal ['bogus','boring','interesting','penguin'], gotTags.collect{|tag| tag.name }
+    assert_equal [2, 1, 1, 1], gotTags.collect{|tag| tag.count }
+    assert_equal ['two','one','one','one'], gotCss
+    
   end
 end

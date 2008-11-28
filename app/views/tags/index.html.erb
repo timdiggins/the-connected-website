@@ -8,16 +8,6 @@
 </div>	
 	
 <div id="main">
-	<ul id="tagList">
-		<% for tag in @tags %>
-			<li>
-				<h2><%= link_to "#{tag} <span class='count'>#{pluralize(tag.posts.count, "article")}</span>", tag %></h2>
-				<% if tag.description %>
-					<p><%= truncate(tag.description, 200) %></p>
-				<% end %>
-			</li>
-		<% end %>
-	</ul>
-
+	 <%= render :partial=>'tag_cloud'%>
 </div>
 <%= clear_this %>

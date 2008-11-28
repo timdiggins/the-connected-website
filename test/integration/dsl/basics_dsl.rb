@@ -14,6 +14,22 @@ module BasicsDsl
     result
   end
   
+  # performs a get request and checks that the response is under 400 (ok or redirected)
+  def get_ok(path, parameters = nil, headers = nil)
+    r = get(path, parameters, headers)
+    assert_response_ok
+    r
+  end
+  
+  # checks that the response is under 400 (ok or redirected)
+  def assert_response_ok
+    if @response.redirect?
+      #should be ok to be a redirect of somekind... could make an option to fail if redirect
+    else
+      assert_response :success
+    end
+  end
+  
   def logout
     get_via_redirect logout_url
   end
@@ -30,7 +46,7 @@ module BasicsDsl
   def assert_link_exists(link_text)
     assert_select("a", link_text, "Expected the link '#{link_text}' to exist.")  
   end
-
+  
   def assert_link_does_not_exist(link_text)
     assert_select("a", { :text => link_text, :count => 0 }, "Did not expect the link '#{link_text}' to exist.")  
   end
@@ -47,21 +63,21 @@ module BasicsDsl
     user = user_or_user_symbol.kind_of?(User) ? user_or_user_symbol : users(user_or_user_symbol) 
     assert_equal(user.id, session[:user], "#{user} should have been logged in.")
   end
-
+  
   def assert_not_logged_in
     assert_nil(session[:user], "No user should be logged in.")
   end
   
   def get_with_basic_authentication(path, user_symbol)
     get path, {}, { :authorization => "Basic #{Base64.encode64("#{users(user_symbol).api_authentication_token}:X")}" }
-  end
-  
-  def post_with_basic_authentication(path, parameters, user_symbol)
-    post path, parameters, { :authorization => "Basic #{Base64.encode64("#{users(user_symbol).api_authentication_token}:X")}" }
-  end
-
-  def delete_with_basic_authentication(path, user_symbol)
-    delete path, {}, { :authorization => "Basic #{Base64.encode64("#{users(user_symbol).api_authentication_token}:X")}" }
-  end
-
-end
+    end
+    
+    def post_with_basic_authentication(path, parameters, user_symbol)
+      post path, parameters, { :authorization => "Basic #{Base64.encode64("#{users(user_symbol).api_authentication_token}:X")}" }
+      end
+      
+      def delete_with_basic_authentication(path, user_symbol)
+        delete path, {}, { :authorization => "Basic #{Base64.encode64("#{users(user_symbol).api_authentication_token}:X")}" }
+        end
+        
+      end

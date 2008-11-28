@@ -6,10 +6,12 @@ class TaggingTest < ActionController::IntegrationTest
     initial_tag_count = Tag.count
     post_id = posts(:cool_article).id
     get "/posts/#{post_id}"
+    assert_response_ok
     assert_select "div.tags>ul>li", :count => 0
     assert_select 'label', :text => /Add item to a tag/, :count => 0
     
     get '/tags'
+    assert_response_ok
     assert_select "ul#tagList>li", :count => @initial_tag_count
     
   end  
@@ -18,7 +20,7 @@ class TaggingTest < ActionController::IntegrationTest
   should "be able to add tags to a post" do
     new_session_as(:duff) do
       post_id = posts(:cool_article).id
-      get "/posts/#{post_id}"
+      get_ok "/posts/#{post_id}"
       assert_select 'label', :text => /Add item to a tag/
       
       post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
@@ -61,10 +63,10 @@ class TaggingTest < ActionController::IntegrationTest
     new_session_as(:duff) do
       post_id = posts(:cool_article).id
       post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
-      get '/'
+      get_ok '/'
       assert_select "p.tags>a", "Lame Government"
       
-      get '/posts'
+      get_ok '/posts'
       assert_select "p.tags>a", "Lame Government"
     end
   end
@@ -74,9 +76,9 @@ class TaggingTest < ActionController::IntegrationTest
       initial_tag_count = Tag.count
       post_id = posts(:cool_article).id
       post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
-      get '/tags'
+      get_ok '/tags'
       assert_select "ul#tagList>li", :count => initial_tag_count+1
-      assert_select "ul#tagList>li>h2>a", /Lame Government.*1 article/ 
+      assert_select "ul#tagList>li>h2>a", /Lame Government/ 
     end
   end
   
@@ -84,7 +86,7 @@ class TaggingTest < ActionController::IntegrationTest
     new_session_as(:duff) do
       post_id = posts(:cool_article).id
       post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
-      get '/events'
+      get_ok '/events'
       assert_select "div.eventBody>p.details", /duff.*tagged.*Government is Bogus.*with the tag Lame Government.*less than a minute ago/m
       assert_select "div.eventBody>p.details>a", "duff"
       assert_select "div.eventBody>p.details>a", "Government is Bogus"
@@ -96,11 +98,18 @@ class TaggingTest < ActionController::IntegrationTest
     new_session_as(:duff) do
       post_id = posts(:cool_article).id
       post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
+      
+      
       delete_via_redirect "posts/#{post_id}/tags/Lame%20Government"
       assert_select "div.tags>ul>li", :count => 0
       
       get '/tags'
-      assert_select "ul#tagList>li>h2>a", /Lame Government.*0 articles/ 
+      assert_response_ok
+      assert_select "ul#tagList>li>h2>a" do |elems|
+        elems.each {|elem| 
+          assert elem.to_s !~ /Lame Government/ 
+        }
+      end  
     end
   end
   
@@ -109,7 +118,7 @@ class TaggingTest < ActionController::IntegrationTest
       post_id = posts(:cool_article).id
       post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
       
-      get 'tags/Lame%20Government'
+      get_ok 'tags/Lame%20Government'
       click_link "Add a description"
       assert_select "h1", "Edit tag: Lame Government"
       

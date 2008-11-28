@@ -26,7 +26,7 @@ class TagsController < ApplicationController
   end
   
   def index
-    @tags = Tag.all
+    @tags = Tag.all_with_count :limit=>100
   end
   
   def edit
