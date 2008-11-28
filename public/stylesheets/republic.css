@@ -4,6 +4,7 @@
 	http://localhost:3000/stylesheets/default.css?1226399346
 	http://localhost:3004/stylesheets/default.css?1226665314
 	http://localhost:3000/stylesheets/republic.css?1227890664
+	http://localhost:3004/stylesheets/republic.css?1227888734
 */
 
 body {
@@ -154,7 +155,7 @@ div#emailsettings h2 {
 #add {
 	position:absolute;
 	right:8px;
-	bottom:40px;
+	top:70px;
 	margin: 0px;
 }
 
