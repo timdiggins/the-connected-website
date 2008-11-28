@@ -34,7 +34,10 @@
 		<%= render :partial => 'home/current_feature' if @current_featured %>
 
   <h2>Popular Tags</h2>
-    <%= render :partial=>'tags/tag_cloud'%>
+  <div class="tagCloud">
+	  <%= render :partial=>'tags/tag_cloud'%>
+	  <p class="more"><%= link_to "View more tags", tags_url %></p>
+  </div>
 
 		<%= render :partial => 'home/recent_activity' %>
 	</div>
