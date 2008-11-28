@@ -77,4 +77,14 @@ class TagTest < ActiveSupport::TestCase
     }
   end
   
+  should "be able to count all" do
+    assert_equal 4, Tag.count
+  end
+
+  should "be able to get all (for tag cloud)" do
+    tags = Tag.all_with_count
+    assert_equal 4, tags.size
+    assert_equal ['bogus','boring','interesting','penguin'], tags.collect{|tag| tag.name }
+    assert_equal [2, 1, 1, 1], tags.collect{|tag| tag.count }
+  end
 end

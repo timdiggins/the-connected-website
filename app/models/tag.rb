@@ -17,4 +17,17 @@ class Tag < ActiveRecord::Base
     tag
   end
   
+  def self.all_with_count(options = {})
+    query =  'SELECT tags.id, name, count(*) as count FROM categorizations, tags '
+    query << ' WHERE tags.id = tag_id GROUP BY tag_id'
+    query << " ORDER BY count DESC "
+    query << " LIMIT #{options[:limit].to_i} " if options[:limit] != nil 
+    self.find_by_sql(query).sort_by{|tag| tag.name.downcase}
+  end
+  
+  def count
+    count = read_attribute(:count)
+    return nil if count == nil
+    count.to_i
+  end
 end

@@ -1,7 +1,11 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+penguin:
+  name: penguin
+  
+bogus:
+  name: bogus
+  
+interesting:
+  name: interesting
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+boring:
+  name: boring

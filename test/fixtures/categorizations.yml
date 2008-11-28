@@ -1,0 +1,18 @@
+alex_interesting_article_interesting:
+  post: alex_interesting_article
+  tag: interesting
+
+alex_interesting_article_penguin:
+  post: alex_interesting_article
+  tag: penguin
+  
+alex_boring_link_boring:
+  post: alex_boring_link
+  tag: boring
+  
+alex_boring_link_bogus:
+  post: alex_boring_link
+  tag: bogus
+   
+cool_article:
+  tag: bogus
