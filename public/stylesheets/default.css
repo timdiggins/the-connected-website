@@ -1230,6 +1230,12 @@ p.none a {
 }
 
 
+.count {
+  font-size: 0.8em;
+  color: #666;
+  margin-left: 1em;
+}
+
 div.tagCloud {
   padding-bottom: 2em;
 }
