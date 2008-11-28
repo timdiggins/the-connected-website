@@ -14,7 +14,9 @@
 	<div id="tagDescription">
 		<h1><%= @page_title = @tag %> <span class="count"><%= pluralize(@tag.posts.count, "article") %></span></h1>
 
-		<%= @tag.description unless @tag.description.blank? %>
+		<% if !@tag.description.blank? %>
+		<p><%=@tag.description %></p>
+		<% end %>
 		<p class="tinyOption"><%= link_to(@tag.description.blank? ? "Add a description" : "Edit description", edit_tag_url) if logged_in? %></p>
 	</div>
 	
