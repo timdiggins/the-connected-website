@@ -2,6 +2,7 @@
 	http://localhost:3000/stylesheets/default.css?1226349891
 	http://localhost:3000/stylesheets/default.css?1226361882
 	http://localhost:3000/stylesheets/default.css?1226399346
+	http://localhost:3004/stylesheets/default.css?1226665314
 */
 
 body {
@@ -808,7 +809,11 @@ p.more {
   text-align: right;
   clear:both;
   margin-top: 0.5em;
-}
+  background-color: #eee;
+  padding: 8px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+ }
 
 p.featuredSelet {
   font-size: 1.2em;
