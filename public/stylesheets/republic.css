@@ -41,14 +41,6 @@ a {
 }
 
 
-
-
-#frontPage #subscribe h2 {
-	display: none;
-}
-
-
-
 a.rss {
 	padding:0.7em 0.8em 0.7em 28px;
    background: #FFF url(/images/feed-icon.gif) no-repeat 8px 0.8em;
