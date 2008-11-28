@@ -6,6 +6,6 @@ class HomeController < ApplicationController
     
     @events = Event.sorted_by_created_at.without_tagging_events.limit_to(5)
     @users = User.recently_contributed(3)
-    @tags = Tag.all_with_count :limit=>10
+    @tags = Tag.all_with_count :limit=>20
   end
 end

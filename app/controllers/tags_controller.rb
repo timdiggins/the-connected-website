@@ -4,6 +4,7 @@ class TagsController < ApplicationController
   
   def show
     @tag = Tag.find_by_name!(params[:id])
+    @tags = Tag.all_with_count :limit=>30
   end
   
   def create

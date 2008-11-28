@@ -1198,7 +1198,7 @@ p.loginRequired {
      background-color: #dce9f5;
 }
 
-#missionStatement {
+#missionStatement, .info {
   line-height: 1.5em;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -1246,7 +1246,7 @@ display: inline;
 margin-right: 1em;
 }
 
-.tagCloud a {
+ul.tagCloud a {
 text-decoration: none;
 word-spacing: -0.1em;
 }

@@ -7,7 +7,10 @@
     <p><%=link_to "Start your own discussion", :action=>'new'%> by writing some text, 
 		or by sharing a pdf file (article or whitepaper) or an online video.</p>
 	</div>
-	<%= render :partial=>'tags/tag_cloud'%>
+	<div class="tagCloud">
+	  <%= render :partial=>'tags/tag_cloud'%>
+	  <p class="more"><%= link_to "View more tags", tags_url %></p>
+  </div>
   <%=render :partial=>'posts/subscription' %> 
 </div>
 

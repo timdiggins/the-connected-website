@@ -1,4 +1,4 @@
-<div class="tagCloud">
+
 <ul class="tagCloud">
 <% tag_cloud @tags, %w(cloud1 cloud2 cloud3 cloud4) do |tag, css_class| %>
   <li class="<%=css_class %>">
@@ -6,5 +6,4 @@
   </li>
 <% end %>
 </ul>
-<p class="more"><%= link_to "View more tags", tags_url %></p>
-</div>
+
