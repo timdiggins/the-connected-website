@@ -12,7 +12,7 @@ class TaggingTest < ActionController::IntegrationTest
     
     get '/tags'
     assert_response_ok
-    assert_select "ul#tagList>li", :count => @initial_tag_count
+    assert_select "ul.tagCloud>li", :count => @initial_tag_count
     
   end  
   
@@ -77,8 +77,8 @@ class TaggingTest < ActionController::IntegrationTest
       post_id = posts(:cool_article).id
       post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
       get_ok '/tags'
-      assert_select "ul#tagList>li", :count => initial_tag_count+1
-      assert_select "ul#tagList>li>h2>a", /Lame Government/ 
+      assert_select "ul.tagCloud>li", :count => initial_tag_count+1
+      assert_select "ul.tagCloud>li>a", /Lame Government/ 
     end
   end
   
@@ -105,7 +105,7 @@ class TaggingTest < ActionController::IntegrationTest
       
       get '/tags'
       assert_response_ok
-      assert_select "ul#tagList>li>h2>a" do |elems|
+      assert_select "ul.tagCloud>li>a" do |elems|
         elems.each {|elem| 
           assert elem.to_s !~ /Lame Government/ 
         }
