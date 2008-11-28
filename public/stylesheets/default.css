@@ -1,6 +1,7 @@
 /* @override 
 	http://localhost:3000/stylesheets/default.css?1226349891
 	http://localhost:3000/stylesheets/default.css?1226361882
+	http://localhost:3000/stylesheets/default.css?1226399346
 */
 
 body {
@@ -1221,11 +1222,7 @@ p.none a {
   text-decoration: underline;
 }
 
-span.count {
-  font-size: 0.8em;
-  margin-left: 0.8em;
-  color: #666;
-}
+
 
 #tagDescription h1 {
   color: #000;
@@ -1233,44 +1230,47 @@ span.count {
 }
 
 
+div.tagCloud {
+  padding-bottom: 2em;
+}
 
-
-#tagList {
+ul.tagCloud {
   list-style: none;
   padding:0px;
-  margin: 0px;
+  margin: 0px 0px 1em 0px;
+  line-height: 1.8em;
 }
 
-#tagList li {
-margin-bottom: 1.5em;
+.tagCloud li {
+display: inline;
+margin-right: 1em;
 }
 
-#tagList p {
-	font-size: 1.1em;
-	margin: 0.5em 0px 2em 0px;
-	padding: 0px 1em;;
+.tagCloud a {
+text-decoration: none;
+word-spacing: -0.1em;
 }
 
-#tagList h2 {
-	padding: 0px;
-	margin: 0px;
+.tagCloud a:hover {
+text-decoration: underline;
 }
 
-#tagList h2 a {
-  display: block;
-  font-size: 1.1em;
-margin-bottom: 0.5em;
-padding: 0.5em 1em 0.4em 1em;
--webkit-border-radius: 2px;
--moz-border-radius: 2px;
-background-color: #dce9f5;
-	text-decoration: none;
+.tagCloud li.cloud1 a {
+font-size: 100%;
 }
 
-#tagList h2 a:hover {
-  text-decoration: none;
-  background-color: #c2dcf5;
+.tagCloud li.cloud2 a {
+font-size: 140%;
 }
+
+.tagCloud li.cloud3 a {
+font-size: 170%;
+}
+
+.tagCloud li.cloud4 a {
+font-size: 200%;
+}
+
 
 
 

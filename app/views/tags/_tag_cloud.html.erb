@@ -1,10 +1,10 @@
-<ul id="tagList">
+<div class="tagCloud">
+<ul class="tagCloud">
 <% tag_cloud @tags, %w(cloud1 cloud2 cloud3 cloud4) do |tag, css_class| %>
   <li class="<%=css_class %>">
-    <h2><%= link_to "#{tag} <span class='count'>#{pluralize(tag.count, "discussion")}</span>", tag %></h2>
-    <% if tag.description %>
-      <p><%= truncate(tag.description, 200) %></p>
-    <% end %>
+    <%= link_to tag, tag, :title => "#{tag.count} postings in #{tag}" %>
   </li>
 <% end %>
 </ul>
+<p class="more"><%= link_to "View more tags", tags_url %></p>
+</div>
