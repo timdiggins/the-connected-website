@@ -43,7 +43,7 @@ a {
 
 
 
-#subscribe h2 {
+#frontPage #subscribe h2 {
 	display: none;
 }
 
@@ -519,23 +519,23 @@ ul#memberList .avatar img {
   -moz-border-radius: 3px;
 }
 
-.memeberListProfileDetails {
+.memberListProfileDetails {
   margin-left: 170px;
   line-height: 1.5em;
 }
 
-.memeberListProfileDetails p {
+.memberListProfileDetails p {
   margin: 0.8em 0px 0.5em 0px;
 }
 
-.memeberListProfileDetails h2 {
+.memberListProfileDetails h2 {
   margin: 0px;
   font-size: 1.3em;
   margin-bottom: 0px;
   font-weight: bold;
 }
 
-.memeberListProfileDetails h2 a {
+.memberListProfileDetails h2 a {
   text-decoration: none;
 }
 
@@ -825,7 +825,7 @@ p.more {
   -moz-border-radius: 5px;
  }
 
-#main div.post div.postContent p.meta  {
+#frontPage div.post div.postContent p.meta  {
 	display: none;
 }
 
