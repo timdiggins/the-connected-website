@@ -4,6 +4,7 @@
      </p>
      <div class="postContent">
          <h2<% if @current_featured.has_attachment? %> class="file"<% elsif @current_featured.video_embed_tags %> class="video"<%end%>>
+						<span class='featured'>Featured:</span>
 						<%= link_to h(@current_featured), @current_featured %> 
 				</h2>
 				<%= render :partial => 'posts/meta', :locals=>{:post=>@current_featured}%>
