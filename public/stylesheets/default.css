@@ -1246,7 +1246,7 @@ display: inline;
 margin-right: 1em;
 }
 
-.tagCloud a {
+ul.tagCloud a {
 text-decoration: none;
 word-spacing: -0.1em;
 }
