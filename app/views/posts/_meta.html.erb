@@ -24,7 +24,7 @@
     <% else %>
       <br />
 			<span class="date">
-	      Last comment <%= time_ago_in_words(post.commented_at) %> ago,
+	      Last comment <%= post.commented_at ? time_ago_in_words(post.commented_at) : 'some time' %> ago,
 	      </span>
       <span class="commentCount">
        <%= link_to pluralize(post.comments.count, "Comment"), post_path(post, :anchor=>"comments") %>.

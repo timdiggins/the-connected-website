@@ -43,6 +43,31 @@ module BasicsDsl
     end
   end
   
+  def click_link_by_attr(options={})
+    method = options[:method] || :get
+    selector = "a"
+    if options[:id]
+      selector << ('#%s' % options[:id])
+    elsif options[:class]
+      selector << ('.%s' % options[:class])
+    end
+    select_options = {:count=>1}
+    select_options[:text] = options[:text] 
+
+    assert_select(selector, select_options, "Trying to click a link '#{selector}' #{"with text ''" % options[:text] if options[:text]} that did not exist") do | links |
+      address = links.first.attributes['href']
+      if options[:without_redirect]
+        return get(address) if method == :get
+        return post(address) if method == :post
+        return delete(address) if method == :delete
+      else
+        return get_via_redirect(address) if method == :get
+        return post_via_redirect(address) if method == :post
+        return delete_via_redirect(address) if method == :delete
+      end  
+    end
+  end
+  
   def assert_link_exists(link_text)
     assert_select("a", link_text, "Expected the link '#{link_text}' to exist.")  
   end

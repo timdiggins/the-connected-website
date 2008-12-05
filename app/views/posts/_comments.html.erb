@@ -11,7 +11,12 @@
 					
 					<%= comment.body %>
 					<p class="meta">
-						<span class="date">posted <%= time_ago_in_words(comment.created_at) %> ago</span><% if logged_in_as_admin? %> <%= link_to("Delete", post_comment_url(@post, comment), :class => "option", :method => :delete, :confirm => "Are you sure you'd like to delete this comment?")  %><% end %>
+            <% if comment.created_at < comment.updated_at%>
+						    <span class="date">updated <%= time_ago_in_words(comment.updated_at) %> ago</span>,
+            <% end %>
+              <span class="date">posted <%= time_ago_in_words(comment.created_at) %> ago</span> 
+            <%= link_to("Edit", edit_post_comment_url(@post, comment), :class => "option")   if logged_in? && current_user == comment.user %>
+			  		<%= link_to("Delete", post_comment_url(@post, comment), :class => "option", :method => :delete, :confirm => "Are you sure you'd like to delete this comment?")  if logged_in_as_admin? %>
 					</p>
 				</div>
 				

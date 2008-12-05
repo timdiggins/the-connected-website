@@ -9,7 +9,7 @@
 
 <div id="main">
 	<h1 class="post"><%=h @post %></h1>
-  <%=render :partial => 'meta', :locals=>{:post=>@post, :with_controls=>true}%>
+  <%=render :partial => 'posts/meta', :locals=>{:post=>@post, :with_controls=>true}%>
 
 	<% if @post.has_video? %>
 	  <div class="video">

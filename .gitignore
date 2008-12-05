@@ -1,3 +1,4 @@
+**/.tmp_.*
 *.tmproj
 log/*.log
 config/database.yml

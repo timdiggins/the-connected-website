@@ -1,0 +1,22 @@
+<%@page_title = "Edit Comment on #{@post}" %>
+<h1 >Edit Comment on '<%=h @post %>'</h1>
+
+<div id="main">
+
+<% form_for(@comment,:url => post_comment_path(@post, @comment) )do | f | %>
+
+  <%= error_messages_for(:comment ) %>
+  
+  <p class="description">
+    <%= f.label :body, "Comment" %>
+    <%= f.text_area :body, :class => "mceEditor" %>
+  </p>
+
+  <p class="submitBlock">
+    <%= submit_tag   "Save" %> or <%= link_to "Cancel", @post %>
+  </p> 
+
+<% end %>
+</div>
+
+<%= clear_this %>
