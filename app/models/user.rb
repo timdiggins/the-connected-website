@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
   before_destroy :has_no_creations!
   has_one :avatar, :dependent => :destroy
-  has_many :posts
+  has_many :posts, :order => 'created_at DESC'
   has_many :comments
   has_many :events, :order => 'created_at DESC'
   
