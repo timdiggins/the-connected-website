@@ -20,7 +20,8 @@ class PostTest < ActiveSupport::TestCase
     assert_equal([duff], post.subscribers)
   end
   
-  should "calculate video_embed_tags" do
+  context "video_embed_tags" do
+  should "should calculate ok for youtube" do
     post = Post.new
     assert_nil(post.video_embed_tags)
     
@@ -36,17 +37,17 @@ class PostTest < ActiveSupport::TestCase
     post.video = %Q{<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/yCM_wQy4YVg&hl=en&fs=1&color1=0xe1600f&color2=0xfebd01"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/yCM_wQy4YVg&hl=en&fs=1&color1=0xe1600f&color2=0xfebd01" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>Hmmmm}
     assert_nil(post.video_embed_tags)
 
-    post.video = %Q{http://www.youtube.com/watch}
-    assert_nil(post.video_embed_tags)
-    
-    post.video = %Q{http://example/watch?v=FG2PUZoukfA}
-    assert_nil(post.video_embed_tags)
-    
-    post.video = %Q{http://www.example.com/watch?v=FG2PUZoukfA}
-    assert_nil(post.video_embed_tags)
-
-    post.video = %Q{http://www.youtube.com/watch?feature=related}
-    assert_nil(post.video_embed_tags)
+#    post.video = %Q{http://www.youtube.com/watch}
+#    assert_nil(post.video_embed_tags)
+#    
+#    post.video = %Q{http://example/watch?v=FG2PUZoukfA}
+#    assert_nil(post.video_embed_tags)
+#    
+#    post.video = %Q{http://www.example.com/watch?v=FG2PUZoukfA}
+#    assert_nil(post.video_embed_tags)
+#
+#    post.video = %Q{http://www.youtube.com/watch?feature=related}
+#    assert_nil(post.video_embed_tags)
     
     post.video = "Totally BogusUrl"
     assert_nil(post.video_embed_tags)
@@ -64,6 +65,26 @@ class PostTest < ActiveSupport::TestCase
     assert_equal(%Q{<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/FG2PUZoukfA&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/FG2PUZoukfA&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>} , post.video_embed_tags)
   end
 
+  should "allow embed tag blip.tv to pass through" do
+    post = Post.new
+    post.video = %Q{<embed src="http://blip.tv/play/lG3hz1eBolM" type="application/x-shockwave-flash" width="1024" height="798" allowscriptaccess="always" allowfullscreen="true"></embed>}
+    assert_equal(post.video, post.video_embed_tags)
+  end
+
+  should "currently I think allow for aritrary object tag to pass through" do
+        post = Post.new
+        post.video = %Q{<object >some stuff</object>}
+    assert_equal(post.video, post.video_embed_tags)
+  end
+  
+  should "convert http urls to links" do
+      post = Post.new
+      link = %Q{http://someurlorother.com/wherever}
+      post.video = link
+      assert post.video_embed_tags.include? %Q{<a href="#{link}" rel="nofollow" class="videolink">#{link}</a>}
+   end
+ end
+ 
   should "require video appropriately" do
     post = Post.new(:title => "Whatever", :detail => "Whatever")
     assert post.valid?

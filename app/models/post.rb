@@ -25,7 +25,7 @@ class Post < ActiveRecord::Base
   named_scope :limit_to, lambda { | limit | { :limit => limit } }
   
   alias_attribute :to_s, :title
-
+  
   before_create do |post|
     post.commented_at = post.created_at
   end
@@ -63,19 +63,32 @@ class Post < ActiveRecord::Base
   
   def video_embed_tags
     return nil if video.blank?
-    object_tag = video.strip[/^<object.*<\/object>$/]
+    vid = video.strip
+    object_tag = vid[/^<object.*<\/object>$/]
     return object_tag if object_tag
     
+    embed_tag = vid[/^<embed[^>]*>$/]
+    return embed_tag if embed_tag
+    embed_tag = vid[/^<embed.*<\/embed>$/]
+    return embed_tag if embed_tag
+    
+    
     v_value = youtube_id
-    return nil unless v_value
-    %Q{<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/#{v_value}&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/#{v_value}&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>}
+    if v_value
+      return %Q{<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/#{v_value}&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/#{v_value}&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>}
+    end
+
+    link = vid[/^http:\/\/\S+$/]
+    return %Q{<p class="videolink">Watch video at <a href="#{link}" rel="nofollow">#{link}</a></p>} if link
+    
+    return nil
     
   end
   
   def preview_image
-      return nil if video.blank?
-      v_id = youtube_id
-      return nil unless v_id   
+    return nil if video.blank?
+    v_id = youtube_id
+    return nil unless v_id   
       %Q{http://img.youtube.com/vi/#{v_id}/2.jpg}
   end
   
@@ -91,5 +104,5 @@ class Post < ActiveRecord::Base
   def must_have_attachment
     errors.add_to_base("Must select a file to upload") if @in_upload_mode && (!attachment || attachment.filename.blank?)
   end
-   
+  
 end
