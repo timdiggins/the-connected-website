@@ -1,3 +1,5 @@
+REEDITING_CUTOFF = 30.minutes
+
 class PostsController < ApplicationController
   
   before_filter :login_required, :except => [ :index, :show, :featured ]
@@ -74,13 +76,15 @@ class PostsController < ApplicationController
     
     @post.attributes = params[:post]
     @post.valid?
-    if @post.specifying_upload
+    if @post.specifying_upload && post.attchment && @post.attachment.valid?
       return render(:action => :edit) unless @post.attachment && @post.attachment.valid? && @post.save
     else
       return render(:action => :edit) unless @post.save
     end
     
-    Event.create_for(PostChangedEvent.new(:user => current_user, :post => @post))
+    if (Time.now - @post.created_at > REEDITING_CUTOFF) || @post.comments.count >0 
+      Event.create_for(PostChangedEvent.new(:user => current_user, :post => @post))
+    end
     
     flash[:notice] = "Successfully updated post"
     redirect_to @post

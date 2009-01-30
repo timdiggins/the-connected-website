@@ -81,7 +81,8 @@ class PostTest < ActiveSupport::TestCase
       post = Post.new
       link = %Q{http://someurlorother.com/wherever}
       post.video = link
-      assert post.video_embed_tags.include? %Q{<a href="#{link}" rel="nofollow" class="videolink">#{link}</a>}
+      puts post.video_embed_tags
+      assert(post.video_embed_tags.include?(%Q{<a href="#{link}" rel="nofollow">#{link}</a>}))
    end
  end
  

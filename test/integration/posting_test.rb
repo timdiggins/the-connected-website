@@ -40,9 +40,37 @@ class PostingTest < ActionController::IntegrationTest
       click_link "Edit post"
       
       put_via_redirect "/posts/#{post_id}", :post => { :title => "Government is Really Bogus", :detail => "Here is the body" }
+      assert_response 200
       assert_select "h1.post", "Government is Really Bogus"
       assert_select "div.postBody", "Here is the body"
     end
+  end
+  
+  
+  context "creating and then editing a post" do
+    setup do
+      @duff = new_session_as(:duff)
+      @duff.post_via_redirect "/posts", :post => { :title => "Something new in sandwiches", :detail => "Sandwich filling" }
+      @post_id = @duff.path.split('/')[-1]
+      @duff.get_ok("/")
+      @duff.assert_select ".events .event a[href=/posts/#@post_id]", :count => 1
+    end
+    
+    should "make one event if no comments" do
+      @duff.put_via_redirect "/posts/#@post_id", :post => { :title => "New Sandwich Title", :detail => "new filling" }
+      @duff.get_ok("/")
+      @duff.assert_select ".events .event a[href=/posts/#@post_id]", :count => 1
+    end
+    
+    should "make two events if comment has occurred" do
+      alex = new_session_as(:alex)
+      alex.post_via_redirect "/posts/#@post_id/comments", :comment => { :body => "jam tomorrow" }
+      @duff.put_via_redirect "/posts/#@post_id", :post => { :title => "New Sandwich Title", :detail => "new filling" }
+      @duff.get_ok("/")
+      @duff.assert_select ".events .event a[href=/posts/#@post_id]", :count => 3
+    end
+    
+    
   end
   
   should "only be able to delete a post if you're an admin" do
@@ -62,5 +90,5 @@ class PostingTest < ActionController::IntegrationTest
       assert_link_does_not_exist "Government is Bogus"
     end
   end
-    
+  
 end
