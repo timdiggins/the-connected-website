@@ -929,6 +929,7 @@ float: left;*/
 	line-height: 2.5em;
 	color: #666;
 }
+
 #contributeButton {
 	background-color: #ddd;	
 	padding: 2em;
@@ -939,6 +940,11 @@ float: left;*/
 	float: left;
 	padding-right: 2em;
 	color: #2e659d;
+}
+
+
+#contributeButton a{
+	text-decoration: none;	
 }
 
 .events ul {
