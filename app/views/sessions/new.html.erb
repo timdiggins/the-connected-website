@@ -34,7 +34,7 @@
 
 
 	  <p class="formOptions">
-	    Not signed up yet? <%= link_to "Join now!", signup_url %>
+	    Not signed up yet? <%= link_to "Join now!", signup_url(:return_to=>params[:return_to]) %>
 	  </p>
 
 	</div>

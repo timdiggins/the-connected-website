@@ -99,7 +99,16 @@ class Post < ActiveRecord::Base
   def has_video?
     !video.blank?
   end
-  
+
+  def has_contributed?(other_user)
+    if user == other_user
+      return true
+    end
+    comments.each do |comment|
+      return true if comment.user == other_user
+    end
+    false
+  end
   private
   def must_have_attachment
     errors.add_to_base("Must select a file to upload") if @in_upload_mode && (!attachment || attachment.filename.blank?)

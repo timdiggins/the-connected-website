@@ -1,5 +1,20 @@
 <div id="comments">
-<h2>Comments</h2>
+ <% if !@post.has_contributed?(current_user) %>
+	 <div id='contributeButton'>
+	 	<% if @post.comments.count == 0%>
+	    <h2>There are no comments yet</h2>
+		<% elsif @post.comments.count == 1 %>
+		   <h2>One person has started this discussion</h2>
+		<% else %>
+	    <h2>There are <%=@post.comments.count%> comments</h2>
+		<% end %>
+	  <% if logged_in? %>  <%= link_to @post.comments.count==0 ? "Start this discussion off":"Add your view", 
+	    "javascript:tinyMCE.get('comment_body').focus();$('comment_body_ifr').scrollIntoView();void(0);"
+	    %>
+		<% end%>
+	 </div>
+ <% end%>
+<% if @post.comments.count>0 %><h2>Comments</h2><% end %>
 	<% for comment in @post.comments %>
 			<div class="comment">
 				<p class="avatar">

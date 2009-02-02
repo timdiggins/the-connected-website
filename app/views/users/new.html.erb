@@ -27,7 +27,7 @@
 	  	</p>
   	
 	  	<p class="formOptions">
-	    	Already signed up? <%= link_to "Sign in here", login_url %>.
+	    	Already signed up? <%= link_to "Sign in here", login_url(:return_to=>params[:return_to]) %>.
 	    </p>
     
 	  <% end -%>

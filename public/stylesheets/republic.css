@@ -7,6 +7,7 @@
 	http://localhost:3004/stylesheets/republic.css?1227888734
 	http://10.211.55.2:3004/stylesheets/republic.css?1227905223
 	http://10.211.55.2:3004/stylesheets/republic.css?1233269850
+	http://localhost:3000/stylesheets/republic.css?1233270926
 */
 
 body {
@@ -911,7 +912,7 @@ div.tags input {
 	padding: 1em 3em 2em 2em;
 }
 
-#newContent a, #joinButton a.joinLink {
+#newContent a, .loginRequired a.button, #contributeButton a, #joinButton a.joinLink {
 	/*
 
 float: left;*/
@@ -927,6 +928,17 @@ float: left;*/
 #joinButton {
 	line-height: 2.5em;
 	color: #666;
+}
+#contributeButton {
+	background-color: #ddd;	
+	padding: 2em;
+	margin-bottom: 2em;
+}
+
+#contributeButton h2 {
+	float: left;
+	padding-right: 2em;
+	color: #2e659d;
 }
 
 .events ul {
@@ -1039,7 +1051,7 @@ a.PDFpreview img {
 	font-weight: normal;
 }
 
-p.loginRequired {
+.loginRequired {
 	line-height: 1.5em;
 	margin-top: 3em;
 	padding: 1em;
