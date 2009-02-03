@@ -25,8 +25,12 @@
 <script language="JavaScript">
 	//<![CDATA[
   function selectCommentForm(){
+<% if logged_in? %>
   	tinyMCE.get('comment_body').focus();
   	$('comment_body_ifr').scrollIntoView();
+<% else %>
+    document.location = '<%= post_url(@post, :anchor=>'commentForm')%>';
+<% end %>
   	return void (0);
   }
 	 //]]>
