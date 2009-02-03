@@ -1,7 +1,7 @@
 <% if logged_in? || !@post.tags.empty? %>
 <div class="tags">
 	<% if !@post.tags.empty?%>
-		<h2>Belongs to (tags):</h2>
+		<h2>Tags:</h2>
 		<ul>
 			<% for tag in @post.tags %>
 				<li>
@@ -15,7 +15,7 @@
 	<%end%>
 	<% if logged_in? %>
 		<% form_tag post_tags_url(@post) do %>	  
-			<%= label_tag :tag_name, "Add item to #{@post.tags.size==0 ? 'a' : 'another'} tag:" %>
+			<%= label_tag :tag_name, "Add tag:" %>
 			<%= text_field_tag :tag_name %>
 		<% end %>
 	<% end %>
