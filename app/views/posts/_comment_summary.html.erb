@@ -1,0 +1,34 @@
+ <div id="comment_summary">
+ 	 <h2><%= link_to 'Discussion', :anchor=>'comments'%></h2>
+	 <% if @post.contributors.length == 0%>
+	    <% if @post.user == current_user%>
+      No one has commented on this yet.
+			<% end %> 
+	  <% elsif @post.contributors.length == 1 %>
+	    <% if @post.has_contributed?(current_user)%>
+			   You have
+	    <% else %>
+  			<%= @post.contributors[0].login %> has 
+			<% end %>started the discussion.
+	  <% else %>
+	    <%= @post.contributors.length %> other people
+	    have contributed their views to the discussion<% if @post.has_contributed?(current_user)%>, including you<% end%>.
+    <% end %>
+    
+  	<% if !@post.has_contributed?(current_user) %>
+	 	  <% if @post.contributors.length == 0%>
+		      Be the first to <%= link_to 'start the discussion ','javascript:selectCommentForm();' %> with a comment. 
+			<% else %>
+  			 <%= link_to 'Add your view','javascript:selectCommentForm();' %>.
+			<% end %>
+		<% end%>
+  
+	<% if @post.contributors.length >0 %>
+	 <div id="commenting_avatars">
+		 	<% @post.contributors.each do |contributor| %>
+					<%= link_to avatar_for(contributor, :small), :anchor=>contributor.login %>
+			<% end %>
+	 </div>
+	<% end %>
+
+</div>

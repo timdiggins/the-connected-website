@@ -763,7 +763,7 @@ p.featuredSelet {
 	line-height: 1.5em;
 }
 
-#sidebar div.tags {
+#sidebar div.tags, div#comment_summary {
 	margin-top: 3em;
 	padding: 0px;
 	padding-bottom: 1em;
@@ -946,6 +946,18 @@ float: left;*/
 #contributeButton a{
 	text-decoration: none;	
 }
+
+div#comment_summary{
+padding: 2px 5px;	
+}
+div#comment_summary h2{
+	margin-top: 0px;
+}
+
+div#commenting_avatars {
+	margin: 1em 0px 0 0;	
+	}
+
 
 .events ul {
 	list-style: none;

@@ -9,14 +9,14 @@
 	    <h2>There are <%=@post.comments.count%> comments</h2>
 		<% end %>
 	  <% if logged_in? %>  <%= link_to @post.comments.count==0 ? "Start this discussion off":"Add your view", 
-	    "javascript:tinyMCE.get('comment_body').focus();$('comment_body_ifr').scrollIntoView();void(0);"
+	         "javascript:selectCommentForm()"
 	    %>
 		<% end%>
 	 </div>
  <% end%>
 <% if @post.comments.count>0 %><h2>Comments</h2><% end %>
 	<% for comment in @post.comments %>
-			<div class="comment">
+			<a name="<%=comment.user.login%>"></a><div class="comment">
 				<p class="avatar">
 					<%= link_to_avatar_for(comment.user, :medium) %>
 					<span class="author"><%= link_to_user(comment.user) %></span>

@@ -77,7 +77,7 @@ class Post < ActiveRecord::Base
     if v_value
       return %Q{<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/#{v_value}&hl=en&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/#{v_value}&hl=en&fs=1" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>}
     end
-
+    
     link = vid[/^http:\/\/\S+$/]
     return %Q{<p class="videolink">Watch video at <a href="#{link}" rel="nofollow">#{link}</a></p>} if link
     
@@ -99,7 +99,7 @@ class Post < ActiveRecord::Base
   def has_video?
     !video.blank?
   end
-
+  
   def has_contributed?(other_user)
     if user == other_user
       return true
@@ -108,6 +108,16 @@ class Post < ActiveRecord::Base
       return true if comment.user == other_user
     end
     false
+  end
+  
+  def contributors
+    #users other than author who have commented
+    return @contributors unless @contributors.nil?
+    @contributors = []
+    comments.each do |comment|
+      @contributors << comment.user unless comment.user == user || @contributors.include?(comment.user)
+    end
+    @contributors
   end
   private
   def must_have_attachment

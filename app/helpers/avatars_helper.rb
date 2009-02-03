@@ -4,8 +4,8 @@ module AvatarsHelper
     image_tag(avatar_filename(user, size), :class => "profile_avatar")
   end
   
-  def link_to_avatar_for(user, size = :medium) 
-    link_to(avatar_for(user, size), user)
+  def link_to_avatar_for(user, size = :medium, html_options = {}) 
+    link_to(avatar_for(user, size), user, html_options)
   end
   
   def avatar_filename(user, size = :medium) 
