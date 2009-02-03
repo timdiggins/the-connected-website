@@ -472,11 +472,18 @@ ul#memberList li {
 	clear: left;
 	padding-bottom: 2.5em;
 }
+ul#memberList.all li {
+	padding-bottom: 1.5em;
+}
 
 ul#memberList .avatar {
 	float: left;
 	text-align: right;
 	width: 150px;
+}
+
+ul#memberList.all .avatar {
+	width: 76px;
 }
 
 ul#memberList .avatar img {
@@ -492,8 +499,20 @@ ul#memberList .avatar img {
 	line-height: 1.5em;
 }
 
+.all .memberListProfileDetails {
+	margin-left: 100px;
+}
+
+#memberList.all li div.memberListProfileDetails p.location {
+	margin-bottom: 0;
+}
+
 .memberListProfileDetails p {
 	margin: 0.8em 0px 0.5em 0px;
+}
+
+.all .memberListProfileDetails p {
+	margin-top: 0;
 }
 
 .memberListProfileDetails h2 {

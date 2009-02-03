@@ -11,11 +11,11 @@
 	</div>
 </div>
   <div id="main">
-      <ul id="memberList">
+      <ul id="memberList" class="all">
        <% for user in @users %>
          <li>
 					<span class="avatar">
-          	<%= link_to_avatar_for(user, :large) %>
+          	<%= link_to_avatar_for(user, :medium) %>
 					</span>
 					<div class="memberListProfileDetails">
 						<h2><%= link_to_user(user) %></h2>
