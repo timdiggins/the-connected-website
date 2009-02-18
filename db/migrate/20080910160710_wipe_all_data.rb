@@ -13,6 +13,6 @@ class WipeAllData < ActiveRecord::Migration
   
   def self.safely
     yield
-  rescue NoMethodError
+  rescue Exception => e
   end
 end
