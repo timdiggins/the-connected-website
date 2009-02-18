@@ -1,10 +1,12 @@
-# require 'spacesuit/recipes/backup'
+require 'spacesuit/recipes/backup'
 
 set :deploy_to, "/var/www/apps/#{application}"
 set :domain, "wminarch.red56.co.uk"
 
 set :user, 'wminarch'
 set :keep_db_backups, 100
+#this line will go away once in the next version of spacesuit
+set(:cron_file) { "/etc/cron.daily/#{application}_backup_db_to_s3.sh" }
 
 role :web, domain
 role :app, domain
@@ -63,15 +65,17 @@ namespace :backup do
   end
 end
 
-after "deploy:setup" do
-  run "mkdir -p #{shared_path}/config"
+task :create_config_files do
+  %w(config avatars).each {|e| run "mkdir -p #{shared_path}/#{e}" }
+
   %w(database.yml amazon_s3.yml s3.yml cookie_secret).each do |e|
     run "touch #{shared_path}/config/#{e}"
   end
 end
 
+after "deploy:setup", "create_config_files"
 after "deploy:symlink", "link_shared_stuff"
 # after "deploy:symlink", "install_gem_dependencies"
 before "deploy:update_code", "deploy:git:pending"
-# before "deploy:migrate", "backup_to_s3"
-# before "backup_to_s3", "link_s3_yml"
+before "deploy:migrate", "backup_to_s3"
+before "backup_to_s3", "link_s3_yml"
