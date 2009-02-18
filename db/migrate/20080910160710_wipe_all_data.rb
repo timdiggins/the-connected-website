@@ -1,13 +1,18 @@
 class WipeAllData < ActiveRecord::Migration
   def self.up
-    Post.destroy_all
-    Event.destroy_all
-    ::Topic.destroy_all
-    PostAddedToTopicEvent.destroy_all
-    PostCategorizationEvent.destroy_all
-    PostRemovedFromTopicEvent.destroy_all
+    safely { Post.destroy_all }
+    safely { Event.destroy_all }
+    safely { ::Topic.destroy_all }
+    safely { PostAddedToTopicEvent.destroy_all }
+    safely { PostCategorizationEvent.destroy_all }
+    safely { PostRemovedFromTopicEvent.destroy_all }
   end
 
   def self.down
+  end
+  
+  def safely
+    yield
+  rescue NoMethodError
   end
 end
