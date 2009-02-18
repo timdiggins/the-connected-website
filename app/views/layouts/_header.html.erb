@@ -1,5 +1,5 @@
 <div id="header">
-<ul id="topNavigation">
+<ul id="navigation">
   <% if logged_in? %>
 		<li><%= link_to('Settings', bio_settings_url) %></li>
 		<li><%= link_to('Your public profile', user_url(current_user)) %></li>
@@ -9,6 +9,11 @@
 		<li><%= link_to "Login", login_url %></li>
 		<li><%= link_to "Join", signup_url %></li>
 	<% end %>
+	
+	  <li <%= current_if_tab_is(:home) %>><%= link_to "Home", root_url %></li>
+    <li <%= current_if_tab_is(:features) %>><%= link_to "Features", featured_posts_url %></li>
+    <li <%= current_if_tab_is(:discussions) %>><%= link_to "Discussions", posts_url %></li>
+	  <li <%= current_if_tab_is(:users) %>><%= link_to "Community", users_url %></li>
 </ul>
 
 <div id="search" style="display:none">
@@ -20,8 +25,6 @@
 <div id="logo"><%= link_to "The Connected Republic", root_url %></div>
 
 
-
-<%= render :partial => 'layouts/tabs' %>
 
 
 
