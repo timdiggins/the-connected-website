@@ -1,0 +1,10 @@
+
+studio1:
+  name: Studio 1
+  profile_text: Studio one is such a cool place
+  home_page: MyString
+
+studio3:
+  name: Studio Free
+  profile_text: We love ourselves
+  home_page: MyString
