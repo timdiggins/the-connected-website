@@ -71,6 +71,17 @@ a {
 
 /* @group Forms */
 
+
+label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+input {
+  font-size: 1.1em;
+}
+
+
 #errorExplanation {
 	padding: 0.5em 1.5em;
 	margin: 0px 0px 1em 0px;
@@ -90,6 +101,23 @@ a {
 	background: url(../images/famfam/error.png) no-repeat 0px left;
 	padding-left: 20px;
 }
+
+
+.formOptions {
+	margin: 2em 0px 0.5em 40%;
+	color: #707880;
+	line-height: 1.5em;
+	font-size: 1em;
+	padding-top: 0.5em;
+}
+
+.formOptions a {
+	text-decoration: underline;
+}
+
+/* @end */
+
+/* @group large Forms */
 
 
 div.largeForm h1 {
@@ -157,11 +185,10 @@ div.largeForm .submitBlock input[type="submit"] {
 }
 
 .formOptions {
-	margin: 3.5em 0px 0.5em 40%;
+	margin: 2em 0px 0.5em 40%;
 	color: #707880;
 	line-height: 1.5em;
-	font-size: 1.2em;
-	border-top: 1px solid #CCC;
+	font-size: 1em;
 	padding-top: 0.5em;
 }
 

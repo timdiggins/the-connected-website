@@ -8,20 +8,12 @@
 			  <% form_for @user, :url => settings_url do | f | %>
 
 			    <p>
-			      <% if @user.profile_text.blank? %>
-						  <p class="error note">
-								You need to introduce yourself with a bio, or you won't show up in the <%= link_to "community page", users_url %>
-						  </p>
-						  <p>
-			    			<%= f.label :profile_text, "Introduce yourself to the community with text (e.g. a bio) that will appear on your <a href=\"#{user_path(@user)}\">profile page</a>" %>
-							</p>
-				  	<% else %>
-				      <%= f.label :profile_text, "Introductory text for your profile (e.g. bio)" %>
-          	<% end%>
 
-			      <%= f.text_area :profile_text, :class => :largeInput %>
-			    </p>
-
+				  <p>
+	    			<%= f.label :profile_text, "Introductory text for your profile (e.g. bio)" %>
+	    			<%= f.text_area :profile_text, :class => :largeInput %>
+	    		</p>	
+			      
           <p>
             <%= f.label :home_page, "Your home page, if you have one" %>
             <%= f.text_field :home_page, :class => :largeInput %>
