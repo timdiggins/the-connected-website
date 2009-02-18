@@ -16,8 +16,38 @@
   
 	<body>
 		<div id="wrap">
-		
-			<%= render :partial => 'layouts/header' %>
+
+			<ul id="navigation">
+        <% if logged_in? %>
+      		<li><%= link_to('Settings', bio_settings_url) %></li>
+      		<li><%= link_to('Your public profile', user_url(current_user)) %></li>
+      		<li><%= link_to('Logout', logout_url) %></li>
+
+      	<% else %>
+      		<li><%= link_to "Login", login_url %></li>
+      		<li><%= link_to "Join", signup_url %></li>
+      	<% end %>
+
+      	  <li <%= current_if_tab_is(:home) %>><%= link_to "Home", root_url %></li>
+          <li <%= current_if_tab_is(:discussions) %>><%= link_to "Post", posts_url %></li>
+      	  <li><%= link_to "Add post", new_post_url %></li>
+      </ul>
+      
+      <% unless flash_value.blank? %>
+      	<div id="flash" <%= flash_class %>>
+      	  <%= flash_value %>
+      	</div>
+      <% end %>
+      
+      
+      <% if session[:as_someone_else] %>
+        <div id="dangerAdmin">
+          <p><strong>CAREFUL!  You're logged in as <%= current_user %> !</strong></p>
+        </div>
+      <% end %>
+      
+      
+      
 			<div id="content">
 
 
@@ -27,7 +57,12 @@
        
 			</div>
 			
-			<%= render :partial => 'layouts/footer' %>
+			<div id="footer">
+          <p>
+      	    Copyright 2008 - <%= link_to "Some rights reserved", info_path(:action => :licensing) %>. <a href="http://nokahuna.com/projects/5943">Open-source web application</a>.
+          </p>
+      </div>
+      
 		</div>	
 	</body>
 	

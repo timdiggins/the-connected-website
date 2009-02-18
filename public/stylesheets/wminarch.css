@@ -157,11 +157,10 @@ div.largeForm .submitBlock input[type="submit"] {
 }
 
 .formOptions {
-	margin: 3.5em 0px 0.5em 40%;
+	margin: 2em 0px 0.5em 40%;
 	color: #707880;
 	line-height: 1.5em;
-	font-size: 1.2em;
-	border-top: 1px solid #CCC;
+	font-size: 1em;
 	padding-top: 0.5em;
 }
 

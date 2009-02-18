@@ -5,32 +5,19 @@
 
 
 	<div id="sidebar">
-  <div id="missionStatement">
-  <% if !logged_in? %>
-      
-      <h2>What is this?</h2>
-  		<p>
-  		  A community space, initiated by Cisco's Internet Business Solutions Group, where people interested in public sector transformation can meet each other and share their ideas.	
-      </p>
 
-  <% end %>  
-  <p>We are regularly updating the site. Please <%=link_to "share your feedback and suggestions", "tags/TheConnectedRepublic"%>.</p>
-  </div>
-		
+
+    <h2>What is this?</h2>
+      <p>Open studios are ...	</p>
 		
 		  <%=render :partial=>'posts/subscription' %> 
 
-		
-
-    
-		<%= render :partial => 'home/users' %>
 	</div>
 
 	<div id="main">
 	
 	<h1>Welcome to <%= APP_NAME %></h1>
 	<p id="strapline">How can creators and users of public services gain<br />from our increasingly connected world?</p>
-	
   <%= render :partial => 'home/current_feature' if @current_featured %>
   <h2>Popular Tags</h2>
   <div class="tagCloud">
