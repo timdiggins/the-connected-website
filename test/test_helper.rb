@@ -21,7 +21,7 @@ class ActionController::IntegrationTest
     open_session do | session | 
       session.extend(BasicsDsl)
       session.extend(RepublicDsl)
-      session.host!("republic.dev")
+      session.host!("website.dev")
       session.instance_eval(&block) if block
       session
     end 

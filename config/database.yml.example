@@ -1,20 +1,20 @@
 development:
   adapter: mysql
-  database: republic_development
+  database: wminarch_development
   username: root
   password:
   host: localhost
   encoding: utf8
 test:
   adapter: mysql
-  database: republic_test
+  database: wminarch_test
   username: root
   password:
   host: localhost
   encoding: utf8
 production:
   adapter: mysql
-  database: republic_development
+  database: wminarch_development
   username: root
   password: 
   host: localhost

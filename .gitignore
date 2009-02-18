@@ -18,3 +18,4 @@ db/*.sqlite3
 .project
 doc/coverage
 coverage
+attachment_fu_plugin.sqlite3.db

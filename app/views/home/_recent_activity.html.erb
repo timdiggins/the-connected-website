@@ -1,6 +1,7 @@
-<h2>Selected discussion events 
+<% if !@latest_event.nil?%><h2>Selected discussion events 
   <%= link_to "latest event #{time_ago_in_words(@latest_event.created_at)} ago", events_url, :class => "recent" %>
 </h2>
+<% end %>
   <div class="events">
       <ul>
        <% for event in @events %>

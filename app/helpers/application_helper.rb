@@ -10,6 +10,7 @@ module ApplicationHelper
       max = tag.count if tag.count > max
       min = tag.count if min==nil || tag.count < min 
     end
+    return if min.nil?
     divisor =  ((max-min) / classes.size) + 1
     tags.each do |tag|
       index = ((tag.count - min) / divisor).to_i
