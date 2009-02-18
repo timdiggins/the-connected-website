@@ -1,7 +1,7 @@
 Capistrano::Configuration.instance.load do
   set :monit_path, "/usr/local/bin/monit"
   namespace :web do
-    %w(start stop reload restart).each {|action|
+    %w(start stop restart).each {|action|
       desc "#{action} webserver"
       task action.to_sym do
         run "sudo #{monit_path} #{action} all -g www"
