@@ -11,7 +11,7 @@ class WipeAllData < ActiveRecord::Migration
   def self.down
   end
   
-  def safely
+  def self.safely
     yield
   rescue NoMethodError
   end
