@@ -1,9 +1,9 @@
-require 'spacesuit/recipes/backup'
+# require 'spacesuit/recipes/backup'
 
 set :deploy_to, "/var/www/apps/#{application}"
-set :domain, "theconnectedrepublic.org"
+set :domain, "wminarch.red56.co.uk"
 
-set :user, 'republic'
+set :user, 'wminarch'
 set :keep_db_backups, 100
 
 role :web, domain
@@ -23,7 +23,7 @@ namespace :console do
 end
 
 task :install_gem_dependencies do
-  run "cd #{current_path} && 
+  run "cd #{current_release} && 
         rake gems RAILS_ENV=#{rails_env} > /dev/null &&
         sudo rake gems:install RAILS_ENV=#{rails_env}"
 end
@@ -63,8 +63,15 @@ namespace :backup do
   end
 end
 
+after "deploy:setup" do
+  run "mkdir -p #{shared_path}/config"
+  %w(database.yml amazon_s3.yml s3.yml cookie_secret).each do |e|
+    run "touch #{shared_path}/config/#{e}"
+  end
+end
+
 after "deploy:symlink", "link_shared_stuff"
-after "deploy:symlink", "install_gem_dependencies"
+# after "deploy:symlink", "install_gem_dependencies"
 before "deploy:update_code", "deploy:git:pending"
-before "deploy:migrate", "backup_to_s3"
-before "backup_to_s3", "link_s3_yml"
+# before "deploy:migrate", "backup_to_s3"
+# before "backup_to_s3", "link_s3_yml"
