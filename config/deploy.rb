@@ -3,7 +3,7 @@ set :default_stage, "production"
 require 'capistrano/ext/multistage'
 require 'spacesuit/recipes/multistage_patch'
 require 'spacesuit/recipes/common'
-# require 'config/recipes/monit'
+require 'config/recipes/monit'
 
 set :application, "wminarch"
 set :rails_env, "production"

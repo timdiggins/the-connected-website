@@ -1,4 +1,0 @@
-# check process email_notifier
-#   with pidfile /var/www/apps/wminarch/current/tmp/pids/email_notifier.pid
-#   start program = "/usr/bin/sudo -u republic sh -c 'cd /var/www/apps/republic/current/ && RAILS_ENV=production script/email_notifier start'"
-#   stop program = "/usr/bin/sudo -u republic sh -c 'cd /var/www/apps/republic/current/ && RAILS_ENV=production script/email_notifier stop'"
