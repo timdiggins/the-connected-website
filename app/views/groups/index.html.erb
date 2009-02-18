@@ -4,3 +4,9 @@
 	 <li><%=link_to group, group %></li>
 	<% end %>
 </ul>
+
+<% if logged_in_as_admin? %>  
+  <br>
+  <%= link_to 'Create a new group', new_group_path %>
+<% end %>
+

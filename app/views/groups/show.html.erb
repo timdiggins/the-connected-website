@@ -1,3 +1,7 @@
 <h1><%=@group%></h1>
 
 <p><%=@group.profile_text%></p>
+
+<% if !@group.home_page.nil?%>
+<p>Home page for group: <%=link_to nil, @group.home_page%></p>
+<% end %>
