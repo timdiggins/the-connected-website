@@ -1,5 +1,6 @@
 require "#{File.dirname(__FILE__)}/../test_helper"
 
+ADD_TAG_LINK_RE = /Add .*tag/
 class TaggingTest < ActionController::IntegrationTest
   
   should "show no tags forthe post initially" do
@@ -8,7 +9,7 @@ class TaggingTest < ActionController::IntegrationTest
     get "/posts/#{post_id}"
     assert_response_ok
     assert_select "div.tags>ul>li", :count => 0
-    assert_select 'label', :text => /Add item to a tag/, :count => 0
+    assert_select 'label', :text => ADD_TAG_LINK_RE, :count => 0
     
     get '/tags'
     assert_response_ok
@@ -21,12 +22,11 @@ class TaggingTest < ActionController::IntegrationTest
     new_session_as(:duff) do
       post_id = posts(:cool_article).id
       get_ok "/posts/#{post_id}"
-      assert_select 'label', :text => /Add item to a tag/
+      assert_select 'label', :text => ADD_TAG_LINK_RE
       
       post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
       assert_select "div.tags>ul>li>a", "Lame Government"
-      assert_select 'label', :text => /Add item to another tag/
-      assert_select 'label', :text => /Add item to a tag/, :count => 0
+      assert_select 'label', :text => ADD_TAG_LINK_RE
       
       post_via_redirect "posts/#{post_id}/tags", :tag_name => "Craziness"
       assert_select "div.tags>ul>li", :count => 2
