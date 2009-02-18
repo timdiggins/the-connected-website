@@ -21,14 +21,14 @@
 			  
 			  <li <%= current_if_tab_is(:home) %>><%= link_to "Home", root_url %></li>
 			  <li><%= link_to 'Groups', groups_path %></li>
-        <li <%= current_if_tab_is(:discussions) %>><%= link_to "All Posts", posts_url %></li>
+        <li <%= current_if_tab_is(:discussions) %>><%= link_to "All Updates", posts_url %></li>
         
         
         <% if logged_in? %>
           <li class="personal"><%= link_to('Logout', logout_url) %></li>
-      		<li class="personal"><%= link_to('Settings', bio_settings_url) %></li>
-      		<li class="personal"><%= link_to('Your public profile', user_url(current_user)) %></li>
-      		<li><%= link_to "Add post", new_post_url %></li>
+      		<li class="personal"><%= link_to('Your Settings', bio_settings_url) %></li>
+      		<li class="personal"><%= link_to('Your Profile', user_url(current_user)) %></li>
+      		<li><%= link_to "Update", new_post_url %></li>
       	<% else %>
       		<li class="personal"><%= link_to "Login", login_url %></li>
       		<li class="personal"><%= link_to "Join", signup_url %></li>
