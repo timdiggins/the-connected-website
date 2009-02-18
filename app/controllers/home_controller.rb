@@ -8,5 +8,6 @@ class HomeController < ApplicationController
     @latest_event = Event.sorted_by_created_at.first
     @users = User.has_bio_and_avatar.recently_contributed(3)
     @tags = Tag.all_with_count :limit=>20
+    @groups = Group.all
   end
 end
