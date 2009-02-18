@@ -1,39 +1,34 @@
 <div id="comments">
  <% if logged_in? && !@post.has_contributed?(current_user) %>
-	 <div id='contributeButton'>
 	 	<% if @post.comments.count == 0%>
 	    <h2>There are no comments yet</h2>
 		<% elsif @post.comments.count == 1 %>
-		   <h2>One person has started this discussion</h2>
+		   <h2>There is one comment</h2>
 		<% else %>
 	    <h2>There are <%=@post.comments.count%> comments</h2>
 		<% end %>
-	  <%= link_to @post.comments.count==0 ? "Start this discussion off":"Add your view", 
-	         "javascript:selectCommentForm()"
-	    %>
-	 </div>
  <% end%>
-<% if @post.comments.count>0 %><h2>Comments</h2><% end %>
-	<% for comment in @post.comments %>
-			<a name="<%=comment.user.login%>"></a><div class="comment">
-				<p class="avatar">
-					<%= link_to_avatar_for(comment.user, :medium) %>
-					<span class="author"><%= link_to_user(comment.user) %></span>
-				</p>
+  <% if @post.comments.count>0 %><h2>Comments</h2><% end %>
+  	<% for comment in @post.comments %>
+  			<a name="<%=comment.user.login%>"></a><div class="comment">
+  				<p class="avatar">
+  					<%= link_to_avatar_for(comment.user, :medium) %>
+  					<span class="author"><%= link_to_user(comment.user) %></span>
+  				</p>
+			
+  				<div class="postContent">
 				
-				<div class="postContent">
-					
-					<%= comment.body %>
-					<p class="meta">
-            <% if comment.created_at < comment.updated_at%>
-						    <span class="date">updated <%= time_ago_in_words(comment.updated_at) %> ago</span>,
-            <% end %>
-              <span class="date">posted <%= time_ago_in_words(comment.created_at) %> ago</span> 
-            <%= link_to("Edit", edit_post_comment_url(@post, comment), :class => "option")   if logged_in? && current_user == comment.user %>
-			  		<%= link_to("Delete", post_comment_url(@post, comment), :class => "option", :method => :delete, :confirm => "Are you sure you'd like to delete this comment?")  if logged_in_as_admin? %>
-					</p>
-				</div>
-				
-			</div>
-	<% end %>
+  					<%= comment.body %>
+  					<p class="meta">
+              <% if comment.created_at < comment.updated_at%>
+  						    <span class="date">updated <%= time_ago_in_words(comment.updated_at) %> ago</span>,
+              <% end %>
+                <span class="date">posted <%= time_ago_in_words(comment.created_at) %> ago</span> 
+              <%= link_to("Edit", edit_post_comment_url(@post, comment), :class => "option")   if logged_in? && current_user == comment.user %>
+  			  		<%= link_to("Delete", post_comment_url(@post, comment), :class => "option", :method => :delete, :confirm => "Are you sure you'd like to delete this comment?")  if logged_in_as_admin? %>
+  					</p>
+  				</div>
+			
+  			</div>
+  	<% end %>
 </div>
