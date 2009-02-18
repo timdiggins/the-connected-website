@@ -63,15 +63,16 @@ namespace :backup do
   end
 end
 
-after "deploy:setup" do
+task :create_config_files do
   run "mkdir -p #{shared_path}/config"
   %w(database.yml amazon_s3.yml s3.yml cookie_secret).each do |e|
     run "touch #{shared_path}/config/#{e}"
   end
 end
 
+after "deploy:setup" "create_config_files"
 after "deploy:symlink", "link_shared_stuff"
-# after "deploy:symlink", "install_gem_dependencies"
+after "deploy:symlink", "install_gem_dependencies"
 before "deploy:update_code", "deploy:git:pending"
-# before "deploy:migrate", "backup_to_s3"
-# before "backup_to_s3", "link_s3_yml"
+before "deploy:migrate", "backup_to_s3"
+before "backup_to_s3", "link_s3_yml"

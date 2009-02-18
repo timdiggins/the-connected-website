@@ -19,6 +19,6 @@ Rails::Initializer.run do |config|
   config.gem "redgreen", :version => '1.2.2' unless ENV['TM_MODE']
   config.gem "map_by_method", :version => '0.8.3'
   config.gem "colored", :version => '1.1'
-  
+  config.gem "daemons", :version => '1.0.10'
   
 end
