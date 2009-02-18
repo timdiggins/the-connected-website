@@ -41,10 +41,8 @@ class GroupsTest < ActionController::IntegrationTest
   should "be able to be created by admin" do
     login(:admin) 
     get_ok '/groups'
-    view
     assert_has_links [ADD_LINK]
     get ADD_LINK
-    view
     assert_response :success
     post_via_redirect "/groups", :group => { :name => "New Studio", :profile_text => "Studio new buttercream filling" }
     assert_equal "/groups/New%20Studio", path
