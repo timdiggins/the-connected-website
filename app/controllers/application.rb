@@ -2,13 +2,27 @@ class ApplicationController < ActionController::Base
   helper :all
   include ExceptionNotifiable
   include AuthenticatedSystem
+  include Exceptions
 
   protect_from_forgery
   
   filter_parameter_logging :password
   before_filter :login_from_cookie
   
-  
+  rescue_from 'Exceptions::PermissionDenied' do |e| http_status_code(:forbidden, e) end
+
+    # Returns a HTTP status code, with a nice error page
+  def http_status_code(status, exception)
+    # store the exception so its message can be used in the view
+    @exception = exception
+ 
+    # Only add the error page to the status code if the reuqest-format was HTML
+    respond_to do |format|
+      format.html { render :template => "shared/status_#{status.to_s}", :status => status }
+      format.any  { head status } # only return the status code
+    end
+  end
+
   private
     def verify_authenticity_token
       unless verified_request?

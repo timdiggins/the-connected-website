@@ -1,0 +1,39 @@
+
+<div id="page">
+	<div class="largeForm">
+	  <h1><%= @page_title = "Create group" %></h1>
+  
+	  <% form_for @group do | f | -%>
+	    <%= f.error_messages %>
+    
+	    <fieldset>
+		    <p>
+		      <%= f.label :name, "Group name" %>
+		      <%= f.text_field :name, :class => "largeInput"  %>
+		    </p>
+	    </fieldset>
+			
+      <fieldset>
+              <p>
+            <%= f.label :profile_text, "Profile text" %>
+            <%= f.text_area :profile_text, :class => :largeInput %>
+          </p>  
+      <fieldset>
+      <fieldset>
+            
+          <p>
+            <%= f.label :home_page, "Home page, if you have one" %>
+            <%= f.text_field :home_page, :class => :largeInput %>
+          </p>
+      </fieldset>
+
+	  	<p class="submitBlock">
+	  	  <%= submit_tag 'Create' %>
+	  	</p>
+  	
+	  <% end -%>
+  
+
+    
+	</div>
+</div>
