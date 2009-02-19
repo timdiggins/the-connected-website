@@ -51,7 +51,7 @@ class RssFeed < ActiveRecord::Base
       return unless guid.nil?
       ImportedGuid.new(:rss_feed_id=>self.id, :guid=>item.guid).save! 
       post = Post.new (
-      :title =>item.title,
+      :title =>item.title || 'untitled',
       :detail =>item.description,
       :remote_url=>item.link,
       :group_id=>group.id
