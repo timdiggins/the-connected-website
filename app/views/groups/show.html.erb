@@ -7,6 +7,7 @@
 <% end %>
 <% if logged_in? && current_user.can_moderate?(@group) %>
 	<%= link_to "Edit (because you're a moderator", edit_group_path(@group)%>
+	<%= link_to "Edit feeds (because you're a moderator", group_rss_feeds_path(@group)%>
 <% end %>
 
 

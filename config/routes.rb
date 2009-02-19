@@ -8,9 +8,11 @@ ActionController::Routing::Routes.draw do |map|
   map.admin_stats 'admin/stats', :controller => 'admin', :action => 'stats'
   map.info 'info/:action', :controller => 'info'
   
-  map.resources :groups, :requirements => { :id => /.*/ }
+  map.resources :groups, :requirements => { :id => /.*/ } do |group|
+    group.resources :rss_feeds
+  end
   map.resources :users, :member => { :become => :post }, :collection => { :all => :get }, :requirements => { :id => /.*/ } do |user| 
-    user.resources :group_permissions
+    user.resources :rss_feeds
   end
   map.resources :sessions
   map.resources :events

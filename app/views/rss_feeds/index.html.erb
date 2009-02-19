@@ -1,0 +1,19 @@
+<h1><%=@group%> rss_feeds</h1>
+<% if @group.rss_feeds.empty?%>
+  <p><%=@group%> has no feeds</p>
+<% else %>
+	<ul id="feeds">
+	<% @group.rss_feeds.each do |rss_feed| %>
+	  <li><%=rss_feed.url%>
+	    <%= link_to "Remove", group_rss_feeds_path(@group, :id=>rss_feed),:method => :delete%>
+	  </li>
+	<% end %>
+	</ul>
+<% end %>
+
+<h2>Add rss feed:</h2>
+<% form_for @rss_feed, :url=> group_rss_feeds_path do | f | %>
+    <%= f.text_field :url %>
+<% end %>
+
+<%= link_to "Back to #@group", @group %>

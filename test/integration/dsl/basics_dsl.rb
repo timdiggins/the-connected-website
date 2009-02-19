@@ -17,12 +17,7 @@ module BasicsDsl
   # performs a get request and checks that the response is under 400 (ok or redirected)
   def get_ok(path, parameters = nil, headers = nil)
     r = get(path, parameters, headers)
-    begin
-      assert_response_ok
-    rescue
-      view
-      raise
-    end
+    assert_response_ok_or_view
     r
   end
   
@@ -35,6 +30,14 @@ module BasicsDsl
     end
   end
   
+  def assert_response_ok_or_view
+    begin
+      assert_response_ok
+    rescue
+      view
+      raise
+    end
+  end
   def logout
     get_via_redirect logout_url
   end

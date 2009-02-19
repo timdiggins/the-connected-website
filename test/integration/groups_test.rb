@@ -33,10 +33,10 @@ class GroupsTest < ActionController::IntegrationTest
     assert_doesnt_have_links [ADD_LINK]
     
     get ADD_LINK
-    assert_response :error
+    assert_response 403
     
     post "/groups", :group => { :name => "New Studio", :profile_text => "Studio new buttercream filling" }
-    assert_response :error
+    assert_response 403
   end    
   should "be able to be created by admin" do
     login(:admin) 
@@ -69,7 +69,61 @@ class GroupsTest < ActionController::IntegrationTest
       get_ok "groups/Studio%20Free"
       assert_doesnt_have_links ["/groups/Studio%20Free/edit"]
       get "/groups/Studio%20Free/edit"
-      assert_response :error
+      assert_response 403
+    end
+  end
+  
+  context "Group" do
+    should "be able to have feeds added/removed by a moderator " do
+      login(:alex)
+      get_ok 'groups/Studio%201'
+      @feeds_url = '/groups/Studio%201/rss_feeds'
+      assert_has_links [@feeds_url]
+      get_ok @feeds_url
+      assert_select 'li', :text => /.*some_new_url.*/, :count=>0
+      post_via_redirect("#@feeds_url?url=some_new_url")
+      assert_response_ok_or_view
+      assert_select 'li', :text => /.*some_new_url.*/, :count=>1
+      
+      group = Group.find_by_name('Studio 1')
+      assert_equal 1, group.rss_feeds.length
+      delete_via_redirect(group_rss_feed_path(group, :id => group.rss_feeds[0].id))
+      assert_response_ok_or_view
+      get(@feeds_url)
+      assert_select 'li', :text => /.*some_new_url.*/, :count=>0
+    end
+    
+    should "not be able to have feeds added by non moderator" do
+      login(:alex) 
+      get 'groups/Studio%20Free'
+      @feeds_url = 'groups/Studio%20Free/rss_feeds'
+      assert_doesnt_have_links [@feeds_url]
+      
+      get @feeds_url
+      assert_response 403
+    end
+  end
+  
+  def assert_feeds expected_feeds 
+    assert_select "#feeds a",:count=>expected_feeds.length 
+    expected_feeds.each do |feed|
+      assert_select "#feeds a[href=#@feeds_url?url=#{feed}]",:count=>1 do |tags| 
+        tags.each do |tag|
+          assert(tag['onclick'].include?('POST'))
+          assert(tag['onclick'].include?('delete'))
+        end
+      end
+    end
+  end
+  def assert_remove_groups expected_remove_groups
+    assert_select "#permitted-groups a", :count=>expected_remove_groups.length 
+    expected_remove_groups.each do |group|
+      assert_select "#permitted-groups a[href=/users/duff/group_permissions/#{group}]",:count=>1 do |tags| 
+        tags.each do |tag|
+          assert(tag['onclick'].include?('POST'))
+          assert(tag['onclick'].include?('delete'))
+        end
+      end
     end
   end
 end

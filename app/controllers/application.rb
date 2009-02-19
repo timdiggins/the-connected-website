@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
  
     # Only add the error page to the status code if the reuqest-format was HTML
     respond_to do |format|
-      format.html { render :template => "shared/status_#{status.to_s}", :status => status }
+      format.html { render :template => "errors/status_#{status.to_s}", :status => status }
       format.any  { head status } # only return the status code
     end
   end

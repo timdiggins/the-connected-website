@@ -1,6 +1,7 @@
 class Group < ActiveRecord::Base
   validates_uniqueness_of   :name, :case_sensitive => false
   has_many :group_permissions, :include => :user, :uniq => true, :dependent=>:destroy
+  has_many :rss_feeds
 
   alias_attribute :to_s, :name
 

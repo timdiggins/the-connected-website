@@ -32,7 +32,6 @@ class GroupsController < ApplicationController
     raise PermissionDenied, 'Must be admin to add group' if not logged_in_as_admin?
     
     @group = Group.new(params[:group])
-    
     return render(:action => :new) unless @group.save
     
     redirect_to @group

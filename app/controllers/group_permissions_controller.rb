@@ -1,4 +1,6 @@
 class GroupPermissionsController < ApplicationController
+  before_filter :login_required
+
   def create
     user = User.find_by_login params[:user_id]
     group = Group.find_by_name params[:id]
