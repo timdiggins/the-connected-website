@@ -4,8 +4,15 @@
 <% else %>
 	<ul id="feeds">
 	<% @group.rss_feeds.each do |rss_feed| %>
-	  <li><%=rss_feed.url%>
-	    <%= link_to "Remove", group_rss_feeds_path(@group, :id=>rss_feed),:method => :delete%>
+	  <li>
+	  	<%= rss_feed.url%>
+		  <em><% if rss_feed.last_fetched.nil? %>
+			 Never fetched
+			<% else %>
+			 Last fetched <% time_ago_in_words(rss_feed.last_fetched)%>
+			<% end %>
+			</em>
+	    <%= link_to "Remove", group_rss_feed_path(@group, :id=>rss_feed),:method => :delete%>
 	  </li>
 	<% end %>
 	</ul>
@@ -14,6 +21,7 @@
 <h2>Add rss feed:</h2>
 <% form_for @rss_feed, :url=> group_rss_feeds_path do | f | %>
     <%= f.text_field :url %>
+		<%= submit_tag 'Add'%>
 <% end %>
 
 <%= link_to "Back to #@group", @group %>

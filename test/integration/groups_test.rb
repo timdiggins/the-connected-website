@@ -81,13 +81,20 @@ class GroupsTest < ActionController::IntegrationTest
       assert_has_links [@feeds_url]
       get_ok @feeds_url
       assert_select 'li', :text => /.*some_new_url.*/, :count=>0
-      post_via_redirect("#@feeds_url?url=some_new_url")
+      submit_form 'new_rss_feed' do |form|
+        form.rss_feed.url = 'some_new_url'
+      end
       assert_response_ok_or_view
-      assert_select 'li', :text => /.*some_new_url.*/, :count=>1
       
       group = Group.find_by_name('Studio 1')
       assert_equal 1, group.rss_feeds.length
-      delete_via_redirect(group_rss_feed_path(group, :id => group.rss_feeds[0].id))
+      rss_feed = group.rss_feeds[0]
+      assert_equal 'some_new_url', rss_feed.url
+      delete_link = group_rss_feed_path(group, :id=>rss_feed.id)
+      follow_redirect!
+      view
+      assert_select "a[href=#{delete_link}]", :count=>1
+      delete_via_redirect(delete_link)
       assert_response_ok_or_view
       get(@feeds_url)
       assert_select 'li', :text => /.*some_new_url.*/, :count=>0

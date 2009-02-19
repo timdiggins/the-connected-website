@@ -1,11 +1,11 @@
 class RssFeedsController < ApplicationController
   before_filter :login_required
-
+  
   def create 
     @group = Group.find_by_name params[:group_id]
     raise PermissionDenied unless current_user.can_moderate? @group 
     @rss_feed = @group.rss_feeds.new
-    @rss_feed.url = params[:url]
+    @rss_feed.url = params[:rss_feed][:url]
     if @rss_feed.save
       flash[:notice] = "Added rss feed #{@rss_feed.url}"
     else

@@ -12,7 +12,7 @@ ActionController::Routing::Routes.draw do |map|
     group.resources :rss_feeds
   end
   map.resources :users, :member => { :become => :post }, :collection => { :all => :get }, :requirements => { :id => /.*/ } do |user| 
-    user.resources :rss_feeds
+    user.resources :group_permissions
   end
   map.resources :sessions
   map.resources :events
