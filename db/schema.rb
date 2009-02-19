@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090218141026) do
+ActiveRecord::Schema.define(:version => 20090219071528) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "post_id"
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(:version => 20090218141026) do
     t.integer  "user_id"
     t.integer  "detail_id"
     t.string   "detail_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "group_permissions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.boolean  "moderator",  :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

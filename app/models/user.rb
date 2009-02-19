@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :posts, :order => 'created_at DESC'
   has_many :comments
   has_many :events, :order => 'created_at DESC'
+  has_many :group_permissions, :include => :group, :uniq => true, :dependent=>:destroy
   
   alias_attribute :to_s, :login
   

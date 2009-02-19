@@ -16,8 +16,11 @@
 			<%= render :partial => 'users/recent_events' %>
 			
 			<% if logged_in_as_admin? %>	
-				<br>
-				<%= link_to("Become #{@user} (since you're an admin)", become_user_url(@user), :method => :post) %>
+				<ul>
+					<li><%= link_to("Become #{@user} (since you're an admin)", become_user_url(@user), :method => :post) %>
+          </li>
+        	<li><%= link_to("Add/remove from groups (since you're an admin)", user_group_permissions_path(@user)) %>
+					</li>
 			<% end %>
 		</div>
 		<%= clear_this %>
