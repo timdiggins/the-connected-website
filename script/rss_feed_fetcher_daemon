@@ -5,8 +5,9 @@ require 'daemons'
 
 root = File.expand_path(File.dirname(__FILE__) + '/../')
 
-Daemons.run('rss_feed_fetcher.rb', 
-    :dir_mode => :normal, :dir => (root + '/tmp/pids'), 
-    :log_output => true, 
-    :backtrace => true
-    )
+Daemons.run(
+  File.join(root, 'script', 'rss_feed_fetcher.rb'),
+  :dir_mode => :normal, :dir => (root + '/tmp/pids'),
+  :log_output => true,
+  :backtrace => true
+)
