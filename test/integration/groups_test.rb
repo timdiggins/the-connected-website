@@ -92,7 +92,6 @@ class GroupsTest < ActionController::IntegrationTest
       assert_equal 'some_new_url', rss_feed.url
       delete_link = group_rss_feed_path(group, :id=>rss_feed.id)
       follow_redirect!
-      view
       assert_select "a[href=#{delete_link}]", :count=>1
       delete_via_redirect(delete_link)
       assert_response_ok_or_view

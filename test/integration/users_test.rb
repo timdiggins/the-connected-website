@@ -50,7 +50,7 @@ class UsersTest < ActionController::IntegrationTest
       assert_doesnt_have_links ['users/duff/group_permissions']
       
       get 'users/duff/group_permissions'
-      assert_response :error
+      assert_response 403
     end
   end
   
