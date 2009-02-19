@@ -17,7 +17,12 @@ module BasicsDsl
   # performs a get request and checks that the response is under 400 (ok or redirected)
   def get_ok(path, parameters = nil, headers = nil)
     r = get(path, parameters, headers)
-    assert_response_ok
+    begin
+      assert_response_ok
+    rescue
+      view
+      raise
+    end
     r
   end
   
@@ -53,7 +58,7 @@ module BasicsDsl
     end
     select_options = {:count=>1}
     select_options[:text] = options[:text] 
-
+    
     assert_select(selector, select_options, "Trying to click a link '#{selector}' #{"with text ''" % options[:text] if options[:text]} that did not exist") do | links |
       address = links.first.attributes['href']
       if options[:without_redirect]

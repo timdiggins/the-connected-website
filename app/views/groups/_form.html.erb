@@ -1,0 +1,41 @@
+<div id="page">
+  <div class="largeForm">
+    <h1><%= @page_title = @group.new_record? ? "Create group" : "Edit group" %></h1>
+  
+    <% form_for @group do | f | -%>
+      <%= f.error_messages %>
+    
+      <fieldset>
+        <p>
+          <%= f.label :name, "Group name" %>
+          <%= f.text_field :name, :class => "largeInput"  %>
+        </p>
+      </fieldset>
+      
+      <fieldset>
+              <p>
+            <%= f.label :profile_text, "Profile text" %>
+            <%= f.text_area :profile_text, :class => :largeInput %>
+          </p>  
+      <fieldset>
+      <fieldset>
+            
+          <p>
+            <%= f.label :home_page, "Home page, if you have one" %>
+            <%= f.text_field :home_page, :class => :largeInput %>
+          </p>
+      </fieldset>
+
+      <p class="submitBlock">
+      	<% if @group.new_record?%>
+				    <%= submit_tag  "Create group", :disable_with => "Creating..."  %>
+				<% else %>
+				    <%= submit_tag  "Save group", :disable_with => "Saving..." %> or <%= link_to "Cancel", @group %>
+				<% end %>
+      </p>
+    
+    <% end -%>
+ 
+    
+  </div>
+</div>

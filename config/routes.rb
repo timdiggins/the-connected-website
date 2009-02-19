@@ -23,7 +23,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   
   map.resources :tags, :requirements => { :id => /.*/ }
-  map.resource  :settings, :collection => { :save_new_avatar => :put, :picture => :get, :username_email => :any, :bio => :any, :password => :any }
+  map.resource  :settings, :collection => { :save_new_avatar => :put, :picture => :get, :username_email => :any, :bio => :any, :password => :any, :groups => :get}
   
   
   map.root :controller => "home"

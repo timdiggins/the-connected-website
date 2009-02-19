@@ -109,7 +109,13 @@ class User < ActiveRecord::Base
     events.destroy_all
   end
   
-  
+  def can_moderate? group
+    group_permissions.each do |gp|
+      return true if group.id == gp.group_id
+    end
+    false
+  end
+
   private
   def encrypt_password
     return if password.blank?

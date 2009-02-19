@@ -134,6 +134,13 @@ class UserTest < ActiveSupport::TestCase
     end
   end
   
+ should "be able to find group permissions" do
+   assert_equal 0, users(:duff).group_permissions.length
+   assert_equal 1, users(:alex).group_permissions.length
+   assert !users(:duff).can_moderate?(groups(:studio1))
+   assert users(:alex).can_moderate?(groups(:studio1))
+   assert !users(:alex).can_moderate?(groups(:studio3))
+ end
   
   private
   def test_user()
@@ -157,5 +164,5 @@ class UserTest < ActiveSupport::TestCase
   def new_valid_user(options = {})
     User.new({ :login => 'quire', :email => 'quire@example.com', :password => 'quire' }.merge(options))
   end
-  
+
 end

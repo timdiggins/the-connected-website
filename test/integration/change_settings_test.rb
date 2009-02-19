@@ -2,7 +2,9 @@ require "#{File.dirname(__FILE__)}/../test_helper"
 
 class ChangeSettingsTest < ActionController::IntegrationTest
   fixtures :users
-
+  PROFILE_LINK = "Your Profile"
+  SETTINGS_LINK = "Your Settings"
+  
   should "handle trying to change to an invalid password" do
     new_session_as(:duff) do
       put 'settings/password', { :user => { :password => '    '} }
@@ -39,7 +41,7 @@ class ChangeSettingsTest < ActionController::IntegrationTest
       put 'settings/username_email', { :user => { :login => 'duffer', :email => 'duffer@omelia.org'} }
       assert_redirected_to '/users/duffer'
       follow_redirect!
-      click_link "Settings"
+      click_link SETTINGS_LINK
       click_link "User name and email"
 
       assert_select "input#user_email[value=duffer@omelia.org]"
@@ -50,7 +52,7 @@ class ChangeSettingsTest < ActionController::IntegrationTest
   should "be able to change the bio, homepage, and location" do
     new_session_as(:duff) do
       assert_response_ok
-      click_link "Your public profile"
+      click_link PROFILE_LINK
       assert_select "p", /Introduce yourself/
       assert_link_exists "add a bio"
       assert_select "p.location", false

@@ -31,10 +31,10 @@ class GroupsTest < ActionController::IntegrationTest
     login(:duff)
     get_ok '/groups'
     assert_doesnt_have_links [ADD_LINK]
-
+    
     get ADD_LINK
     assert_response :error
-
+    
     post "/groups", :group => { :name => "New Studio", :profile_text => "Studio new buttercream filling" }
     assert_response :error
   end    
@@ -48,4 +48,28 @@ class GroupsTest < ActionController::IntegrationTest
     assert_equal "/groups/New%20Studio", path
   end
   
+  context "Editing a group" do
+    should "be possible by moderator" do
+      login(:alex)
+      get_ok "groups/Studio%201"
+      assert_has_links ["/groups/Studio%201/edit"]
+      assert_select 'a[href=MyString]'
+      get_ok "/groups/Studio%201/edit"
+      submit_form do |form|
+        form.group.home_page = 'http://somewhereelse'
+      end
+      get_ok "/groups/Studio%201"
+      
+      assert_select 'a[href=http://somewhereelse]'
+      
+    end
+    
+    should "not be possible be non-moderator" do
+      login(:alex)
+      get_ok "groups/Studio%20Free"
+      assert_doesnt_have_links ["/groups/Studio%20Free/edit"]
+      get "/groups/Studio%20Free/edit"
+      assert_response :error
+    end
+  end
 end
