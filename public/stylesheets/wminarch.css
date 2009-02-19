@@ -1,4 +1,7 @@
-/* @override http://localhost:3000/stylesheets/wminarch.css?1234957618 */
+/* @override 
+	http://localhost:3000/stylesheets/wminarch.css?1234957618
+	http://localhost:3000/stylesheets/wminarch.css?1234974743
+*/
 
 body {
 	font-family: arial, sans-serif;
@@ -8,6 +11,7 @@ body {
 	background-color: #FFF;
 	color: #000;
 }
+
 
 a {
 	color: #4889e9;
@@ -55,7 +59,7 @@ a {
 
 #navigation {
 	list-style: none;
-	margin: 0px;
+	margin: 0px 0px 2em 0px;
 	padding: 0px 0.8em;
 	height: 2.5em;
 	line-height: 2.5em;

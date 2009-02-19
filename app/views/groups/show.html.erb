@@ -1,16 +1,29 @@
 <h1><%=@group%></h1>
 
-<p><%=@group.profile_text%></p>
-
-<% if !@group.home_page.nil?%>
-<p>Home page for group: <%=link_to nil, @group.home_page%></p>
-<% end %>
-
-<%= render :partial=>'posts/post_list'%>
-<% if logged_in? && current_user.can_moderate?(@group) %>
-	<%= link_to "Edit (because you're a moderator", edit_group_path(@group)%>
-	<%= link_to "Edit feeds (because you're a moderator", group_rss_feeds_path(@group)%>
-<% end %>
 
 
+<div id="sidebar">
+  <h2>About this group</h2>
+  <p><%=@group.profile_text%></p>
+  <% if !@group.home_page.nil?%>
+    <p>Visit <%=link_to @group, @group.home_page %></p>
+  <% end %>
+  
+  <% if logged_in? && current_user.can_moderate?(@group) %>
+    <h2>Moderate group</h2>
+  	<ul>
+  	  <li><%= link_to "Edit group", edit_group_path(@group)%></li>
+  	  <li><%= link_to "Edit feeds", group_rss_feeds_path(@group)%></li>
+    </ul>
+  <% end %>
+</div>  
 
+<div id="main">
+  
+
+  <%= render :partial=>'posts/post_list'%>
+
+
+
+
+</div>
