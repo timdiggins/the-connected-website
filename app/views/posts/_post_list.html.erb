@@ -3,7 +3,7 @@
 	<% for post in @posts %>
 		<div class="post">
 			<p class="avatar">
-				<%= link_to_avatar_for(post.user, :medium) %>
+				<%= link_to_avatar_for(post.author, :medium) %>
 			</p>
 			<div class="postContent">
 					<h2<% if post.has_attachment? %> class="file"<% elsif post.video_embed_tags %> class="video"<%end%>>

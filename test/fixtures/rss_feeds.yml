@@ -1,7 +1,7 @@
 
 just_fetched_feed:
   group: studio3
-  url: http://something_fresh
+  url: http://stream.red56.co.uk/rss
   last_fetched: <%= 1.minute.ago.to_s :db%>
   next_fetch: <%=9.minutes.from_now.to_s :db %>
     

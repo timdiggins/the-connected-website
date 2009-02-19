@@ -1,4 +1,4 @@
-<% @page_title = "#{@post} by #{@post.user}" %>
+<% @page_title = "#{@post} #{@post.user ? 'by '+@post.user.to_s : ''}" %>
 
 <div id="sidebar">
 	<%= render :partial => 'posts/author' %>

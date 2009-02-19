@@ -9,6 +9,8 @@ class Post < ActiveRecord::Base
   validates_tiny_mce_presence_of :detail, :unless => :specifying_video
   
   belongs_to :user
+  belongs_to :group
+  
   has_many :comments, :order => 'created_at', :dependent => :destroy
   
   has_one  :attachment, :dependent => :destroy
@@ -33,7 +35,11 @@ class Post < ActiveRecord::Base
   def brief
     truncate_html_text(detail)
   end
-  
+
+  def author
+    return self.user if self.user
+    self.group
+  end
   def featured?
     !featured_at.nil?
   end

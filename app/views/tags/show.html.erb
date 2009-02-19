@@ -25,8 +25,8 @@
 		<% for post in @tag.posts.sorted_by_created_at %>
 			<div class="post">
 				<p class="avatar">
-					<%= link_to_avatar_for(post.user, :medium) %>
-					<span class="author"><%= link_to_user(post.user) %></span>
+					<%= link_to_avatar_for(post.author, :medium) %>
+					<span class="author"><%= link_to_user(post.author) %></span>
 				</p>
 				<div class="postContent">
 						<h2><%= link_to h(post), post %></h2>

@@ -1,10 +1,10 @@
 <div class="authorBlock">
-	<h2>by <%= link_to_user(@post.user) %></h2>
+	<h2>by <%= link_to_user(@post.author) %></h2>
 	<p class="avatar">
-    <%= link_to_avatar_for(@post.user, :medium) %>
+    <%= link_to_avatar_for(@post.author, :medium) %>
   </p>
-	<% unless  @post.user.profile_text.blank? %>
-		<p><%= truncate(@post.user.profile_text, :length => 200) %> <%= link_to("More about #{@post.user}", user_url(@post.user)) %></p>
+	<% unless  @post.author.profile_text.blank? %>
+		<p><%= truncate(@post.author.profile_text, :length => 200) %> <%= link_to("More about #{@post.author}", url_for(@post.author)) %></p>
 	<% end %>
 	<%= clear_this %>
 </div>
