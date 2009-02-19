@@ -1,7 +1,24 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+just_fetched_feed:
+  group: studio3
+  url: http://something_fresh
+  last_fetched: <%= 1.minute.ago.to_s :db%>
+  next_fetch: <%=9.minutes.from_now.to_s :db %>
+    
+never_fetched_feed:
+  group: studio3
+  url: http://something_new_in_sandwiches
+  next_fetch: <%= 1.ago.to_s :db%>
+  
+long_ago_fetched_feed:
+  group: studio3
+  url: http://something_old
+  last_fetched: <%=  1.hour.ago.to_s :db%>
+  next_fetch: <%= 10.minutes.ago.to_s :db%>
+  
+recently_fetched_feed:
+  group: studio3
+  url: http://something_recent
+  last_fetched: <%= 10.minutes.ago.to_s :db%>
+  next_fetch: <%= 5.ago.to_s :db %>
+  

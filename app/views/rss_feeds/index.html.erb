@@ -7,12 +7,14 @@
 	  <li>
 	  	<%= rss_feed.url%>
 		  <em><% if rss_feed.last_fetched.nil? %>
-			 Never fetched
-			<% else %>
-			 Last fetched <% time_ago_in_words(rss_feed.last_fetched)%>
-			<% end %>
-			</em>
-	    <%= link_to "Remove", group_rss_feed_path(@group, :id=>rss_feed),:method => :delete%>
+       Never fetched
+      <% else %>
+       Last fetched <% time_ago_in_words(rss_feed.last_fetched)%>
+      <% end %>
+      </em>
+      Next fetch: <%= time_ago_in_words(rss_feed.next_fetch) %>
+      
+			<%= link_to "Remove", group_rss_feed_path(@group, :id=>rss_feed),:method => :delete%>
 	  </li>
 	<% end %>
 	</ul>

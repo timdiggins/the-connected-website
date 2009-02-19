@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090219131029) do
+ActiveRecord::Schema.define(:version => 20090219162320) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "post_id"
@@ -101,6 +101,8 @@ ActiveRecord::Schema.define(:version => 20090219131029) do
     t.datetime "featured_at"
     t.text     "video"
     t.datetime "commented_at"
+    t.string   "remote_url"
+    t.integer  "group_id"
   end
 
   create_table "queued_emails", :force => true do |t|
@@ -115,6 +117,8 @@ ActiveRecord::Schema.define(:version => 20090219131029) do
     t.datetime "last_fetched"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "error_message"
+    t.datetime "next_fetch"
   end
 
   create_table "subscriptions", :force => true do |t|
