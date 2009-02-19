@@ -11,6 +11,7 @@ class RssFeed < ActiveRecord::Base
   def validate
     errors.add('url', "must begin with either http:// or https://") unless url =~ /https?\:\/\//
   end
+  public
   
   def self.find_next_to_fetch
     rss_feed = find(:first, :conditions=>{:last_fetched=>nil})
