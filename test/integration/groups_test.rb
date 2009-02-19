@@ -14,6 +14,12 @@ class GroupsTest < ActionController::IntegrationTest
       assert_select "p", :text=> /Studio one is such a cool place/
     end
     
+    should "have own rss content " do
+      get("groups/Studio%201")
+      assert_response :success
+      assert_select 'h2', :text=> /Some funky thing/
+    end
+    
   end
   context 'index' do
     should "have links to group" do
@@ -82,14 +88,14 @@ class GroupsTest < ActionController::IntegrationTest
       get_ok @feeds_url
       assert_select 'li', :text => /.*some_new_url.*/, :count=>0
       submit_form 'new_rss_feed' do |form|
-        form.rss_feed.url = 'some_new_url'
+        form.rss_feed.url = 'http://some_new_url'
       end
       assert_response_ok_or_view
       
       group = Group.find_by_name('Studio 1')
       assert_equal 1, group.rss_feeds.length
       rss_feed = group.rss_feeds[0]
-      assert_equal 'some_new_url', rss_feed.url
+      assert_equal 'http://some_new_url', rss_feed.url
       delete_link = group_rss_feed_path(group, :id=>rss_feed.id)
       follow_redirect!
       assert_select "a[href=#{delete_link}]", :count=>1

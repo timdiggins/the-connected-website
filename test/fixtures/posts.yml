@@ -14,3 +14,9 @@ cool_article:
   title: Government is Bogus
   detail: Whatever
   commented_at: <%= 0.hour.ago %>
+
+article_from_rss:
+  group: studio1
+  title: Some funky thing
+  detail: whatever
+  remote_url: http:/somefarawaysite.com/items/1234

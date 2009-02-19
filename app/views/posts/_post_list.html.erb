@@ -10,7 +10,7 @@
           		<%= link_to h(post), post %>
           </h2>
 						 
-					<%=render :partial => 'meta', :locals=>{:post=>post}%>
+					<%=render :partial => 'posts/meta', :locals=>{:post=>post}%>
           <% if post.preview_image %>
           <a href="<%= url_for post %>"><img src="<%=post.preview_image%>" class="previewImage" /></a>
           <% end%>

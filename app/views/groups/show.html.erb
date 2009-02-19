@@ -5,6 +5,8 @@
 <% if !@group.home_page.nil?%>
 <p>Home page for group: <%=link_to nil, @group.home_page%></p>
 <% end %>
+
+<%= render :partial=>'posts/post_list'%>
 <% if logged_in? && current_user.can_moderate?(@group) %>
 	<%= link_to "Edit (because you're a moderator", edit_group_path(@group)%>
 	<%= link_to "Edit feeds (because you're a moderator", group_rss_feeds_path(@group)%>
