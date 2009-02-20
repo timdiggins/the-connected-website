@@ -1,10 +1,8 @@
 #!/usr/bin/env ruby
 
-RAILS_ENV = ARGV[1] || 'development'
-
 root = File.expand_path(File.dirname(__FILE__) + '/../')
-require root + '/config/environment.rb'
-require root + '/lib/fetch_rss_items.rb'
+require root + '/config/environment'
+require root + '/lib/fetch_rss_items'
 
 loop do
   rss_feed = FetchRssItems.fetch_one
