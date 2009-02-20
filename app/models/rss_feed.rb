@@ -29,18 +29,12 @@ class RssFeed < ActiveRecord::Base
   
   def check_feed
     puts 'doing the work of getting and making'
-    open_url
-    update_attributes(:last_fetched=>Time.now, :error_message=>"", :next_fetch => Time.now + 10.minute)
-  end
-  
-  def open_url
-    url = self.url
-    rsscontent = nil
-    open(url) do |s|
+    open(self.url) do |s|
       rsscontent = s.read
       make_posts(rsscontent)
     end
-  end
+    update_attributes(:last_fetched=>Time.now, :error_message=>"", :next_fetch => Time.now + 10.minute)
+  end  
   
   def make_posts(rsscontent) 
     result = RSS::Parser.parse(rsscontent, false)
@@ -49,14 +43,16 @@ class RssFeed < ActiveRecord::Base
     result.items.each_with_index do |item, i|
       guid = ImportedGuid.find_by_rss_feed_id_and_guid(self.id, item.guid)
       return unless guid.nil?
-      ImportedGuid.new(:rss_feed_id=>self.id, :guid=>item.guid).save! 
+      guid = ImportedGuid.new(:rss_feed_id=>self.id, :guid=>item.guid) 
+      title = item.title 
+      title = 'untitled' if title.nil? || title.empty?
       post = Post.new (
-      :title =>item.title || 'untitled',
-      :detail =>item.description,
-      :remote_url=>item.link,
-      :group_id=>group.id
+        :title =>item.title || 'untitled',
+        :detail =>item.description,
+        :remote_url=>item.link,
+        :group_id=>group.id
       )
-      post.save!
+      guid.save if post.save
     end
   end
 

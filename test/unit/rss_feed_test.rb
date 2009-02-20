@@ -29,6 +29,20 @@ class RssFeedTest < ActiveSupport::TestCase
       rss_feed.check_feed()
       assert_equal postcount_afterfirst, groups(:studio3).posts.count
     end
+    
+    should "be able to import a flickrfeed" do
+      rss_feed = rss_feeds(:just_fetched_feed)
+      initial_postcount = groups(:studio3).posts.count 
+      File.open(sample_feed("flickrfeed")) do |f|
+        rss_feed.make_posts f.read
+      end
+      puts "initial:%s now: %s" % [initial_postcount, groups(:studio3).posts.count]
+      assert initial_postcount < groups(:studio3).posts.count
+    end
+  end
+  
+  def sample_feed(name)
+    File.dirname(__FILE__) + "/sample_feeds/#{name}.rss"
   end
   
   should "be able to get next feeds to fetch" do
