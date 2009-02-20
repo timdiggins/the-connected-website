@@ -1,6 +1,6 @@
 .tmp_*
 *.tmproj
-log/*.log
+log/*
 config/database.yml
 config/amazon_s3.yml
 vendor/rails
