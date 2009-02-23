@@ -32,6 +32,6 @@ namespace :deploy do
   end
 end
 
-before "deploy:stop", "republic_services:stop"
-before "deploy:restart", "republic_services:restart" 
-after  "deploy:start",  "republic_services:start"
+before "deploy:stop", "services:stop"
+before "deploy:restart", "services:restart" 
+after  "deploy:start",  "services:start"
