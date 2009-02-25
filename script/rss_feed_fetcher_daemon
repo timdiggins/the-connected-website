@@ -4,6 +4,7 @@ root = File.expand_path(File.dirname(__FILE__) + '/../')
 require 'rubygems'
 require 'daemons'
 require root + '/lib/daemons_patch'
+require root + '/lib/change_privilege'
 
 Daemons.run(
   File.join(root, 'script', 'rss_feed_fetcher.rb'),
