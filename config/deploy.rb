@@ -3,7 +3,6 @@ set :default_stage, "production"
 require 'capistrano/ext/multistage'
 require 'spacesuit/recipes/multistage_patch'
 require 'spacesuit/recipes/common'
-require 'config/recipes/monit'
 
 set :application, "wminarch"
 set :rails_env, "production"
@@ -31,7 +30,3 @@ namespace :deploy do
     task action, :roles => :app do;end
   end
 end
-
-before "deploy:stop", "services:stop"
-before "deploy:restart", "services:restart" 
-after  "deploy:start",  "services:start"

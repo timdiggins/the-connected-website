@@ -1,5 +1,4 @@
 require 'spacesuit/recipes/backup'
-require 'config/recipes/logs_console'
 
 set :deploy_to, "/var/www/apps/#{application}"
 set :domain, "wminarch.red56.co.uk"
