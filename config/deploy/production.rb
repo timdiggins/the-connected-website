@@ -13,9 +13,11 @@ role :app, domain
 role :db,  domain, :primary => true
 
 task :install_gem_dependencies do
-  run "cd #{current_release} && 
-        rake gems RAILS_ENV=#{rails_env} > /dev/null &&
-        sudo rake gems:install RAILS_ENV=#{rails_env}"
+  cmds = []
+  cmds << "cd #{current_release}"
+  cmds << "rake gems RAILS_ENV=#{rails_env} > /dev/null"
+  cmds << "sudo rake gems:install RAILS_ENV=#{rails_env}"
+  run cmds.join(' && ')
 end
 
 task :link_s3_yml do
