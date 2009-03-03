@@ -547,6 +547,23 @@ p.meta a.option:hover {
 }
 
 
+#recentlyFeatured {
+border-bottom: 1px dashed #DDD;
+margin-bottom: 3em;
+}
+
+
+#recentlyFeatured h3 {
+  margin:0px;
+}
+
+#recentlyFeatured div.post {
+  border-top: 1px dashed #DDD;
+  padding: 1em 0 0 0;
+}
+
+
+
 
 
 
