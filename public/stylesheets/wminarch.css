@@ -9,7 +9,7 @@ body {
 	font-size: 0.8em;
 	margin: 0px;
 	padding: 0px;
-	background-color: #FFF;
+	background-color: #DDD;
 	color: #000;
 }
 
@@ -28,10 +28,17 @@ a {
 
 #main {
 	margin-left: 300px;
+	background-color: #FFF;
+	padding: 1em 40px;
+}
+
+#footer {
+    padding: 0px 40px 0px 300px;
+    color: #999;
 }
 
 #header {
-  padding: 2em 40px 0.5em 40px;
+  padding: 2em 40px 0px 40px;
   background-color: #000;
 }
 
@@ -68,6 +75,7 @@ a {
 	line-height: 2.5em;
 	background-color: #000;
 	font-size: 1.2em;
+	border-bottom: 1.5em solid #FFF;
 }
 
 #navigation li {
