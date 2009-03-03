@@ -11,7 +11,7 @@
   <% end %>
   
   <% if logged_in? && current_user.can_moderate?(@group) %>
-    <h2>Moderate group</h2>
+    <h2>Admin options for this group</h2>
   	<ul>
   	  <li><%= link_to "Edit group", edit_group_path(@group)%></li>
   	  <li><%= link_to "Edit feeds", group_rss_feeds_path(@group)%></li>

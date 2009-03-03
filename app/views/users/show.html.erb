@@ -2,7 +2,7 @@
 <div id="profile">
 	<div id="sidebar">
 	  <% if logged_in_as_admin? %>
-	    <h2>Admin features</h2>
+	    <h2>Admin options for this user</h2>
 			<ul>
 				<li><%= link_to("Login as #{@user}", become_user_url(@user), :method => :post) %>
         </li>

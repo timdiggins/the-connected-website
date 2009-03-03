@@ -835,6 +835,20 @@ ul.groupsList {
   padding: 0;
 }
 
+#profile p.avatar {
+  float: right;
+}
+
+#profile p.avatar img {
+	display: block;
+	border: 1px solid #EEE;
+	margin-bottom: 0.5em;
+}
+
+#profile #profileDetails {
+  	margin-right: 200px;
+}
+
 
 
 
