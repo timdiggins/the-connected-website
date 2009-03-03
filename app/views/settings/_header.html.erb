@@ -1,6 +1,6 @@
-<h1><%= @page_title = "Your Settings" %></h1>
 
 <div id="sidebar">
+  <h2><%= @page_title = "Your Settings" %>:</h2>
 	<ul class="settings">
 		<li <%= current_if_context_is(:groups) %>>
 				<%= link_to "Your groups", groups_settings_url %>

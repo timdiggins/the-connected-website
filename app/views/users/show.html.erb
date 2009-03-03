@@ -1,6 +1,14 @@
 <% @page_title = "#{@user.possessive_to_s} Profile" %>
 <div id="profile">
 	<div id="sidebar">
+	  <% if logged_in_as_admin? %>
+	    <h2>Admin features</h2>
+			<ul>
+				<li><%= link_to("Login as #{@user}", become_user_url(@user), :method => :post) %>
+        </li>
+      	<li><%= link_to("Add/remove from groups", user_group_permissions_path(@user)) %>
+				</li>
+		<% end %>
 		<%= render :partial => 'users/recent_posts' %>
 	</div>
 
@@ -14,14 +22,6 @@
 			<% end %>
 			<%= render :partial => 'users/profile' %>
 			<%= render :partial => 'users/recent_events' %>
-			
-			<% if logged_in_as_admin? %>	
-				<ul>
-					<li><%= link_to("Become #{@user} (since you're an admin)", become_user_url(@user), :method => :post) %>
-          </li>
-        	<li><%= link_to("Add/remove from groups (since you're an admin)", user_group_permissions_path(@user)) %>
-					</li>
-			<% end %>
 		</div>
 		<%= clear_this %>
 

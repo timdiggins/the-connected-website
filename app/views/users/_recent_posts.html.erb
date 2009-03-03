@@ -1,14 +1,10 @@
 <div id="recentPosts">
-<% if @user.posts.empty? %>
-    <p><%= h @user %> hasn't made any posts yet.</p>
-<% else %>
-
-	    <h2><%=h @user.possessive_to_s %> recent posts</h2>
-	    <ul>
-	    <% for post in @user.posts %>
-	        <li><%= link_to post, post %></li>
-	    <% end %>
-	  	</ul>
-
-<% end%>
-    </div>
+  <% if !@user.posts.empty? %>
+  	    <h2><%=h @user.possessive_to_s %> recent posts</h2>
+  	    <ul>
+  	    <% for post in @user.posts %>
+  	        <li><%= link_to post, post %></li>
+  	    <% end %>
+  	  	</ul>
+  <% end%>
+</div>

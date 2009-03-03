@@ -83,17 +83,26 @@ a {
 }
 
 #navigation a {
-	color: #DDD;
+	color: #FFF;
 	float: left;
 	line-height: 2.5em;
 	height: 2.5em;
 	padding: 0px;
 	margin: 0px 1em 0px 0px;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+#navigation a:hover {
+	color: #FFF;
+	text-decoration: underline;
 }
 
 #navigation li.personal a {
 	float: right;
 	margin: 0px 0px 0px 1em;
+	font-weight: normal;
+	color: #DDD;
 }
 
 /* @end */
@@ -738,18 +747,17 @@ a.PDFpreview img {
 
 #settings ul a {
 	display: block;
-	padding: 1em 1.5em;
-	background-color: #EEE;
-	margin-bottom: 5px;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
+	padding: 0.5em;
+	margin-left: -0.5em;
+	font-weight: bold;
 }
 
 
 
 #settings ul li.current a {
-	background-color: #2A6B87;
+	background-color: #000;
 	color: #FFF;
+	text-decoration: none;
 }
 
 
