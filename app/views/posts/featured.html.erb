@@ -1,10 +1,9 @@
 
 <% @current_tab = :features %>
-<h1><%= @page_title = "Featured postings and discussions" %></h1>
+
 		
 <div id="sidebar">
-  <div id="missionStatement">
-    <h2>What is featured?</h2>
+  <div id="largeDescription">
 		<p>
 		  This section highlights the best of the <%= link_to "discussions", posts_url %>. Everybody can contribute - just <%= link_to "start an interesting discussion", new_post_url %> and we'll feature it!
     </p>
@@ -19,6 +18,7 @@
 </div>
 
 <div id="main">
+  <h1><%= @page_title = "Featured postings" %></h1>
 	<%= render :partial => 'posts/post_list' %>
 </div>
 
