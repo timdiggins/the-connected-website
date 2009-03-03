@@ -21,18 +21,17 @@
 
 	<div id="main">
 	
-	<h1>Open Studios</h1>
-	<p id="strapline"><%= APP_NAME %></p>
-  <%= render :partial => 'home/current_feature' if @current_featured %>
+  	<h1>Open Studios</h1>
+  	<p id="strapline"><%= APP_NAME %></p>
+    <%= render :partial => 'home/current_feature' if @current_featured %>
   
-  	<%= render :partial => 'home/recent_features' %>
-  <h2>Popular Tags</h2>
-  <div class="tagCloud">
-	  <%= render :partial=>'tags/tag_cloud'%>
-	  <p class="more"><%= link_to "View more tags", tags_url %></p>
-  </div>
+    	<%= render :partial => 'home/recent_features' %>
+    <h2>Popular Tags</h2>
+    <div class="tagCloud">
+  	  <%= render :partial=>'tags/tag_cloud'%>
+  	  <p class="more"><%= link_to "View more tags", tags_url %></p>
+    </div>
 
-		<%= render :partial => 'home/recent_activity' %>
 	</div>
 
 	<%= clear_this %>
