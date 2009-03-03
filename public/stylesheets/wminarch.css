@@ -45,6 +45,13 @@ a {
 #sidebar {
 	float: left;
 	width: 250px;
+	padding-top: 2em;
+}
+
+#largeDescription {
+  font-size: 1.3em;
+  color: #666;
+  font-weight: bold;
 }
 
 .clearThis {
@@ -434,10 +441,10 @@ span.nextPage,span.previousPage {
 /* @end */
 
 a.rss {
-	padding: 0.3em 0px 0.3em 16px;
-	background: #FFF url(/images/feed-icon.gif) no-repeat left 0.4em;
+	padding: 0px 0px 0px 16px;
+	background: transparent url(/images/feed-icon.gif) no-repeat left 0.1em;
 	text-decoration: none;
-	font-size: 1.1em;
+	font-size: 1em;
 }
 
 h1 {
@@ -446,10 +453,15 @@ h1 {
 
 
 h2 {
-	font-size: 1.3em;
+	font-size: 1.2em;
 }
 
 
+
+#sidebar h2 {
+  font-size: 1em;
+  margin-top: 3em;
+}
 
 
 

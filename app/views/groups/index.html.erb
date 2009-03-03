@@ -2,6 +2,7 @@
 
 		
 <div id="sidebar">
+  <h2>Studios:</h2>
 	<ul>
   	<% @groups.each do |group| %>
   	 <li><%=link_to group, group %></li>
@@ -9,7 +10,7 @@
   </ul>
 
   <% if logged_in_as_admin? %>  
-    <p><%= link_to 'Create a new group', new_group_path %></p>
+    <p><%= link_to 'Setup new studio / group', new_group_path %></p>
   <% end %>
 </div>
 
