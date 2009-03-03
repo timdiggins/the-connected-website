@@ -13,8 +13,10 @@
       <p>Programmes are at both undergraduate and postgraduate levels and operate both full and part time. The School is heavily committed to professional, consultancy and research activities.</p>
     </div>
 
-	  <%=render :partial=>'posts/subscription' %> 
-    <%=render :partial=>'groups'%>
+	  <div id="subscribe">
+      <p><a href="<%= formatted_featured_posts_url(:format => :rss) %>" class="rss">Subscribe to just the features</a></p>
+      <p><a href="<%= formatted_posts_url(:format => :rss) %>" class="rss">Subscribe to all posts</a></p>
+    </div>
 	</div>
 
 	<div id="main">

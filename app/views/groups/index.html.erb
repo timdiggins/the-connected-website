@@ -2,7 +2,27 @@
 
 		
 <div id="sidebar">
-  <h2>Studios:</h2>
+  <div id="largeDescription">
+    <p>The School of Architecture sports multiple studios ...</p>
+  </div>
+  
+  <div id="subscribe">
+    <p><a href="<%= formatted_posts_url(:format => :rss) %>" class="rss">Subscribe to all posts</a></p>
+  </div>
+  
+  <% if logged_in? %>
+    <% if  current_user.group_permissions.count > 0 %>
+      <h2>Your studios/groups...</h2>
+      <ul>
+    	<% current_user.group_permissions.each do |gp| 
+    	  group = gp.group  %>
+    	  <li><%=link_to group, group%></li>
+    	<% end %>
+    	</ul>
+    <% end %>
+	<% end %>
+	
+  <h2>Select studios...</h2>
 	<ul>
   	<% @groups.each do |group| %>
   	 <li><%=link_to group, group %></li>

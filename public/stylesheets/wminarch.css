@@ -22,8 +22,9 @@ a {
 /* @group Layout */
 
 #wrap {
-	margin: 0px auto;
+	margin: 0px;
 	padding: 0px 40px;
+	min-width: 900px;
 }
 
 #main {
@@ -40,6 +41,7 @@ a {
 #header {
   padding: 2em 40px 0px 40px;
   background-color: #000;
+  min-width: 900px;
 }
 
 #sidebar {
