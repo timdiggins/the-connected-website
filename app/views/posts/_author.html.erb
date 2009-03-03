@@ -1,5 +1,5 @@
 <div class="authorBlock">
-	<h2><% if @post.group == NIL %>by<% end %> <%= link_to_user(@post.author) %></h2>
+	<h2>by <%= link_to_user(@post.author) %></h2>
 	<p class="avatar">
     <%= link_to_avatar_for(@post.author, :medium) %>
   </p>

@@ -268,7 +268,6 @@ div.tags a.tag {
 }
 
 a.tag:hover {
-	color: #2A6B87;
 	text-decoration: underline;
 }
 
@@ -493,7 +492,7 @@ h2 {
 
 
 
-.post {
+div.post {
 	padding-bottom: 1.5em;
 }
 
@@ -876,3 +875,31 @@ a.buttonLink {
 a.buttonLink:hover {
   text-decoration: underline;
 }
+
+
+
+
+
+
+
+
+div.tags ul {
+	list-style: none;
+	margin: 0px 0px 1.5em 0px;
+	padding: 0px;
+}
+
+div.tags li {
+	font-size: 1.1em;
+	margin: 0.5em 0px;
+	clear: left;
+}
+
+div.tags input {
+	font-size: 1.1em;
+}
+
+
+
+
+

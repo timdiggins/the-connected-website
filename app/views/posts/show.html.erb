@@ -1,9 +1,15 @@
 <% @page_title = "#{@post} #{@post.user ? 'by '+@post.user.to_s : ''}" %>
 
 <div id="sidebar">
-	<%= render :partial => 'posts/author' %>
+  <% if @post.group != NIL %>
+    <div id="largeDescription">
+      <p>This post belongs to the <%= @post.group %></p>
+    </div>
+    <p><%= link_to "More posts by this studio...", @post.group %></p>
+  <% else %>  
+    <%= render :partial => 'posts/author' %>
+  <% end %>
 	<%= render :partial => 'posts/tags' %>
-	<%= render :partial => 'posts/subscribe' %>	
 	<%= render :partial => 'posts/feature' %>	
 </div>
 
