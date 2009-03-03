@@ -1,13 +1,13 @@
 <% @current_tab = :tags %>
-<h1><%= @page_title = "All Tags" %></h1>
 
 <div id="sidebar">
-    <div class="info">
+    <div id="largeDescription">
       <p>These tags are used across all posting. To create new tags, just add them to the appropriate posting.</p>
     </div>
 </div>	
 	
 <div id="main">
+   <h1><%= @page_title = "All Tags" %></h1>
 	 <%= render :partial=>'tag_cloud'%>
 </div>
 <%= clear_this %>

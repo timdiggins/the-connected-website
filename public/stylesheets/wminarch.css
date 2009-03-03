@@ -542,8 +542,8 @@ p.meta a.option, a.option {
 	font-size: 0.9em;
 }
 
-a.option:hover {
-	background-color: #2A6B87;
+p.meta a.option:hover {
+	text-decoration: underline;
 }
 
 

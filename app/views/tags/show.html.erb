@@ -2,6 +2,12 @@
 
 
 <div id="sidebar">
+  <% if !@tag.description.blank? %>
+    <div id="largeDescription">
+      <p><%=@tag.description %></p>
+    </div>
+  <% end %>  
+  <p><%= link_to(@tag.description.blank? ? "Add a description to this tag" : "Edit description", edit_tag_url) if logged_in? %></p>
 	<p id="newContent"><%= link_to %Q{New posting with this tag}, new_post_url(:tag => @tag.id), :id => :newContent %></p>
 	<div class="tagCloud">
 	  <h2>Popular Tags</h2>
@@ -11,15 +17,9 @@
 </div>
 
 <div id="main">
-	
-	<div id="tagDescription">
-		<h1><%= @page_title = @tag %> <span class="count"><%= pluralize(@tag.posts.count, "article") %></span></h1>
 
-		<% if !@tag.description.blank? %>
-		<p><%=@tag.description %></p>
-		<% end %>
-		<p class="tinyOption"><%= link_to(@tag.description.blank? ? "Add a description" : "Edit description", edit_tag_url) if logged_in? %></p>
-	</div>
+	<h1>Postings tagged with: <%= @page_title = @tag %> <span class="count">(<%= pluralize(@tag.posts.count, "posting") %>)</span></h1>
+
 	
 	<div class="posts">
 		<% for post in @tag.posts.sorted_by_created_at %>
