@@ -1,4 +1,12 @@
-<h1><%=@group%> rss_feeds</h1>
+<div id="sidebar">
+  <div id="largeDescription">
+    <p>You can add multiple RSS Feeds. Any new content will be fetched regularly and added to the group.</p>
+  </div>
+  <p>Back to the group <%= link_to " #@group", @group %></p>
+</div>  
+
+<div id="main">
+<h1>RSS Feeds for the group: <%=@group%>:</h1>
 <% if @group.rss_feeds.empty?%>
   <p><%=@group%> has no feeds</p>
 <% else %>
@@ -25,10 +33,15 @@
 	</ul>
 <% end %>
 
-<h2>Add rss feed:</h2>
+<h2>Add a new RSS feed:</h2>
 <% form_for @rss_feed, :url=> group_rss_feeds_path do | f | %>
-    <%= f.text_field :url %>
-		<%= submit_tag 'Add'%>
+    
+    <p>
+      <%= f.label :url, "URL (including http://)" %>
+      <%= f.text_field :url %>
+    </p>
+		<p><%= submit_tag 'Add'%></p>
 <% end %>
 
-<%= link_to "Back to #@group", @group %>
+
+</div>

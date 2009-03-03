@@ -1,18 +1,26 @@
-<h1><%=@user%> permissions</h1>
+<div id="sidebar">
+  <p>Back to the <%= link_to "profile for #@user", @user %></p>
+</div>
+
+
+<div id="main">
+
+<h1>Group permissions for <%=@user%> </h1>
+<h2>Groups/studios <%=@user%> can moderate:</h2>
 <% if @groups_permitted.empty?%>
-  <p><%=@user%> cannot moderate any groups</p>
-<% else %><h2>Groups <%=@user%> can moderate</h2>
+  <p>none</p>
+<% else %>
 	<ul id="permitted-groups">
 	<% @groups_permitted.each do |group| 
 	 %>
-	  <li><%=group%>
-	    <%= link_to "Remove as moderator", user_group_permission_path(@user, :id=>group),:method => :delete%>
+	  <li>
+	    <%=group%> <%= link_to "Remove as moderator", user_group_permission_path(@user, :id=>group),:method => :delete%>
 	  </li>
 	<% end %>
 	</ul>
 <% end %>
 
-<h2>Add <%=@user%> as moderator to groups:</h2>
+<h2>Other groups/studios:</h2>
 <ul id="not-permitted-groups">
 <% @groups.each do |group| 
    if !@groups_permitted.include? group
@@ -24,4 +32,5 @@
 </ul>
 
 
-<%= link_to "Back to #@user", @user %>
+
+</div>

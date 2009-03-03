@@ -13,7 +13,7 @@
   <% if logged_in? %>
     <% if  current_user.group_permissions.count > 0 %>
       <h2>Your studios/groups...</h2>
-      <ul>
+      <ul class="groupsList">
     	<% current_user.group_permissions.each do |gp| 
     	  group = gp.group  %>
     	  <li><%=link_to group, group%></li>
@@ -23,14 +23,14 @@
 	<% end %>
 	
   <h2>Select studios...</h2>
-	<ul>
+	<ul class="groupsList">
   	<% @groups.each do |group| %>
   	 <li><%=link_to group, group %></li>
   	<% end %>
   </ul>
 
   <% if logged_in_as_admin? %>  
-    <p><%= link_to 'Setup new studio / group', new_group_path %></p>
+    <p><%= link_to 'Setup new studio / group', new_group_path, :class => "buttonLink" %></p>
   <% end %>
 </div>
 

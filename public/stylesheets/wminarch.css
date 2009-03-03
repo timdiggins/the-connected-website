@@ -27,6 +27,8 @@ a {
 	min-width: 900px;
 }
 
+
+
 #main {
 	margin-left: 300px;
 	background-color: #FFF;
@@ -820,4 +822,43 @@ div#dangerAdmin p {
 .error a {
 	color: #F00;
 	text-decoration: underline;
+}
+
+
+
+
+
+ul.groupsList {
+  list-style: none;
+  border-top: 1px dashed #AAA;
+  margin: 0 0 1.5em 0;
+  padding: 0;
+}
+
+
+
+
+ul.groupsList li {
+  border-bottom: 1px dashed #AAA;
+}
+
+ul.groupsList a {
+  display: block;
+  padding: 0.5em 0;
+}
+
+
+
+
+
+a.buttonLink {
+  background-color: #4889e9;
+  color: #FFF;
+  padding: 0.3em 0.4em;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a.buttonLink:hover {
+  text-decoration: underline;
 }
