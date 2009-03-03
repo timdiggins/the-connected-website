@@ -1,6 +1,7 @@
 /* @override 
 	http://localhost:3000/stylesheets/wminarch.css?1234957618
 	http://localhost:3000/stylesheets/wminarch.css?1234974743
+	http://localhost:3000/stylesheets/wminarch.css?1235086322
 */
 
 body {
@@ -22,19 +23,17 @@ a {
 
 #wrap {
 	margin: 0px auto;
-	width: 940px;
+	padding: 0px 40px;
 }
 
 #main {
-	float: left;
-	width: 580px;
-	position: relative;
+	margin-left: 300px;
 }
 
 
 #sidebar {
-	float: right;
-	width: 300px;
+	float: left;
+	width: 250px;
 }
 
 .clearThis {
@@ -60,7 +59,7 @@ a {
 #navigation {
 	list-style: none;
 	margin: 0px 0px 2em 0px;
-	padding: 0px 0.8em;
+	padding: 0px 40px;
 	height: 2.5em;
 	line-height: 2.5em;
 	background-color: #000;
@@ -76,11 +75,13 @@ a {
 	float: left;
 	line-height: 2.5em;
 	height: 2.5em;
-	padding: 0px 0.5em;
+	padding: 0px;
+	margin: 0px 1em 0px 0px;
 }
 
 #navigation li.personal a {
 	float: right;
+	margin: 0px 0px 0px 1em;
 }
 
 /* @end */
@@ -456,7 +457,6 @@ h2 {
 
 
 .post {
-	clear: both;
 	padding-bottom: 1.5em;
 }
 
