@@ -2,19 +2,19 @@
   <div id="largeDescription">
     <p>You can add multiple RSS Feeds. Any new content will be fetched regularly and added to the group.</p>
   </div>
-  <p>Back to the group <%= link_to " #@group", @group %></p>
+  <p>Back to the group <%= link_to @group, @group %></p>
 </div>  
 
 <div id="main">
-<h1>RSS Feeds for the group: <%=@group%>:</h1>
+<h1>RSS Feeds for <%= link_to @group, @group %></h1>
 <% if @group.rss_feeds.empty?%>
   <p><%=@group%> has no feeds</p>
 <% else %>
 	<ul id="feeds">
 	<% @group.rss_feeds.each do |rss_feed| %>
 	  <li>
-	  	<%= rss_feed.url%>
-		  <em><% if rss_feed.last_fetched.nil? %>
+	  	<p><%= link_to nil, rss_feed.url%></p>
+		  <p><em><% if rss_feed.last_fetched.nil? %>
        Never fetched
       <% else %>
        Last fetched <%= time_ago_in_words(rss_feed.last_fetched)%> ago
@@ -27,6 +27,7 @@
       <% if !rss_feed.error_message.nil? && ! rss_feed.error_message.empty?%>
 			   <strong>Error: <%= rss_feed.error_message%></strong>
 			<% end %>
+			</p>
 			<%= link_to "Remove", group_rss_feed_path(@group, :id=>rss_feed),:method => :delete%>
 	  </li>
 	<% end %>

@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_filter :login_required, :except => [ :index, :show]
+  uses_tiny_mce :options => tiny_mce_options, :only => [ :new,:create, :update, :edit ]
   
   def index
     @groups = Group.all
