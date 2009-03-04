@@ -36,7 +36,11 @@ class RssFeed < ActiveRecord::Base
     update_attributes(:last_fetched=>Time.now, :error_message=>"", :next_fetch => Time.now + 10.minute)
   end  
   
-  def make_posts(rsscontent) 
+  def make_posts(rsscontent)
+    #fix for flickr badness:
+    #http://groups.google.com/group/vanrb/browse_thread/thread/f567054d82de21c
+    rsscontent.gsub!( 'date.Taken', 'dateTaken' ) 
+
     result = RSS::Parser.parse(rsscontent, false)
 #    attrs[:title] = result.channel.title
     group = self.group
@@ -45,10 +49,12 @@ class RssFeed < ActiveRecord::Base
       return unless guid.nil?
       guid = ImportedGuid.new(:rss_feed_id=>self.id, :guid=>item.guid) 
       title = item.title 
-      title = 'untitled' if title.nil? || title.empty?
-      post = Post.new (
-        :title =>item.title || 'untitled',
-        :detail =>item.description,
+      title = 'untitled' if title.nil? || title.strip.empty?
+      detail = item.content_encoded || item.description
+      
+      post = Post.new(
+        :title => title,
+        :detail => detail,
         :remote_url=>item.link,
         :group_id=>group.id
       )
