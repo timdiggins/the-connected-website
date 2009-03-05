@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_filter :login_required, :except => [ :index, :show]
+  uses_tiny_mce :options => tiny_mce_options, :only => [ :new,:create, :update, :edit ]
   
   def index
     @groups = Group.all
@@ -17,6 +18,7 @@ class GroupsController < ApplicationController
   
   def show
     @group = Group.find_by_name!(params[:id])
+    @images = @group.post_images
     @posts = @group.posts.paginate(:page => params[:page], :per_page => 15)
   end
   

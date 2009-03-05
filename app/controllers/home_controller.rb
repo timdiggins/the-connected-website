@@ -9,5 +9,7 @@ class HomeController < ApplicationController
     @users = User.has_bio_and_avatar.recently_contributed(3)
     @tags = Tag.all_with_count :limit=>20
     @groups = Group.all
+    
+    @images = PostImage.find(:all, :include => :post, :limit=>50)
   end
 end

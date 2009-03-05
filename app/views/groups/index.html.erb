@@ -35,7 +35,8 @@
 </div>
 
 <div id="main">
-  <h1><%= @page_title = "Articles from all Studios" %></h1>
-	<%= render :partial => 'posts/post_list' %>
+  <h1><%= @page_title = "Studios" %></h1>
+	<!-- %= render :partial => 'posts/post_list' % -->
+	<%= render :partial => 'group', :collection=> @groups%>
 </div>
 <%= clear_this %>

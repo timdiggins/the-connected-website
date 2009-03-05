@@ -10,7 +10,7 @@ class RssFeed < ActiveRecord::Base
       rss_feed.next_fetch = Time.now 
     end
   end
-
+  
   protected
   def validate
     errors.add('url', "must begin with either http:// or https://") unless url =~ /https?\:\/\//
@@ -36,24 +36,18 @@ class RssFeed < ActiveRecord::Base
     update_attributes(:last_fetched=>Time.now, :error_message=>"", :next_fetch => Time.now + 10.minute)
   end  
   
-  def make_posts(rsscontent) 
+  def make_posts(rsscontent)
+    #fix for flickr badness:
+    #http://groups.google.com/group/vanrb/browse_thread/thread/f567054d82de21c
+    rsscontent.gsub!( 'date.Taken', 'dateTaken' ) 
+    
     result = RSS::Parser.parse(rsscontent, false)
-#    attrs[:title] = result.channel.title
+    #    attrs[:title] = result.channel.title
     group = self.group
     result.items.each_with_index do |item, i|
-      guid = ImportedGuid.find_by_rss_feed_id_and_guid(self.id, item.guid)
-      return unless guid.nil?
-      guid = ImportedGuid.new(:rss_feed_id=>self.id, :guid=>item.guid) 
-      title = item.title 
-      title = 'untitled' if title.nil? || title.empty?
-      post = Post.new (
-        :title =>item.title || 'untitled',
-        :detail =>item.description,
-        :remote_url=>item.link,
-        :group_id=>group.id
-      )
-      guid.save if post.save
+      import_item = ImportRssItem.new(self, group, item)
+      import_item.save() unless import_item.exists?    
     end
   end
-
+  
 end

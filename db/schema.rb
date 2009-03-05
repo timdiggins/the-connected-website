@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090219220308) do
+ActiveRecord::Schema.define(:version => 20090305153102) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "post_id"
@@ -95,6 +95,13 @@ ActiveRecord::Schema.define(:version => 20090219220308) do
   create_table "post_changed_events", :force => true do |t|
     t.integer  "user_id"
     t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "post_images", :force => true do |t|
+    t.integer  "post_id"
+    t.string   "src"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

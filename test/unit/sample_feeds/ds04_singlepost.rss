@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	>
+
+<channel>
+	<title>DS04</title>
+	<atom:link href="http://ds04.org/feed" rel="self" type="application/rss+xml" />
+	<link>http://ds04.org</link>
+	<description>/ Blog / Work</description>
+	<pubDate>Sun, 01 Mar 2009 12:08:25 +0000</pubDate>
+	<generator>http://wordpress.org/?v=2.6</generator>
+	<language>en</language>
+		<item>
+    <title>Milos: plaster casts</title>
+    <link>http://ds04.org/2009/03/01/milos-plaster-casts/</link>
+    <comments>http://ds04.org/2009/03/01/milos-plaster-casts/#comments</comments>
+    <pubDate>Sun, 01 Mar 2009 12:08:25 +0000</pubDate>
+    <dc:creator>Milos Murin</dc:creator>
+    
+    <category><![CDATA[Links]]></category>
+
+    <category><![CDATA[milos plaster casts]]></category>
+
+    <guid isPermaLink="false">http://ds04.org/?p=226</guid>
+    <description><![CDATA[
+see this 1 and many more on ds04 flickr
+]]></description>
+      <content:encoded><![CDATA[<p><a href="http://www.flickr.com/photos/ds04/sets/72157614578740902/" target="_blank"><img class="alignnone" title="maze pattern" src="http://farm4.static.flickr.com/3520/3316712556_52180f7a3b.jpg?v=0" alt="" width="239" height="115" /></a></p>
+<p>see this 1 and many more on ds04 flickr</p>
+]]></content:encoded>
+      <wfw:commentRss>http://ds04.org/2009/03/01/milos-plaster-casts/feed/</wfw:commentRss>
+    </item>
+		</channel>
+</rss>

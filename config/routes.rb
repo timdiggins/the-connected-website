@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.info 'info/:action', :controller => 'info'
   
   map.resources :groups, :requirements => { :id => /.*/ } do |group|
-    group.resources :rss_feeds
+    group.resources :rss_feeds, :member=>{:fetch_sooner => :post}
   end
   map.resources :users, :member => { :become => :post }, :collection => { :all => :get }, :requirements => { :id => /.*/ } do |user| 
     user.resources :group_permissions

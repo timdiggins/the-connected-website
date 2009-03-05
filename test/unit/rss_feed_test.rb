@@ -39,6 +39,20 @@ class RssFeedTest < ActiveSupport::TestCase
       puts "initial:%s now: %s" % [initial_postcount, groups(:studio3).posts.count]
       assert initial_postcount < groups(:studio3).posts.count
     end
+    
+    should "be able to import a images in a feed" do
+      rss_feed = rss_feeds(:just_fetched_feed)
+      initial_postcount = groups(:studio3).posts.count 
+      File.open(sample_feed("ds04_singlepost")) do |f|
+        rss_feed.make_posts f.read
+      end
+      puts "initial:%s now: %s" % [initial_postcount, groups(:studio3).posts.count]
+      assert_equal initial_postcount+1, groups(:studio3).posts.count
+      imported = groups(:studio3).posts[-1]
+      assert_equal 'Milos: plaster casts', imported.title
+      assert_equal %Q{<p><a href="http://www.flickr.com/photos/ds04/sets/72157614578740902/" target="_blank"><img class="alignnone" title="maze pattern" src="http://farm4.static.flickr.com/3520/3316712556_52180f7a3b.jpg?v=0" alt="" width="239" height="115" /></a></p>
+<p>see this 1 and many more on ds04 flickr</p>}, imported.detail.strip
+    end
   end
   
   def sample_feed(name)

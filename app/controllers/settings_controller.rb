@@ -1,5 +1,4 @@
-class SettingsController < ApplicationController
-  
+class SettingsController < ApplicationController  
   before_filter :login_required
   before_filter :set_user
   

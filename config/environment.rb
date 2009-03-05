@@ -20,5 +20,5 @@ Rails::Initializer.run do |config|
   config.gem "map_by_method", :version => '0.8.3'
   config.gem "colored", :version => '1.1'
   config.gem "mikehale-daemons", :lib => "daemons", :version => '>=1.0.12.4', :source => "http://gems.github.com"
-  
+  config.gem "hpricot", :version => ">= 0.6"
 end
