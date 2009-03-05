@@ -7,7 +7,7 @@
     <p><%=@group.profile_text%></p>
   </div>
   <% if !@group.home_page.nil?%>
-    <p><%=link_to "Visit home page", @group.home_page %></p>
+    <p>Visit studio site: <%=link_to nil, @group.home_page %></p>
   <% end %>
   
 	
