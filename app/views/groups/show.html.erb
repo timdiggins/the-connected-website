@@ -39,5 +39,10 @@
 
 <div id="main">  
   <h1>Studio: <%=@group%></h1>
+    <div class="images">
+    	<% for image in @images%>
+      <%= link_to image_tag(image.src, :height=>100), image.post %>
+    <% end %>
+		</div>
   <%= render :partial=>'posts/post_list'%>
 </div>

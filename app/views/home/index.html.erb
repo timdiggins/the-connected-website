@@ -1,16 +1,12 @@
 <% @current_tab = :home %>
 
-
-	
-
-
 	<div id="sidebar">
 
-
     <div id="largeDescription">
-      <p>The School of Architecture is loacted in central London and has 1800 students with around 90 permanent teaching and research staff.</p>
+      <p>Open Studio is an online exhibition of work by the students of Architecture at the University of Westminster.</p>
 
-      <p>Programmes are at both undergraduate and postgraduate levels and operate both full and part time. The School is heavily committed to professional, consultancy and research activities.</p>
+      <p>This online archive is a collection of work from undergraduate and postgraduate courses as well as research collectives.</p>
+      <p>For more information about architecture the University Westminster visit <%= link_to nil, 'http://www.westminster.ac.uk/sabe' %></p>
     </div>
 
 	  <div id="subscribe">
@@ -23,6 +19,11 @@
 	
   	<h1>Open Studios</h1>
   	<p id="strapline"><%= APP_NAME %></p>
+		<div class="images">
+		<% for image in @images%>
+		  <%= link_to image_tag(image.src, :width=>64, :height=>64), image.post %>
+		<% end %>
+		</div>
     <%= render :partial => 'home/current_feature' if @current_featured %>
   
     	<%= render :partial => 'home/recent_features' %>

@@ -18,6 +18,7 @@ class GroupsController < ApplicationController
   
   def show
     @group = Group.find_by_name!(params[:id])
+    @images = @group.post_images
     @posts = @group.posts.paginate(:page => params[:page], :per_page => 15)
   end
   

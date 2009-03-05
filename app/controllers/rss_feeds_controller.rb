@@ -26,4 +26,11 @@ class RssFeedsController < ApplicationController
     raise PermissionDenied unless current_user.can_moderate? @group 
     @rss_feed = @group.rss_feeds.new
   end
+  
+  def fetch_sooner
+    rss_feed = RssFeed.find_by_id(params[:id])
+    rss_feed.next_fetch = Time.now
+    rss_feed.save
+    redirect_to group_rss_feeds_url
+  end
 end

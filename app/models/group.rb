@@ -3,7 +3,7 @@ class Group < ActiveRecord::Base
   has_many :group_permissions, :include => :user, :uniq => true, :dependent=>:destroy
   has_many :rss_feeds
   has_many :posts
-  
+  has_many :post_images, :through => :posts, :order => "updated_at DESC" 
   alias_attribute :to_s, :name
 
   def to_param
@@ -18,5 +18,5 @@ class Group < ActiveRecord::Base
   
   def avatar
     nil
-  end
+  end  
 end

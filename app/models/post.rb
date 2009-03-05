@@ -12,6 +12,7 @@ class Post < ActiveRecord::Base
   belongs_to :group
   
   has_many :comments, :order => 'created_at', :dependent => :destroy
+  has_many :post_images, :dependent => :destroy
   
   has_one  :attachment, :dependent => :destroy
   has_many :subscriptions, :dependent => :destroy
