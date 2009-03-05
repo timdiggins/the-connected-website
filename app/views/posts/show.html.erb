@@ -3,7 +3,7 @@
 <div id="sidebar">
   <% if @post.group != NIL %>
     <div id="largeDescription">
-      <p>This post belongs to the <%= @post.group %></p>
+      <p>This post belongs to <%= @post.group %></p>
     </div>
     <p><%= link_to "More posts by this studio...", @post.group %></p>
   <% else %>  
