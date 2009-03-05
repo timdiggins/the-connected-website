@@ -18,5 +18,9 @@ class Group < ActiveRecord::Base
   
   def avatar
     nil
-  end  
+  end
+  
+  def latest_image
+    post_images.first
+  end
 end
