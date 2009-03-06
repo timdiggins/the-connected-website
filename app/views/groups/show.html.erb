@@ -3,7 +3,9 @@
 
 
 <div id="sidebar">
+  
   <div id="largeDescription">
+    <h1><%= @page_title = @group %></h1>
     <p><%=@group.profile_text%></p>
   </div>
   <% if !@group.home_page.nil?%>
@@ -38,11 +40,17 @@
 </div>  
 
 <div id="main">  
-  <h1>Studio: <%=@group%></h1>
-    <div class="images">
+  
+    <div class="imageStrip">
     	<% for image in @images%>
-      <%= link_to image_tag(image.src, :height=>100), image.post %>
+    	<a href="<%= post_path(image.post) %>" class="imageStripImage">
+        <%= image_tag(image.src, :height=>128) %>
+        <span class="label">
+          <span class="title"><%= image.post.title %></span>
+        </span>  
+      </a>
     <% end %>
+    <div class="clearThis"> </div>
 		</div>
   <%= render :partial=>'posts/post_list'%>
 </div>

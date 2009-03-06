@@ -38,6 +38,8 @@ a {
 	padding: 1em 40px 5em 40px;
 }
 
+
+
 #footer {
     padding: 0.5em 40px 2em 300px;
     color: #999;
@@ -56,10 +58,23 @@ a {
 }
 
 #largeDescription {
+  margin-bottom: 2em;
+}
+
+#largeDescription p {
   font-size: 1.3em;
   color: #666;
   font-weight: bold;
+  margin: 0.5em 0px;
 }
+
+#largeDescription h1 {
+  font-size: 1.3em;
+  color: #333;
+  font-weight: bold;
+  margin: 0px 0px 0.5em 0px;
+}
+
 
 .clearThis {
 	height: 1px;
@@ -969,3 +984,37 @@ div.tags input {
   margin-top: 0.5em;
   color: #666;
 }
+
+
+
+.imageStrip {
+}
+
+a.imageStripImage {
+  display: block;
+  float: left;
+  position:relative;
+  text-decoration: none;
+}
+
+a.imageStripImage .label {
+  bottom: 10px;
+  right: 15px;
+  left: 0px;
+  position:absolute;
+  display: block;
+  padding: 3px 7px;
+  background-color: rgba(255,255,255,0.74);
+  overflow: hidden;
+  font-size: 0.9em;
+}
+
+a.imageStripImage:hover .label {
+  background-color: #FFF;
+}
+
+a.imageStripImage .title {
+  color: #000;
+  font-weight: bold;
+  white-space: nowrap;
+  }
