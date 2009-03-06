@@ -1001,29 +1001,28 @@ a.imageStripImage {
 
 
 a.imageStripImage .label {
-  bottom: 10px;
-  right: 15px;
-  left: 0px;
-  position:absolute;
   display: block;
-  padding: 3px 7px;
-  background-color: rgba(255,255,255,0.74);
+  padding: 5px 0px;
+  background-color: #000;
   overflow: hidden;
   font-size: 0.9em;
 }
+
+a.imageStripImage .label span {
+	margin: 0 7px;
+	}
 
 a.imageStripImage img {
   background-color: #CCC;
 }
 
-a.imageStripImage:hover .label {
-  background-color: #FFF;
-}
 
 a.imageStripImage .title {
-  color: #000;
-  font-weight: bold;
+  color: #FFF;
   white-space: nowrap;
+  padding-right: 5px;
+  overflow: hidden;
+  display: block;
   }
   
   
