@@ -1,4 +1,4 @@
-class ImageController < ApplicationController
+class ImagesController < ApplicationController
   def destroy
     @image = PostImage.find(params[:id])
     @image.destroy

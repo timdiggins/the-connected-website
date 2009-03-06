@@ -109,11 +109,16 @@ class User < ActiveRecord::Base
     events.destroy_all
   end
   
-  def can_edit? group_or_user
-    if group_or_user.class == User 
-      return group_or_user.id == self.id
+  def can_edit? group_or_post_or_user
+    if group_or_post_or_user.class == Post
+      post = group_or_post_or_user
+      return self.can_edit? post.author
     end
-    group = group_or_user
+    if group_or_post_or_user.class==User
+      user = group_or_post_or_user
+      return user.id == self.id
+    end
+    group = group_or_post_or_user
     return false unless group.class == Group
     group_permissions.each do |gp|
       return true if group.id == gp.group_id
