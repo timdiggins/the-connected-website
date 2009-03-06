@@ -22,11 +22,11 @@ set :rails_revision, '79f55de9c5e3ff1f8d9e767c5af21ba31be4cfba' # Fri Sep 19 09:
 namespace :deploy do
   desc "Restart Application"
   task :restart, :roles => :app do
-    run "touch #{current_path}/tmp/restart.txt"
+    # run "touch #{current_path}/tmp/restart.txt"
+    web.restart
   end
 
   [:start, :stop].each do |action|
-    desc "#{action.to_s} is a noop"
     task action, :roles => :app do;end
   end
 end
