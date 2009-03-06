@@ -1,0 +1,27 @@
+puts 'group and rss'
+Group.delete_all
+GroupPermission.delete_all
+RssFeed.delete_all
+#
+#
+#
+puts 'imported items'
+ImportedGuid.delete_all
+#
+puts 'event'
+PostAddedToTagEvent.delete_all
+PostCategorizationEvent.delete_all
+PostChangedEvent.delete_all
+PostRemovedFromTagEvent.delete_all
+Event.delete_all
+#
+puts 'post and comment'
+Post.delete_all
+PostImage.delete_all
+Attachment.delete_all
+Comment.delete_all
+Subscription.delete_all
+#
+puts 'tagging'
+Categorization.delete_all
+Tag.delete_all
