@@ -3,6 +3,7 @@
 	<div id="sidebar">
 
     <div id="largeDescription">
+      <h1>Open Studio</h1>
       <p>Open Studio is an online exhibition of work by the students of Architecture at the University of Westminster.</p>
 
       <p>This online archive is a collection of work from undergraduate and postgraduate courses as well as research collectives.</p>
@@ -17,14 +18,26 @@
 	</div>
 
 	<div id="main">
-	
-  	<h1>Open Studio</h1>
-  	<p id="strapline"><%= APP_NAME %></p>
-		<div class="images">
+
+		<% for image in @latestFeature %>
+  		<a href="<%= post_path(image.post) %>" id="featureImage">
+  		  <%= image_tag_for(image, :contact) %>
+  		</a>
+  		<div class="featureDescription">
+  		  <h2><%= link_to image.post.title, image.post %></h2>
+  		  <p>work by studio <%= link_to image.post.group, image.post.group %></p>
+  		</div>
+  		
+  	<% end %>
 		<% for image in @featured %>
-		  <%= link_to image_tag_for(image, :large_square), image.post %>
-		<% end %>
-		</div>
+    	<a href="<%= post_path(image.post) %>" class="imageStripImage">
+        <%= image_tag_for(image, :large_square) %>
+        <span class="label">
+          <span class="title"><%= image.post.title %></span>
+        </span>  
+      </a>
+    <% end %>
+    <div class="clearThis"> </div>
     <h2>Popular Tags</h2>
     <div class="tagCloud">
   	  <%= render :partial=>'tags/tag_cloud'%>

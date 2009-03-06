@@ -998,6 +998,8 @@ a.imageStripImage {
   margin: 0 2px 2px 0;
 }
 
+
+
 a.imageStripImage .label {
   bottom: 10px;
   right: 15px;
@@ -1023,3 +1025,22 @@ a.imageStripImage .title {
   font-weight: bold;
   white-space: nowrap;
   }
+  
+  
+  
+#featureImage {
+  float: left;
+  background-color: #000;
+  margin: 0 0 2px 0;
+  border: 1px solid #000;
+}  
+
+
+.featureDescription {
+	width: 260px;
+	height: 258px;
+	background-color: #000;
+	float: left;
+	color: #DDD;
+	margin: 0 2px 2px 0;
+}
