@@ -1,4 +1,4 @@
-module ImageHelper
+module ImagesHelper
   def image_tag_for(image, size)
     case size
       when :tiny_square then image_tag(image.src, :height=>32, :width=>32)
