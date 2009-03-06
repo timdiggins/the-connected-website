@@ -1,3 +1,13 @@
+def exit_gracefully_on(signal, &block)
+  $trap_with_scope = true
+  trap(signal) do
+    $trap_with_scope ? exit(0) : raise(Interrupt, nil)
+  end
+  yield
+ensure
+  $trap_with_scope = false
+end
+
 namespace :log do
   desc "tail rails #{rails_env} log file"
   task "tail_#{rails_env}".to_sym, :roles => :app do
@@ -12,11 +22,12 @@ namespace :log do
   }
 
   def tail(file, via=:run)
-    # how to exit cleanly so that we don't get a stack trace?
-    invoke_command("tail -f #{file}", {:via => via}) do |channel, stream, data|
-      puts  # for an extra line break before the host name
-      puts "#{channel[:host]}: #{data}" 
-      break if stream == :err
+    exit_gracefully_on(:INT) do
+      invoke_command("tail -f #{file}", {:via => via}) do |channel, stream, data|
+        puts  # for an extra line break before the host name
+        puts "#{channel[:host]}: #{data}"
+        break if stream == :err
+      end
     end
   end
 end
