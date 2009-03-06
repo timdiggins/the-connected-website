@@ -27,7 +27,7 @@ class ImportRssItem
     self.class.parse_images_from_detail(detail).each do |image|
       if !image.nil?
         image.post_id = post.id
-        post.post_images << image
+        post.images << image
         image.save
       end
     end

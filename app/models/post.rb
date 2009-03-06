@@ -13,7 +13,8 @@ class Post < ActiveRecord::Base
   
   has_many :comments, :order => 'created_at', :dependent => :destroy
   has_many :post_images, :dependent => :destroy
-  
+  alias_attribute :images, :post_images
+
   has_one  :attachment, :dependent => :destroy
   has_many :subscriptions, :dependent => :destroy
   has_many :subscribers, :through => :subscriptions, :source => :user, :uniq => true
