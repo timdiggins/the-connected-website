@@ -23,4 +23,7 @@ class Group < ActiveRecord::Base
   def latest_image
     post_images.first
   end
+  def latest3_images
+    post_images.latest3
+  end
 end
