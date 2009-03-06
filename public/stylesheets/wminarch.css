@@ -1030,7 +1030,7 @@ a.imageStripImage .title {
   
 #featureImage {
   float: left;
-  background-color: #000;
+  background-color: #DDD;
   margin: 0 0 2px 0;
   border: 1px solid #000;
 }  
@@ -1043,6 +1043,11 @@ a.imageStripImage .title {
 	float: left;
 	color: #DDD;
 	margin: 0 2px 2px 0;
+}
+
+.featureDescription h2, .featureDescription p  {
+	padding-left: 10px;
+	padding-right: 20px;
 }
 
 
@@ -1091,6 +1096,7 @@ a.squareImage .title {
   white-space: nowrap;
   display: block;
   margin: 0px 7px;
+  overflow: hidden;
   }
   
 a.squareImage .inGroup {
@@ -1098,4 +1104,5 @@ a.squareImage .inGroup {
   white-space: nowrap;
   margin: 0px 7px;
     font-size: 0.9em;
+      overflow: hidden;
   }
