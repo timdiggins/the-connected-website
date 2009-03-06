@@ -12,7 +12,7 @@
   
   <% if logged_in? %>
     <% if  current_user.group_permissions.count > 0 %>
-      <h2>Your studios/groups...</h2>
+      <h2>Your open studios...</h2>
       <ul class="groupsList">
     	<% current_user.group_permissions.each do |gp| 
     	  group = gp.group  %>
@@ -22,7 +22,7 @@
     <% end %>
 	<% end %>
 	
-  <h2>All studios...</h2>
+  <h2>All open studios...</h2>
 	<ul class="groupsList">
   	<% @groups.each do |group| %>
   	 <li><%=link_to group, group %></li>
@@ -35,7 +35,7 @@
 </div>
 
 <div id="main">
-  <h1><%= @page_title = "Studios" %></h1>
+  <h1><%= @page_title = "Open Studios" %></h1>
   <div id="groups">
 	  <%= render :partial => 'group', :collection=> @groups%>
 	</div>
