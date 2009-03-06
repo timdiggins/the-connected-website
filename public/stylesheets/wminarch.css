@@ -1049,8 +1049,18 @@ a.imageStripImage .title {
 }
 
 .featureDescription h2, .featureDescription p  {
-	padding-left: 10px;
+	padding-left: 15px;
 	padding-right: 20px;
+}
+
+.featureDescription h2 {
+  	font-size: 1.3em;
+  	margin: 1em 0 0.5em 0;
+}
+
+.featureDescription h2 a {
+	text-decoration: none;
+	color: #FFF;
 }
 
 
@@ -1074,7 +1084,7 @@ a.squareImage {
 
 
 a.squareImage .label {
-  bottom: 10px;
+  bottom: 0px;
   width: 128px;
   left: 0px;
   position:absolute;
