@@ -1030,9 +1030,13 @@ a.imageStripImage .title {
   
 #featureImage {
   float: left;
-  background-color: #DDD;
+  background-color: #000;
   margin: 0 0 2px 0;
   border: 1px solid #000;
+}
+
+#subscribe {
+  margin-top: 2em;
 }  
 
 
