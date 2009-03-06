@@ -40,7 +40,7 @@
 </div>  
 
 <div id="main">  
-  
+    <h2>Featured works by <%= @group %></h2>
     <div class="imageStrip">
     	<% for image in @images%>
       	<a href="<%= post_path(image.post) %>" class="imageStripImage">
@@ -51,6 +51,16 @@
         </a>
       <% end %>
     <div class="clearThis"> </div>
+     <p><a href="#">More featured works</a> by <%= @group %></p>
 		</div>
-  <%= render :partial=>'posts/post_list'%>
+    <h2>Other works</h2>
+    <div class="imageCloud">
+    	<% for image in @images%>
+      	<a href="<%= post_path(image.post) %>">
+          <%= image_tag_for(image, :small_square) %>
+        </a>
+      <% end %>
+    <div class="clearThis"> </div>
+    <p><a href="#">Browse all works</a> by <%= @group %></p>
+		</div>
 </div>

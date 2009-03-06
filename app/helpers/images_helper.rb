@@ -2,7 +2,7 @@ module ImagesHelper
   def image_tag_for(image, size)
     case size
       when :tiny_square then image_tag(image.src, :height=>32, :width=>32)
-      when :small_square then image_tag(image.src, :height=>48, :width=>38)
+      when :small_square then image_tag(image.src, :height=>48, :width=>48)
       when :medium_square then image_tag(image.src, :height=>64, :width=>64)
       when :large_square then image_tag(image.src, :height=>128, :width=>128)
       #    => { :tiny => '32x32>', :small => '48x48>', :medium => '64x64>', :large => '128x128>' } 
