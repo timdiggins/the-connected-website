@@ -991,6 +991,8 @@ div.tags input {
 	margin-bottom: 3em;
 }
 
+
+
 a.imageStripImage {
   display: block;
   float: left;
@@ -1120,3 +1122,23 @@ a.squareImage .inGroup {
     font-size: 0.9em;
       overflow: hidden;
   }
+  
+  
+  
+  
+div.image-controls {
+  margin-top: 5em;
+  border-top: 1px dashed #DDD;
+  padding-top: 0.5em;
+}
+
+div.image-controls span {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+
+div.image-controls a {
+  display: block;
+  margin-top: 0.3em;
+}
+  
