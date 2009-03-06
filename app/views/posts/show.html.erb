@@ -3,7 +3,7 @@
 <div id="sidebar">
   <% if @post.group != NIL %>
     <div id="largeDescription">
-      <p>This post belongs to the <%= @post.group %></p>
+      <p>This post belongs to <%= @post.group %></p>
     </div>
     <p><%= link_to "More posts by this studio...", @post.group %></p>
   <% else %>  
@@ -34,6 +34,15 @@
   		<%= @post.detail %>
   	</div>
 	<% end %>
-			
+
+  <% if logged_in? && current_user.can_edit?(@post) %>
+	 <% @post.images.each do |image| %>
+	 <div class='image-controls'>
+	   <%= image_tag_for(image, :strip) %>
+		 <%= link_to 'original', image.src %>
+		 <%= link_to 'Delete', image_path(image), :class=>:option, :method=>:delete, :confirm=>'Delete this image?' %>
+	 </div>
+	 <% end %>
+	<% end %>			
 </div>
 

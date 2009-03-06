@@ -3,7 +3,7 @@ class RssFeedsController < ApplicationController
   
   def create 
     @group = Group.find_by_name params[:group_id]
-    raise PermissionDenied unless current_user.can_moderate? @group 
+    raise PermissionDenied unless current_user.can_edit? @group 
     @rss_feed = @group.rss_feeds.new
     @rss_feed.url = params[:rss_feed][:url]
     if @rss_feed.save
@@ -16,14 +16,14 @@ class RssFeedsController < ApplicationController
   
   def destroy
     rss_feed = RssFeed.find_by_id(params[:id])
-    raise PermissionDenied unless current_user.can_moderate? rss_feed.group
+    raise PermissionDenied unless current_user.can_edit? rss_feed.group
     rss_feed.destroy
     redirect_to group_rss_feeds_url
   end
   
   def index
     @group = Group.find_by_name params[:group_id]
-    raise PermissionDenied unless current_user.can_moderate? @group 
+    raise PermissionDenied unless current_user.can_edit? @group 
     @rss_feed = @group.rss_feeds.new
   end
   

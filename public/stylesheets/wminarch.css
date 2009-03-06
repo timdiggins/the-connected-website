@@ -2,6 +2,7 @@
 	http://localhost:3000/stylesheets/wminarch.css?1234957618
 	http://localhost:3000/stylesheets/wminarch.css?1234974743
 	http://localhost:3000/stylesheets/wminarch.css?1235086322
+	http://localhost:3000/stylesheets/wminarch.css?1236090338
 */
 
 body {
@@ -12,6 +13,8 @@ body {
 	background-color: #DDD;
 	color: #000;
 }
+
+
 
 
 a {
@@ -32,8 +35,10 @@ a {
 #main {
 	margin-left: 300px;
 	background-color: #FFF;
-	padding: 1em 40px;
+	padding: 1em 40px 5em 40px;
 }
+
+
 
 #footer {
     padding: 0.5em 40px 2em 300px;
@@ -53,16 +58,36 @@ a {
 }
 
 #largeDescription {
+  margin-bottom: 2em;
+}
+
+#largeDescription p {
   font-size: 1.3em;
   color: #666;
   font-weight: bold;
+  margin: 0.5em 0px;
 }
+
+#largeDescription h1 {
+  font-size: 1.3em;
+  color: #333;
+  font-weight: bold;
+  margin: 0px 0px 0.5em 0px;
+}
+
 
 .clearThis {
 	height: 1px;
 	overflow: hidden;
 	margin: 0px;
 	clear: both;
+}
+
+.clearRight {
+	height: 1px;
+	overflow: hidden;
+	margin: 0px;
+	clear: right;
 }
 
 /* @end */
@@ -920,3 +945,178 @@ div.tags input {
 
 
 
+
+
+#groups {
+	border-top: 2px solid #EEE;
+}
+
+.group {
+	border-bottom: 2px solid #EEE;
+}
+
+.group a {
+  display: block;
+  clear: right;
+  padding: 1em 1em 1em 1em;
+  background-color: #FFF;
+  text-decoration: none;
+}
+
+.group a:hover {
+  background-color: #EEE;
+}
+
+
+.group .title {
+  font-size: 1.4em;
+  margin: 0px;
+  font-weight: bold;
+}
+
+.group .latestImages {
+  float:right;
+  margin: 0px 0px 0px 2em;
+}
+
+.group .profileText {
+  font-size: 1.2em;
+  margin-top: 0.5em;
+  color: #666;
+}
+
+
+
+.imageStrip {
+	margin-bottom: 3em;
+}
+
+a.imageStripImage {
+  display: block;
+  float: left;
+  position:relative;
+  text-decoration: none;
+  margin: 0 2px 2px 0;
+}
+
+
+
+a.imageStripImage .label {
+  display: block;
+  padding: 5px 0px;
+  background-color: #000;
+  overflow: hidden;
+  font-size: 0.9em;
+}
+
+a.imageStripImage .label span {
+	margin: 0 7px;
+	}
+
+a.imageStripImage img {
+  background-color: #CCC;
+}
+
+
+a.imageStripImage .title {
+  color: #FFF;
+  white-space: nowrap;
+  padding-right: 5px;
+  overflow: hidden;
+  display: block;
+  }
+  
+  
+  
+#featureImage {
+  float: left;
+  background-color: #000;
+  margin: 0 0 2px 0;
+  border: 1px solid #000;
+}
+
+#subscribe {
+  margin-top: 2em;
+}  
+
+
+.featureDescription {
+	width: 260px;
+	height: 258px;
+	background-color: #000;
+	float: left;
+	color: #DDD;
+	margin: 0 2px 2px 0;
+}
+
+.featureDescription h2, .featureDescription p  {
+	padding-left: 15px;
+	padding-right: 20px;
+}
+
+.featureDescription h2 {
+  	font-size: 1.3em;
+  	margin: 1em 0 0.5em 0;
+}
+
+.featureDescription h2 a {
+	text-decoration: none;
+	color: #FFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+a.squareImage {
+  display: block;
+  float: left;
+  position:relative;
+  text-decoration: none;
+  margin: 0 2px 2px 0;
+}
+
+
+
+a.squareImage .label {
+  bottom: 0px;
+  width: 128px;
+  left: 0px;
+  position:absolute;
+  display: none;
+  padding: 3px 0px;
+  background-color: rgba(255,255,255,0.6);
+  overflow: hidden;
+}
+
+a.squareImage img {
+  background-color: #CCC;
+}
+
+a.squareImage:hover .label {
+  display: block;
+    background-color: rgba(255,255,255,0.7);
+}
+
+a.squareImage .title {
+  color: #000;
+  font-weight: bold;
+  white-space: nowrap;
+  display: block;
+  margin: 0px 7px;
+  overflow: hidden;
+  }
+  
+a.squareImage .inGroup {
+  color: #333;
+  white-space: nowrap;
+  margin: 0px 7px;
+    font-size: 0.9em;
+      overflow: hidden;
+  }

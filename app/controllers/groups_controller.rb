@@ -7,7 +7,6 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html { 
         @posts = Post.sorted_by_commented_at.paginate(:page => params[:page], :per_page => 15) 
-        @tags = Tag.all_with_count :limit=>40
       }
       format.rss { 
         @posts = Post.sorted_by_commented_at.limit_to(15)
@@ -18,7 +17,7 @@ class GroupsController < ApplicationController
   
   def show
     @group = Group.find_by_name!(params[:id])
-    @images = @group.post_images
+    @images = @group.images
     @posts = @group.posts.paginate(:page => params[:page], :per_page => 15)
   end
   
@@ -30,12 +29,12 @@ class GroupsController < ApplicationController
   
   def edit
     @group = Group.find_by_name!(params[:id])    
-    raise PermissionDenied if !current_user.can_moderate? @group
+    raise PermissionDenied if !current_user.can_edit? @group
   end
   
   def update
     @group = Group.find_by_name!(params[:id])
-    raise PermissionDenied if !current_user.can_moderate? @group
+    raise PermissionDenied if !current_user.can_edit? @group
     @group.attributes = params[:group]
     return render(:action => :edit) unless @group.save
     redirect_to @group
