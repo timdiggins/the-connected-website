@@ -1132,6 +1132,19 @@ div.image-controls {
   padding-top: 0.5em;
 }
 
+div#flash {
+  	margin-left: 300px;
+	background-color: #FFF;
+	padding: 1px 40px 20px 40px;
+	border-bottom: 1px dashed #DDD;
+	font-weight: bold;
+}
+
+div#flash p {
+  	margin: 0.3em 0px;
+  	text-align: center;
+}
+
 div.image-controls span {
   float: left;
   margin: 0 10px 10px 0;
