@@ -1,8 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @featured = Post.featured.limit_to(6) 
-    @featured = Post.sorted_by_commented_at.limit_to(6) if @featured.empty?
-    @current_featured = @featured.shift
+
+    
     
     @events = Event.sorted_by_created_at.without_tagging_events.limit_to(5)
     @latest_event = Event.sorted_by_created_at.first
@@ -10,6 +9,6 @@ class HomeController < ApplicationController
     @tags = Tag.all_with_count :limit=>20
     @groups = Group.all
     
-    @images = PostImage.find(:all, :include => :post, :limit=>50)
+    @featured = PostImage.find(:all, :include => :post, :limit=>50)
   end
 end

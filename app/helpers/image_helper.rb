@@ -11,7 +11,7 @@ module ImageHelper
       #- to fit 100 high - as wide as it needs.... 
       #store width
       
-      when :contact then  image_tag(image.src, :height=>240, :width=>240)
+      when :contact then  image_tag(image.src, :height=>256, :width=>256)
       #  square 240 x 240 square - (with transparent padding) 
       #contact sheet
       
