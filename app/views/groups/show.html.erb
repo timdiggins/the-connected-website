@@ -44,7 +44,7 @@
     <div class="imageStrip">
     	<% for image in @images%>
     	<a href="<%= post_path(image.post) %>" class="imageStripImage">
-        <%= image_tag_for(image, :large_square) %>
+        <%= image_tag_for(image, :strip) %>
         <span class="label">
           <span class="title"><%= image.post.title %></span>
         </span>  

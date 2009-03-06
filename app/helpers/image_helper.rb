@@ -7,7 +7,7 @@ module ImageHelper
       when :large_square then image_tag(image.src, :height=>128, :width=>128)
       #    => { :tiny => '32x32>', :small => '48x48>', :medium => '64x64>', :large => '128x128>' } 
       #-- a crop -- smaller size scale down to x and then crop and right or up and down to x
-      when thumbnail then  image_tag(image.src, :height=>100)
+      when :strip then  image_tag(image.src, :height=>128)
       #- to fit 100 high - as wide as it needs.... 
       #store width
       
