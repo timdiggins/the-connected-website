@@ -102,20 +102,25 @@ class User < ActiveRecord::Base
   def has_no_creations!
     raise "Has creations (dependencies)" if has_creations
   end
-
+  
   def destroy_creations
     posts.destroy_all
     comments.destroy_all
     events.destroy_all
   end
   
-  def can_moderate? group
+  def can_edit? group_or_user
+    if group_or_user.class == User 
+      return group_or_user.id == self.id
+    end
+    group = group_or_user
+    return false unless group.class == Group
     group_permissions.each do |gp|
       return true if group.id == gp.group_id
     end
     false
   end
-
+  
   private
   def encrypt_password
     return if password.blank?

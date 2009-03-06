@@ -13,7 +13,7 @@
   <% end %>
   
 	
-  <% if logged_in? && current_user.can_moderate?(@group) %>
+  <% if logged_in? && current_user.can_edit?(@group) %>
     <h2>Admin options for this group</h2>
 	
   	<ul>
@@ -24,11 +24,11 @@
 	
 	 <% if logged_in? && current_user.admin? %>
       
-      <% if !current_user.can_moderate?(@group) %>
+      <% if !current_user.can_edit?(@group) %>
       <h2 class='site-admin'>You are not an administrator of this group.</h2>
       <% end%>
       <p class='site-admin'>As you are an site administrator you can
-      <% if current_user.can_moderate?(@group) %>
+      <% if current_user.can_edit?(@group) %>
        <%= link_to "remove yourself", user_group_permission_path(current_user, :id=>@group, :return_to=>request.path),:method => :delete%>
       <% else %>
        <%= link_to "add yourself", user_group_permissions_path(current_user, :id=>@group, :return_to=>request.path),:method => :post%>

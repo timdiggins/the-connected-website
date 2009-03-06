@@ -29,12 +29,12 @@ class GroupsController < ApplicationController
   
   def edit
     @group = Group.find_by_name!(params[:id])    
-    raise PermissionDenied if !current_user.can_moderate? @group
+    raise PermissionDenied if !current_user.can_edit? @group
   end
   
   def update
     @group = Group.find_by_name!(params[:id])
-    raise PermissionDenied if !current_user.can_moderate? @group
+    raise PermissionDenied if !current_user.can_edit? @group
     @group.attributes = params[:group]
     return render(:action => :edit) unless @group.save
     redirect_to @group

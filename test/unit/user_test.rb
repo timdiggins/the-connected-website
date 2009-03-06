@@ -137,9 +137,9 @@ class UserTest < ActiveSupport::TestCase
  should "be able to find group permissions" do
    assert_equal 0, users(:duff).group_permissions.length
    assert_equal 1, users(:alex).group_permissions.length
-   assert !users(:duff).can_moderate?(groups(:studio1))
-   assert users(:alex).can_moderate?(groups(:studio1))
-   assert !users(:alex).can_moderate?(groups(:studio3))
+   assert !users(:duff).can_edit?(groups(:studio1))
+   assert users(:alex).can_edit?(groups(:studio1))
+   assert !users(:alex).can_edit?(groups(:studio3))
  end
   
   private
