@@ -1044,3 +1044,58 @@ a.imageStripImage .title {
 	color: #DDD;
 	margin: 0 2px 2px 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+a.squareImage {
+  display: block;
+  float: left;
+  position:relative;
+  text-decoration: none;
+  margin: 0 2px 2px 0;
+}
+
+
+
+a.squareImage .label {
+  bottom: 10px;
+  width: 128px;
+  left: 0px;
+  position:absolute;
+  display: none;
+  padding: 3px 0px;
+  background-color: rgba(255,255,255,0.6);
+  overflow: hidden;
+}
+
+a.squareImage img {
+  background-color: #CCC;
+}
+
+a.squareImage:hover .label {
+  display: block;
+    background-color: rgba(255,255,255,0.7);
+}
+
+a.squareImage .title {
+  color: #000;
+  font-weight: bold;
+  white-space: nowrap;
+  display: block;
+  margin: 0px 7px;
+  }
+  
+a.squareImage .inGroup {
+  color: #333;
+  white-space: nowrap;
+  margin: 0px 7px;
+    font-size: 0.9em;
+  }

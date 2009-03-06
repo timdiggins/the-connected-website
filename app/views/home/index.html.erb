@@ -30,10 +30,11 @@
   		
   	<% end %>
 		<% for image in @featured %>
-    	<a href="<%= post_path(image.post) %>" class="imageStripImage">
+    	<a href="<%= post_path(image.post) %>" class="squareImage">
         <%= image_tag_for(image, :large_square) %>
         <span class="label">
           <span class="title"><%= image.post.title %></span>
+          <span class="inGroup">in <%= image.post.group.name %></span>
         </span>  
       </a>
     <% end %>
