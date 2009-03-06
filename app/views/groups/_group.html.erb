@@ -2,7 +2,7 @@
     <a href="<%= group_path(group) %>">
   	  <% if group.latest_image %>
     		<div class="latestImages">
-         <%= image_tag(group.latest_image.src, :height=>64, :width=>64) %>
+         <%= image_tag_for(group.latest_image, :medium_square) %>
         </div>
   		<% end %>
   		<div class="title"><%= group %></div>
