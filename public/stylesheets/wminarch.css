@@ -2,6 +2,7 @@
 	http://localhost:3000/stylesheets/wminarch.css?1234957618
 	http://localhost:3000/stylesheets/wminarch.css?1234974743
 	http://localhost:3000/stylesheets/wminarch.css?1235086322
+	http://localhost:3000/stylesheets/wminarch.css?1236090338
 */
 
 body {
@@ -12,6 +13,8 @@ body {
 	background-color: #DDD;
 	color: #000;
 }
+
+
 
 
 a {
@@ -32,7 +35,7 @@ a {
 #main {
 	margin-left: 300px;
 	background-color: #FFF;
-	padding: 1em 40px;
+	padding: 1em 40px 5em 40px;
 }
 
 #footer {
@@ -63,6 +66,13 @@ a {
 	overflow: hidden;
 	margin: 0px;
 	clear: both;
+}
+
+.clearRight {
+	height: 1px;
+	overflow: hidden;
+	margin: 0px;
+	clear: right;
 }
 
 /* @end */
@@ -920,3 +930,42 @@ div.tags input {
 
 
 
+
+
+#groups {
+	border-top: 2px solid #EEE;
+}
+
+.group {
+	border-bottom: 2px solid #EEE;
+}
+
+.group a {
+  display: block;
+  clear: right;
+  padding: 1em 1em 1em 1em;
+  background-color: #FFF;
+  text-decoration: none;
+}
+
+.group a:hover {
+  background-color: #EEE;
+}
+
+
+.group .title {
+  font-size: 1.4em;
+  margin: 0px;
+  font-weight: bold;
+}
+
+.group .latestImages {
+  float:right;
+  margin: 0px 0px 0px 2em;
+}
+
+.group .profileText {
+  font-size: 1.2em;
+  margin-top: 0.5em;
+  color: #666;
+}

@@ -22,12 +22,7 @@
     <% end %>
 	<% end %>
 	
-  <h2>Select a specific studio...</h2>
-	<ul class="groupsList">
-  	<% @groups.each do |group| %>
-  	 <li><%=link_to group, group %></li>
-  	<% end %>
-  </ul>
+
 
   <% if logged_in_as_admin? %>  
     <p><%= link_to 'Setup new studio / group', new_group_path, :class => "buttonLink" %></p>
@@ -35,8 +30,9 @@
 </div>
 
 <div id="main">
-  <h1><%= @page_title = "Studios" %></h1>
-	<!-- %= render :partial => 'posts/post_list' % -->
-	<%= render :partial => 'group', :collection=> @groups%>
+  <% @page_title = "Studios" %>
+  <div id="groups">
+	  <%= render :partial => 'group', :collection=> @groups%>
+	</div>
 </div>
 <%= clear_this %>

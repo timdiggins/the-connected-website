@@ -7,7 +7,6 @@ class GroupsController < ApplicationController
     respond_to do |format|
       format.html { 
         @posts = Post.sorted_by_commented_at.paginate(:page => params[:page], :per_page => 15) 
-        @tags = Tag.all_with_count :limit=>40
       }
       format.rss { 
         @posts = Post.sorted_by_commented_at.limit_to(15)

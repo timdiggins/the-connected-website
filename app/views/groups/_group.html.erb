@@ -1,11 +1,12 @@
 <div class="group">
-	 
-		<h3><%= group %></h3>
-    <% if group.latest_image %>
-		<p class="avatar">
-     <%= link_to image_tag(group.latest_image.src, :height=>100), group %>
-    </p>
-		<% end %>
-	 <%= group.profile_text %>
-	 <%= link_to "view #{group}", group %>
+    <a href="<%= group_path(group) %>">
+  	  <% if group.latest_image %>
+    		<div class="latestImages">
+         <%= image_tag(group.latest_image.src, :height=>64, :width=>64) %>
+        </div>
+  		<% end %>
+  		<div class="title"><%= group %></div>
+  	  <div class="profileText"><%= group.profile_text %></div>
+  	  <div class="clearRight"> </div>
+	  </a>
 </div>
