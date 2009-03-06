@@ -4,8 +4,10 @@ class Group < ActiveRecord::Base
   has_many :rss_feeds
   has_many :posts
   has_many :post_images, :through => :posts, :order => "updated_at DESC" 
+  
   alias_attribute :to_s, :name
-
+  alias_attribute :images, :post_images
+  
   def to_param
     name
   end
