@@ -1,7 +1,7 @@
 class SettingsController < ApplicationController  
   before_filter :login_required
   before_filter :set_user
-  uses_tiny_mce :options => tiny_mce_options, :only => [ :bio, :update]
+  #uses_tiny_mce :options => tiny_mce_options, :only => [ :bio, :update]
 
   def save_new_avatar
     @user.attributes = params[:user]
