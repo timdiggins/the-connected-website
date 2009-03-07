@@ -6,7 +6,7 @@
   
   <div id="largeDescription">
     <h1><%= @page_title = @group %></h1>
-    <p><%=@group.profile_text%></p>
+    <p><%=h(@group.short_desc)%>. <%=link_to 'Read more...', '#description'%></p>
   </div>
   <% if !@group.home_page.nil?%>
     <p>Visit studio site: <%=link_to nil, @group.home_page %></p>
@@ -53,7 +53,10 @@
     <div class="clearThis"> </div>
      <p><a href="#">More featured works</a> by <%= @group %></p>
 		</div>
-    <h2>Other works</h2>
+  
+	   <div><a name="description"></a><%= simple_format(h(@group.full_desc))%></div>
+  
+	  <h2>Other works</h2>
     <div class="imageCloud">
     	<% for image in @images%>
       	<a href="<%= post_path(image.post) %>">
