@@ -2,7 +2,7 @@ class Group < ActiveRecord::Base
   validates_uniqueness_of   :name, :case_sensitive => false
   has_many :group_permissions, :include => :user, :uniq => true, :dependent=>:destroy
   has_many :rss_feeds
-  has_many :posts
+  has_many :posts, :dependent => :destroy
   has_many :post_images, :through => :posts, :order => "updated_at DESC" 
   
   alias_attribute :to_s, :name
