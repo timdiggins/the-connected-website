@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090306154504) do
+ActiveRecord::Schema.define(:version => 20090307090343) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "post_id"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20090306154504) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
-    t.string   "profile_text"
+    t.text     "profile_text"
     t.string   "home_page"
     t.datetime "created_at"
     t.datetime "updated_at"
