@@ -15,13 +15,6 @@ body {
 	color: #000;
 }
 
-div.fullDescription {
-  margin-bottom: 3em;
-}
-
-div.fullDescription p {
-  font-size: 1.1em;
-}
 
 
 
@@ -490,7 +483,7 @@ h1 {
 
 
 h2 {
-	font-size: 1.2em;
+	font-size: 1.3em;
 }
 
 
@@ -1163,4 +1156,17 @@ div.image-controls a {
   display: block;
   margin-top: 0.3em;
 }
-  
+ 
+
+
+
+
+
+
+div.fullDescription {
+  margin-bottom: 3em;
+}
+
+div.fullDescription p {
+  font-size: 1.1em;
+}
