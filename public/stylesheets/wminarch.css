@@ -952,19 +952,22 @@ div.tags input {
 
 
 #groups {
-	border-top: 2px solid #EEE;
+	margin-left: 300px;
+	background-color: #FFF;
+	padding: 0;
 }
 
 .group {
-	border-bottom: 2px solid #EEE;
+
 }
 
 .group a {
   display: block;
   clear: right;
-  padding: 1em 1em 1em 1em;
+  padding: 1.5em 1em 2em 2em;
   background-color: #FFF;
   text-decoration: none;
+  border-top: 1px solid #DDD;
 }
 
 .group a:hover {
@@ -987,6 +990,7 @@ div.tags input {
   font-size: 1.2em;
   margin-top: 0.5em;
   color: #666;
+  margin-right: 260px;
 }
 
 

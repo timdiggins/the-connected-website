@@ -1,5 +1,5 @@
 <% @current_tab = :groups %>
-
+  <% @page_title = "Studios" %>
 		
 <div id="sidebar">
   <div id="largeDescription">
@@ -34,10 +34,8 @@
   <% end %>
 </div>
 
-<div id="main">
-  <h1><%= @page_title = "Studios" %></h1>
-  <div id="groups">
+<div id="groups">
+
 	  <%= render :partial => 'group', :collection=> @groups%>
-	</div>
 </div>
 <%= clear_this %>
