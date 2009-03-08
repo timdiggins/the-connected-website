@@ -125,14 +125,13 @@ a {
 }
 
 #navigation a {
-	color: #FFF;
+	color: #DDD;
 	float: left;
 	line-height: 2.5em;
 	height: 2.5em;
 	padding: 0px;
 	margin: 0px 1em 0px 0px;
 	text-decoration: none;
-	font-weight: bold;
 }
 
 #navigation a:hover {
@@ -143,8 +142,7 @@ a {
 #navigation li.personal a {
 	float: right;
 	margin: 0px 0px 0px 1em;
-	font-weight: normal;
-	color: #DDD;
+	color: #AAA;
 }
 
 /* @end */
