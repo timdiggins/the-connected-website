@@ -16,6 +16,7 @@
   
 	<body>
 	  <div id="header">
+	    <%= link_to "<img src=\"/images/logo.gif\" width=\"173\" height=\"66\" alt=\"logo\" />", root_url, :id => "logo" %>
   	  <ul id="navigation">  
   		  <li <%= current_if_tab_is(:home) %>><%= link_to "Home", root_url %></li>
   		  <li><%= link_to 'Studios', groups_path %></li>
