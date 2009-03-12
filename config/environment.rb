@@ -10,7 +10,7 @@ Rails::Initializer.run do |config|
   config.load_paths << "#{Rails.root}/app/models/events"
 
   config.action_controller.session = {
-    :session_key => '_wminarch_site_session',
+    :session_key => '_portfolios_site_session',
     :secret => (RAILS_ENV == 'production') ? File.read(File.join(File.dirname(__FILE__), 'cookie_secret')) : 'e7bcf1669a4848dff6245564f4c31323e2877fe1ad6b069e7574a48eaed2396363a676d9288530656ff39048ccb7d9723c93874d0674f2057465a759c6d57e04'
   }
   

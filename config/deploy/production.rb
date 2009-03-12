@@ -1,9 +1,9 @@
 require 'spacesuit/recipes/backup'
 
 set :deploy_to, "/var/www/apps/#{application}"
-set :domain, "wminarch.red56.co.uk"
+set :domain, "portfolios.red56.co.uk"
 
-set :user, 'wminarch'
+set :user, 'porfolios'
 set :keep_db_backups, 100
 #this line will go away in the next version of spacesuit
 set(:cron_file) { "/etc/cron.daily/#{application}_backup_db_to_s3.sh" }

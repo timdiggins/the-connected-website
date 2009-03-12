@@ -12,7 +12,7 @@ class Mailer < ActionMailer::Base
 
   def comment_created(comment, recipient)
     @from = "#{APP_NAME} notifications <do-not-reply@#{APP_DOMAIN}>"
-    @subject = "[wminarch] New comment on #{comment.post}"
+    @subject = "[portfolios] New comment on #{comment.post}"
     @sent_on = Time.now
     @recipients = [ recipient ]
     @body[:comment] = comment
