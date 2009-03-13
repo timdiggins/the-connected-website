@@ -40,7 +40,7 @@
 </div>  
 
 <div id="main">  
-    <h2>Featured works by <%= @group %></h2>
+    <h2>Recent works by <%= @group %></h2>
     <div class="imageStrip">
     	<% for image in @images%>
       	<a href="<%= post_path(image.post) %>" class="imageStripImage">
@@ -51,7 +51,7 @@
         </a>
       <% end %>
     <div class="clearThis"> </div>
-     <p><a href="#">More featured works</a> by <%= @group %></p>
+     <p><a href="#">More works</a> by <%= @group %></p>
 		</div>
       
     <div class="fullDescription">  
@@ -59,7 +59,7 @@
       <%= simple_format(h(@group.full_desc))%>
     </div>
   
-	  <h2>Other works</h2>
+	  <h2>More recent works</h2>
     <div class="imageCloud">
     	<% for image in @images%>
       	<a href="<%= post_path(image.post) %>">
