@@ -23,7 +23,11 @@ class ImportRssItem
                     :remote_url=>@item.link,
                     :group_id=>@group.id
     )
-    guid.save if post.save
+    if !post.save
+      puts "couldn't save post for group-#{@group.id}, #@group"
+      return
+    end
+    guid.save
     self.class.parse_images_from_detail(detail).each do |image|
       if !image.nil?
         image.post_id = post.id

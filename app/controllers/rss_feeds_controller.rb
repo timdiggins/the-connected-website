@@ -22,6 +22,10 @@ class RssFeedsController < ApplicationController
   end
   
   def index
+    if ! params[:group_id]
+      @rss_feeds = RssFeed.find(:all)
+      return render(:action=>'index_all')
+    end
     @group = Group.find_by_name params[:group_id]
     raise PermissionDenied unless current_user.can_edit? @group 
     @rss_feed = @group.rss_feeds.new
@@ -33,4 +37,5 @@ class RssFeedsController < ApplicationController
     rss_feed.save
     redirect_to group_rss_feeds_url
   end
+  
 end

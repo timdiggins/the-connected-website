@@ -14,6 +14,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :member => { :become => :post }, :collection => { :all => :get }, :requirements => { :id => /.*/ } do |user| 
     user.resources :group_permissions
   end
+  map.resources :rss_feeds 
   map.resources :sessions
   map.resources :events
   map.resources :posts, :has_many => [ :comments ], 
