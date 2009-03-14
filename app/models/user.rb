@@ -112,7 +112,7 @@ class User < ActiveRecord::Base
   def can_edit? group_or_post_or_user
     if group_or_post_or_user.class == Post
       post = group_or_post_or_user
-      return self.can_edit? post.author
+      return self.can_edit?(post.author)
     end
     if group_or_post_or_user.class==User
       user = group_or_post_or_user
