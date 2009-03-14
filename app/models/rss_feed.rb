@@ -18,7 +18,7 @@ class RssFeed < ActiveRecord::Base
   public
   
   def self.find_next_to_fetch
-    rss_feed = find(:first, :conditions=>{:last_fetched=>nil})
+    rss_feed = find(:first, :conditions=>{:next_fetch=>nil})
     return rss_feed unless rss_feed.nil?
     conditions = sanitize_sql_for_conditions({ :next_fetch=>Time.now.to_s(:db) })
     conditions = conditions.sub('=', '<=')
