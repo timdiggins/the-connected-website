@@ -1,0 +1,12 @@
+#Some management notes
+
+#to delete a spammer:
+	cap console
+	u = User.find_by_login('USERNAME')
+	u.destroy
+	
+	#if haven't deleted his stuff, then need to do:
+	u.destroy_creations
+	u.destroy
+
+
