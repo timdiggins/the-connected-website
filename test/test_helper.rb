@@ -6,6 +6,13 @@ require 'basics_dsl'
 require 'republic_dsl'
 require 'test_help'
 
+#require "webrat"
+#
+#Webrat.configure do |config|
+#  config.mode = :rails
+#end
+
+
 class Test::Unit::TestCase
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
@@ -50,5 +57,6 @@ module ActionController
     end
   end
 end
+
 
 
