@@ -6,11 +6,11 @@ require 'basics_dsl'
 require 'republic_dsl'
 require 'test_help'
 
-#require "webrat"
-#
-#Webrat.configure do |config|
-#  config.mode = :rails
-#end
+require "webrat"
+
+Webrat.configure do |config|
+  config.mode = :rails
+end
 
 
 class Test::Unit::TestCase
@@ -44,7 +44,6 @@ class ActionController::IntegrationTest
   def logger
     Rails.logger
   end
-    
 end
 
 

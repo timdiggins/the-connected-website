@@ -45,29 +45,6 @@ class PostingTest < ActionController::IntegrationTest
     @duff.get("/posts/#@post_id")
   end
   
-  should "be able to upload a pdf and change description" do
-    @duff = new_session_as(:duff)
-    @duff.post_via_redirect "/posts", :post => { 
-      :title => "Something new in filing", :detail => "Filing filling", :specifying_upload => true,
-      :post_attachment=>ActionController::TestUploadedFile.new(Test::Unit::TestCase.fixture_path + '/files/sample.pdf', 'application/pdf') }
-    @post_id = @duff.path.split('/')[-1]
-    @duff.get_ok("/posts/#@post_id")
-#    @duff.assert_select 'a', :text=>/Edit post/, :count=>0
-#    @duff.assert_select 'a', :text=>/Edit text/
-#    @duff.assert_select 'a', :text=>/Change file/
-    
-    @duff.click_link 'Edit post'
-    @duff.select_form :post => {:detail => "Some other body" }
-#    @duff.put_via_redirect "/posts/#@post_id", :post => {:specifying_upload=>true,:detail => "Some other body" }
-    @duff.assert_response 200
-    @duff.assert_select "div.fileBody", /Some other body.*/
-    @duff.put_via_redirect "/posts/#@post_id", :post => { :title => "Some other title", }
-    @duff.assert_response 200
-    @duff.assert_select "h1.post", "Some other title"
-    @duff.assert_select "div.fileBody", /Some other body.*/
-  end
-  
-  
   should "not be able to edit a post if you're the author" do
     post_id = posts(:cool_article).id
     get_ok "/posts/#{post_id}"

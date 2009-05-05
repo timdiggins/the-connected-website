@@ -76,7 +76,7 @@ class PostsController < ApplicationController
     
     @post.attributes = params[:post]
     @post.valid?
-    if @post.specifying_upload && post.attchment && @post.attachment.valid?
+    if @post.specifying_upload && @post.attachment && @post.attachment.valid?
       return render(:action => :edit) unless @post.attachment && @post.attachment.valid? && @post.save
     else
       return render(:action => :edit) unless @post.save
