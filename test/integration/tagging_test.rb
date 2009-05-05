@@ -21,12 +21,9 @@ class TaggingTest < ActionController::IntegrationTest
     new_session_as(:duff) do
       post_id = posts(:cool_article).id
       get_ok "/posts/#{post_id}"
-      assert_select 'label', :text => /Add item to a tag/
       
       post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
       assert_select "div.tags>ul>li>a", "Lame Government"
-      assert_select 'label', :text => /Add item to another tag/
-      assert_select 'label', :text => /Add item to a tag/, :count => 0
       
       post_via_redirect "posts/#{post_id}/tags", :tag_name => "Craziness"
       assert_select "div.tags>ul>li", :count => 2
