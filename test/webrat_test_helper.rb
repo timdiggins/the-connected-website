@@ -28,11 +28,20 @@ class ActionController::IntegrationTest
   def login_as(login, password = "test")
     post sessions_url, { :login => login, :password => password }
     follow_redirect! while redirect?
-      assert_select 'a', {:text=>'Login', :count=>0}, "didn't manage to login as #{login}"
+    assert_select 'a', {:text=>'Login', :count=>0}, "didn't manage to login as #{login}"
   end
-
+  
   def get_ok(path)
     get path
-    assert_response :ok
+    assert_response_ok
+  end
+
+  # checks that the response is under 400 (ok or redirected)
+  def assert_response_ok
+    if @response.redirect?
+      #should be ok to be a redirect of somekind... could make an option to fail if redirect
+    else
+      assert_response :success
+    end
   end
 end
