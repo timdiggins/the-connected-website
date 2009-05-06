@@ -14,7 +14,7 @@ set :use_sudo, false
 default_run_options[:pty] = true
 set :scm, "git"
 set :branch, "master"
-set :branch, "wminarch"
+set :branch, "republic"
 set :repository,  "git://github.com/red56/the-connected-website.git"
 set :keep_releases, 30
 set :git_enable_submodules, 1
