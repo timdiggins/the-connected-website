@@ -27,7 +27,7 @@ class Post < ActiveRecord::Base
   alias_attribute :to_s, :title
   
   before_create do |post|
-    post.commented_at = post.created_at
+    post.commented_at = Time.now
   end
   
   def brief

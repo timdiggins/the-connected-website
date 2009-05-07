@@ -38,7 +38,7 @@ class PostingTest < ActionController::IntegrationTest
     @duff = new_session_as(:duff)
     @duff.post_via_redirect "/posts", :post => { 
       :title => "Something new in filing", :detail => "Filing filling", :specifying_upload => true,
-      :post_attachment=>ActionController::TestUploadedFile.new(Test::Unit::TestCase.fixture_path + '/files/sample.pdf', 'application/pdf') }
+      :post_attachment=>ActionController::TestUploadedFile.new(self.fixture_path + '/files/sample.pdf', 'application/pdf') }
     @post_id = @duff.path.split('/')[-1]
     @duff.get_ok("/")
     @duff.assert_select ".events .event a[href=/posts/#@post_id]", :count => 1

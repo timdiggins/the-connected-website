@@ -4,8 +4,8 @@ module Truncator
     truncate_string = "..."
     sanitized = HTML::FullSanitizer.new.sanitize(html_text)
     
-    l = length - truncate_string.chars.length
-    (sanitized.chars.length > length ? sanitized.chars[0...l] + truncate_string : sanitized).to_s
+    l = length - truncate_string.mb_chars.length
+    (sanitized.mb_chars.length > length ? sanitized.mb_chars[0...l] + truncate_string : sanitized).to_s
   end
   
   

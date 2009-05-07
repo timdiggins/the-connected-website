@@ -19,7 +19,7 @@ set :repository,  "git://github.com/red56/the-connected-website.git"
 set :keep_releases, 30
 set :git_enable_submodules, 1
 
-set :rails_revision, '79f55de9c5e3ff1f8d9e767c5af21ba31be4cfba' # Fri Sep 19 09:06:35 2008 -0500  -   From master branch
+set :rails_revision, '73fc42cc0b5e94541480032c2941a50edd4080c2' # Fri Sep 19 09:06:35 2008 -0500  -   From master branch
 
 
 before "deploy:stop", "republic_services:stop"

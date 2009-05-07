@@ -130,7 +130,7 @@ class PostTest < ActiveSupport::TestCase
     assert !post.created_at.nil?, "expected created at not to be nil"
     assert !post.updated_at.nil?, "expected updated at not to be nil"
     assert !post.commented_at.nil?, "expected commented at not to be nil"
-    assert_equal post.created_at, post.commented_at
+    assert_equal post.created_at.to_i, post.commented_at.to_i
   end
 
 context "post with comments" do
