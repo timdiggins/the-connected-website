@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :admin_login_required, :only => [ :become ]
+  before_filter :admin_login_required, :only => [ :become, :destroy ]
   
   def new
     @user = User.new(params[:user])
@@ -23,6 +23,14 @@ class UsersController < ApplicationController
     @hide_user_in_events = true
   end
   
+  def destroy
+    @user = User.find_by_login!(params[:id])
+    @user.destroy_creations
+    @user.destroy
+    flash[:notice] = "Successfully deleted the user."
+    redirect_to users_url
+  end
+
   def index
     @users = User.has_bio_and_avatar.recently_contributed(10)
     @recently_signed_up = User.recently_signed_up
@@ -38,5 +46,5 @@ class UsersController < ApplicationController
     session[:as_someone_else] = true
     redirect_to root_url
   end
-
+  
 end

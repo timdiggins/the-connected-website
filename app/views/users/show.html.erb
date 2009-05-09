@@ -6,7 +6,7 @@
 
 	<div id="main">
 		<%= render :partial => 'users/avatar' %>
-
+    
 		<div id="profileDetails">
 			<h1><%=h @user %></h1>
 			<% unless @user.location.blank? %>
@@ -16,8 +16,14 @@
 			<%= render :partial => 'users/recent_events' %>
 			
 			<% if logged_in_as_admin? %>	
-				<br>
-				<%= link_to("Become #{@user} (since you're an admin)", become_user_url(@user), :method => :post) %>
+				<p>Since you're an admin:</p>
+				<p>
+				<%= link_to("Become #{@user}", become_user_url(@user),:class => "admin option", :method => :post) %>
+				</p>
+		        <p>
+        <%= link_to("Delete '#{@user}' totally", user_url(@user), :class => "admin option delete", :method => :delete, :confirm => "Are you sure you'd like to delete this user and all their posts/comments?") %>
+        </p>
+
 			<% end %>
 		</div>
 		<%= clear_this %>

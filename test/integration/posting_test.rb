@@ -102,6 +102,9 @@ class PostingTest < ActionController::IntegrationTest
       post_id = posts(:cool_article).id
       get_ok "/posts/#{post_id}"
       assert_link_does_not_exist "Delete post"
+      delete "/posts/#{post_id}"
+      get "/posts/#{post_id}" 
+      assert_response :success
     end
     
     new_session_as(:admin) do
@@ -112,8 +115,9 @@ class PostingTest < ActionController::IntegrationTest
       assert_link_exists "Delete post"
       delete_via_redirect "/posts/#{post_id}"
       assert_link_does_not_exist "Government is Bogus"
+      get "/posts/#{post_id}" 
+      assert_response :not_found
     end
   end
-  
   
 end

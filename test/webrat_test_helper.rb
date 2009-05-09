@@ -35,7 +35,7 @@ class ActionController::IntegrationTest
     get path
     assert_response_ok
   end
-
+  
   # checks that the response is under 400 (ok or redirected)
   def assert_response_ok
     if @response.redirect?
@@ -44,4 +44,7 @@ class ActionController::IntegrationTest
       assert_response :success
     end
   end
+  
 end
+
+

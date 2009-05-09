@@ -53,7 +53,7 @@ module BasicsDsl
     end
     select_options = {:count=>1}
     select_options[:text] = options[:text] 
-
+    
     assert_select(selector, select_options, "Trying to click a link '#{selector}' #{"with text ''" % options[:text] if options[:text]} that did not exist") do | links |
       address = links.first.attributes['href']
       if options[:without_redirect]
@@ -72,9 +72,11 @@ module BasicsDsl
     assert_select("a", link_text, "Expected the link '#{link_text}' to exist.")  
   end
   
+  
   def assert_link_does_not_exist(link_text)
     assert_select("a", { :text => link_text, :count => 0 }, "Did not expect the link '#{link_text}' to exist.")  
   end
+  
   
   def assert_flash(expected_flash_value)
     assert_select("div#flash>p", expected_flash_value, "Expected the flash to be '#{expected_flash_value}'")

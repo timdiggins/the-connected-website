@@ -8,6 +8,7 @@
 	http://10.211.55.2:3004/stylesheets/republic.css?1227905223
 	http://10.211.55.2:3004/stylesheets/republic.css?1233269850
 	http://localhost:3000/stylesheets/republic.css?1233270926
+	http://localhost:3000/stylesheets/republic.css?1233659466
 */
 
 body {
@@ -712,9 +713,14 @@ p.meta a.option, a.option {
 	-moz-border-radius: 2px;
 	font-size: 0.9em;
 }
-
 a.option:hover {
 	background-color: #2A6B87;
+}
+a.option.delete{
+	color: Red;	
+} 
+a.option.delete:hover {
+	color: Red;
 }
 
 #comments p.meta {
