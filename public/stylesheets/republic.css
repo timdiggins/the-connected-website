@@ -9,6 +9,7 @@
 	http://10.211.55.2:3004/stylesheets/republic.css?1233269850
 	http://localhost:3000/stylesheets/republic.css?1233270926
 	http://localhost:3000/stylesheets/republic.css?1233659466
+	http://theconnectedrepublic.org/stylesheets/all.css?1241875833
 */
 
 body {
@@ -668,6 +669,9 @@ textarea#post_detail {
 	line-height: 1.5em;
 }
 
+.postContent a, .postBody a {
+	word-wrap: break-word;
+}
 #frontPage .postContent {
 	padding: 1px 3em 1em 0px;
 }
@@ -886,6 +890,7 @@ div.tags input {
 .postBody {
 	line-height: 1.5em;
 	font-size: 1.1em;
+	
 }
 
 #contentTypes {
