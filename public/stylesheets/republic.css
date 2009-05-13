@@ -10,6 +10,7 @@
 	http://localhost:3000/stylesheets/republic.css?1233270926
 	http://localhost:3000/stylesheets/republic.css?1233659466
 	http://theconnectedrepublic.org/stylesheets/all.css?1241875833
+	http://10.211.55.2:3000/stylesheets/republic.css?1242134959
 */
 
 body {
@@ -19,6 +20,7 @@ body {
 	padding: 0px;
 	background: #2D3831 url(/images/page_top.gif) top left repeat-x;
 }
+
 
 div#dangerAdmin {
 	background-color: #F00;
@@ -669,7 +671,7 @@ textarea#post_detail {
 	line-height: 1.5em;
 }
 
-.postContent a, .postBody a {
+.postContent a, .postBody a, .postContent p {
 	word-wrap: break-word;
 }
 #frontPage .postContent {
