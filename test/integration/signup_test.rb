@@ -13,6 +13,8 @@ class SignupTest < ActionController::IntegrationTest
     assert_response_ok
     assert_flash "Thanks for signing up!  You have been logged in."
     assert_logged_in User.find_by_login("freddy")
+    
+    assert User.find_by_login('freddy').is_new, "freddy should have been marked as new"
   end
   
     

@@ -9,75 +9,75 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081111101404) do
+ActiveRecord::Schema.define(:version => 20090513133525) do
 
   create_table "attachments", :force => true do |t|
-    t.integer  "post_id",      :limit => 11
+    t.integer  "post_id"
     t.string   "content_type"
     t.string   "filename"
     t.string   "thumbnail"
-    t.integer  "size",         :limit => 11
-    t.integer  "width",        :limit => 11
-    t.integer  "height",       :limit => 11
-    t.integer  "parent_id",    :limit => 11
+    t.integer  "size"
+    t.integer  "width"
+    t.integer  "height"
+    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "avatars", :force => true do |t|
-    t.integer  "user_id",      :limit => 11
+    t.integer  "user_id"
     t.string   "content_type"
     t.string   "filename"
     t.string   "thumbnail"
-    t.integer  "size",         :limit => 11
-    t.integer  "width",        :limit => 11
-    t.integer  "height",       :limit => 11
-    t.integer  "parent_id",    :limit => 11
+    t.integer  "size"
+    t.integer  "width"
+    t.integer  "height"
+    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "categorizations", :force => true do |t|
-    t.integer  "tag_id",     :limit => 11
-    t.integer  "post_id",    :limit => 11
+    t.integer  "tag_id"
+    t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "comments", :force => true do |t|
-    t.integer  "user_id",    :limit => 11
-    t.integer  "post_id",    :limit => 11
+    t.integer  "user_id"
+    t.integer  "post_id"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "events", :force => true do |t|
-    t.integer  "user_id",     :limit => 11
-    t.integer  "detail_id",   :limit => 11
+    t.integer  "user_id"
+    t.integer  "detail_id"
     t.string   "detail_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "post_categorization_events", :force => true do |t|
-    t.integer  "user_id",    :limit => 11
-    t.integer  "tag_id",     :limit => 11
-    t.integer  "post_id",    :limit => 11
+    t.integer  "user_id"
+    t.integer  "tag_id"
+    t.integer  "post_id"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "post_changed_events", :force => true do |t|
-    t.integer  "user_id",    :limit => 11
-    t.integer  "post_id",    :limit => 11
+    t.integer  "user_id"
+    t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "posts", :force => true do |t|
-    t.integer  "user_id",      :limit => 11
+    t.integer  "user_id"
     t.string   "title"
     t.text     "detail"
     t.datetime "created_at"
@@ -90,12 +90,12 @@ ActiveRecord::Schema.define(:version => 20081111101404) do
   create_table "queued_emails", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "comment_id", :limit => 11
+    t.integer  "comment_id"
   end
 
   create_table "subscriptions", :force => true do |t|
-    t.integer  "user_id",    :limit => 11
-    t.integer  "post_id",    :limit => 11
+    t.integer  "user_id"
+    t.integer  "post_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -119,13 +119,14 @@ ActiveRecord::Schema.define(:version => 20081111101404) do
     t.datetime "updated_at"
     t.text     "profile_text"
     t.string   "home_page"
-    t.boolean  "editor",                                  :default => false
+    t.boolean  "editor",                    :default => false
     t.string   "name"
     t.string   "location"
-    t.boolean  "admin",                                   :default => false
+    t.boolean  "admin",                     :default => false
     t.datetime "contributed_at"
-    t.integer  "login_count",               :limit => 11, :default => 0
+    t.integer  "login_count",               :default => 0
     t.datetime "last_login_at"
+    t.boolean  "is_new",                    :default => true
   end
 
 end

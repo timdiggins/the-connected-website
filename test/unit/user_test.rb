@@ -134,6 +134,11 @@ class UserTest < ActiveSupport::TestCase
     end
   end
   
+  should "be marked as is_new initially" do
+    user = new_valid_user(:login => 'my_login', :email => 'me@example.com')
+    user.save!
+    assert user.is_new
+  end
   
   private
   def test_user()
