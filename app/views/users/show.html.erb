@@ -6,8 +6,7 @@
 
 	<div id="main">
 		<%= render :partial => 'users/avatar' %>
-    
-		<div id="profileDetails">
+		<div id="profileDetails" <% if @user.is_new %>class="new_user"<%end%>>
 			<h1><%=h @user %></h1>
 			<% unless @user.location.blank? %>
 			  <p class="location"><%=h @user.location %></p>
@@ -18,12 +17,16 @@
 			<% if logged_in_as_admin? %>	
 				<p>Since you're an admin:</p>
 				<p>
-				<%= link_to("Become #{@user}", become_user_url(@user),:class => "admin option", :method => :post) %>
+				  <%= link_to("Become #{@user}", become_user_url(@user),:class => "admin option", :method => :post) %>
 				</p>
-		        <p>
-        <%= link_to("Delete '#{@user}' totally", user_url(@user), :class => "admin option delete", :method => :delete, :confirm => "Are you sure you'd like to delete this user and all their posts/comments?") %>
+        <p>
+          <%= link_to("Delete '#{@user}' totally", user_url(@user), :class => "admin option delete", :method => :delete, :confirm => "Are you sure you'd like to delete this user and all their posts/comments?") %>
         </p>
-
+				<% if @user.is_new? %>
+				<p>
+          <%= link_to("Trust '#{@user}' to post without spamming", trust_user_url(@user), :class => "admin option", :method => :post) %>
+        </p>
+				<% end %>
 			<% end %>
 		</div>
 		<%= clear_this %>

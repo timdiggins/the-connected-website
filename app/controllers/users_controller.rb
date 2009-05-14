@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_filter :admin_login_required, :only => [ :become, :destroy ]
+  before_filter :admin_login_required, :only => [ :become, :destroy, :trust ]
   
   def new
     @user = User.new(params[:user])
@@ -45,6 +45,12 @@ class UsersController < ApplicationController
     self.current_user = @user
     session[:as_someone_else] = true
     redirect_to root_url
+  end
+  
+  def trust
+    @user = User.find_by_login(params[:id])
+    @user.update_attributes(:is_new=>false)
+    redirect_to user_url @user
   end
   
 end

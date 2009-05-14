@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.admin_stats 'admin/stats', :controller => 'admin', :action => 'stats'
   map.info 'info/:action', :controller => 'info'
 
-  map.resources :users, :member => { :become => :post }, :collection => { :all => :get }, :requirements => { :id => /.*/ }
+  map.resources :users, :member => { :become => :post, :trust => :post }, :collection => { :all => :get }, :requirements => { :id => /.*/ }
   map.resources :sessions
   map.resources :events
   map.resources :posts, :has_many => [ :comments ], 
