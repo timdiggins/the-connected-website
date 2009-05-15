@@ -28,7 +28,7 @@
 <% if session[:as_someone_else] %>
   <div id="dangerAdmin">
     <p><strong>CAREFUL!  You're logged in as <%= current_user %> !</strong>
-		<%= link_to "Become self again", unbecome_user_url(current_user), {:id=>'become_self', :method=>:post}%>
+		<%= link_to "Become #{session[:original_admin_user]} again", unbecome_user_url(current_user), {:id=>'become_self', :method=>:post}%>
 		</p>
   </div>
 <% end %>

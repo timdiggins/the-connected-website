@@ -84,7 +84,7 @@ class UsersTest < ActionController::IntegrationTest
       assert_doesnt_have_current_user_links 
       get_ok "users/#{user.login}"
       assert_has_current_user_links 
-      click_link 'Become self again'
+      click_link 'become_self'
       
       get_ok "users/#{admin_user.login}"
       view
