@@ -15,13 +15,13 @@
 			<% end %>
 
 			<%= render :partial => 'users/profile' %>
-			<%= render :partial => 'users/recent_events' %>
-			
-			<% if @user.is_new? %>
+      <% if @user.is_new? %>
         <p>
           <%=@user%> has recently joined The Connected Republic. Until made a 'trusted user' by an administrator, <%=@user%> can only post or comment once a day.
         </p>
-		  <% end %>
+      <% end %>
+			<%= render :partial => 'users/recent_events' %>
+			
 
   <% if logged_in_as_admin? %>	
 			<p>Since you're an admin:</p>

@@ -1,6 +1,6 @@
 <div id="commentForm">
 
-  <% if logged_in? %>
+  <% if logged_in? && current_user.may_contribute? %>
       <% form_for [ @post, @comment ] do | f | %>
         <%= f.error_messages %>
   
@@ -25,7 +25,7 @@
 <script language="JavaScript">
 	//<![CDATA[
   function selectCommentForm(){
-<% if logged_in? %>
+<% if logged_in? && current_user.may_contribute? %>
   	tinyMCE.get('comment_body').focus();
   	$('comment_body_ifr').scrollIntoView();
 <% else %>

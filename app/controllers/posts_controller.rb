@@ -21,6 +21,10 @@ class PostsController < ApplicationController
   end
   
   def new
+    if ! current_user.may_contribute?
+      render "may_not_contribute"
+      return
+    end
     @post = Post.new
     @initial_tag = Tag.find_by_id(params[:tag])
   end
@@ -40,6 +44,9 @@ class PostsController < ApplicationController
   end
   
   def create
+    if ! current_user.may_contribute?
+      raise Exception, "#{current_user} may not create new posting"
+    end
     @post = Post.new(params[:post])
     @post.user = current_user
     @initial_tag = Tag.find_by_id(params[:tag])

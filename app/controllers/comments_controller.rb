@@ -6,6 +6,10 @@ class CommentsController < ApplicationController
   uses_tiny_mce :options => tiny_mce_options, :only => [:create, :edit]
   
   def create
+    if ! current_user.may_contribute?
+      raise Exception, "#{current_user} not allowed to comment (tried to post)"
+    end
+    
     @post = Post.find(params[:post_id])
     @comment = Comment.new(params[:comment])
     @comment.post = @post

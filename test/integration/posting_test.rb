@@ -23,14 +23,37 @@ class PostingTest < ActionController::IntegrationTest
   end
   
   
-  should "be able to create a posting" do
-    @duff = new_session_as(:duff)
-    @duff.post_via_redirect "/posts", :post => { 
-      :title => "Something new in sandwiches", :detail => "Sandwich filling"}
-    @post_id = @duff.path.split('/')[-1]
-    @duff.get_ok("/")
-    @duff.assert_select ".events .event a[href=/posts/#@post_id]", :count => 1
-    @duff.get("/posts/#@post_id")
+  def expect_to_be_able_to_post session, readable 
+    title = "Something new in sandwiches #{readable}"
+    session.post_via_redirect "/posts", :post => { 
+      :title => title, :detail => "Sandwich filling (#{readable})"
+      }
+    post_id = session.path.split('/')[-1]
+    session.get_ok("/")
+    session.assert_select ".events .event a[href=/posts/#{post_id}]", :count => 1, :text=>title
+    session.get_ok("/posts/#{post_id}")    
+    
+  end
+  
+  def expect_not_to_be_able_to_post session, readable 
+    title = "Something new in sandwiches #{readable}"
+    session.post_via_redirect "/posts", :post => { 
+      :title => title, :detail => "Sandwich filling (#{readable})"
+      }
+    session.get_ok("/")
+    session.assert_select ".events .event a", :count => 0, :text=>title
+  end
+  
+  should "be able to create a posting twice if a regular user" do
+    duff = new_session_as(:duff)
+    expect_to_be_able_to_post(duff, "No.1 by duff")
+    expect_to_be_able_to_post(duff, "No.2 by duff")
+  end
+  
+  should "be able to create a posting only once if a new user" do
+    newby = new_session_as(:newby)
+    expect_to_be_able_to_post(newby, "No.1 by newby")
+    expect_not_to_be_able_to_post(newby, "No.2 by newby")
   end
   
   

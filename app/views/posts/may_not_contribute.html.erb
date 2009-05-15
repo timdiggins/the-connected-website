@@ -1,0 +1,20 @@
+
+
+
+<div id="main">
+	<h1>Limited contributions at present...</h1>
+     <div class="post">
+	     	<p class="avatar">
+	         <%= link_to_avatar_for(current_user, :medium) %>
+	     </p>
+		   <div class="postContent">
+			    <p>As a new user <%= link_to h(current_user), user_url(current_user)%>, you may only contribute (post or comment) once a day. 
+					Once an administrator has approved you (should take too long), this restriction will be lifted.
+					</p>
+					<p>Sorry for this, but we've had some problems with spammers, and are trying to protect the quality of the site. I hope you understand.
+					</p>
+	     </div>
+		 </div>	
+</div>
+
+<%= clear_this %>

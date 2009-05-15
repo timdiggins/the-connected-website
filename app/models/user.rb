@@ -101,13 +101,19 @@ class User < ActiveRecord::Base
   def has_no_creations!
     raise "Has creations (dependencies)" if has_creations
   end
-
+  
   def destroy_creations
     posts.destroy_all
     comments.destroy_all
     events.destroy_all
   end
   
+  def may_contribute?
+    if self.is_new? and !self.contributed_at.nil? and self.contributed_at > 1.day.ago
+      return false
+    end
+    true
+  end
   
   private
   def encrypt_password

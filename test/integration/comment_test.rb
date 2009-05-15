@@ -5,25 +5,44 @@ class CommentTest < ActionController::IntegrationTest
   DELETE_COMMENT_TEXT = "Delete"
   EDIT_COMMENT_TEXT = "Edit"
   
-  should "add a comment" do
-    new_session_as(:alex) do
-      post_via_redirect "/posts/#{posts(:cool_article).id}/comments", :comment => { :body => "YoYo" }
-      assert_response_ok
-      assert_select("div#comments>div.comment>div.postContent", :count => 1)
-      assert_select("div#comments>div.comment>div.postContent", /YoYo/)
-      
-      post_via_redirect "/posts/#{posts(:cool_article).id}/comments", :comment => { :body => "HereHere" }
-      assert_select("div#comments>div.comment>div.postContent", :count => 2)
-    end
+  def testpost
+    "/posts/#{posts(:cool_article).id}"
+  end
+  def expect_able_to_comment session, commentbody
+    session.post_via_redirect "#{testpost}/comments", :comment => { :body => commentbody }
+    session.assert_response_ok
+    @expected_commentcount += 1
+    session.assert_select("div#comments>div.comment>div.postContent", :count => @expected_commentcount)
+    session.assert_select("div#comments>div.comment>div.postContent", /#{commentbody}/)
+  end
+  
+  def expect_not_able_to_comment session, commentbody
+    session.post_via_redirect "#{testpost}/comments", :comment => { :body => commentbody }
+    session.get "#{testpost}"
+    session.assert_select("div#comments>div.comment>div.postContent", :count => @expected_commentcount)
+    session.assert_select("div#comments>div.comment>div.postContent", :text=> /#{commentbody}/, :count=>0)
+  end
+  
+  should "be able to add a comment twice if regular user" do
+    session = new_session_as(:alex)
+    @expected_commentcount = 0
+    expect_able_to_comment session, "comment no1 from alex" 
+    expect_able_to_comment session, "comment no2 from alex" 
+  end
+  
+  should "not be able to add a comment twice if new user" do
+    session = new_session_as(:newby)
+    @expected_commentcount = 0
+    expect_able_to_comment session, "comment no1 from newby" 
+    expect_not_able_to_comment session, "comment no2 from newby" 
   end
   
   should "give validation mentioning when attempting to add blank comment" do
-    new_session_as(:alex) do
-      post "/posts/#{posts(:cool_article).id}/comments", :comment => { :body => "" }
-      assert_response_ok
-      assert_select("div#comments>div.comment>div.postContent", :count => 0)
-      assert_flash /empty/
-    end
+    alex = new_session_as(:alex) 
+    alex.post "#{testpost}/comments", :comment => { :body => "" }
+    alex.assert_response_ok
+    alex.assert_select("div#comments>div.comment>div.postContent", :count => 0)
+    alex.assert_flash /empty/
   end
   
   should "have comment preexisting" do
