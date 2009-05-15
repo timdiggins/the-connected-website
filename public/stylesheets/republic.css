@@ -11,6 +11,8 @@
 	http://localhost:3000/stylesheets/republic.css?1233659466
 	http://theconnectedrepublic.org/stylesheets/all.css?1241875833
 	http://10.211.55.2:3000/stylesheets/republic.css?1242134959
+	http://localhost:3000/stylesheets/republic.css?1242211039
+	http://localhost:3000/stylesheets/republic.css?1242367634
 */
 
 body {
@@ -20,6 +22,7 @@ body {
 	padding: 0px;
 	background: #2D3831 url(/images/page_top.gif) top left repeat-x;
 }
+
 
 
 div#dangerAdmin {
@@ -41,6 +44,14 @@ div#dangerAdmin p {
 a {
 	color: #2A6B87;
 }
+
+
+span.newuserflag {
+	font-size: 0.75em;	
+	text-transform: uppercase;
+	color: #999;
+}
+
 
 #subscribe {
 	padding-bottom: 1em;
@@ -123,6 +134,7 @@ div#emailsettings h2 {
 #peopleTeaser div.authorBlock h2 a {
 	text-decoration: none;
 }
+
 
 .clearThis {
 	height: 1px;

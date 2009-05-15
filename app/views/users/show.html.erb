@@ -6,28 +6,36 @@
 
 	<div id="main">
 		<%= render :partial => 'users/avatar' %>
-		<div id="profileDetails" <% if @user.is_new %>class="new_user"<%end%>>
-			<h1><%=h @user %></h1>
+		<div id="profileDetails">
+			<h1><%=h @user %> 
+			    <% if @user.is_new? %><span class='newuserflag'>(New User)</span><%end%>
+			</h1>
 			<% unless @user.location.blank? %>
 			  <p class="location"><%=h @user.location %></p>
 			<% end %>
+
 			<%= render :partial => 'users/profile' %>
 			<%= render :partial => 'users/recent_events' %>
 			
-			<% if logged_in_as_admin? %>	
-				<p>Since you're an admin:</p>
-				<p>
-				  <%= link_to("Become #{@user}", become_user_url(@user),:class => "admin option", :method => :post) %>
-				</p>
+			<% if @user.is_new? %>
         <p>
-          <%= link_to("Delete '#{@user}' totally", user_url(@user), :class => "admin option delete", :method => :delete, :confirm => "Are you sure you'd like to delete this user and all their posts/comments?") %>
+          <%=@user%> has recently joined The Connected Republic. Until made a 'trusted user' by an administrator, <%=@user%> can only post or comment once a day.
         </p>
-				<% if @user.is_new? %>
-				<p>
-          <%= link_to("Trust '#{@user}' to post without spamming", trust_user_url(@user), :class => "admin option", :method => :post) %>
-        </p>
-				<% end %>
-			<% end %>
+		  <% end %>
+
+  <% if logged_in_as_admin? %>	
+			<p>Since you're an admin:</p>
+			
+			<% if @user.is_new? %>
+        <p><%= link_to("Trust '#{@user}' to post without spamming", trust_user_url(@user), :class => "admin option", :method => :post) %></p>
+			<% end %>					
+		  <p>
+			 	 <%= link_to("Become #{@user}", become_user_url(@user),:class => "admin option", :method => :post) %>
+			</p>
+      <p>
+        <%= link_to("Delete '#{@user}' totally", user_url(@user), :class => "admin option delete", :method => :delete, :confirm => "Are you sure you'd like to delete this user and all their posts/comments?") %>
+      </p>
+		<% end %>
 		</div>
 		<%= clear_this %>
 

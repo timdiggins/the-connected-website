@@ -2,7 +2,11 @@ module UsersHelper
   
   def link_to_user(user)
     return nil unless user
-    link_to h(user), user
+    userrep = h(user) 
+    if user.is_new
+      userrep = "#{userrep} <span class='newuserflag'>(New User)</span>"
+    end
+    link_to userrep, user
   end
   
   def user_home_page(user)
