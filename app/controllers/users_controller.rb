@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   def trust
     @user = User.find_by_login(params[:id])
     @user.update_attributes(:is_new=>false)
-    redirect_to user_url @user
+    redirect_to user_url(@user)
   end
   
 end
