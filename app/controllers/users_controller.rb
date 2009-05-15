@@ -42,8 +42,26 @@ class UsersController < ApplicationController
   
   def become
     @user = User.find_by_login(params[:id])
+    if session[:original_admin_user].nil?
+      session[:original_admin_user] = current_user.id
+    end
     self.current_user = @user
     session[:as_someone_else] = true
+    redirect_to root_url
+  end
+
+  def unbecome
+    if current_user.login != params[:id]
+      raise Exception, "Can't unbecome - wasn't right user: expected #{current_user.login}, got #{params[:id]}"
+    end
+    admin_id = session[:original_admin_user]
+    if !session[:as_someone_else] or admin_id.nil?
+      raise Exception, "Can't unbecome - you weren't unbecoming"
+    end
+    @user = User.find_by_id(admin_id)
+    self.current_user = @user
+    session[:as_someone_else] = nil
+    session[:original_admin_user] = nil
     redirect_to root_url
   end
   

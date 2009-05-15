@@ -28,6 +28,12 @@ class UsersTest < ActionController::IntegrationTest
     end
     
   end
+  def assert_has_current_user_links 
+    assert_link_exists /a picture[?]/
+  end
+  def assert_doesnt_have_current_user_links   
+    assert_link_does_not_exist /a picture[?]/
+  end
   
   context "admin user only" do
     should "be able to delete a user" do
@@ -35,21 +41,58 @@ class UsersTest < ActionController::IntegrationTest
       delete_button_text = "Delete '#{user.login}' totally"
       user_page = "users/#{user.login}"
       
-      new_session_as(:duff) do
-        get_ok user_page
-        assert_link_does_not_exist delete_button_text
-        delete_via_redirect user_page
-        get_ok user_page
-      end
+      duff = new_session_as(:duff)
+      duff.get_ok user_page
+      duff.assert_link_does_not_exist delete_button_text
+      duff.delete_via_redirect user_page
+      duff.get_ok user_page
       
-      new_session_as(:admin) do
-        get_ok user_page
-        assert_link_exists delete_button_text
-        delete_via_redirect "/users/#{user.login}"
-        assert_response_ok
-        get user_page
-        assert_response :not_found
-      end
+      admin=new_session_as(:admin) 
+      admin.get_ok user_page
+      admin.assert_link_exists delete_button_text
+      admin.delete_via_redirect "/users/#{user.login}"
+      admin.assert_response_ok
+      admin.get user_page
+      admin.assert_response :not_found
+    end
+    
+    
+    should "be able to become a user and then become self again" do
+      user = users(:michael)
+      admin_user = users(:admin)
+      become_button_text = "Become #{user.login}"
+      user_page = "users/#{user.login}"
+      
+#      login(:duff) 
+#      get_ok user_page
+#      assert_link_does_not_exist become_button_text
+#      assert_doesnt_have_current_user_links
+#      post_via_redirect become_user_url(user)
+#      get_ok "users/#{admin_user.login}"
+#      assert_doesnt_have_current_user_links
+#      
+#      logout
+      login(:admin) 
+      get_ok user_page
+      assert_link_exists become_button_text
+      assert_doesnt_have_current_user_links 
+      get_ok "users/#{admin_user.login}"
+      assert_has_current_user_links
+      
+      post_via_redirect become_user_url(user)
+      get_ok "users/#{admin_user.login}"
+      assert_doesnt_have_current_user_links 
+      get_ok "users/#{user.login}"
+      assert_has_current_user_links 
+      click_link 'Become self again'
+      
+      get_ok "users/#{admin_user.login}"
+      view
+      assert_has_current_user_links 
+      
+      get_ok "users/#{user.login}"
+      assert_doesnt_have_current_user_links 
+      
     end
     
     should "be able to trust or welcome a new user" do
