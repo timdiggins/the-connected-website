@@ -1,6 +1,6 @@
 <div id="comments">
  <% if logged_in? && !@post.has_contributed?(current_user) %>
-	 <div id='contributeButton'>
+	 <div id='contributeButton'    <%if @post.comments.count==0%>class='start'<%end%>>
 	 	<% if @post.comments.count == 0%>
 	    <h2>There are no comments yet</h2>
 		<% elsif @post.comments.count == 1 %>
@@ -8,6 +8,7 @@
 		<% else %>
 	    <h2>There are <%=@post.comments.count%> comments</h2>
 		<% end %>
+
 	  <%= link_to @post.comments.count==0 ? "Start this discussion off":"Add your view", 
 	         "javascript:selectCommentForm()"
 	    %>

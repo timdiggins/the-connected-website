@@ -13,6 +13,8 @@
 	http://10.211.55.2:3000/stylesheets/republic.css?1242134959
 	http://localhost:3000/stylesheets/republic.css?1242211039
 	http://localhost:3000/stylesheets/republic.css?1242367634
+	http://localhost:3000/stylesheets/republic.css?1242368679
+	http://localhost:3000/stylesheets/republic.css?1242426267
 */
 
 body {
@@ -51,6 +53,11 @@ span.newuserflag {
 	text-transform: uppercase;
 	color: #999;
 }
+
+a#become_self {
+	color: Black;
+}
+
 
 
 #subscribe {
@@ -969,6 +976,10 @@ float: left;*/
 	font-size: 1.2em;
 }
 
+#contributeButton.start h2 {	
+	margin-bottom: 1.5em;
+}
+
 #joinButton {
 	line-height: 2.5em;
 	color: #666;
@@ -981,7 +992,6 @@ float: left;*/
 }
 
 #contributeButton h2 {
-	float: left;
 	padding-right: 2em;
 	color: #2e659d;
 }
