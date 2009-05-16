@@ -51,9 +51,12 @@ class PostingTest < ActionController::IntegrationTest
   end
   
   should "be able to create a posting only once if a new user" do
-    newby = new_session_as(:newby)
-    expect_to_be_able_to_post(newby, "No.1 by newby")
-    expect_not_to_be_able_to_post(newby, "No.2 by newby")
+    session = new_session_as(:newby)
+    expect_to_be_able_to_post(session, "No.1 by newby")
+    expect_not_to_be_able_to_post(session, "No.2 by newby")
+    newby = User.find_by_login(users(:newby).login)
+    newby.update_attributes(:contributed_at=>2.days.ago)
+    expect_to_be_able_to_post(session, "No.2 by newby")
   end
   
   
