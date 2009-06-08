@@ -7,8 +7,6 @@
 
 			  <% form_for @user, :url => settings_url do | f | %>
 
-			    <p>
-
 				  <p>
 	    			<%= f.label :profile_text, "Introductory text for your profile (e.g. bio)" %>
 	    			<%= f.text_area :profile_text, :class => "largeInput mceEditor" %>

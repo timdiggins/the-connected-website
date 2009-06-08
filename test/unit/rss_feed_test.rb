@@ -33,7 +33,6 @@ class RssFeedTest < ActiveSupport::TestCase
       File.open(sample_feed("flickrfeed")) do |f|
         rss_feed.make_posts f.read
       end
-      puts "initial:%s now: %s" % [initial_postcount, groups(:studio3).posts.count]
       assert initial_postcount < groups(:studio3).posts.count
     end
     
@@ -43,7 +42,6 @@ class RssFeedTest < ActiveSupport::TestCase
       File.open(sample_feed("ds04_singlepost")) do |f|
         rss_feed.make_posts f.read
       end
-      puts "initial:%s now: %s" % [initial_postcount, groups(:studio3).posts.count]
       assert_equal initial_postcount+1, groups(:studio3).posts.count
       imported = groups(:studio3).posts[-1]
       assert_equal 'Milos: plaster casts', imported.title

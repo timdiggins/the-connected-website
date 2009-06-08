@@ -16,7 +16,7 @@ class ChangeSettingsTest < ActionController::IntegrationTest
   
   should "be able to change the password" do
     assert login(:duff)
-
+    
     new_session_as(:duff) do
       put 'settings/password', { :user => { :password => 'new_password'} }
       assert_redirected_to '/users/duff'
@@ -43,7 +43,6 @@ class ChangeSettingsTest < ActionController::IntegrationTest
       follow_redirect!
       click_link SETTINGS_LINK
       click_link "User name and email"
-
       assert_select "input#user_email[value=duffer@omelia.org]"
       assert_select "input#user_login[value=duffer]"
     end
@@ -52,7 +51,6 @@ class ChangeSettingsTest < ActionController::IntegrationTest
   should "be able to change the bio, homepage, and location" do
     new_session_as(:duff) do
       get ""
-      view
       assert_response_ok
       click_link PROFILE_LINK
       assert_select "p", /Introduce yourself/
@@ -60,7 +58,7 @@ class ChangeSettingsTest < ActionController::IntegrationTest
       assert_select "p.location", false
       assert_select "div#bio", false
       assert_select "p.homepage", false
-
+      
       put_via_redirect "settings", { :user => { :home_page => "omelia.org/duff", :profile_text => "Crazy anarcho-capitalist.", :location => "Willow Spring" } }
       assert_select "p.location", "Willow Spring"
       assert_select "div#bio", "Crazy anarcho-capitalist."
@@ -79,5 +77,5 @@ class ChangeSettingsTest < ActionController::IntegrationTest
     end
     
   end
-
+  
 end
