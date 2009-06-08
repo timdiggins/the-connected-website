@@ -48,28 +48,28 @@ class TaggingTest < ActionController::IntegrationTest
   end
   
   
-  should "be able to click a tag name and see the posts with that tag" do
-    new_session_as(:duff) do
-      post_id = posts(:cool_article).id
-      post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
-      click_link "Lame Government"
-      assert_select "h1", /Lame Government 1 article/
-      assert_select "div.posts>div.post", :count => 1
-      assert_select "div.posts>div.post>div.postContent>h2>a", "Government is Bogus"
-    end
-  end
+#  should "be able to click a tag name and see the posts with that tag" do
+#    new_session_as(:duff) do
+#      post_id = posts(:cool_article).id
+#      post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
+#      click_link "Lame Government"
+#      assert_select "h1", /Lame Government 1 article/
+#      assert_select "div.posts>div.post", :count => 1
+#      assert_select "div.posts>div.post>div.postContent>h2>a", "Government is Bogus"
+#    end
+#  end
   
-  should "see the tags of a post on the home page and the postings page" do
-    new_session_as(:duff) do
-      post_id = posts(:cool_article).id
-      post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
-      get_ok '/'
-      assert_select "p.tags>a", "Lame Government"
-      
-      get_ok '/posts'
-      assert_select "p.tags>a", "Lame Government"
-    end
-  end
+#  should "see the tags of a post on the home page and the postings page" do
+#    new_session_as(:duff) do
+#      post_id = posts(:cool_article).id
+#      post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
+#      get_ok '/'
+#      assert_select "p.tags>a", "Lame Government"
+#      
+#      get_ok '/posts'
+#      assert_select "p.tags>a", "Lame Government"
+#    end
+#  end
   
   should "see the tags of a post on the tags page" do
     new_session_as(:duff) do
@@ -113,22 +113,23 @@ class TaggingTest < ActionController::IntegrationTest
     end
   end
   
-  should "Be able to edit a tag" do
-    new_session_as(:duff) do
-      post_id = posts(:cool_article).id
-      post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
-      
-      get_ok 'tags/Lame%20Government'
-      click_link "Add a description"
-      assert_select "h1", "Edit tag: Lame Government"
-      
-      put_via_redirect "tags/Lame%20Government", :tag => { :name => "Super Lame Stuff", :description => "Here is the description" }
-      assert_flash "Successfully updated tag"
-      assert_select "h1", :text => /Lame Government/, :count => 0
-      assert_select "h1", /Super Lame Stuff 1 article/
-      assert_select "div#tagDescription", /Here is the description/
-    end
-  end
+#  should "Be able to edit a tag" do
+#    new_session_as(:duff) do
+#      post_id = posts(:cool_article).id
+#      post_via_redirect "posts/#{post_id}/tags", :tag_name => "Lame Government"
+#      
+#      get_ok 'tags/Lame%20Government'
+#      view
+#      click_link "Add a description"
+#      assert_select "h1", "Edit tag: Lame Government"
+#      
+#      put_via_redirect "tags/Lame%20Government", :tag => { :name => "Super Lame Stuff", :description => "Here is the description" }
+#      assert_flash "Successfully updated tag"
+#      assert_select "h1", :text => /Lame Government/, :count => 0
+#      assert_select "h1", /Super Lame Stuff 1 article/
+#      assert_select "div#tagDescription", /Here is the description/
+#    end
+#  end
   
   
 end
