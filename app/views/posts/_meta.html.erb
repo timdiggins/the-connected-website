@@ -7,7 +7,7 @@
      <strong>Featured</strong>. 
    <%end%>
     <% if !post.remote_url.nil? && !post.remote_url.empty? %>
-  		<span class="author"><%= link_to_user(post.author) %> work retrieved from  <%= link_to "external site",post.remote_url %></span>  
+  		<span class="author"><%= link_to_user(post.group) %> work retrieved from  <%= link_to "external site",post.remote_url %></span>  
 		<% end %>
     <span class="date">
       <!--<%if !post.has_attachment? && !post.has_video?%>created<%end%>-->
