@@ -22,12 +22,14 @@
     <% end %>
 	<% end %>
 	
-  <h2>All open studios...</h2>
-	<ul class="groupsList">
-  	<% @groups.each do |group| %>
-  	 <li><%=link_to group, group %></li>
-  	<% end %>
-  </ul>
+  <% @group_categories.each do |category| %>
+		<h2><%= category %></h2>
+		<ul class="groupsList">
+	  	<% category.groups.each do |group| %>
+	  	 <li><%=link_to group, group %></li>
+	  	<% end %>
+	  </ul>
+	<% end %>
 
   <% if logged_in_as_admin? %>  
     <p><%= link_to 'Setup new studio / group', new_group_path, :class => "buttonLink" %></p>

@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_filter :login_required, :except => [ :index, :show]
+  before_filter :find_group_categories, :only => [ :index, :edit, :new]
   #uses_tiny_mce :options => tiny_mce_options, :only => [ :new,:create, :update, :edit ]
   
   def index
@@ -50,5 +51,7 @@ class GroupsController < ApplicationController
     flash[:notice] = "Group #{@group} created."
   end
   
-  
+  def find_group_categories 
+      @group_categories = GroupCategory.all
+  end
 end

@@ -4,8 +4,11 @@ class Group < ActiveRecord::Base
   has_many :rss_feeds, :dependent => :destroy
   has_many :posts, :dependent => :destroy
   has_many :post_images, :through => :posts, :order => "updated_at DESC" 
+
+  belongs_to :group_category
   
   alias_attribute :to_s, :name
+  alias_attribute :category, :group_category
   alias_attribute :images, :post_images
   
   def to_param
