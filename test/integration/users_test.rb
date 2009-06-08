@@ -4,28 +4,26 @@ class UsersTest < ActionController::IntegrationTest
   fixtures :users
   context "Individual user" do
     should "be viewable with no postings" do
-      get("users/fred")
+      get("users/tim")
       assert_select('h2', :text => /Recently/, :count => 0)
-      assert_select('h2', :text => /recent posts/, :count => 0)
     end
     
     should "be viewable with postings" do
       get("users/alex")
       assert_select('h2', /Recently/)
-      assert_select('h2', /recent posts/)
     end
     
     should "be able to be made a moderator of a group by an admin" do
       login(:admin)
-      get_ok 'users/duff'
-      assert_has_links ['/users/duff/group_permissions']
-      get 'users/duff/group_permissions'
+      get_ok 'users/tim'
+      assert_has_links ['/users/tim/group_permissions']
+      get 'users/tim/group_permissions'
       assert_response :success
       assert_add_groups [
         'Studio+1',
         'Studio+Free'
       ]
-      post_via_redirect('users/duff/group_permissions?id=Studio+1')
+      post_via_redirect('users/tim/group_permissions?id=Studio+1')
       assert_response :success
       assert_add_groups [
         'Studio+Free'
@@ -34,9 +32,9 @@ class UsersTest < ActionController::IntegrationTest
         'Studio%201',
       ]
       
-      delete_via_redirect('users/duff/group_permissions/Studio%201')
+      delete_via_redirect('users/tim/group_permissions/Studio%201')
       assert_response :success
-      get('users/duff/group_permissions')
+      get('users/tim/group_permissions')
       assert_remove_groups []
       assert_add_groups [
         'Studio+1',
@@ -57,7 +55,7 @@ class UsersTest < ActionController::IntegrationTest
   def assert_add_groups expected_add_groups 
    assert_select "#not-permitted-groups a",:count=>expected_add_groups.length 
     expected_add_groups.each do |group|
-      assert_select "#not-permitted-groups a[href=/users/duff/group_permissions?id=#{group}]",:count=>1 do |tags| 
+      assert_select "#not-permitted-groups a[href=/users/tim/group_permissions?id=#{group}]",:count=>1 do |tags| 
         tags.each do |tag|
           assert(tag['onclick'].include?('POST'))
           assert(!tag['onclick'].include?('delete'))
@@ -68,7 +66,7 @@ class UsersTest < ActionController::IntegrationTest
   def assert_remove_groups expected_remove_groups
     assert_select "#permitted-groups a", :count=>expected_remove_groups.length 
     expected_remove_groups.each do |group|
-      assert_select "#permitted-groups a[href=/users/duff/group_permissions/#{group}]",:count=>1 do |tags| 
+      assert_select "#permitted-groups a[href=/users/tim/group_permissions/#{group}]",:count=>1 do |tags| 
         tags.each do |tag|
           assert(tag['onclick'].include?('POST'))
           assert(tag['onclick'].include?('delete'))

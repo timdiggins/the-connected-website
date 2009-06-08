@@ -6,15 +6,7 @@
    <%if post.featured?%>
      <strong>Featured</strong>. 
    <%end%>
-    <% if post.user %>
-		<% if post.has_attachment? %>
-      <span class="author">PDF uploaded by <%= link_to_user(post.user) %></span>
-    <% elsif post.has_video? %> 
-      <span class="author">Video shared by <%= link_to_user(post.user) %></span>
-    <%else%> 
-      <span class="author">Posting written by <%= link_to_user(post.user) %></span>
-    <%end%>
-    <% elsif !post.remote_url.nil? && !post.remote_url.empty? %>
+    <% if !post.remote_url.nil? && !post.remote_url.empty? %>
   		<span class="author"><%= link_to_user(post.author) %> work retrieved from  <%= link_to "external site",post.remote_url %></span>  
 		<% end %>
     <span class="date">

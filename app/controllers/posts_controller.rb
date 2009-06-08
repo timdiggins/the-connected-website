@@ -2,9 +2,9 @@ REEDITING_CUTOFF = 30.minutes
 
 class PostsController < ApplicationController
   
+  before_filter :find_post, :except => [ :index,  :featured, :new, :text, :upload, :video, :create ]
   before_filter :login_required, :except => [ :index, :show, :featured ]
-  before_filter :editor_login_required, :only => [ :feature, :unfeature ]
-  before_filter :admin_login_required, :only => [ :destroy ]
+  before_filter :current_user_can_edit_post, :only => [ :feature, :unfeature, :destroy]
   uses_tiny_mce :options => tiny_mce_options, :only => [ :new, :show, :create, :update, :edit, :text, :upload, :video ]
   
   def index
@@ -19,7 +19,18 @@ class PostsController < ApplicationController
       }
     end
   end
-  
+
+   
+  def featured
+    respond_to do |format|
+      format.html { @posts = Post.featured.paginate(:page => params[:page], :per_page => 15) }
+      format.rss { 
+        @posts = Post.featured.limit_to(15)
+        render :layout => false 
+      }
+    end
+  end
+ 
   def new
     @post = Post.new
     @initial_tag = Tag.find_by_id(params[:tag])
@@ -114,19 +125,14 @@ class PostsController < ApplicationController
   end
   
   def unfeature
-    @post = Post.find(params[:id])    
     @post.update_attribute(:featured_at, nil)
     redirect_to @post
   end
   
-  def featured
-    respond_to do |format|
-      format.html { @posts = Post.featured.paginate(:page => params[:page], :per_page => 15) }
-      format.rss { 
-        @posts = Post.featured.limit_to(15)
-        render :layout => false 
-      }
-    end
+  def find_post
+    @post = Post.find(params[:id])    
   end
-  
+  def current_user_can_edit_post
+    current_user_can_edit @post
+  end
 end
