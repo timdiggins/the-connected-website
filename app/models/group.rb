@@ -7,7 +7,6 @@ class Group < ActiveRecord::Base
   
   alias_attribute :to_s, :name
   alias_attribute :images, :post_images
-  alias_attribute :profile_text, :short_desc
   
   def to_param
     name

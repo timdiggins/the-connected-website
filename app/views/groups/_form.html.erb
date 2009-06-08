@@ -11,18 +11,11 @@
           <%= f.text_field :name, :class => "largeInput"  %>
         </p>
       </fieldset>
-
-      <fieldset>
-          <p>
-            <%= f.label :short_desc, "Short description (up to 255 chars - used elsewhere)" %>
-            <%= f.text_area :short_desc, :class => "mceEditor largeInput" %>
-          </p>  
-      </fieldset>
         
       <fieldset>
               <p>
-            <%= f.label :full_desc, "Full description (used on main group page)" %>
-            <%= f.text_area :full_desc, :class => "mceEditor largeInput" %>
+            <%= f.label :desc, "Description" %>
+            <%= f.text_area :desc, :class => "mceEditor largeInput" %>
           </p>  
       </fieldset>
 

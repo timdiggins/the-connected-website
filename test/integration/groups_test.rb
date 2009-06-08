@@ -40,7 +40,7 @@ class GroupsTest < ActionController::IntegrationTest
     get ADD_LINK
     assert_response 403
     
-    post "/groups", :group => { :name => "New Studio", :profile_text => "Studio new buttercream filling" }
+    post "/groups", :group => { :name => "New Studio", :desc => "Studio new buttercream filling" }
     assert_response 403
   end    
   should "be able to be created by admin" do
@@ -49,7 +49,7 @@ class GroupsTest < ActionController::IntegrationTest
     assert_has_links [ADD_LINK]
     get ADD_LINK
     assert_response :success
-    post_via_redirect "/groups", :group => { :name => "New Studio", :profile_text => "Studio new buttercream filling" }
+    post_via_redirect "/groups", :group => { :name => "New Studio", :desc => "Studio new buttercream filling" }
     assert_equal "/groups/New%20Studio", path
   end
   

@@ -1,10 +1,10 @@
 
 studio1:
   name: Studio 1
-  full_desc: Studio one is such a cool place
+  desc: Studio one is such a cool place
   home_page: MyString
 
 studio3:
   name: Studio Free
-  full_desc: We love ourselves
+  desc: We love ourselves
   home_page: MyString
