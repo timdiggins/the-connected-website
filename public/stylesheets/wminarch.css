@@ -59,7 +59,7 @@ a {
 
 #largeDescription {
   margin-bottom: 2em;
-  height: 41.4em;
+  max-height: 41.4em;
   overflow: hidden;
 }
 
@@ -986,7 +986,7 @@ div.tags input {
   font-size: 1.2em;
   margin-top: 0.5em;
   color: #666;
-  height: 5.7em;
+  max-height: 5.7em;
   overflow: hidden;
 }
 

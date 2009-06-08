@@ -38,7 +38,7 @@
    <div class='image-controls'>
   	 <% @post.images.each do |image| %>
   	   <span>
-         <%= link_to image_tag_for(image, :medium_square), image.src %>
+         <%= link_to image_tag_for(image, :medium_square), image.src, :title => "Open orignal image on remote site" %>
          <% if logged_in? && current_user.can_edit?(@post) %>
       	 <%= link_to 'Delete?', image_path(image), :method=>:delete, :confirm=>'Delete this image?' %>
       	 <% end %>	
