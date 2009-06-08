@@ -37,9 +37,6 @@ class Post < ActiveRecord::Base
     truncate_html_text(detail)
   end
 
-  def author
-    self.group
-  end
   def featured?
     !featured_at.nil?
   end
