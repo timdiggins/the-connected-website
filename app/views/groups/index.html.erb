@@ -16,7 +16,7 @@
       <ul class="groupsList">
     	<% current_user.group_permissions.each do |gp| 
     	  group = gp.group  %>
-    	  <li><%=link_to group, group%></li>
+    	  <li><%=link_to group, group %></li>
     	<% end %>
     	</ul>
     <% end %>
