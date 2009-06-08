@@ -17,7 +17,7 @@ class GroupsTest < ActionController::IntegrationTest
     should "have own rss content " do
       get("groups/Studio%201")
       assert_response :success
-      assert_select 'h2', :text=> /Some funky thing/
+      assert_select '.title', :text=> /Some funky thing/
     end
     
   end
@@ -25,7 +25,6 @@ class GroupsTest < ActionController::IntegrationTest
     should "have links to group" do
       get "/groups"
       assert_response :success
-      assert_select "h1"
       assert_has_links [
       '/groups/Studio%201',
       '/groups/Studio%20Free'

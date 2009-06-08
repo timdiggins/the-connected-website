@@ -19,16 +19,14 @@
 
 	<div id="main">
 
-		<% for image in @latestFeature %>
-  		<a href="<%= post_path(image.post) %>" id="featureImage">
-  		  <%= image_tag_for(image, :contact) %>
+  		<a href="<%= post_path(@latestFeature.post) %>" id="featureImage">
+  		  <%= image_tag_for(@latestFeature, :contact) %>
   		</a>
   		<div class="featureDescription">
-  		  <h2><%= link_to image.post.title, image.post %></h2>
-  		  <p>by <%= link_to image.post.group, image.post.group %></p>
+  		  <h2><%= link_to @latestFeature.post.title, @latestFeature.post %></h2>
+  		  <p>by <%= link_to @latestFeature.post.group, @latestFeature.post.group %></p>
   		</div>
   		
-  	<% end %>
 		<% for image in @featured %>
     	<a href="<%= post_path(image.post) %>" class="squareImage">
         <%= image_tag_for(image, :large_square) %>

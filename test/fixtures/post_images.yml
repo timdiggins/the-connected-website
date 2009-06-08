@@ -1,9 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  post_id: 
+article_from_rss_image1:
+  post: article_from_rss 
   src: MyString
+  width: 10
+  height: 20
 
-two:
-  post_id: 
+article_from_rss_image2:
+  post: article_from_rss 
   src: MyString
+  width: 104
+  height: 105
