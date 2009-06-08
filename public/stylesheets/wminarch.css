@@ -57,6 +57,10 @@ a {
 	padding-top: 4em;
 }
 
+#sidebar {
+  	word-wrap:break-word;
+}
+
 #largeDescription {
   margin-bottom: 2em;
   max-height: 41.4em;
