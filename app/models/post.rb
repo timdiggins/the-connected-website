@@ -8,7 +8,6 @@ class Post < ActiveRecord::Base
   validate :must_have_attachment
   validates_tiny_mce_presence_of :detail, :unless => :specifying_video
   
-  belongs_to :user
   belongs_to :group
   
   has_many :comments, :order => 'created_at', :dependent => :destroy
@@ -39,7 +38,6 @@ class Post < ActiveRecord::Base
   end
 
   def author
-    return self.user if self.user
     self.group
   end
   def featured?
@@ -107,26 +105,7 @@ class Post < ActiveRecord::Base
   def has_video?
     !video.blank?
   end
-  
-  def has_contributed?(other_user)
-    if user == other_user
-      return true
-    end
-    comments.each do |comment|
-      return true if comment.user == other_user
-    end
-    false
-  end
-  
-  def contributors
-    #users other than author who have commented
-    return @contributors unless @contributors.nil?
-    @contributors = []
-    comments.each do |comment|
-      @contributors << comment.user unless comment.user == user || @contributors.include?(comment.user)
-    end
-    @contributors
-  end
+    
   private
   def must_have_attachment
     errors.add_to_base("Must select a file to upload") if @in_upload_mode && (!attachment || attachment.filename.blank?)

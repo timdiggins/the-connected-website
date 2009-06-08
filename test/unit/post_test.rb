@@ -132,12 +132,12 @@ class PostTest < ActiveSupport::TestCase
     assert_equal post.created_at, post.commented_at
   end
 
-context "post with comments" do
-  should "be able to determine if user has already contributed " do
-     post = posts(:alex_interesting_article)
-     assert post.has_contributed?(users(:alex))
-     assert ! post.has_contributed?(users(:fred))
-     assert post.has_contributed?(users(:duff))
-  end
-  end
+#context "post with comments" do
+#  should "be able to determine if user has already contributed " do
+#     post = posts(:alex_interesting_article)
+#     assert post.has_contributed?(users(:alex))
+#     assert ! post.has_contributed?(users(:fred))
+#     assert post.has_contributed?(users(:duff))
+#  end
+#  end
 end
