@@ -1,5 +1,8 @@
 before "deploy:setup", "rss_parser:install"
 
+# written to make sure that a good enough version of the rss parser is installed
+# see also /config/initializers/check_rss_version.rb
+
 namespace :rss_parser do
   task :install do
     cmds = []

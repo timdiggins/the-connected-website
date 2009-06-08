@@ -6,3 +6,5 @@ if major < 1 && (minor < 2 || (minor==2 && point < 1) )
   puts msg
   raise Exception.new(msg) 
 end
+
+# see also /lib/recipse/rss_parser.rb for cap
