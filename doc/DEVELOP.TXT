@@ -1,3 +1,9 @@
-useful for checking: 
-download sql backup from amazon s3
-import into wminarch_development using mysql wminarch_development < ~/Desktop/...
+
+###
+# download sql backup from amazon s3 via cap:
+cap backup:retrieve
+# puts it into tmp dir
+# double click in finder
+# to import into wminarch_development use
+mysql wminarch_development < tmp/wminarch.site_db.production.20090608002403 #(or whatever)
+
