@@ -5,11 +5,11 @@ class RssFeed < ActiveRecord::Base
   belongs_to :group
   has_many :imported_guids
   
-  before_create do |rss_feed|
-    if rss_feed.next_fetch.nil?
-      rss_feed.next_fetch = Time.now 
-    end
-  end
+  #  before_create do |rss_feed|
+  #    if rss_feed.next_fetch.nil?
+  #      rss_feed.next_fetch = Time.now 
+  #    end
+  #  end
   
   protected
   def validate
@@ -20,15 +20,16 @@ class RssFeed < ActiveRecord::Base
   def self.find_next_to_fetch!
     rss_feed = find(:first, :conditions=>{:next_fetch=>nil})
     return rss_feed unless rss_feed.nil?
-    conditions = sanitize_sql_for_conditions({ :next_fetch=>Time.now.to_s(:db) })
-    conditions = conditions.sub('=', '<=')
-    rss_feed = find(:first, :conditions=>"next_fetch <= '#{Time.now.to_s(:db)}'", :order=>'next_fetch')
+    #    conditions = sanitize_sql_for_conditions({ :next_fetch=>Time.now.to_s(:db) })
+    #    conditions = conditions.sub('=', '<=')
+    conditions ="next_fetch <= '#{Time.now.utc.to_s(:db)}'"
+    rss_feed = find(:first, :conditions=>conditions, :order=>'next_fetch')
     raise ActiveRecord::RecordNotFound if rss_feed.nil?
     rss_feed
   end
   
   def check_feed
-    puts 'doing the work of getting and making'
+#    puts 'doing the work of getting and making'
     open(self.url) do |s|
       rsscontent = s.read
       make_posts(rsscontent)
@@ -50,4 +51,20 @@ class RssFeed < ActiveRecord::Base
     end
   end
   
+  def to_s
+    s = <<TEXT
+Rss Feed(
+  for '%s' 
+  by '%s'
+  last fetched %s%s
+  next fetch at %s
+  )
+TEXT
+    return s %[
+url, group,
+     last_fetched,
+    error_message.blank? ? '': "\n  gave error:#{error_message}",
+    next_fetch
+    ]
+  end
 end

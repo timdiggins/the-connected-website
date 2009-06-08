@@ -4,21 +4,16 @@ just_fetched_feed:
   url: http://stream.red56.co.uk/rss
   last_fetched: <%= 1.minute.ago.to_s :db%>
   next_fetch: <%=9.minutes.from_now.to_s :db %>
-    
-never_fetched_feed:
-  group: studio3
-  url: http://something_new_in_sandwiches
-  next_fetch: <%= 1.ago.to_s :db%>
-  
+      
 long_ago_fetched_feed:
   group: studio3
   url: http://something_old
   last_fetched: <%=  1.hour.ago.to_s :db%>
-  next_fetch: <%= 10.minutes.ago.to_s :db%>
+  next_fetch: <%= 50.minutes.ago.to_s :db%>
   
 recently_fetched_feed:
   group: studio3
   url: http://something_recent
-  last_fetched: <%= 10.minutes.ago.to_s :db%>
-  next_fetch: <%= 5.ago.to_s :db %>
+  last_fetched: <%= 20.minutes.ago.to_s :db%>
+  next_fetch: <%= 10.minutes.ago.to_s :db %>
   
