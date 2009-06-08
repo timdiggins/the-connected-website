@@ -29,8 +29,8 @@
       <% if !rss_feed.error_message.nil? && ! rss_feed.error_message.empty?%>
 			   <p><strong>Last fetch gave error: <%= rss_feed.error_message%></strong></p>
 			<% end %>
-			</p>
-			<%= link_to "Remove", rss_feed_path(:id=>rss_feed),:method => :delete%>
+
+			<p><%= link_to "Remove", rss_feed_path(:id=>rss_feed),:method => :delete%></p>
 	  </li>
 	<% end %>
 	</ul>
