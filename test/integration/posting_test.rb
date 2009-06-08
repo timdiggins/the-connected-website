@@ -73,21 +73,22 @@ class PostingTest < ActionController::IntegrationTest
     
   end
   
-  should "only be able to delete a post if you're an admin" do
+  should "only be able to delete a post if you're a the manager of it" do
     new_session_as(:duff) do
-      post_id = posts(:cool_article).id
+      post_id = posts(:article_from_rss).id
       get_ok "/posts/#{post_id}"
       assert_link_does_not_exist "Delete post"
     end
     
-    new_session_as(:admin) do
-      get_ok '/posts'
-      assert_link_exists "Government is Bogus"
-      post_id = posts(:cool_article).id
+    new_session_as(:alex) do
+      #because alex_can_moderate_studio1
+      post_id = posts(:article_from_rss).id
       get_ok "/posts/#{post_id}"
       assert_link_exists "Delete post"
       delete_via_redirect "/posts/#{post_id}"
-      assert_link_does_not_exist "Government is Bogus"
+      view
+      get "/posts/#{post_id}"
+      assert_response 404
     end
   end
   
