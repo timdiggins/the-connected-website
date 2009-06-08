@@ -6,6 +6,7 @@
   
   <div id="largeDescription">
     <h1><%= @page_title = @group %></h1>
+    <p>[ <%= @group.category %> ]</p>
     <%= simple_format(h(@group.desc))%>   
   </div>
   <% if !@group.home_page.nil?%>

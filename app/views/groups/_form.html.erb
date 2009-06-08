@@ -11,7 +11,15 @@
           <%= f.text_field :name, :class => "largeInput"  %>
         </p>
       </fieldset>
-        
+
+      <fieldset>
+        <p>
+          <%= f.label :group_category_id, "Group category" %>
+          <%= f.collection_select :group_category_id,  @group_categories, :id, :name %>
+        </p>
+      </fieldset>
+      
+				
       <fieldset>
               <p>
             <%= f.label :desc, "Description" %>
@@ -21,7 +29,7 @@
 
       <fieldset>
           <p>
-            <%= f.label :home_page, "Home page, if you have one" %>
+            <%= f.label :home_page, "Home page, if appropriate" %>
             <%= f.text_field :home_page, :class => :largeInput %>
           </p>
       </fieldset>
