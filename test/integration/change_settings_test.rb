@@ -51,6 +51,8 @@ class ChangeSettingsTest < ActionController::IntegrationTest
   
   should "be able to change the bio, homepage, and location" do
     new_session_as(:duff) do
+      get ""
+      view
       assert_response_ok
       click_link PROFILE_LINK
       assert_select "p", /Introduce yourself/
