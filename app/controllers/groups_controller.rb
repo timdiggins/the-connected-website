@@ -18,8 +18,10 @@ class GroupsController < ApplicationController
   
   def show
     @group = Group.find_by_name!(params[:id])
-    @images = @group.images
+    @recent_images = @group.images.limit_to 20
     @posts = @group.posts.paginate(:page => params[:page], :per_page => 15)
+    @featured_images = @group.images.featured.limit_to 10 
+    @featured_texts = @group.posts.featured.limit_to 10 
   end
   
   def new

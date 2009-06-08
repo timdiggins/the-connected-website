@@ -90,5 +90,53 @@ class PostingTest < ActionController::IntegrationTest
       assert_response 404
     end
   end
-  
+  should "only be able to delete or feature an image if  a the manager of it" do
+    new_session_as(:duff) do
+      post_id = posts(:article_from_rss).id
+      get_ok "/posts/#{post_id}"
+      i1 = post_images(:article_from_rss_image1)
+      i2 = post_images(:article_from_rss_image2)
+      assert_select "#image-#{i2.id}" do 
+        assert_link_does_not_exist DELETE_IMAGE_LINK
+        assert_link_does_not_exist FEATURE_IMAGE_LINK
+      end
+    end
+    
+    new_session_as(:alex) do
+      #because alex_can_moderate_studio1
+      post_id = posts(:article_from_rss).id
+      get_ok "/posts/#{post_id}"
+      i1 = post_images(:article_from_rss_image1)
+      i2 = post_images(:article_from_rss_image2)
+      assert_select "#image-#{i1.id}" do 
+        assert_link_exists DELETE_IMAGE_LINK
+        assert_link_exists FEATURE_IMAGE_LINK
+        assert_link_does_not_exist UNFEATURE_IMAGE_LINK
+      end
+      assert_select "#image-#{i2.id}" do 
+        assert_link_exists DELETE_IMAGE_LINK
+        assert_link_exists UNFEATURE_IMAGE_LINK
+        assert_link_does_not_exist FEATURE_IMAGE_LINK
+      end
+      delete_via_redirect "/images/#{i2.id}"
+      get "/posts/#{post_id}"
+      assert_select "#image-#{i2.id}", :count=>0
+      
+      put_via_redirect "/images/#{i1.id}/feature" 
+      get "/posts/#{post_id}"
+      assert_select "#image-#{i1.id}" do 
+        assert_link_exists UNFEATURE_IMAGE_LINK
+        assert_link_does_not_exist FEATURE_IMAGE_LINK
+      end
+      put_via_redirect "/images/#{i1.id}/unfeature" 
+      get "/posts/#{post_id}"
+      assert_select "#image-#{i1.id}" do 
+        assert_link_exists FEATURE_IMAGE_LINK
+        assert_link_does_not_exist UNFEATURE_IMAGE_LINK
+      end
+    end
+  end
 end
+DELETE_IMAGE_LINK = "Delete?"
+FEATURE_IMAGE_LINK = "Feature"
+UNFEATURE_IMAGE_LINK = "Unfeature"

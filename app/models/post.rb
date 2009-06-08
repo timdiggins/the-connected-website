@@ -24,7 +24,7 @@ class Post < ActiveRecord::Base
   named_scope :sorted_by_created_at, lambda { { :order => "created_at DESC" }}
   named_scope :sorted_by_updated_at, lambda { { :order => "updated_at DESC" }}
   named_scope :sorted_by_commented_at, lambda { { :order => "commented_at DESC" }}
-  named_scope :featured, lambda { { :conditions => [ "featured_at IS NOT NULL" ], :order => "featured_at DESC", :limit => 6 }} 
+  named_scope :featured, lambda { { :conditions => [ "featured_at IS NOT NULL" ], :order => "featured_at DESC" }} 
   named_scope :limit_to, lambda { | limit | { :limit => limit } }
   
   alias_attribute :to_s, :title

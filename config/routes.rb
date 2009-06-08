@@ -25,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
     post.resources :tags, :requirements => { :id => /.*/ }
   end
 
-  map.resources :images
+  map.resources :images, :member => {:feature=>:put, :unfeature=>:put}
   map.resources :tags, :requirements => { :id => /.*/ }
   map.resource  :settings, :collection => { :save_new_avatar => :put, :picture => :get, :username_email => :any, :bio => :any, :password => :any}
   
