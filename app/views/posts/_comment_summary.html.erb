@@ -1,7 +1,7 @@
  <div id="comment_summary">
  	 <h2><%= link_to 'Discussion', :anchor=>'comments'%></h2>
 	 <% if @post.contributors.length == 0%>
-	    <% if @post.author == current_user%>
+	    <% if @post.group == current_user%>
       No one has commented on this yet.
 			<% end %> 
 	  <% elsif @post.contributors.length == 1 %>

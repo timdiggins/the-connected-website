@@ -1,7 +1,7 @@
 <div class="authorBlock">
-	<h2>by <%= link_to_user(@post.author) %></h2>
+	<h2>by <%= link_to_user(@post.group) %></h2>
 	<p class="avatar">
-    <%= link_to_avatar_for(@post.author, :medium) %>
+    <%= link_to_avatar_for(@post.group, :medium) %>
   </p>
 	<% unless  @post.group.desc.blank? %>
 		<p><%= truncate(@post.group.desc, :length => 200) %> <%= link_to("...more about #{@post.group}", url_for(@post.group)) %></p>

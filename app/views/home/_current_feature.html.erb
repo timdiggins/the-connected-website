@@ -1,6 +1,6 @@
 <div class="post">
      <p class="avatar">
-         <%= link_to_avatar_for(@current_featured.author, :medium) %>
+         <%= link_to_avatar_for(@current_featured.group, :medium) %>
      </p>
      <div class="postContent">
          <h2<% if @current_featured.has_attachment? %> class="file"<% elsif @current_featured.video_embed_tags %> class="video"<%end%>>
