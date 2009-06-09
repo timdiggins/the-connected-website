@@ -1,6 +1,6 @@
 <h1><%= @page_title = "All Contributors" %></h1>
 <% @current_tab = :users %>
-<div id="sidebar">
+<div id="sidebar" class="grid_5 alpha">
 	<div id="peopleInfo">
   <p>All of the members .</p>
 	<% if !logged_in? %>
@@ -10,7 +10,7 @@
 	
 	</div>
 </div>
-  <div id="main">
+  <div id="main" class="grid_11 omega">
       <ul id="memberList" class="all">
        <% for user in @users %>
          <li>

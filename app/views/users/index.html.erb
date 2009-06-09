@@ -1,6 +1,6 @@
 <h1><%= @page_title = "The Community" %></h1>
 <% @current_tab = :users %>
-<div id="sidebar">
+<div id="sidebar" class="grid_5 alpha">
 	
 	<% if logged_in? %>
 	    <div id="missionStatement">
@@ -39,7 +39,7 @@
 		  <% end %>
 </div>
 </div>
-  <div id="main">
+  <div id="main" class="grid_11 omega">
       <ul id="memberList">
        <% for user in @users %>
          <li>

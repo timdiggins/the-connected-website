@@ -1,14 +1,14 @@
 <h1><%= @page_title = "All discussion events" %></h1>
 
 
-<div id="sidebar">
+<div id="sidebar" class="grid_5 alpha">
   <div>
     <p>Whenever a discussion is started, commented, edited, or tagged, the website tracks the event. This makes it easy to see what has happenend recently.</p>
   </div>
 </div>
 
 
-<div id="main">
+<div id="main" class="grid_11 omega">
 
 	<%= will_paginate(@events, :prev_label => "Newer", :next_label => "Older", :inner_window => 2) if params[:page] %>
 

@@ -1,7 +1,7 @@
 
 
 
-<div id="sidebar">
+<div id="sidebar" class="grid_5 alpha">
   <% if !@tag.description.blank? %>
     <div id="largeDescription">
       <p><%=@tag.description %></p>
@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<div id="main">
+<div id="main" class="grid_11 omega">
 
 	<h1>Postings tagged with: <%= @page_title = @tag %> <span class="count">(<%= pluralize(@tag.posts.count, "posting") %>)</span></h1>
 
