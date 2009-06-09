@@ -15,7 +15,9 @@ body {
 	color: #000;
 }
 
-
+a img {
+  	border: 0px;
+}
 
 
 a {
@@ -1134,9 +1136,8 @@ div.image-controls {
 }
 
 div#flash {
-  	margin-left: 300px;
 	background-color: #FFF;
-	padding: 1px 40px 20px 40px;
+	padding: 1px 0 20px 0;
 	border-bottom: 1px dashed #DDD;
 	font-weight: bold;
 }
