@@ -74,16 +74,21 @@ a {
 
 #largeDescription p {
   font-size: 1.2em;
-  color: #666;
-  font-weight: bold;
+  color: #333;
   margin: 0.5em 0px;
+}
+
+#largeDescription p.category {
+  font-size: 1.1em;
+  color: #666;
+  margin: 0.3em 0 1.5em 0;
 }
 
 #largeDescription h1 {
   font-size: 1.3em;
   color: #333;
   font-weight: bold;
-  margin: 0px 0px 0.5em 0px;
+  margin: 0px 0px 0 0px;
 }
 
 
