@@ -28,9 +28,9 @@ class Group < ActiveRecord::Base
   end
   
   def latest_image
-    post_images.first
+    post_images.featured.first
   end
   def latest3_images
-    post_images.latest3
+    post_images.featured3
   end
 end

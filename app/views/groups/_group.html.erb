@@ -8,7 +8,7 @@
   	  </div>
   	  <% if group.latest_image %>
     		<div class="grid_4 omega">
-         <% group.images.latest3.each do |image| %>
+         <% group.latest3_images.each do |image| %>
 				    <%= image_tag_for(image, :medium_square) %>
 					<% end %>
         </div>

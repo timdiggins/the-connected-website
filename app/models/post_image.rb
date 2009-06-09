@@ -1,8 +1,8 @@
 class PostImage < ActiveRecord::Base
   belongs_to :post, :counter_cache=> true
   
-  named_scope :latest3, :limit=>3, :order => "updated_at DESC"
   named_scope :featured, lambda { { :conditions => [ "post_images.featured_at IS NOT NULL" ], :order => "post_images.featured_at DESC" }} 
+  named_scope :featured3, lambda { { :order => "post_images.featured_at DESC", :limit=>3}} 
   named_scope :limit_to, lambda { | limit | { :limit => limit } }
   
   def width_for_height(h)

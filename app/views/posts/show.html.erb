@@ -67,13 +67,13 @@
 			<div><p><%=plain_text(@post.text) %></p></div>
 		   <div class="clearThis"> </div>
      </div> 
-   <% end %>
-	    <%= link_to("Edit text", edit_post_url(@post), :class => "option") %> 
       <%if @post.featured?%>
         <%= link_to("Unfeature post text", unfeature_post_url(@post), :class => "option", :method => :put) %>
       <% else %>
         <%= link_to("Feature post text", feature_post_url(@post), :class => "option", :method => :put) %>
       <% end %>
+   <% end %>
+   <%= link_to("Edit text", edit_post_url(@post), :class => "option") %> 
 
 	 <% end %>
 </div>

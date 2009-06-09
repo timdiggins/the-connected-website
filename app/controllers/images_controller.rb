@@ -11,12 +11,12 @@ class ImagesController < ApplicationController
   
   def feature
     @image.update_attributes(:featured_at=>Time.now)
-    redirect_to post_url(@image.post)
+    redirect_to post_url(@image.post, :anchor=>'featuring-controls')
   end
   
   def unfeature
     @image.update_attributes(:featured_at=>nil)
-    redirect_to post_url(@image.post)
+    redirect_to post_url(@image.post, :anchor=>'featuring-controls')
   end
   
   protected
