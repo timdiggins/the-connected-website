@@ -1,7 +1,7 @@
 <%@page_title = "Edit Comment on #{@post}" %>
 <h1 >Edit Comment on '<%=h @post %>'</h1>
 
-<div id="main">
+<div id="main" class="grid_11 omega">
 
 <% form_for(@comment,:url => post_comment_path(@post, @comment) )do | f | %>
 

@@ -3,6 +3,7 @@
 	http://localhost:3000/stylesheets/wminarch.css?1244473302
 	http://localhost:3000/stylesheets/wminarch.css?1244477906
 	http://localhost:3000/stylesheets/wminarch.css?1244479381
+	http://localhost:3000/stylesheets/wminarch.css?1244543018
 */
 
 body {
@@ -15,11 +16,6 @@ body {
 }
 
 
-#logo {
-	position: absolute;
-	top: 0px;
-	left: 40px;
-}
 
 
 a {
@@ -29,18 +25,12 @@ a {
 
 /* @group Layout */
 
-#wrap {
-	margin: 0px;
-	padding: 0px 40px;
-	min-width: 900px;
-}
 
 
 
 #main {
-	margin-left: 300px;
 	background-color: #FFF;
-	padding: 1em 40px 5em 40px;
+	padding: 1em 0;
 }
 
 
@@ -51,18 +41,12 @@ a {
 }
 
 #header {
-  padding: 2em 40px 0px 40px;
   background-color: #000;
-  min-width: 900px;
+  height: 80px;
 }
 
 #sidebar {
-	float: left;
-	width: 250px;
-	padding-top: 4em;
-}
-
-#sidebar {
+	padding-top: 3em;
   	word-wrap:break-word;
 }
 
@@ -101,7 +85,7 @@ a {
 	height: 1px;
 	overflow: hidden;
 	margin: 0px;
-	clear: both;
+	clear: left;
 }
 
 .clearRight {
@@ -125,14 +109,18 @@ a {
 /* @group Navigation */
 
 #navigation {
+	background-color: #000;
+	border-bottom: 20px solid #FFF;
+}
+
+#navigation ul {
 	list-style: none;
-	margin: 0px 0px 0px 300px;
 	padding: 0px;
-	height: 2.5em;
-	line-height: 2.5em;
+	margin: 20px 0 0 0;
+	height: 40px;
+	line-height: 40px;
 	background-color: #000;
 	font-size: 1.2em;
-	border-bottom: 1.5em solid #FFF;
 }
 
 #navigation li {
@@ -142,8 +130,8 @@ a {
 #navigation a {
 	color: #DDD;
 	float: left;
-	line-height: 2.5em;
-	height: 2.5em;
+	line-height: 40px;
+	height: 40px;
 	padding: 0px;
 	margin: 0px 1em 0px 0px;
 	text-decoration: none;
@@ -510,6 +498,7 @@ h2 {
   font-size: 1em;
   margin: 2em 0 0.5em 0;
 }
+
 
 
 
@@ -967,49 +956,27 @@ div.tags input {
 
 
 
-#groups {
-	margin-left: 300px;
-	background-color: #FFF;
-	padding: 0;
-}
-
 .group {
-
+  	border-bottom: 1px solid #DDD;
+  	padding: 0 0 1.5em 0;
+  	margin-bottom: 2em;
 }
 
-.group a {
-  display: block;
-  clear: right;
-  padding: 1.5em 1em 2em 2em;
-  background-color: #FFF;
-  text-decoration: none;
-  border-top: 1px solid #DDD;
-}
-
-.group a:hover {
-  background-color: #EEE;
-}
-
-
-.group .title {
+.group .title a {
   font-size: 1.4em;
   margin: 0px;
   font-weight: bold;
 }
 
 .group .title .category {
-  font-size: 0.8em;
+
   color:#999;
   font-weight: normal;
-  margin-left: 0.5em;
+  margin-left: 0.8em;
   padding-left: 0.5em;
   border-left: 1px solid #DDD;
 }
 
-.group .latestImages {
-  float:right;
-  margin: 0px 0px 0px 2em;
-}
 
 .group .profileText {
   font-size: 1.2em;

@@ -2,13 +2,14 @@
 
 
 
-<div id="sidebar">
+<div id="sidebar" class="grid_5 alpha">
   
   <div id="largeDescription">
     <h1><%= @page_title = @group %></h1>
     <p class="category"><%= h(@group.category) %></p>
     <%= simple_format(h(@group.desc))%>   
   </div>
+  
   <% if !@group.home_page.nil?%>
     <p>Visit studio site: <%=link_to nil, @group.home_page %></p>
   <% end %>
@@ -18,8 +19,8 @@
     <h2>Admin options for this group</h2>
 	
   	<ul>
-  	  <li><%= link_to "Edit group", edit_group_path(@group)%></li>
-  	  <li><%= link_to "Edit feeds", group_rss_feeds_path(@group)%></li>
+  	  <li><%= link_to "Edit this group", edit_group_path(@group)%></li>
+  	  <li><%= link_to "Add / remove remote content (feeds)", group_rss_feeds_path(@group)%></li>
     </ul>
   <% end %>
 	
@@ -37,38 +38,35 @@
       as an admin of this group.
       </p>
   <% end %>
-  
+   
 </div>  
 
-<div id="main">  
+<div id="main" class="grid_11 omega">
     <h2>Featured images by <%= @group%></h2>
-		<div class="">
-		<%= render :partial=>'image', :collection=>@featured_images %>
-    <div class="clearThis"> </div>
-    </div>
-		
-		<h2>Featured text by <%= @group%></h2>
-	  <div class="">
-    <%= render :partial=>'post', :collection=>@featured_texts %>
-    <div class="clearThis"> </div>
+		<div>
+		  <%= render :partial=>'image', :collection=>@featured_images %>
+		  <%= clear_this %>
     </div>
 
-    <h2>Recent works by <%= @group %></h2>
-    <div class="imageStrip">
-    <%= render :partial=>'image', :collection=>@recent_images %>
-    <div class="clearThis"> </div>
-     <p><a href="#">More works</a> by <%= @group %></p>
-		</div>
+		
+		<h2>Featured text by <%= @group%></h2>
+	  <div>
+      <%= render :partial=>'post', :collection=>@featured_texts %>
+      <%= clear_this %>
+    </div>
+
+
+
   
-	  <h2>More recent works</h2>
+	  <h2>Recent works</h2>
     <div class="imageCloud">
-    	<% for image in @recent_images%>
+    	<% for image in @recent_images %>
       	<a href="<%= post_path(image.post) %>">
           <%= image_tag_for(image, :small_square) %>
         </a>
       <% end %>
-    <div class="clearThis"> </div>
-    <p><a href="#">Browse all works</a> by <%= @group %>.</p>
+    
 		</div>
+		
 
 </div>

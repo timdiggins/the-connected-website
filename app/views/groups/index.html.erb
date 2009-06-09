@@ -1,7 +1,7 @@
 <% @current_tab = :groups %>
   <% @page_title = "Studios" %>
 		
-<div id="sidebar">
+<div id="sidebar" class="grid_5 alpha">
   <div id="largeDescription">
     <p>The School of Architecture sports multiple studios and collectives ...</p>
   </div>
@@ -38,7 +38,7 @@
   <% end %>
 </div>
 
-<div id="groups">
+<div id="main" class="grid_11 omega">
 
 	  <%= render :partial => 'group', :collection=> @groups%>
 </div>

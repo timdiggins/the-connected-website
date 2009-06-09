@@ -1,6 +1,6 @@
 <% @page_title = "#{@user.possessive_to_s} Profile" %>
 <div id="profile">
-	<div id="sidebar">
+	<div id="sidebar" class="grid_5 alpha">
 	  <% if logged_in_as_admin? %>
 	    <h2>Admin options for this user</h2>
 			<ul>
@@ -12,7 +12,7 @@
 		<% end %>
 	</div>
 
-	<div id="main">
+	<div id="main" class="grid_11 omega">
 		<%= render :partial => 'users/avatar' %>
 
 		<div id="profileDetails">

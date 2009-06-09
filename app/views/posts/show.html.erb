@@ -1,6 +1,6 @@
 <% @page_title = "#{@post} from #{@post.group}" %>
 
-<div id="sidebar">
+<div id="sidebar" class="grid_5 alpha">
   <% if @post.group != NIL %>
     <div id="largeDescription">
       <p>This post belongs to <%= @post.group %></p>
@@ -13,7 +13,7 @@
 	<%= render :partial => 'posts/feature' %>	
 </div>
 
-<div id="main">
+<div id="main" class="grid_11 omega">
 	<h1 class="post"><%=h @post %></h1>
   <%=render :partial => 'posts/meta', :locals=>{:post=>@post, :with_controls=>true}%>
 

@@ -1,7 +1,7 @@
 <% @current_tab = :discussions %>
 <h1><%= @page_title = "All postings and discussions" %></h1>
 		
-<div id="sidebar">
+<div id="sidebar" class="grid_5 alpha">
 	<div class="tagCloud">
     <h2>Popular Tags</h2>
 	  <%= render :partial=>'tags/tag_cloud'%>
@@ -10,7 +10,7 @@
   <%=render :partial=>'posts/subscription' %> 
 </div>
 
-<div id="main">
+<div id="main" class="grid_11 omega">
 	<%= render :partial => 'posts/post_list' %>
 </div>
 <%= clear_this %>

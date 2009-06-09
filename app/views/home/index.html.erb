@@ -1,6 +1,6 @@
 <% @current_tab = :home %>
 
-	<div id="sidebar">
+	<div id="sidebar" class="grid_5 alpha">
 
     <div id="largeDescription">
       <h1>Open Studio</h1>
@@ -16,7 +16,7 @@
     </div>
 	</div>
 
-	<div id="main">
+<div id="main" class="grid_11 omega">
 
   		<a href="<%= post_path(@latestFeaturedImage.post) %>" id="featureImage">
   		  <%= image_tag_for(@latestFeaturedImage, :contact) %>

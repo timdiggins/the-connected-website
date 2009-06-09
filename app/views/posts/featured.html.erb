@@ -2,7 +2,7 @@
 <% @current_tab = :features %>
 
 		
-<div id="sidebar">
+<div id="sidebar" class="grid_5 alpha">
   <div id="largeDescription">
 		<p>
 		  This section highlights the best of the <%= link_to "discussions", posts_url %>. Everybody can contribute - just <%= link_to "start an interesting discussion", new_post_url %> and we'll feature it!
@@ -17,7 +17,7 @@
 	
 </div>
 
-<div id="main">
+<div id="main" class="grid_11 omega">
   <h1><%= @page_title = "Featured postings" %></h1>
 	<%= render :partial => 'posts/post_list' %>
 </div>
