@@ -4,16 +4,7 @@ class GroupsController < ApplicationController
   #uses_tiny_mce :options => tiny_mce_options, :only => [ :new,:create, :update, :edit ]
   
   def index
-    @groups = Group.all
-    respond_to do |format|
-      format.html { 
-        @posts = Post.sorted_by_commented_at.paginate(:page => params[:page], :per_page => 15) 
-      }
-      format.rss { 
-        @posts = Post.sorted_by_commented_at.limit_to(15)
-        render :layout => false 
-      }
-    end
+    @groups = Group.order_by_contributed_at
   end
   
   def show

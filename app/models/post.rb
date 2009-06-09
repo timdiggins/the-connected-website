@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
   validates_presence_of :video, :if => :specifying_video
   validate :must_have_attachment
   #validates_tiny_mce_presence_of :detail, :unless => :specifying_video
+  validates_presence_of :group
+  validates_associated :group
   
   belongs_to :group
   
@@ -31,6 +33,11 @@ class Post < ActiveRecord::Base
   
   before_create do |post|
     post.commented_at = post.created_at
+  end
+  
+  before_create do |post|
+    post.group.contributed_at = Time.now
+    post.group.save!
   end
   
   def brief
