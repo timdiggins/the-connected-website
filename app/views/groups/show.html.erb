@@ -2,7 +2,7 @@
 
 
 
-<div id="sidebar">
+<div id="sidebar" class="grid_5 alpha">
   
   <div id="largeDescription">
     <h1><%= @page_title = @group %></h1>
@@ -41,7 +41,7 @@
    
 </div>  
 
-<div id="main">  
+<div id="main" class="grid_11 omega">
     <h2>Featured images by <%= @group%></h2>
 		<div>
 		  <%= render :partial=>'image', :collection=>@featured_images %>
