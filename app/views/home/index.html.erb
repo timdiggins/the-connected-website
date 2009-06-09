@@ -18,24 +18,17 @@
 
 <div id="main" class="grid_11 omega">
 
-  		<a href="<%= post_path(@latestFeaturedImage.post) %>" id="featureImage">
-  		  <%= image_tag_for(@latestFeaturedImage, :contact) %>
-  		</a>
-  		<div class="featureDescription">
-  		  <h2><%= link_to @latestFeaturedImage.post.title, @latestFeaturedImage.post %></h2>
-  		  <p>by <%= link_to @latestFeaturedImage.post.group, @latestFeaturedImage.post.group %></p>
-  		  <div class="text"><%= truncate(@latestFeaturedImage.post.text, 160) %></div>
-  		</div>
-  		
-		<% for image in @otherFeaturedImages %>
-    	<a href="<%= post_path(image.post) %>" class="squareImage">
-        <%= image_tag_for(image, :large_square) %>
-        <span class="label">
-          <span class="title"><%= image.post.title %></span>
-          <span class="inGroup">by <%= image.post.group.name %></span>
-        </span>  
-      </a>
-    <% end %>
+		<a href="<%= post_path(@latestFeaturedImage.post) %>" id="featureImage">
+		  <%= image_tag_for(@latestFeaturedImage, :contact) %>
+		</a>
+		<div class="featureDescription">
+		  <h2><%= link_to @latestFeaturedImage.post.title, @latestFeaturedImage.post %></h2>
+		  <p>by <%= link_to @latestFeaturedImage.post.group, @latestFeaturedImage.post.group %></p>
+		  <div class="text"><%= truncate(@latestFeaturedImage.post.text, 160) %></div>
+		</div>
+
+	  <%= render :partial=>'groups/image', :collection=>@otherFeaturedImages %>
+   
     <div class="clearThis"> </div>
 
     <h2>Featured Texts</h2>

@@ -1,7 +1,7 @@
-<a href="<%= post_path(image.post) %>" class="imageStripImage">
-    <%= image_tag_for(image, :strip) %>
-    <span class="label" style="width:<%= image.width_for_height(128) %>px;">
-      <span class="title"><%= image.post.title %>.</span>
-    </span>  
- </a>
-      
+<a href="<%= post_path(image.post) %>" class="squareImage">
+  <%= image_tag_for(image, :large_square) %>
+  <span class="label">
+    <span class="title"><%= image.post.title %></span>
+    <span class="inGroup">by <%= image.post.group.name %></span>
+  </span>  
+</a>
