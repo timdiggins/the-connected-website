@@ -962,17 +962,17 @@ div.tags input {
   	margin-bottom: 2em;
 }
 
-.group .title a {
+.group a.title {
   font-size: 1.4em;
   margin: 0px;
   font-weight: bold;
 }
 
 .group .title .category {
-
+  font-size: 0.8em;
   color:#999;
   font-weight: normal;
-  margin-left: 0.8em;
+  margin-left: 0.5em;
   padding-left: 0.5em;
   border-left: 1px solid #DDD;
 }
