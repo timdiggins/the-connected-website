@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090609094313) do
+ActiveRecord::Schema.define(:version => 20090609124738) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "post_id"
@@ -127,6 +127,7 @@ ActiveRecord::Schema.define(:version => 20090609094313) do
     t.datetime "commented_at"
     t.string   "remote_url"
     t.integer  "group_id"
+    t.integer  "post_images_count"
   end
 
   create_table "queued_emails", :force => true do |t|

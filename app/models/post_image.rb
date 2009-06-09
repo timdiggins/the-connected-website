@@ -1,5 +1,5 @@
 class PostImage < ActiveRecord::Base
-  belongs_to :post
+  belongs_to :post, :counter_cache=> true
   
   named_scope :latest3, :limit=>3, :order => "updated_at DESC"
   named_scope :featured, lambda { { :conditions => [ "post_images.featured_at IS NOT NULL" ], :order => "post_images.featured_at DESC" }} 

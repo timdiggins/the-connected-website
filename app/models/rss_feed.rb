@@ -37,6 +37,10 @@ class RssFeed < ActiveRecord::Base
     update_attributes(:last_fetched=>Time.now, :error_message=>"", :next_fetch => Time.now + 10.minute)
   end  
   
+  def record_error error_message
+    update_attributes(:error_message=> error_message, :next_fetch => Time.now + 1.minute)
+  end
+  
   def make_posts(rsscontent)
     #fix for flickr badness:
     #http://groups.google.com/group/vanrb/browse_thread/thread/f567054d82de21c
