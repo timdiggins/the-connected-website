@@ -3,6 +3,7 @@ studio1:
   name: Studio 1
   desc: Studio one is such a cool place
   home_page: MyString
+  contributed_at: <%= 1.day.ago %>
 
 studio3:
   name: Studio Free
