@@ -3,9 +3,16 @@
 <div id="sidebar" class="grid_5 alpha">
   <% if @post.group != NIL %>
     <div id="largeDescription">
-      <p>This post belongs to <%= @post.group %></p>
+      <p id="meta">
+          <% if !@post.remote_url.nil? && !@post.remote_url.empty? %>
+        		<span class="author">Work by <%= link_to_user(@post.group) %> originally posted on an <%= link_to "external site",@post.remote_url %></span>  
+      		<% end %>
+          <span class="date">
+            <%= time_ago_in_words(@post.created_at) %> ago.
+          </span>
+      </p>
     </div>
-    <p><%= link_to "More posts by this studio...", @post.group %></p>
+    <p><%= link_to "View more works by #{@post.group}", @post.group %></p>
   <% else %>  
     <%= render :partial => 'posts/author' %>
   <% end %>
@@ -14,67 +21,69 @@
 </div>
 
 <div id="main" class="grid_11 omega">
-	<h1 class="post"><%=h @post %></h1>
-  <%=render :partial => 'posts/meta', :locals=>{:post=>@post, :with_controls=>true}%>
+	<h1 class="header"><%=h @post %></h1>
+	<div class="posts">
+    <%=render :partial => 'posts/meta', :locals=>{:post=>@post, :with_controls=>true}%>
 
-	<% if @post.has_video? %>
-	  <div class="video">
-	    <%= @post.video_embed_tags %>
-	  </div>
-	<% end %>
+  	<% if @post.has_video? %>
+  	  <div class="video">
+  	    <%= @post.video_embed_tags %>
+  	  </div>
+  	<% end %>
 	
-	<% if @post.has_attachment? %>
-	  <%= link_to "<img src=\"/images/pdf.gif\" width=\"54px\" height=\"66px\" alt=\"PDF preview\" />", @post.attachment.public_filename, :class => "PDFpreview" %>
-  	<div class="fileBody">
-  		<%= @post.detail %>
-    	<p class="download"><%= link_to "Download this PDF file", @post.attachment.public_filename %></p>
-  	</div>
-	<% else %>
-	  <div class="postBody">
-  		<%= @post.detail %>
-  	</div>
-	<% end %>
+  	<% if @post.has_attachment? %>
+  	  <%= link_to "<img src=\"/images/pdf.gif\" width=\"54px\" height=\"66px\" alt=\"PDF preview\" />", @post.attachment.public_filename, :class => "PDFpreview" %>
+    	<div class="fileBody">
+    		<%= @post.detail %>
+      	<p class="download"><%= link_to "Download this PDF file", @post.attachment.public_filename %></p>
+    	</div>
+  	<% else %>
+  	  <div class="postBody">
+    		<%= @post.detail %>
+    	</div>
+  	<% end %>
 
-   <% if logged_in? && current_user.can_edit?(@post) %>
-	 <div id="featuring-controls">
-	   <h1>Featuring...</h1>
-   <% if !@post.has_images?%>
-		  <p>(No images to feature).</p>
-		 <% else %>
-		   <h2>Images to feature:</h2>
-			 <div class='image-controls'>
-		  	 <% @post.images.each do |image| %>
-		  	   <span id="image-<%=image.id%>">
-		         <%= link_to image_tag_for(image, :medium_square), image.src, :title => "Open orignal image on remote site" %>
-		         <% if logged_in? && current_user.can_edit?(@post) %>
-			      	 <%= link_to 'Delete?', image_path(image), :method=>:delete, :class=>'option', :confirm=>'Delete this image?' %>
-							 <% if image.featured? %>
-		             <%= link_to 'Unfeature', unfeature_image_path(image), :method=>:put, :class=>'option' %>
-							 <% else %>
-		             <%= link_to 'Feature', feature_image_path(image), :method=>:put, :class=>'option' %>
-							 <% end %>
-		      	 <% end %>	
-		  		 </span>
-		  	 <% end %>
-			   <div class="clearThis"> </div>
-			 </div>
-			 <% end %>
-   <% if !@post.has_text?%>
-      <p>(No text to feature).</p>
-   <% else %>
-	   <div>
-	    <h2>Text (<%if @post.featured?%>featured<%else%>not featured<%end%></h2>
-			<div><p><%=plain_text(@post.text) %></p></div>
-		   <div class="clearThis"> </div>
-     </div> 
-   <% end %>
-	    <%= link_to("Edit text", edit_post_url(@post), :class => "option") %> 
-      <%if @post.featured?%>
-        <%= link_to("Unfeature post text", unfeature_post_url(@post), :class => "option", :method => :put) %>
-      <% else %>
-        <%= link_to("Feature post text", feature_post_url(@post), :class => "option", :method => :put) %>
-      <% end %>
+     <% if logged_in? && current_user.can_edit?(@post) %>
+  	 <div id="featuring-controls">
+  	   <h1>Featuring...</h1>
+     <% if !@post.has_images?%>
+  		  <p>(No images to feature).</p>
+  		 <% else %>
+  		   <h2>Images to feature:</h2>
+  			 <div class='image-controls'>
+  		  	 <% @post.images.each do |image| %>
+  		  	   <span id="image-<%=image.id%>">
+  		         <%= link_to image_tag_for(image, :medium_square), image.src, :title => "Open orignal image on remote site" %>
+  		         <% if logged_in? && current_user.can_edit?(@post) %>
+  			      	 <%= link_to 'Delete?', image_path(image), :method=>:delete, :class=>'option', :confirm=>'Delete this image?' %>
+  							 <% if image.featured? %>
+  		             <%= link_to 'Unfeature', unfeature_image_path(image), :method=>:put, :class=>'option' %>
+  							 <% else %>
+  		             <%= link_to 'Feature', feature_image_path(image), :method=>:put, :class=>'option' %>
+  							 <% end %>
+  		      	 <% end %>	
+  		  		 </span>
+  		  	 <% end %>
+  			   <div class="clearThis"> </div>
+  			 </div>
+  			 <% end %>
+     <% if !@post.has_text?%>
+        <p>(No text to feature).</p>
+     <% else %>
+  	   <div>
+  	    <h2>Text (<%if @post.featured?%>featured<%else%>not featured<%end%></h2>
+  			<div><p><%=plain_text(@post.text) %></p></div>
+  		   <div class="clearThis"> </div>
+       </div> 
+     <% end %>
+  	    <%= link_to("Edit text", edit_post_url(@post), :class => "option") %> 
+        <%if @post.featured?%>
+          <%= link_to("Unfeature post text", unfeature_post_url(@post), :class => "option", :method => :put) %>
+        <% else %>
+          <%= link_to("Feature post text", feature_post_url(@post), :class => "option", :method => :put) %>
+        <% end %>
 
-	 <% end %>
+  	 <% end %>
+  </div>	 
 </div>
 

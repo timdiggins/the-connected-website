@@ -2,29 +2,7 @@
   # Parameters: with_controls = false
   with_controls = local_assigns[:with_controls]
 %>
-<p class="meta">
-    <% if !post.remote_url.nil? && !post.remote_url.empty? %>
-  		<span class="author"><%= link_to_user(post.group) %> work retrieved from  <%= link_to "external site",post.remote_url %></span>  
-		<% end %>
-    <span class="date">
-      <!--<%if !post.has_attachment? && !post.has_video?%>created<%end%>-->
-      <%= time_ago_in_words(post.created_at) %> ago.
-    </span>
-  
-	  <!--
-		<% if post.comments.empty? %>
-      <span class="commentCount">No comments yet.</span>
-    <% else %>
-      <br />
-			<span class="date">
-	      Last comment <%= post.commented_at ? time_ago_in_words(post.commented_at) : 'some time' %> ago,
-	      </span>
-      <span class="commentCount">
-       <%= link_to pluralize(post.comments.count, "Comment"), post_path(post, :anchor=>"comments") %>.
-      </span> 
-    <% end %>
-    -->
-		</p>
+
 		<% if with_controls && logged_in? && current_user.can_edit?(post) %>
 		<p class="meta">
       <%= link_to("Edit post", edit_post_url(post), :class => "option") %> 
