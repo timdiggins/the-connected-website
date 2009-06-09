@@ -5,8 +5,7 @@
 <div id="sidebar" class="grid_5 alpha">
   
   <div id="largeDescription">
-    <h1><%= @page_title = @group %></h1>
-    <p class="category"><%= h(@group.category) %></p>
+    <h2>More about <%= @group %></h2>
     <%= simple_format(h(@group.desc))%>   
   </div>
   
@@ -42,7 +41,8 @@
 </div>  
 
 <div id="main" class="grid_11 omega">
-    <h2>Featured images by <%= @group%></h2>
+    <h1><%= @page_title = @group %></h1>
+    <p class="category"><%= h(@group.category) %></p>
 		<div>
 		  <%= render :partial=>'image', :collection=>@featured_images %>
 		  <%= clear_this %>
@@ -64,10 +64,10 @@
     <div class="imageCloud">
     	<% for image in @recent_images %>
       	<a href="<%= post_path(image.post) %>">
-          <%= image_tag_for(image, :small_square) %>
+          <%= image_tag_for(image, :medium_square) %>
         </a>
       <% end %>
-    
+      <%= clear_this %>
 		</div>
 
 	  <h2>Recent texts</h2>

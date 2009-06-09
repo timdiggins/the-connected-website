@@ -4,6 +4,7 @@
 	http://localhost:3000/stylesheets/wminarch.css?1244477906
 	http://localhost:3000/stylesheets/wminarch.css?1244479381
 	http://localhost:3000/stylesheets/wminarch.css?1244543018
+	http://localhost:3000/stylesheets/wminarch.css?1244559690
 */
 
 body {
@@ -57,7 +58,7 @@ a {
 }
 
 #largeDescription p {
-  font-size: 1.2em;
+  font-size: 1.1em;
   color: #333;
   margin: 0.5em 0px;
 }
@@ -73,11 +74,14 @@ a {
   	height: 250px;
 }
 
-#largeDescription h1 {
-  font-size: 1.3em;
-  color: #333;
+#largeDescription h1 , #largeDescription h2 {
+  font-size: 1.2em;
   font-weight: bold;
-  margin: 0px 0px 0 0px;
+  margin: 0;
+}
+
+div.imageCloud a {
+  	float:left;
 }
 
 
@@ -489,13 +493,7 @@ h1 {
 
 
 h2 {
-	font-size: 1.3em;
-}
-
-
-
-#sidebar h2 {
-  font-size: 1em;
+  font-size: 1.2em;
   margin: 2em 0 0.5em 0;
 }
 
@@ -1045,7 +1043,6 @@ a.imageStripImage .title {
 .featureDescription {
 	width: 256px;
 	height: 256px;
-	background-color: #EEE;
 	float: left;
 	color: #333;
 	margin: 0;
@@ -1059,7 +1056,7 @@ a.imageStripImage .title {
 
 .featureDescription h2 {
   	font-size: 1.2em;
-  	margin: 1em 0 0 0;
+  	margin: 0;
 }
 
 .featureDescription a {
