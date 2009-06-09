@@ -156,8 +156,23 @@ class PostTest < ActiveSupport::TestCase
   end
   
   context "Post class" do
-    should "be able to find recent posts without images" do
-      Post.with_no_images.all
+    setup do
+      recalculate_image_count
     end
-  end 
+    
+    should "be able to find recent posts without images" do
+      posts = Post.with_no_images.all
+      assert_equal 2, posts.size
+      assert posts.include?(posts(:alex_boring_link))
+      assert ! posts.include?(posts(:article_from_rss))
+    end
+    
+  end
+
+  def recalculate_image_count
+    Post.reset_column_information
+    Post.find(:all).each do |p|
+      Post.update_counters p.id, :post_images_count => p.images.length
+    end
+  end
 end
