@@ -32,7 +32,7 @@ a {
 
 #main {
 	background-color: #FFF;
-	padding: 1em 0;
+	padding: 0;
 }
 
 
@@ -1036,8 +1036,7 @@ a.imageStripImage .title {
 #featureImage {
   float: left;
   background-color: #000;
-  margin: 0 0 2px 0;
-  border: 1px solid #000;
+  margin: 0;
 }
 
 #subscribe {
@@ -1046,27 +1045,32 @@ a.imageStripImage .title {
 
 
 .featureDescription {
-	width: 260px;
-	height: 258px;
-	background-color: #000;
+	width: 256px;
+	height: 256px;
+	background-color: #EEE;
 	float: left;
-	color: #DDD;
-	margin: 0 2px 2px 0;
+	color: #333;
+	margin: 0;
+	overflow: hidden;
 }
 
-.featureDescription h2, .featureDescription p  {
-	padding-left: 15px;
-	padding-right: 20px;
+.featureDescription h2, .featureDescription p, .featureDescription .text  {
+	padding: 0 25px 0 15px;
+	margin: 0.5em 0;
 }
 
 .featureDescription h2 {
-  	font-size: 1.3em;
-  	margin: 1em 0 0.5em 0;
+  	font-size: 1.2em;
+  	margin: 1em 0 0 0;
 }
 
 .featureDescription h2 a {
 	text-decoration: none;
-	color: #FFF;
+}
+
+.featureDescription .text  {
+	color: #666;
+	margin-top: 1em;
 }
 
 
@@ -1084,7 +1088,7 @@ a.squareImage {
   float: left;
   position:relative;
   text-decoration: none;
-  margin: 0 2px 2px 0;
+  margin: 0;
 }
 
 
@@ -1106,11 +1110,11 @@ a.squareImage img {
 
 a.squareImage:hover .label {
   display: block;
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(0,0,0,0.85);
 }
 
 a.squareImage .title {
-  color: #000;
+  color: #FFF;
   font-weight: bold;
   white-space: nowrap;
   display: block;
@@ -1119,7 +1123,7 @@ a.squareImage .title {
   }
   
 a.squareImage .inGroup {
-  color: #333;
+  color: #CCC;
   white-space: nowrap;
   margin: 0px 7px;
     font-size: 0.9em;
