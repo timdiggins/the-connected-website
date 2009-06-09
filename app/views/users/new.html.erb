@@ -1,38 +1,47 @@
 
 <div id="main">
-	<div class="largeForm">
-	  <h1><%= @page_title = "Join" %></h1>
+  <% if logged_in? %>
+    <h1>Invite new users</h1>
+    <p>If you want new users to join this site please have them visit the url below so they can sign themselves up.</p>
+    <p>Please note that this makes only sense for people who you intend to become group administrators or moderators.</p>
+    <p><strong><%= signup_url %></strong></p>
+	<% else %>
+	
+  	<div class="largeForm">
+  	  <h1><%= @page_title = "Join" %></h1>
   
-	  <% form_for @user do | f | -%>
-	    <%= f.error_messages %>
+  	  <% form_for @user do | f | -%>
+  	    <%= f.error_messages %>
     
-	    <fieldset>
-		    <p>
-		      <%= f.label :login, "Desired user name" %>
-		      <%= f.text_field :login, :class => "largeInput"  %>
-		    </p>
-		    <p>
-		      <%= f.label :email, "Your email" %>
-		      <%= f.text_field :email, :class => "largeInput" %>
-            </p>
+  	    <fieldset>
+  		    <p>
+  		      <%= f.label :login, "Desired user name" %>
+  		      <%= f.text_field :login, :class => "largeInput"  %>
+  		    </p>
+  		    <p>
+  		      <%= f.label :email, "Your email" %>
+  		      <%= f.text_field :email, :class => "largeInput" %>
+              </p>
             
-		    <p>
-		      <%= f.label :password %>
-		      <%= f.password_field :password, :class => "largeInput" %>
-		    </p>
-	    </fieldset>
+  		    <p>
+  		      <%= f.label :password %>
+  		      <%= f.password_field :password, :class => "largeInput" %>
+  		    </p>
+  	    </fieldset>
     
-	  	<p class="submitBlock">
-	  	  <%= submit_tag 'Sign up' %>
-	  	</p>
+  	  	<p class="submitBlock">
+  	  	  <%= submit_tag 'Sign up' %>
+  	  	</p>
   	
-	  	<p class="formOptions">
-	    	Already signed up? <%= link_to "Sign in here", login_url(:return_to=>params[:return_to]) %>.
-	    </p>
+  	  	<p class="formOptions">
+  	    	Already signed up? <%= link_to "Sign in here", login_url(:return_to=>params[:return_to]) %>.
+  	    </p>
     
-	  <% end -%>
+  	  <% end -%>
   
 
     
-	</div>
+  	</div>
+	
+	<% end %>
 </div>
