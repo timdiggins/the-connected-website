@@ -19,6 +19,6 @@ module ApplicationHelper
   end
   
   def plain_text(string)
-    h(strip_tags(string))
+    simple_format(h(string))
   end
 end

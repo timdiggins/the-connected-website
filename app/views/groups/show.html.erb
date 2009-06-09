@@ -58,12 +58,21 @@
 
 
   
-	  <h2>Recent works</h2>
+	  <h2>Recent images</h2>
     <div class="imageCloud">
     	<% for image in @recent_images %>
       	<a href="<%= post_path(image.post) %>">
           <%= image_tag_for(image, :small_square) %>
         </a>
+      <% end %>
+    
+		</div>
+
+	  <h2>Recent texts</h2>
+    <div class="">
+    	<% for post in @recent_texts %>
+      	<a href="<%= post_path(post) %>"><%=h(post.title)%></a>
+          <%= plain_text(post.text) %>
       <% end %>
     
 		</div>
