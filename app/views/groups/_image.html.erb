@@ -1,0 +1,7 @@
+<a href="<%= post_path(image.post) %>" class="imageStripImage">
+    <%= image_tag_for(image, :strip) %>
+    <div class="label" style="width:<%= image.width_for_height(128) %>px;">
+      <span class="title"><%= image.post.title %>.</span>
+    </div>  
+ </a>
+      

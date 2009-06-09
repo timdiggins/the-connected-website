@@ -37,10 +37,15 @@
 
    <div class='image-controls'>
   	 <% @post.images.each do |image| %>
-  	   <span>
+  	   <span id="image-<%=image.id%>">
          <%= link_to image_tag_for(image, :medium_square), image.src, :title => "Open orignal image on remote site" %>
          <% if logged_in? && current_user.can_edit?(@post) %>
-      	 <%= link_to 'Delete?', image_path(image), :method=>:delete, :confirm=>'Delete this image?' %>
+	      	 <%= link_to 'Delete?', image_path(image), :method=>:delete, :class=>'option', :confirm=>'Delete this image?' %>
+					 <% if image.featured? %>
+             <%= link_to 'Unfeature', unfeature_image_path(image), :method=>:put, :class=>'option' %>
+					 <% else %>
+             <%= link_to 'Feature', feature_image_path(image), :method=>:put, :class=>'option' %>
+					 <% end %>
       	 <% end %>	
   		 </span>
   	 <% end %>

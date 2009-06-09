@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090608161446) do
+ActiveRecord::Schema.define(:version => 20090608173007) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "post_id"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(:version => 20090608161446) do
     t.datetime "updated_at"
     t.integer  "width"
     t.integer  "height"
+    t.datetime "featured_at"
   end
 
   create_table "posts", :force => true do |t|

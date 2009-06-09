@@ -2,12 +2,20 @@
 
 article_from_rss_image1:
   post: article_from_rss 
-  src: MyString
+  src: image1.png
   width: 10
   height: 20
-
+  
 article_from_rss_image2:
   post: article_from_rss 
-  src: MyString
+  src: image2.png
   width: 104
   height: 105
+  featured_at: <%=1.day.ago%>
+  
+cool_article_image1:
+  post: cool_article
+  src: image3.png
+  width: 110
+  height: 110
+  featured_at: <%=1.hour.ago%>

@@ -3,9 +3,6 @@
   with_controls = local_assigns[:with_controls]
 %>
 <p class="meta">
-   <%if post.featured?%>
-     <strong>Featured</strong>. 
-   <%end%>
     <% if !post.remote_url.nil? && !post.remote_url.empty? %>
   		<span class="author"><%= link_to_user(post.group) %> work retrieved from  <%= link_to "external site",post.remote_url %></span>  
 		<% end %>
@@ -27,9 +24,17 @@
       </span> 
     <% end %>
     -->
+		</p>
 		<% if with_controls && logged_in? && current_user.can_edit?(post) %>
+		<p class="meta">
 		  <%= link_to("Edit post", edit_post_url(post), :class => "option") %> 
       <%= link_to("Delete post", post_url(post), :class => "option", :method => :delete, :confirm => "Are you sure you'd like to delete this post?") %>
+      <%if post.featured?%>
+        <strong>Text featured</strong>. 
+        <%= link_to("Unfeature post text", unfeature_post_url(post), :class => "option", :method => :put) %>
+			<% else %>
+        <%= link_to("Feature post text", feature_post_url(post), :class => "option", :method => :put) %>
+			<% end %>
+			</p>
 		<% end %> 
-</p>
   
