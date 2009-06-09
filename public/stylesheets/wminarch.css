@@ -1,4 +1,9 @@
-/* @override http://localhost:3000/stylesheets/wminarch.css?1236537099 */
+/* @override 
+	http://localhost:3000/stylesheets/wminarch.css?1236537099
+	http://localhost:3000/stylesheets/wminarch.css?1244473302
+	http://localhost:3000/stylesheets/wminarch.css?1244477906
+	http://localhost:3000/stylesheets/wminarch.css?1244479381
+*/
 
 body {
 	font-family: arial, sans-serif;
@@ -69,16 +74,21 @@ a {
 
 #largeDescription p {
   font-size: 1.2em;
-  color: #666;
-  font-weight: bold;
+  color: #333;
   margin: 0.5em 0px;
+}
+
+#largeDescription p.category {
+  font-size: 1.1em;
+  color: #666;
+  margin: 0.3em 0 1.5em 0;
 }
 
 #largeDescription h1 {
   font-size: 1.3em;
   color: #333;
   font-weight: bold;
-  margin: 0px 0px 0.5em 0px;
+  margin: 0px 0px 0 0px;
 }
 
 
@@ -247,8 +257,9 @@ div.largeForm input.largeInput {
 }
 
 div.largeForm textarea {
-	font-size: 1.3em;
-	height: 100px;
+	font-size: 1.2em;
+	height: 180px;
+	width: 50%;
 }
 
 
@@ -492,7 +503,7 @@ h2 {
 
 #sidebar h2 {
   font-size: 1em;
-  margin-top: 3em;
+  margin: 2em 0 0.5em 0;
 }
 
 
@@ -979,6 +990,15 @@ div.tags input {
   font-size: 1.4em;
   margin: 0px;
   font-weight: bold;
+}
+
+.group .title .category {
+  font-size: 0.8em;
+  color:#999;
+  font-weight: normal;
+  margin-left: 0.5em;
+  padding-left: 0.5em;
+  border-left: 1px solid #DDD;
 }
 
 .group .latestImages {
