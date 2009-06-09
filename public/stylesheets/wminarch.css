@@ -1,6 +1,8 @@
 /* @override 
 	http://localhost:3000/stylesheets/wminarch.css?1236537099
 	http://localhost:3000/stylesheets/wminarch.css?1244473302
+	http://localhost:3000/stylesheets/wminarch.css?1244477906
+	http://localhost:3000/stylesheets/wminarch.css?1244479381
 */
 
 body {
@@ -496,7 +498,7 @@ h2 {
 
 #sidebar h2 {
   font-size: 1em;
-  margin-top: 3em;
+  margin: 2em 0 0.5em 0;
 }
 
 
@@ -983,6 +985,15 @@ div.tags input {
   font-size: 1.4em;
   margin: 0px;
   font-weight: bold;
+}
+
+.group .title .category {
+  font-size: 0.8em;
+  color:#999;
+  font-weight: normal;
+  margin-left: 0.5em;
+  padding-left: 0.5em;
+  border-left: 1px solid #DDD;
 }
 
 .group .latestImages {
