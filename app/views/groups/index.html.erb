@@ -3,12 +3,9 @@
 		
 <div id="sidebar" class="grid_5 alpha">
   <div id="largeDescription">
-    <p>The School of Architecture sports multiple studios and collectives ...</p>
+    <p>The School of Architecture sports multiple studios and collectives:</p>
   </div>
-  
-  <div id="subscribe">
-    <p><a href="<%= formatted_posts_url(:format => :rss) %>" class="rss">Subscribe to all posts</a></p>
-  </div>
+
   
   <div id="groupsNavigation">
     <% if logged_in? %>
@@ -39,7 +36,7 @@
 </div>
 
 <div id="main" class="grid_11 omega">
-
+    <h1 class="header">Recently updated groups</h1>
 	  <%= render :partial => 'group', :collection=> @groups%>
 </div>
 <%= clear_this %>
