@@ -3,6 +3,7 @@
 	http://localhost:3000/stylesheets/wminarch.css?1244473302
 	http://localhost:3000/stylesheets/wminarch.css?1244477906
 	http://localhost:3000/stylesheets/wminarch.css?1244479381
+	http://localhost:3000/stylesheets/wminarch.css?1244543018
 */
 
 body {
@@ -59,10 +60,7 @@ a {
 #sidebar {
 	float: left;
 	width: 250px;
-	padding-top: 4em;
-}
-
-#sidebar {
+	padding-top: 3em;
   	word-wrap:break-word;
 }
 
@@ -101,7 +99,7 @@ a {
 	height: 1px;
 	overflow: hidden;
 	margin: 0px;
-	clear: both;
+	clear: left;
 }
 
 .clearRight {
@@ -510,6 +508,7 @@ h2 {
   font-size: 1em;
   margin: 2em 0 0.5em 0;
 }
+
 
 
 

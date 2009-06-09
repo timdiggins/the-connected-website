@@ -5,7 +5,7 @@
 	  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 
 		<%= javascript_include_tag :all, :cache => true %>
-		<%= stylesheet_link_tag 'wminarch', :cache => true %>
+		<%= stylesheet_link_tag :all, :cache => true %>
 		<%= auto_discovery_link_tag(:rss, formatted_posts_url(:format => :rss), :title => "All Posts") %>
 		<%= auto_discovery_link_tag(:rss, formatted_featured_posts_url(:format => :rss), :title => "Featured Posts") %>
 
@@ -32,42 +32,31 @@
       </ul>
     </div>
 		<div id="wrap">
-
-			
-      
       <% unless flash_value.blank? %>
-      	<div id="flash" <%= flash_class %>>
-      	  <%= flash_value %>
-      	</div>
+      <div id="flash" <%= flash_class %>>
+        <%= flash_value %>
+      </div>
       <% end %>
-      
       
       <% if session[:as_someone_else] %>
-        <div id="dangerAdmin">
-          <p><strong>CAREFUL!  You're logged in as <%= current_user %> !</strong></p>
-        </div>
+      <div id="dangerAdmin">
+        <p><strong>CAREFUL!  You're logged in as <%= current_user %> !</strong></p>
+      </div>
       <% end %>
-      
-      
-      
-			<div id="content">
 
+      <%= yield %>
 
-		   <%= yield %>
-       
-       <%= clear_this %>
-       
-			</div>
-			
-			<div id="footer">
-          <p>
-      	    Copyright 2008 - <a href="http://nokahuna.com/projects/5943">Open-source web application</a>.
-          </p>
+      <%= clear_this %>
+      <div id="footer">
+        <p>
+          Copyright 2008 - <a href="http://nokahuna.com/projects/5943">Open-source web application</a>.
+        </p>
       </div>
       
-		</div>	
+		</div>
+		<%= render :partial => 'layouts/google_analytics' %>
 	</body>
 	
-	<%= render :partial => 'layouts/google_analytics' %>
+	
 </html>
 
