@@ -23,7 +23,7 @@ class RssFeedsController < ApplicationController
   
   def index
     if ! params[:group_id]
-      @rss_feeds = RssFeed.find(:all)
+      @rss_feeds = RssFeed.sorted_by_next_fetch
       return render(:action=>'index_all')
     end
     @group = Group.find_by_name params[:group_id]
