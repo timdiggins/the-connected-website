@@ -20,9 +20,9 @@
   	  <ul id="navigation">  
   		  <li <%= current_if_tab_is(:home) %>><%= link_to "Home", root_url %></li>
   		  <li><%= link_to 'Studios', groups_path %></li>
-  		  <li><%= link_to "Sign up url", signup_url %></li>
         <% if logged_in? %>
-          <li class="personal"><%= link_to('Logout', logout_url) %></li>
+          <li class="personal"><%= link_to('Logout', logout_url) %></li>\
+          <li class="personal"><%= link_to "Invite users", signup_url %></li>
       		<li class="personal"><%= link_to('Your Settings', bio_settings_url) %></li>
       		<li class="personal"><%= link_to('Your Profile', user_url(current_user)) %></li>
       		<!-- <li class="personal"><%= link_to "Update", new_post_url %></li> -->
