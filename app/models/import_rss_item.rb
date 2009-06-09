@@ -23,10 +23,16 @@ class ImportRssItem
                     :remote_url=>@item.link,
                     :group_id=>@group.id
     )
-    if !post.save
-      puts "couldn't save post for group-#{@group.id}, #@group"
-      return
+    if !post.valid?
+      puts "title: #{title}"
+      puts "detail: #{detail}"
+      puts "detail-sanitized: #{HTML::FullSanitizer.new.sanitize(detail)}"
+      puts "remote_url: #{@item.link}"
+      puts "group.id #{@group.id}"
+      puts "couldn't validate post for group-#{@group.id}, #@group"
     end
+    post.save!
+
     guid.save
     self.class.parse_images_from_detail(detail).each do |image|
       if !image.nil?

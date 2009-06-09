@@ -11,6 +11,8 @@ class Group < ActiveRecord::Base
   alias_attribute :category, :group_category
   alias_attribute :images, :post_images
   
+  named_scope :order_by_contributed_at, lambda {  { :order => "contributed_at DESC" } }
+
   def to_param
     name
   end
