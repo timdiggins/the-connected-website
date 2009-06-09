@@ -71,8 +71,11 @@
 	  <h2>Recent texts</h2>
     <div class="">
     	<% for post in @recent_texts %>
-      	<a href="<%= post_path(post) %>"><%=h(post.title)%></a>
-          <%= plain_text(post.text) %>
+      	<p><a href="<%= post_path(post) %>"><%=h(post.title)%></a>
+          <%= plain_text(post.text) %></p>
+					<p>          cache:<%= post.post_images_count%>
+          live: <%= post.post_images.count%>
+</p>
       <% end %>
     
 		</div>

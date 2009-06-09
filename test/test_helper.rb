@@ -9,14 +9,21 @@ require 'test_help'
 class Test::Unit::TestCase
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
-
+  
   fixtures :all
-
 end
 
+class TestUtil
+  def self.recalculate_counters
+    Post.reset_column_information
+    Post.find(:all).each do |p|
+      Post.update_counters p.id, :post_images_count => p.images.length
+    end
+  end
+end
 
 class ActionController::IntegrationTest
-
+  
   def new_session(&block) 
     open_session do | session | 
       session.extend(BasicsDsl)
@@ -37,7 +44,7 @@ class ActionController::IntegrationTest
   def logger
     Rails.logger
   end
-    
+  
 end
 
 
@@ -50,5 +57,3 @@ module ActionController
     end
   end
 end
-
-

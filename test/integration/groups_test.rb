@@ -115,6 +115,8 @@ class GroupsTest < ActionController::IntegrationTest
     end
   end
   
+  
+ 
   def assert_feeds expected_feeds 
     assert_select "#feeds a",:count=>expected_feeds.length 
     expected_feeds.each do |feed|
@@ -137,4 +139,6 @@ class GroupsTest < ActionController::IntegrationTest
       end
     end
   end
+  
+
 end
