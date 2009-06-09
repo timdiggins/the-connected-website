@@ -52,25 +52,13 @@
     
     <% if @featured_images.count > 0 %>
 		  <%= render :partial=>'image', :collection=>@featured_images %>
-		  <%= clear_this %>
 		<% end %>
     
-    <%= clear_this %>
-    
-    
-
-      
-      
 
 
-    
-    
-    
-    
-
-      
       <% if @featured_texts.count > 0 %>
-        <div id="featuredTexts">
+        <%= clear_this %>
+        <div id="featuredTexts" class="posts">
           <h2>Featured works by <%= @group%></h2>
           <%= render :partial=>'post', :collection=>@featured_texts %>
           <%= clear_this %>
@@ -88,9 +76,10 @@
   		
   		<%= clear_this %>
       
-      <h2>Other recent works by <%= @group%></h2>
-      <%= render :partial=>'post', :collection=>@recent_texts %>
-    
+      <div class="posts">
+        <h2>Other recent works by <%= @group%></h2>
+        <%= render :partial=>'post', :collection=>@recent_texts %>
+      </div>
 
 		
 

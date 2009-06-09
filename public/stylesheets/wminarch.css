@@ -82,6 +82,11 @@ div.imageCloud a {
   	margin-bottom: 3em;
 }
 
+div.posts {
+	padding: 0 30px;
+  	
+}
+
 
 .clearThis {
 	height: 1px;
@@ -979,6 +984,10 @@ div.tags input {
   	margin-bottom: 2em;
 }
 
+.group .title {
+	margin-left: 20px;
+}
+
 .group .title a {
   font-size: 1.4em;
   margin: 0px;
@@ -999,8 +1008,7 @@ div.tags input {
   font-size: 1.2em;
   margin-top: 0.5em;
   color: #666;
-  max-height: 5.7em;
-  overflow: hidden;
+  margin-left: 20px;
 }
 
 

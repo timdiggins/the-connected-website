@@ -29,21 +29,13 @@
 		</div>
 
 	  <%= render :partial=>'groups/image', :collection=>@otherFeaturedImages %>
-   
+
     <div class="clearThis"> </div>
-
-  	
-
-      <div id="featuredTexts">
-        <h2>More featured by various studios</h2>
-        <%= render :partial=>'groups/post', :collection=>@featured_posts %>
-        <%= clear_this %>
-      </div>
-
-    
-
-    
-  
+    <div id="featuredTexts" class="posts">
+      <h2>More featured work by various studios</h2>
+      <%= render :partial=>'groups/post', :collection=>@featured_posts %>
+      <%= clear_this %>
+    </div>
 
 	</div>
 
