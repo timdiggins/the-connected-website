@@ -956,31 +956,13 @@ div.tags input {
 
 
 
-#groups {
-	margin-left: 300px;
-	background-color: #FFF;
-	padding: 0;
-}
-
 .group {
-
+  	border-bottom: 1px solid #DDD;
+  	padding: 0 0 1.5em 0;
+  	margin-bottom: 2em;
 }
 
-.group a {
-  display: block;
-  clear: right;
-  padding: 1.5em 1em 2em 2em;
-  background-color: #FFF;
-  text-decoration: none;
-  border-top: 1px solid #DDD;
-}
-
-.group a:hover {
-  background-color: #EEE;
-}
-
-
-.group .title {
+.group a.title {
   font-size: 1.4em;
   margin: 0px;
   font-weight: bold;
@@ -995,10 +977,6 @@ div.tags input {
   border-left: 1px solid #DDD;
 }
 
-.group .latestImages {
-  float:right;
-  margin: 0px 0px 0px 2em;
-}
 
 .group .profileText {
   font-size: 1.2em;
