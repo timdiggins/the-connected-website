@@ -83,8 +83,7 @@ div.imageCloud a {
 }
 
 div.posts {
-	padding: 0 30px;
-  	
+	padding: 0 20px;
 }
 
 
@@ -499,7 +498,8 @@ h1.header {
 }
 
 #groupHeader {
-  	padding: 1em 30px 1.5em 30px;
+  	padding: 1em 20px 1.5em 20px;
+  	border-bottom: 1px solid #DDD;
 }
 
 #groupHeader h1 {
