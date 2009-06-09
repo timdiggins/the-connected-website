@@ -4,7 +4,8 @@ require 'open-uri'
 class RssFeed < ActiveRecord::Base
   belongs_to :group
   has_many :imported_guids
-  
+  named_scope :sorted_by_next_fetch, lambda { { :order => "next_fetch ASC" }}
+
   #  before_create do |rss_feed|
   #    if rss_feed.next_fetch.nil?
   #      rss_feed.next_fetch = Time.now 
