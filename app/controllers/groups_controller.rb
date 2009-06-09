@@ -4,8 +4,8 @@ class GroupsController < ApplicationController
   before_filter :find_group_categories, :only => [ :index, :edit, :new]
   #uses_tiny_mce :options => tiny_mce_options, :only => [ :new,:create, :update, :edit ]
   
-  RECENT_IMAGES_PER_PAGE = 50
-  RECENT_TEXTS_PER_PAGE = 50
+  RECENT_IMAGES_PER_PAGE = 30
+  RECENT_TEXTS_PER_PAGE = 10
   def index
     @groups = Group.order_by_contributed_at
   end
@@ -13,8 +13,8 @@ class GroupsController < ApplicationController
   def show
     @recent_images = @group.images.limit_to RECENT_IMAGES_PER_PAGE
     @recent_texts = @group.posts.with_no_images.limit_to RECENT_TEXTS_PER_PAGE
-    @featured_images = @group.images.featured.limit_to 15 
-    @featured_texts = @group.posts.featured.limit_to 10 
+    @featured_images = @group.images.featured.limit_to 10 
+    @featured_texts = @group.posts.featured.limit_to 5 
   end
 
   def images

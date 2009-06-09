@@ -1,7 +1,2 @@
-<a href="<%= post_path(post) %>" class="imageStripImage">
-    <p><%= plain_text(post.text) %></p>
-		<div class="label" >
-      <span class="title"><%= post.title %>.</span>
-    </div>  
- </a>
-      
+<h3><a href="<%= post_path(post) %>"><%=h(post.title)%></a></h3>
+<p><%= plain_text(post.text) %></p> 

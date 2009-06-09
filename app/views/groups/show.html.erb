@@ -9,10 +9,6 @@
     <%= simple_format(h(@group.desc))%>   
   </div>
   
-  <% if !@group.home_page.nil?%>
-    <p>Visit studio site: <%=link_to nil, @group.home_page %></p>
-  <% end %>
-  
 	
   <% if logged_in? && current_user.can_edit?(@group) %>
     <h2>Admin options for this group</h2>
@@ -41,46 +37,63 @@
 </div>  
 
 <div id="main" class="grid_11 omega">
-    <h1><%= @page_title = @group %></h1>
-    <p class="category"><%= h(@group.category) %></p>
-		<div>
+  
+    <div id="groupHeader">
+      <h1><%= @page_title = @group %></h1>
+      <p>
+      <span class="category"><%= h(@group.category) %></span>
+      <% if !@group.home_page.nil?%>
+        <%=link_to "Visit home page", @group.home_page %>
+      <% end %>
+      </p>
+      
+    </div>
+    
+    
+    <% if @featured_images.count > 0 %>
 		  <%= render :partial=>'image', :collection=>@featured_images %>
 		  <%= clear_this %>
-    </div>
+		<% end %>
+    
+    <%= clear_this %>
+    
     
 
+      
+      
+
+
+    
+    
+    
+    
+
+      
+      <% if @featured_texts.count > 0 %>
+        <div id="featuredTexts">
+          <h2>Featured works by <%= @group%></h2>
+          <%= render :partial=>'post', :collection=>@featured_texts %>
+          <%= clear_this %>
+        </div>
+      <% end %>
+      
+      <div class="imageCloud">
+      	<% for image in @recent_images %>
+        	<a href="<%= post_path(image.post) %>">
+            <%= image_tag_for(image, :medium_square) %>
+          </a>
+        <% end %>
+        <%= clear_this %>
+  		</div>
+  		
+  		<%= clear_this %>
+      
+      <h2>Other recent works by <%= @group%></h2>
+      <%= render :partial=>'post', :collection=>@recent_texts %>
+    
 
 		
-		<h2>Featured text by <%= @group%></h2>
-	  <div>
-      <%= render :partial=>'post', :collection=>@featured_texts %>
-      <%= clear_this %>
-    </div>
 
-
-
-  
-	  <h2>Recent images</h2>
-    <div class="imageCloud">
-    	<% for image in @recent_images %>
-      	<a href="<%= post_path(image.post) %>">
-          <%= image_tag_for(image, :medium_square) %>
-        </a>
-      <% end %>
-      <%= clear_this %>
-		</div>
-
-	  <h2>Recent texts</h2>
-    <div class="">
-    	<% for post in @recent_texts %>
-      	<p><a href="<%= post_path(post) %>"><%=h(post.title)%></a>
-          <%= plain_text(post.text) %></p>
-					<p>          cache:<%= post.post_images_count%>
-          live: <%= post.post_images.count%>
-</p>
-      <% end %>
-    
-		</div>
 		
 
 </div>

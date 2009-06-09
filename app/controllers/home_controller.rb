@@ -9,12 +9,10 @@ class HomeController < ApplicationController
     @latestFeaturedImage = featured_images[0]
     @otherFeaturedImages = featured_images[1..-1]
     
-    featured_posts = Post.featured.limit_to(13)
-    if (featured_posts.size==0)
-      featured_posts = Post.find(:all, :limit=>13,:order => "updated_at DESC")
+    @featured_posts = Post.featured.limit_to(13)
+    if (@featured_posts.size==0)
+      @featured_posts = Post.find(:all, :limit=>13,:order => "updated_at DESC")
     end    
-    @latestFeaturedPost = featured_posts[0]
-    @otherFeaturedPosts = featured_posts[1..-1]
     
 
   end

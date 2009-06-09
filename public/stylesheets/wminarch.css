@@ -63,12 +63,6 @@ a {
   margin: 0.5em 0px;
 }
 
-#largeDescription p.category {
-  font-size: 1.1em;
-  color: #666;
-  margin: 0.3em 0 1.5em 0;
-}
-
 #post_detail {
   	width:100%;
   	height: 250px;
@@ -82,6 +76,10 @@ a {
 
 div.imageCloud a {
   	float:left;
+}
+
+#featuredTexts {
+  	margin-bottom: 3em;
 }
 
 
@@ -488,7 +486,28 @@ a.rss {
 }
 
 h1 {
-	font-size: 1.5em;
+	font-size: 2em;
+}
+
+#groupHeader {
+  	padding: 1em 30px 1.5em 30px;
+}
+
+#groupHeader h1 {
+	margin: 0;
+}
+
+#groupHeader p {	
+	font-size: 1.2em;
+	margin: 0.3em 0;
+}
+
+#groupHeader span.category {
+  font-weight: normal;
+  color: #999;
+  margin-right: 0.5em;
+  border-right: 1px solid #DDD;
+  padding-right: 0.5em;
 }
 
 
