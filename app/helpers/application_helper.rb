@@ -17,4 +17,8 @@ module ApplicationHelper
       yield tag, classes[index]
     end
   end
+  
+  def plain_text(string)
+    h(strip_tags(string))
+  end
 end

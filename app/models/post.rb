@@ -36,7 +36,7 @@ class Post < ActiveRecord::Base
   def brief
     truncate_html_text(detail)
   end
-
+  
   def featured?
     !featured_at.nil?
   end

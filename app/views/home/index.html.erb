@@ -36,6 +36,26 @@
       </a>
     <% end %>
     <div class="clearThis"> </div>
+
+    <h2>Featured Texts</h2>
+		<a href="<%= post_path(@latestFeaturedPost) %>">
+		  <%= plain_text(@latestFeaturedPost.detail) %>
+		</a>
+		<div>
+		  <h2><%= link_to @latestFeaturedPost.title, @latestFeaturedPost %></h2>
+		  <p>by <%= link_to @latestFeaturedPost.group, @latestFeaturedPost.group %></p>
+		</div>
+  		
+		<% for post in @otherFeaturedPosts %>
+    	<a href="<%= post_path(post) %>" >
+        <%= plain_text(post.detail) %>
+        <span class="label">
+          <span class="title"><%= post.title %></span>
+          <span class="inGroup">in <%= post.group.name %></span>
+        </span>  
+      </a>
+    <% end %>
+    <div class="clearThis"> </div>
     
     
     <!--
