@@ -1,3 +1,4 @@
+require 'hpricot'
 class Post < ActiveRecord::Base
   
   include Truncator
@@ -110,6 +111,18 @@ class Post < ActiveRecord::Base
     !video.blank?
   end
     
+  def has_images?
+    images.count>0
+  end
+  
+  def text
+    Hpricot(detail).inner_text
+  end
+  
+  def has_text?
+    !text.blank?
+  end
+  
   private
   def must_have_attachment
     errors.add_to_base("Must select a file to upload") if @in_upload_mode && (!attachment || attachment.filename.blank?)

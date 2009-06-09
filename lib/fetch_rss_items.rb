@@ -5,7 +5,7 @@ class FetchRssItems
     #return whether worth checking again soon
     rss_feed = activity = nil
     begin
-      rss_feed = RssFeed.find_next_to_fetch!
+      rss_feed = next_rss_feed
       rss_feed.check_feed()
       activity = "checked #{rss_feed.url}"
     rescue ActiveRecord::StaleObjectError
@@ -16,8 +16,12 @@ class FetchRssItems
     rescue
       activity = "error #{$!} %s" % rss_feed
       puts activity 
-      rss_feed.update_attributes(:error_message=> "Unexpected error: #{$!}", :next_fetch => Time.now + 1.minute) if rss_feed
+      rss_feed.record_error("Unexpected error: #{$!}") if rss_feed
     end
     return activity
+  end
+  
+  def self.next_rss_feed
+    RssFeed.find_next_to_fetch!
   end
 end

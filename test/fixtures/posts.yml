@@ -7,7 +7,7 @@ alex_interesting_article:
 alex_boring_link:
   group: studio1
   title: My boring link
-  detail: http://myboringlink.com
+  detail: <a href="http://myboringlink.com">http://myboringlink.com</a>
    
 cool_article:
   group: studio3
@@ -18,5 +18,5 @@ cool_article:
 article_from_rss:
   group: studio1
   title: Some funky thing
-  detail: whatever
+  detail: <img src="http://somefarawaysite.com/items/1234.png"/>
   remote_url: http:/somefarawaysite.com/items/1234
