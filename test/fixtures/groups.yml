@@ -4,8 +4,10 @@ studio1:
   desc: Studio one is such a cool place
   home_page: MyString
   contributed_at: <%= 1.day.ago %>
+  group_category: other 
 
 studio3:
   name: Studio Free
   desc: We love ourselves
   home_page: MyString
+  group_category: other 

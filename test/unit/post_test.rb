@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 class PostTest < ActiveSupport::TestCase
 
   should "ensure that the subscriber list for a post is unique" do
-    post = Post.new
+    post = new_post
     assert_equal([], post.subscribers)
     
     duff = users(:duff)
@@ -22,10 +22,10 @@ class PostTest < ActiveSupport::TestCase
   
   context "video_embed_tags" do
   should "should calculate ok for youtube" do
-    post = Post.new
+    post = new_post
     assert_nil(post.video_embed_tags)
     
-    post = Post.new(:video => "     ")
+    post = new_post(:video => "     ")
     assert_nil(post.video_embed_tags)
     
     post.video = %Q{<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/yCM_wQy4YVg&hl=en&fs=1&color1=0xe1600f&color2=0xfebd01"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/yCM_wQy4YVg&hl=en&fs=1&color1=0xe1600f&color2=0xfebd01" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>}
@@ -66,19 +66,19 @@ class PostTest < ActiveSupport::TestCase
   end
 
   should "allow embed tag blip.tv to pass through" do
-    post = Post.new
+    post = new_post
     post.video = %Q{<embed src="http://blip.tv/play/lG3hz1eBolM" type="application/x-shockwave-flash" width="1024" height="798" allowscriptaccess="always" allowfullscreen="true"></embed>}
     assert_equal(post.video, post.video_embed_tags)
   end
 
   should "currently I think allow for aritrary object tag to pass through" do
-        post = Post.new
+        post = new_post
         post.video = %Q{<object >some stuff</object>}
     assert_equal(post.video, post.video_embed_tags)
   end
   
   should "convert http urls to links" do
-      post = Post.new
+      post = new_post
       link = %Q{http://someurlorother.com/wherever}
       post.video = link
       assert(post.video_embed_tags.include?(%Q{<a href="#{link}" rel="nofollow">#{link}</a>}))
@@ -86,7 +86,7 @@ class PostTest < ActiveSupport::TestCase
  end
  
   should "require video appropriately" do
-    post = Post.new(:title => "Whatever", :detail => "Whatever")
+    post = new_post(:title => "Whatever", :detail => "Whatever")
     assert post.valid?
     
     post.specifying_video = true
@@ -103,13 +103,13 @@ class PostTest < ActiveSupport::TestCase
 
   
   should "calculate preview_image for video" do
-    post = Post.new
+    post = new_post
     expectedPreviewImage = nil 
     assert_equal(expectedPreviewImage, post.preview_image)
   end
   
   should "calculate preview_image_src for video" do
-    post = Post.new
+    post = new_post
     expectedPreviewImage = %Q{http://img.youtube.com/vi/FG2PUZoukfA/2.jpg} 
 
     post.video = %Q{http://youtube.com/watch?v=FG2PUZoukfA}
@@ -123,7 +123,7 @@ class PostTest < ActiveSupport::TestCase
   end
   
    should "initialize date fields correctly" do
-    post = Post.new(:title => "Whatever", :detail => "Whatever")
+    post = new_post(:title => "Whatever", :detail => "Whatever")
     assert post.valid?
     post.save!
     assert !post.created_at.nil?, "expected created at not to be nil"
@@ -140,4 +140,8 @@ class PostTest < ActiveSupport::TestCase
 #     assert post.has_contributed?(users(:duff))
 #  end
 #  end
+
+  def new_post *args
+    groups(:studio1).posts.new *args
+  end
 end

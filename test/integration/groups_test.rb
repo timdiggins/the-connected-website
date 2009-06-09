@@ -60,7 +60,6 @@ class GroupsTest < ActionController::IntegrationTest
       assert_has_links ["/groups/Studio%201/edit"]
       assert_select 'a[href=MyString]'
       get_ok "/groups/Studio%201/edit"
-      view
       submit_form do |form|
         form.group.home_page = 'http://somewhereelse'
       end

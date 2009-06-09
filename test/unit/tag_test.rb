@@ -10,7 +10,7 @@ class TagTest < ActiveSupport::TestCase
   
   should "handle basic relationship with post" do
     tag = Tag.create!(:name => "Cool")
-    post = Post.create!(:title => "My Post", :detail => "Here it be")
+    post = create_post!(:title => "My Post", :detail => "Here it be")
     
     assert_equal([], tag.posts)
     assert_equal([], post.tags)
@@ -21,7 +21,7 @@ class TagTest < ActiveSupport::TestCase
     assert_equal([tag], post.tags)
     assert_equal([post], tag.posts)
     
-    another_post = Post.create!(:title => "My Second Post", :detail => "Here it be again")
+    another_post = create_post!(:title => "My Second Post", :detail => "Here it be again")
     another_tag = Tag.create!(:name => "Really Cool")
     
     tag.posts << another_post
@@ -103,5 +103,9 @@ class TagTest < ActiveSupport::TestCase
     assert_equal [2, 1, 1, 1], gotTags.collect{|tag| tag.count }
     assert_equal ['two','one','one','one'], gotCss
     
+  end
+  
+  def create_post! *args
+    groups(:studio1).posts.create! *args
   end
 end
