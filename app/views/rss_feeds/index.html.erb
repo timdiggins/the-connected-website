@@ -6,24 +6,25 @@
 </div>  
 
 <div id="main" class="grid_11 omega">
-<h1>RSS Feeds for <%= link_to @group, @group %></h1>
-<% if @group.rss_feeds.empty?%>
-  <p><%=@group%> has no feeds</p>
-<% else %>
-	<ul id="feeds">
-	<%= render :partial=>'rss_feed', :collection=>@group.rss_feeds %>
-	</ul>
-<% end %>
+  <h1 class="header">RSS Feeds for <%= link_to @group, @group %></h1>
+  <div class="posts">
+    <% if @group.rss_feeds.empty?%>
+      <p><%=@group%> has no feeds</p>
+    <% else %>
+    	<ul id="feeds">
+    	<%= render :partial=>'rss_feed', :collection=>@group.rss_feeds %>
+    	</ul>
+    <% end %>
 
-<h2>Add a new RSS feed:</h2>
-<% form_for @rss_feed, :url=> group_rss_feeds_path do | f | %>
+    <h2>Add a new RSS feed:</h2>
+    <% form_for @rss_feed, :url=> group_rss_feeds_path do | f | %>
     
-    <p>
-      <%= f.label :url, "URL (including http://)" %>
-      <%= f.text_field :url %>
-    </p>
-		<p><%= submit_tag 'Add'%></p>
-<% end %>
+        <p>
+          <%= f.label :url, "URL (including http://)" %>
+          <%= f.text_field :url %>
+        </p>
+    		<p><%= submit_tag 'Add'%></p>
+    <% end %>
 
-
+  </div>
 </div>

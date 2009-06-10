@@ -5,8 +5,10 @@
 </div>  
 
 <div id="main" class="grid_11 omega">
-	<h1>All RSS Feeds</h1>
-	<ul id="feeds">
-		 <%= render :partial=>'rss_feed', :collection=>@rss_feeds %>
-	</ul>
+	<h1 class="header">All RSS Feeds</h1>
+	<div class="posts">
+  	<ul id="feeds">
+  		 <%= render :partial=>'rss_feed', :collection=>@rss_feeds %>
+  	</ul>
+	</div>
 </div>
