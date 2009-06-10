@@ -1057,7 +1057,10 @@ a.squareImage:hover .label {
   background-color: #000;
   background-color: rgba(0,0,0,0.85);
   opacity: 0.85;
+  .background-color: #000;
 }
+
+
 
 a.squareImage .title {
   color: #FFF;
