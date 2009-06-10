@@ -5,14 +5,16 @@
 <div id="sidebar" class="grid_5 alpha">
   
   <div id="largeDescription">
-    <h2>More about <%= @group %></h2>
-    <%= simple_format(h(@group.desc))%>   
+    <% if @group.desc != "" %>
+      <h2>More about <%= @group %></h2>
+      <%= simple_format(h(@group.desc))%>   
+    <% end %>
   </div>
   
 	
     <% if logged_in? && (current_user.admin? || current_user.can_edit?(@group))%>
 		<div id="group-admin-controls">
-        <h2>Admin</h2>   
+        <h2>Admin options for this group:</h2>   
 				 <% if !current_user.can_edit?(@group) %>
           <p class='site-admin'>You are not an administrator of this group.</h2>
           <% end%>
@@ -25,11 +27,11 @@
 		  <% end %>
 	
 			 <% if current_user.admin? %>
-		      <li class='site-admin'>As you are an site administrator you can
+		      <li class='site-admin'>
 		      <% if current_user.can_edit?(@group) %>
-		       <%= link_to "remove yourself", user_group_permission_path(current_user, :id=>@group, :return_to=>request.path),:method => :delete%>
+		       <%= link_to "Remove yourself", user_group_permission_path(current_user, :id=>@group, :return_to=>request.path),:method => :delete%>
 		      <% else %>
-		       <%= link_to "add yourself", user_group_permissions_path(current_user, :id=>@group, :return_to=>request.path),:method => :post%>
+		       <%= link_to "Add yourself", user_group_permissions_path(current_user, :id=>@group, :return_to=>request.path),:method => :post%>
 		      <% end %>
 		      as an administrator of this group.
 		      </li>

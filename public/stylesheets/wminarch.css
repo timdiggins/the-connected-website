@@ -6,6 +6,7 @@
 	http://localhost:3000/stylesheets/wminarch.css?1244543018
 	http://localhost:3000/stylesheets/wminarch.css?1244559690
 	http://localhost:3000/stylesheets/wminarch.css?1244579248
+	http://localhost:3000/stylesheets/wminarch.css?1244579034
 */
 
 body {
@@ -877,7 +878,7 @@ div#dangerAdmin p {
 
 
 .error {
-	color: #F00;
+	color: #F30;
 }
 
 .error a {
@@ -889,23 +890,38 @@ li.feed-problem {
 	background: url(../images/famfam/error.png) no-repeat 0px left;
 	padding-left: 20px;
 }
-#navigation li.feed-problem a{
+
+#navigation li.feed-problem a {
 	background: url(../images/famfam/error.png) no-repeat 11px left;
-	padding-left: 17px;	
+	padding-left: 20px;
+	color: #F30;	
 }
 ul.groupsList li.feed-problem {
 	background-position: 4px left;
 }
 div#group-admin-controls{
   margin: 1em 0 1.5em 0;
-  padding-bottom: 1em;	
+  padding: 1em;
+  background-color: #FFF;	
 }
-div#group-admin-controls ul li{
-	margin:  1em 0;
+
+div#group-admin-controls h2 {
+	font-size: 1em;
+	margin: 0;
+	padding: 0;
+}
+
+div#group-admin-controls ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+div#group-admin-controls li {
+	margin:  0.8em 0;
 }
 
 .site-admin {
-	font-weight: bold;
 	font-style: italic;
 }
 
