@@ -1,9 +1,14 @@
 
+<div id="sidebar" class="grid_5 alpha">
 
+</div>
 
 <div id="main" class="grid_11 omega">
-  <h1><%= @page_title = "Edit Post" %></h1>
-	<%= render :partial => 'posts/form' %>
+  
+  <h1 class="header"><%= @page_title = "Edit Post" %></h1>
+  <div class="posts">
+	  <%= render :partial => 'posts/form' %>
+	</div>
 
 </div>
 
