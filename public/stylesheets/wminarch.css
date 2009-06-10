@@ -61,9 +61,10 @@ a {
 }
 
 #largeDescription p {
-  font-size: 1.1em;
-  color: #333;
+  font-size: 1em;
   margin: 0.5em 0px;
+  line-height: 1.4em;
+  margin-right: 1em;
 }
 
 #post_detail {
