@@ -1,22 +1,27 @@
 <div class="posts">
 	<%= will_paginate(@posts, :prev_label => "Newer", :next_label => "Older", :inner_window => 2)  %>
+	
 	<% for post in @posts %>
 		<div class="post">
+			
+			
 			<h2<% if post.has_attachment? %> class="file"<% elsif post.video_embed_tags %> class="video"<%end%>>
       		<%= link_to h(post), post %>
       </h2>
 				 
-			<%=render :partial => 'posts/meta', :locals=>{:post=>post}%>
 
 			<p><%= plain_text(truncate(post.text,:length=>200)) %></p>
-     <% post.images.each do |image| %>
+      
+      
+      <% post.images.each do |image| %>
        <p>
          <%= image_tag_for(image, :medium_square) %>
 				</p>
 			<% end %>
-				
+			<%= clear_this %>	
 		</div>
 	<% end %>
-</div>	
+	
 
-<%= will_paginate @posts, :prev_label => "Newer", :next_label => "Older", :inner_window => 2 %>
+  <%= will_paginate @posts, :prev_label => "Newer", :next_label => "Older", :inner_window => 2 %>
+</div>
