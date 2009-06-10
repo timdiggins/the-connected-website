@@ -2,12 +2,15 @@
 	<%= will_paginate(@posts, :prev_label => "Newer", :next_label => "Older", :inner_window => 2)  %>
 	
 	<% for post in @posts %>
-		<div class="post">
+		<div class="truncatedPost">
 			
 			
-			<h2<% if post.has_attachment? %> class="file"<% elsif post.video_embed_tags %> class="video"<%end%>>
+			<h3<% if post.has_attachment? %> class="file"<% elsif post.video_embed_tags %> class="video"<%end%>>
       		<%= link_to h(post), post %>
-      </h2>
+      </h3>
+      <p class="postDetails">
+      		Posted <%= time_ago_in_words(post.created_at) %> ago.
+      </p>
 				 
 
 			<p><%= plain_text(truncate(post.text,:length=>200)) %></p>
