@@ -1,13 +1,14 @@
 class GroupsController < ApplicationController
   before_filter :login_required, :except => [ :index, :show]
   before_filter :find_group, :only => [ :show, :texts, :images, :edit, :update]
-  before_filter :find_group_categories, :only => [ :index, :edit, :new]
+  before_filter :find_group_categories, :only => [  :edit, :new]
   #uses_tiny_mce :options => tiny_mce_options, :only => [ :new,:create, :update, :edit ]
   
   RECENT_IMAGES_PER_PAGE = 30
   RECENT_TEXTS_PER_PAGE = 10
   def index
     @groups = Group.order_by_contributed_at
+    @group_categories = GroupCategory.all( :include=>:groups)
   end
   
   def show
