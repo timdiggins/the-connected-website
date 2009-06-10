@@ -44,17 +44,21 @@
 		<div id="wrap">
 		  <div class="container_16">
         <% unless flash_value.blank? %>
-        <div id="flash" <%= flash_class %>>
-          <%= flash_value %>
+        <div class="grid_11 prefix_5 alpha">
+          <div id="flash">
+            <%= flash_value %>
+          </div>
         </div>
         <% end %>
       
         <% if session[:as_someone_else] %>
-        <div id="dangerAdmin">
-          <p><strong>CAREFUL!  You're logged in as <%= current_user %> !</strong></p>
+        <div class="grid_11 prefix_5 alpha">
+          <div id="dangerAdmin">
+            <p><strong>CAREFUL!  You're logged in as <%= current_user %> !</strong></p>
+          </div>
         </div>
         <% end %>
-
+      
         <%= yield %>
 
         <%= clear_this %>
