@@ -264,6 +264,10 @@ div.largeForm textarea {
 	width: 50%;
 }
 
+div.largeForm select {
+	font-size: 1.5em;
+}
+
 
 
 div.largeForm .submitBlock {
@@ -291,27 +295,6 @@ div.largeForm .submitBlock input[type="submit"] {
 
 /* @group Tags */
 
-p.tags {
-	color: #666;
-}
-
-
-
-p.tags a.tag {
-	background-color: #dce9f5;
-	padding: 0.3em 0.7em;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	margin-left: 0.3em;
-}
-
-div.tags a.tag {
-	float: left;
-}
-
-a.tag:hover {
-	text-decoration: underline;
-}
 
 a.delete {
 	color: #999;
@@ -324,52 +307,6 @@ a.delete:hover {
 }
 
 /* @end */
-
-/* @group Tag Cloud */
-
-div.tagCloud {
-	padding-bottom: 2em;
-}
-
-ul.tagCloud {
-	list-style: none;
-	padding: 0px;
-	margin: 0px 0px 1em 0px;
-	line-height: 1.8em;
-}
-
-.tagCloud li {
-	display: inline;
-	margin-right: 1em;
-}
-
-ul.tagCloud a {
-	text-decoration: none;
-	word-spacing: -0.1em;
-}
-
-.tagCloud a:hover {
-	text-decoration: underline;
-}
-
-.tagCloud li.cloud1 a {
-	font-size: 100%;
-}
-
-.tagCloud li.cloud2 a {
-	font-size: 140%;
-}
-
-.tagCloud li.cloud3 a {
-	font-size: 170%;
-}
-
-.tagCloud li.cloud4 a {
-	font-size: 200%;
-}
-
-/* @end */
-
 
 
 
@@ -593,6 +530,43 @@ p#meta {
 }
 
 
+.postControls {
+	margin: 0 0 2em 0;
+}
+
+.postControls a, a.admin {
+	margin-right: 0.3em;
+	background-color: #999;
+	padding: 0.3em 0.5em;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	color: #FFF;
+	text-decoration: none;
+	font-size: 0.9em;
+}
+
+
+div.image-controls img {
+  	vertical-align: middle;
+  	margin-right: 1em;
+}
+
+#featuring-controls {
+  	margin-top: 3em;
+  	background-color: #EEE;
+  	padding: 1px 1.5em 2em 1.5em;
+}
+
+div.image-controls {
+  	border-bottom: 1px dashed #CCC;
+}
+
+div.image-controls p {
+	border-top: 1px dashed #CCC;
+	padding: 1em 0;
+	margin: 0;
+}
+
 #recentlyFeatured {
 border-bottom: 1px dashed #DDD;
 margin-bottom: 3em;
@@ -609,42 +583,6 @@ margin-bottom: 3em;
 }
 
 
-
-
-
-
-#comments {
-	margin-top: 4em;
-}
-
-
-
-#comments p.meta {
-	font-size: 1em;
-}
-
-
-.comment {
-	clear: left;
-}
-
-.comment p.avatar {
-	float: left;
-	padding-bottom: 2em;
-	text-align: center;
-	overflow: visible;
-	margin: 0px;
-}
-
-.comment p.avatar img {
-	display: block;
-	margin-bottom: 0.5em;
-}
-
-.comment .postContent {
-	margin-left: 80px;
-	padding: 0.8em 0px 3em 3em;
-}
 
 
 
@@ -1180,13 +1118,6 @@ a.squareImage .inGroup {
   }
   
   
-  
-  
-div.image-controls {
-  margin-top: 5em;
-  border-top: 1px dashed #DDD;
-  padding-top: 0.5em;
-}
 
 div#flash {
 	background-color: #FFF;
@@ -1200,13 +1131,4 @@ div#flash p {
   	text-align: center;
 }
 
-div.image-controls span {
-  float: left;
-  margin: 0 10px 10px 0;
-}
-
-div.image-controls a {
-  display: block;
-  margin-top: 0.3em;
-}
  

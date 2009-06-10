@@ -46,24 +46,24 @@
 
    <% if logged_in? && current_user.can_edit?(@post) %>
 	 <div id="featuring-controls">
-	   <h1>Featuring...</h1>
    <% if !@post.has_images?%>
 		  <p>(No images to feature).</p>
 		 <% else %>
-		   <h2>Images to feature:</h2>
+		   <h2>Feature images:</h2>
+		   <p>You can feature images from a post on the group's page and on the main home page</p>
 			 <div class='image-controls'>
 		  	 <% @post.images.each do |image| %>
-		  	   <span id="image-<%=image.id%>">
+		  	   <p id="image-<%=image.id%>">
 		         <%= link_to image_tag_for(image, :medium_square), image.src, :title => "Open orignal image on remote site" %>
 		         <% if logged_in? && current_user.can_edit?(@post) %>
-			      	 <%= link_to 'Delete?', image_path(image), :method=>:delete, :class=>'option', :confirm=>'Delete this image?' %>
+			      	 <%= link_to 'Delete this image?', image_path(image), :method=>:delete, :class=>'admin', :confirm=>'Delete this image?' %>
 							 <% if image.featured? %>
-		             <%= link_to 'Unfeature', unfeature_image_path(image), :method=>:put, :class=>'option' %>
+		             <%= link_to 'Unfeature', unfeature_image_path(image), :method=>:put, :class=>'admin' %>
 							 <% else %>
-		             <%= link_to 'Feature', feature_image_path(image), :method=>:put, :class=>'option' %>
+		             <%= link_to 'Feature on group and home page', feature_image_path(image), :method=>:put, :class=>'admin' %>
 							 <% end %>
 		      	 <% end %>	
-		  		 </span>
+		  		 </p>
 		  	 <% end %>
 			   <div class="clearThis"> </div>
 			 </div>
@@ -72,17 +72,17 @@
       <p>(No text to feature).</p>
    <% else %>
 	   <div>
-	    <h2>Text (<%if @post.featured?%>featured<%else%>not featured<%end%></h2>
+	    <h2>Feature text content: (<%if @post.featured?%>currently featured<%else%>currently not featured<%end%>)</h2>
 			<div><p><%=plain_text(@post.text) %></p></div>
 		   <div class="clearThis"> </div>
      </div> 
       <%if @post.featured?%>
-        <%= link_to("Unfeature post text", unfeature_post_url(@post), :class => "option", :method => :put) %>
+        <%= link_to("Unfeature post text", unfeature_post_url(@post), :class => "admin", :method => :put) %>
       <% else %>
-        <%= link_to("Feature post text", feature_post_url(@post), :class => "option", :method => :put) %>
+        <%= link_to("Feature post text", feature_post_url(@post), :class => "admin", :method => :put) %>
       <% end %>
    <% end %>
-   <%= link_to("Edit text", edit_post_url(@post), :class => "option") %> 
+   <%= link_to("Edit text", edit_post_url(@post), :class => "admin") %> 
 
   	 <% end %>
   </div>	 
