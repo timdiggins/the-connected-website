@@ -9,11 +9,10 @@
   
   <div id="groupsNavigation">
     <% if logged_in? %>
-      <% if  current_user.group_permissions.count > 0 %>
+      <% if  current_user.groups.count > 0 %>
         <h2>Your open studios...</h2>
         <ul class="groupsList">
-      	<% current_user.group_permissions.each do |gp| 
-      	  group = gp.group  %>
+      	<% current_user.groups.each do |group|  %>
       	  <li><%=link_to group, group %></li>
       	<% end %>
       	</ul>

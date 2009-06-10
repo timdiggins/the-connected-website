@@ -124,9 +124,9 @@ class UserTest < ActiveSupport::TestCase
   end
   
  should "be able to find group permissions" do
-   assert_equal 1, users(:duff).group_permissions.length
-   assert_equal 1, users(:alex).group_permissions.length
-   assert_equal 0, users(:fred).group_permissions.length
+   assert_equal 1, users(:duff).groups.length
+   assert_equal 1, users(:alex).groups.length
+   assert_equal 0, users(:fred).groups.length
    assert !users(:duff).can_edit?(groups(:studio1))
    assert users(:alex).can_edit?(groups(:studio1))
    assert !users(:alex).can_edit?(groups(:studio3))
