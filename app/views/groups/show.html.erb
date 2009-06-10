@@ -84,10 +84,8 @@
       <div class="posts">
         <h2>Other recent works by <%= @group%></h2>
         <%= render :partial=>'post', :collection=>@recent_texts %>
+        
+        <p><%= link_to "More all works by #{@group}", recent_group_path(@group) %></p>
       </div>
-
-		
-
-		
 
 </div>
