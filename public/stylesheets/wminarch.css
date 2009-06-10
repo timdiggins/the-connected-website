@@ -986,10 +986,11 @@ div.tags input {
 
 
 .group .profileText {
-  font-size: 1.2em;
+  font-size: 1.1em;
   margin-top: 0.5em;
   color: #666;
   margin-left: 20px;
+  line-height: 1.4em;
 }
 
 
@@ -1031,6 +1032,7 @@ div.tags input {
 .featureDescription .text  {
 	color: #666;
 	margin-top: 1em;
+	line-height: 1.5em;
 }
 
 
