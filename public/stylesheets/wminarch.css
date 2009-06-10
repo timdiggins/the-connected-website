@@ -507,24 +507,6 @@ div.post {
 	border-bottom: 1px solid #DDD;
 }
 
-.post p.avatar {
-	float: right;
-	padding-bottom: 1em;
-	text-align: center;
-	overflow: visible;
-	margin: 10px 10px 0px 0px;
-}
-
-.post p.avatar img {
-	display: block;
-	margin-bottom: 0.5em;
-}
-
-.postContent {
-	margin-right: 80px;
-	padding: 1px 3em 0.5em 0px;
-	line-height: 1.5em;
-}
 
 
 
@@ -538,6 +520,28 @@ p#meta {
 	background-color: #FFF;
 	padding:1em 1em;
 	line-height: 1.3em;
+}
+
+.truncatedPost {
+  	margin: 0;
+  	line-height: 1.5em;
+  	border-top: 1px solid #EEE;
+  	padding: 1.5em 0 1.5em 0;
+}
+
+.truncatedPost h3 {
+  	margin: 0;
+  	font-size: 1.2em;
+}
+
+.truncatedPost p.postDetails {
+  	color: #666;
+  	margin-top: 0.5em;
+  	font-size: 0.9em;
+}
+
+.truncatedPost p.postDetails a {
+  	color: #666;
 }
 
 
