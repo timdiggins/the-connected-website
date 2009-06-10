@@ -978,49 +978,6 @@ div.tags input {
 
 
 
-.imageStrip {
-	margin-bottom: 4.5em;
-}
-
-
-
-a.imageStripImage {
-  display: block;
-  float: left;
-  position:relative;
-  text-decoration: none;
-  margin: 0 2px 2px 0;
-}
-
-
-
-a.imageStripImage .label {
-  display: block;
-  padding: 5px 0px;
-  background-color: #000;
-  overflow: hidden;
-  font-size: 0.9em;
-}
-
-a.imageStripImage .label span {
-	margin: 0 7px;
-	}
-
-a.imageStripImage img {
-  background-color: #CCC;
-}
-
-
-a.imageStripImage .title {
-  color: #FFF;
-  white-space: nowrap;
-  padding-right: 5px;
-  overflow: hidden;
-  display: block;
-  }
-  
-  
-  
 #featureImage {
   float: left;
   background-color: #000;
@@ -1087,8 +1044,8 @@ a.squareImage .label {
   position:absolute;
   display: none;
   padding: 3px 0px;
-  background-color: rgba(255,255,255,0.6);
   overflow: hidden;
+
 }
 
 a.squareImage img {
@@ -1097,7 +1054,9 @@ a.squareImage img {
 
 a.squareImage:hover .label {
   display: block;
-    background-color: rgba(0,0,0,0.85);
+  background-color: #000;
+  background-color: rgba(0,0,0,0.85);
+  opacity: 0.85;
 }
 
 a.squareImage .title {
