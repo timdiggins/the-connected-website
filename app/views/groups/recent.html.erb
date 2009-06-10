@@ -1,0 +1,21 @@
+
+
+<div id="sidebar" class="grid_5 alpha">
+  
+  <div id="largeDescription">
+    <% if @group.desc != "" %>
+      <h2>More about <%= @group %></h2>
+      <%= simple_format(h(@group.desc))%>   
+    <% end %>
+  </div>
+
+</div>  
+
+<div id="main" class="grid_11 omega">
+  <h2>Recent posts</h2>
+  <%= render :partial=> 'post_list'%>
+		
+
+		
+
+</div>

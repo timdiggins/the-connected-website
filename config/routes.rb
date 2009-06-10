@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
   map.admin_stats 'admin/stats', :controller => 'admin', :action => 'stats'
   map.info 'info/:action', :controller => 'info'
   
-  map.resources :groups, :member=>{:images=>:get, :texts=>:get}, :requirements => { :id => /.*/ } do |group|
+  map.resources :groups, :member=>{:recent=>:get}, :requirements => { :id => /.*/ } do |group|
     group.resources :rss_feeds, :member=>{:fetch_sooner => :post}
   end
   map.resources :users, :member => { :become => :post }, :collection => { :all => :get }, :requirements => { :id => /.*/ } do |user| 

@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_filter :login_required, :except => [ :index, :show]
-  before_filter :find_group, :only => [ :show, :texts, :images, :edit, :update]
+  before_filter :find_group, :only => [ :show, :recent, :edit, :update]
   before_filter :find_group_categories, :only => [  :edit, :new]
   #uses_tiny_mce :options => tiny_mce_options, :only => [ :new,:create, :update, :edit ]
   
@@ -21,12 +21,8 @@ class GroupsController < ApplicationController
     @featured_texts = @group.posts.featured.limit_to 5 
   end
 
-  def images
-    @images = @group.images.paginate(:page => params[:page], :per_page => RECENT_IMAGES_PER_PAGE)
-  end
-  
-  def texts
-    @posts = @group.posts.with_no_images.paginate(:page => params[:page], :per_page => RECENT_TEXTS_PER_PAGE)
+  def recent
+    @posts = @group.posts(:include=>:images).paginate(:page => params[:page], :per_page => RECENT_TEXTS_PER_PAGE)
   end
   
   def new
