@@ -10,30 +10,33 @@
   </div>
   
 	
-  <% if logged_in? && current_user.can_edit?(@group) %>
-    <h2>Admin options for this group</h2>
+    <% if logged_in? && (current_user.admin? || current_user.can_edit?(@group))%>
+		<div id="group-admin-controls">
+        <h2>Admin</h2>   
+				 <% if !current_user.can_edit?(@group) %>
+          <p class='site-admin'>You are not an administrator of this group.</h2>
+          <% end%>
+            
+        <ul>
+			<% if current_user.can_edit?(@group) %>
+		  	  <li><%= link_to "Edit this group", edit_group_path(@group)%></li>
+		      <li<% if @group.has_feed_problem? %> class="feed-problem"<% end%>>
+		        <%= link_to "Add / remove remote content (feeds)", group_rss_feeds_path(@group)%></li>
+		  <% end %>
 	
-  	<ul>
-  	  <li><%= link_to "Edit this group", edit_group_path(@group)%></li>
-  	  <li><%= link_to "Add / remove remote content (feeds)", group_rss_feeds_path(@group)%></li>
-    </ul>
-  <% end %>
-	
-	 <% if logged_in? && current_user.admin? %>
-      
-      <% if !current_user.can_edit?(@group) %>
-      <h2 class='site-admin'>You are not an administrator of this group.</h2>
-      <% end%>
-      <p class='site-admin'>As you are an site administrator you can
-      <% if current_user.can_edit?(@group) %>
-       <%= link_to "remove yourself", user_group_permission_path(current_user, :id=>@group, :return_to=>request.path),:method => :delete%>
-      <% else %>
-       <%= link_to "add yourself", user_group_permissions_path(current_user, :id=>@group, :return_to=>request.path),:method => :post%>
+			 <% if current_user.admin? %>
+		      <li class='site-admin'>As you are an site administrator you can
+		      <% if current_user.can_edit?(@group) %>
+		       <%= link_to "remove yourself", user_group_permission_path(current_user, :id=>@group, :return_to=>request.path),:method => :delete%>
+		      <% else %>
+		       <%= link_to "add yourself", user_group_permissions_path(current_user, :id=>@group, :return_to=>request.path),:method => :post%>
+		      <% end %>
+		      as an administrator of this group.
+		      </li>
+		  <% end %>
+			       </ul>
+      </div>
       <% end %>
-      as an admin of this group.
-      </p>
-  <% end %>
-   
 </div>  
 
 <div id="main" class="grid_11 omega">

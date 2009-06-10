@@ -72,4 +72,8 @@ url, group,
     next_fetch
     ]
   end
+  
+  def has_problem?
+    !error_message.blank?
+  end
 end

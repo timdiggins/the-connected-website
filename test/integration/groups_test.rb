@@ -30,6 +30,51 @@ class GroupsTest < ActionController::IntegrationTest
       '/groups/Studio%20Free'
       ]
     end
+    
+    should "have problem marker if viewed by a group admin" do
+      login :duff
+      assert users(:duff).can_edit?(groups(:studio3)), "precondition"
+      
+      assert_doesnt_have_feed_problem '/groups'        
+      assert_doesnt_have_feed_problem '/groups/Studio Free'        
+      
+      rss_feeds(:just_fetched_feed).update_attributes(:error_message=> "yow some kind of problem")
+      assert_has_feed_problem '/groups'        
+      assert_has_feed_problem '/groups/Studio Free'        
+      
+      rss_feeds(:just_fetched_feed).update_attributes(:error_message=> '')
+      assert_doesnt_have_feed_problem '/groups'        
+      assert_doesnt_have_feed_problem '/groups/Studio Free'        
+    end
+    
+    should "have problem marker if viewed by an admin" do
+      login :admin
+      assert !users(:admin).can_edit?(groups(:studio3)), "precondition"
+      
+      assert_doesnt_have_feed_problem '/groups'        
+      assert_doesnt_have_feed_problem '/groups/Studio Free'        
+      assert_doesnt_have_feed_problem '/'        
+      
+      rss_feeds(:just_fetched_feed).update_attributes(:error_message=> "yow some kind of problem")
+      assert_has_feed_problem '/groups'        
+      assert_has_feed_problem '/groups/Studio Free'        
+      assert_has_feed_problem ''        
+      
+      rss_feeds(:just_fetched_feed).update_attributes(:error_message=> nil)
+      assert_doesnt_have_feed_problem '/groups'        
+      assert_doesnt_have_feed_problem '/groups/Studio Free'        
+      assert_doesnt_have_feed_problem '/'        
+    end
+  end
+  
+  def assert_has_feed_problem path
+    get path
+    assert_select ".feed-problem", :count =>1
+  end
+  def assert_doesnt_have_feed_problem path
+    get path
+    assert_select ".feed-problem", :count =>0
+    
   end
   
   should "not be able to be created by non admin" do
@@ -116,7 +161,7 @@ class GroupsTest < ActionController::IntegrationTest
   end
   
   
- 
+  
   def assert_feeds expected_feeds 
     assert_select "#feeds a",:count=>expected_feeds.length 
     expected_feeds.each do |feed|
@@ -140,5 +185,5 @@ class GroupsTest < ActionController::IntegrationTest
     end
   end
   
-
+  
 end

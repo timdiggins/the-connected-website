@@ -32,7 +32,7 @@
           		<!-- <li class="personal"><%= link_to "Update", new_post_url %></li> -->
               
 							 <% if current_user.admin? %>
-							    <li class="admin"><%= link_to "Feeds", rss_feeds_path %></li>
+							    <li class="<%= @admin_feeds_class %>"><%= link_to "Feeds", rss_feeds_path %></li>
 						   <% end %>
           	<% else %>
           		<li class="personal"><%= link_to "Login", login_url %></li>

@@ -25,7 +25,7 @@
 		<div class="featureDescription">
 		  <h2><%= link_to @latestFeaturedImage.post.title, @latestFeaturedImage.post %></h2>
 		  <p>by <%= link_to @latestFeaturedImage.post.group, @latestFeaturedImage.post.group %></p>
-		  <div class="text"><%= truncate(@latestFeaturedImage.post.text, 160) %></div>
+		  <div class="text"><%= truncate(@latestFeaturedImage.post.text, :length=>160) %></div>
 		</div>
 
 	  <%= render :partial=>'groups/image', :collection=>@otherFeaturedImages %>

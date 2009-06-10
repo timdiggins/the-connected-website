@@ -1,4 +1,4 @@
-<li class="feed">
+<li class="feed <%= rss_feed.has_problem? ? "feed-problem": ""%>">
   <p>
   	  <%if @group.nil?%><%= link_to(rss_feed.group, group_url(rss_feed.group))%> Feed: <%end %>
       <%= rss_feed.url%>

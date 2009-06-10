@@ -3,7 +3,7 @@
   	  
   		<div class="grid_7 alpha">
   	  	<span class="title"><a href="<%= group_path(group) %>"><%= group %></a><span class="category"><%= h(group.category) %></span></span>
-    	  <div class="profileText"><%= truncate(group.desc, 220) %></div>
+    	  <div class="profileText"><%= truncate(group.desc, :length=>220) %></div>
     	  <div class="clearRight"> </div>
   	  </div>
   	  <% if group.latest_image %>

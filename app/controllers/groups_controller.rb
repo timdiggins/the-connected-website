@@ -9,6 +9,9 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.order_by_contributed_at
     @group_categories = GroupCategory.all( :include=>:groups)
+    if logged_in?
+      @your_groups = current_user.groups.all( :include=> :rss_feeds)
+    end
   end
   
   def show

@@ -35,7 +35,7 @@
 		
   		<p class="more"><%= link_to "See all users", all_users_url %></p>
   		<%if logged_in? && current_user.admin %>
-		  <p class="more"><%= link_to "See all users' email addresses", admin_emails_url %></p>
+		  <p class="more site-admin"><%= link_to "See all users' email addresses", admin_emails_url %></p>
 		  <% end %>
 </div>
 </div>
