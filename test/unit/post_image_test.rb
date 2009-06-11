@@ -48,4 +48,10 @@ class PostImageTest < ActiveSupport::TestCase
       assert pi.downloaded.is_a?(DownloadedImage)
     end
   end
+  
+#  should "be able to work out a better flickr src and try to download that" do
+#    flickr = "http://farm4.static.flickr.com/3366/3518323144_f4de8db8c2_m.jpg"
+#    
+#  end
+  
 end
