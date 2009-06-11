@@ -1,6 +1,7 @@
 require 'hpricot'
-MIN_SIZE = 128
+
 class ImportRssItem
+  include Exceptions 
   def initialize rss_feed, group, item
     @rss_feed = rss_feed
     @group = group
@@ -38,13 +39,21 @@ class ImportRssItem
     self.class.parse_images_from_detail(detail).each do |image|
       if !image.nil?
         filepath, mimetype = image_downloader.fetch(image.src)
-        downloaded = image_downloader.store_downloaded_image(filepath, mimetype)
-        if !downloaded.nil?
-          image.downloaded = downloaded
+        begin
+          downloaded = image_downloader.store_downloaded_image(filepath, mimetype)
+        rescue DownloadedImageTooSmall
+          image = nil#should really delete the anomalous downloaded image record'
+        rescue Exception
+          downloaded = nil
+        end
+        if !image.nil?
+          if !downloaded.nil?
+            image.downloaded = downloaded
+          end
           image.post_id = post.id
           post.images << image
           image.save!
-        end
+        end  
       end
     end
   end
@@ -53,17 +62,9 @@ class ImportRssItem
     doc = Hpricot(detail)
     imgs = doc.search("img").collect do |elem| 
       src = elem['src']
-      width =  elem['width']
-      if !width.nil?
-        width = width.to_i
-        next if width < MIN_SIZE
-      end
-      height =  elem['height']
-      if ! height.nil?
-        height = height.to_i
-        next if height < MIN_SIZE
-      end
-      PostImage.new(:src=>src, :width=>width, :height=>height)
+#      width =  elem['width']
+#      height =  elem['height']
+      PostImage.new(:src=>src)
     end 
     imgs.compact
   end

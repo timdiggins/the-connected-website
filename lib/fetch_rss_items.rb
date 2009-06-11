@@ -10,7 +10,7 @@ class FetchRssItems
       activity = "checked #{rss_feed.url}"
     rescue ActiveRecord::StaleObjectError
       #do nothing
-        activity = "had a conflict with another rssfeedfetcher"
+      activity = "had a conflict with another rssfeedfetcher"
     rescue ActiveRecord::RecordNotFound
       #not worth checking again for a while
     rescue
@@ -24,4 +24,10 @@ class FetchRssItems
   def self.next_rss_feed
     RssFeed.find_next_to_fetch!
   end
+  
+  def self.fetch_one_unchecked
+    rss_feed = next_rss_feed
+    rss_feed.check_feed()
+  end
+  
 end

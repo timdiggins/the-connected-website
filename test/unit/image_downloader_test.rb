@@ -2,10 +2,12 @@ require 'test_helper'
 require 'fileutils'
 
 class ImageDownloaderTest < ActiveSupport::TestCase
+  include Exceptions
+  
   context "ImageDownloader" do
     setup do
       image_downloader_setup
-              @downloader = ImageDownloader.new
+      @downloader = ImageDownloader.new
     end
     teardown do
       image_downloader_teardown
@@ -24,6 +26,18 @@ class ImageDownloaderTest < ActiveSupport::TestCase
       downloaded = @downloader.store_downloaded_image(f, mimetype)
       assert !downloaded.nil?, "should exist now"
       assert downloaded.is_a?(DownloadedImage)
+    end
+    
+    should "be able to store as a downloaded_image" do
+      assert_equal 0, DownloadedImage.all.size
+      f = "#{SAMPLE_IMAGES_DIR}/too_small.gif"
+      mimetype = "image/jpeg"
+      begin
+        @downloader.store_downloaded_image(f, mimetype)
+        flunk "shouldn't work"
+      rescue DownloadedImageTooSmall
+      end
+      assert_equal 0, DownloadedImage.all.size
     end
     
   end
