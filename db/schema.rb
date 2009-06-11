@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090609124738) do
+ActiveRecord::Schema.define(:version => 20090610222817) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "post_id"
@@ -48,6 +48,20 @@ ActiveRecord::Schema.define(:version => 20090609124738) do
     t.integer  "user_id"
     t.integer  "post_id"
     t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "downloaded_images", :force => true do |t|
+    t.integer  "post_image_id"
+    t.string   "content_type"
+    t.string   "filename"
+    t.string   "thumbnail"
+    t.string   "caption"
+    t.integer  "size"
+    t.integer  "width"
+    t.integer  "height"
+    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -127,7 +141,7 @@ ActiveRecord::Schema.define(:version => 20090609124738) do
     t.datetime "commented_at"
     t.string   "remote_url"
     t.integer  "group_id"
-    t.integer  "post_images_count"
+    t.integer  "post_images_count", :default => 0
   end
 
   create_table "queued_emails", :force => true do |t|
