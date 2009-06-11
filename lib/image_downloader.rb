@@ -60,8 +60,8 @@ class ImageDownloader
   def fetch_one
     image = find_next_to_postprocess
     return false if image.nil?
-    filepath, mimetype = fetch(image.src)
     begin
+      filepath, mimetype = fetch(image.src)
       downloaded = store_downloaded_image(filepath, mimetype)
     rescue DownloadedImageTooSmall
       image.destroy
@@ -73,7 +73,7 @@ class ImageDownloader
     image.save!
     return "fetched from #{image.src}"
   end
-
+  
   
   def seek_one_imageless_text
     
