@@ -32,13 +32,19 @@ class ImportRssItem
       puts "couldn't validate post for group-#{@group.id}, #@group"
     end
     post.save!
-
+    
     guid.save
+    image_downloader = ImageDownloader.new
     self.class.parse_images_from_detail(detail).each do |image|
       if !image.nil?
-        image.post_id = post.id
-        post.images << image
-        image.save
+        filepath, mimetype = image_downloader.fetch(image.src)
+        downloaded = image_downloader.store_downloaded_image(filepath, mimetype)
+        if !downloaded.nil?
+          image.downloaded = downloaded
+          image.post_id = post.id
+          post.images << image
+          image.save!
+        end
       end
     end
   end

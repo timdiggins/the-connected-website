@@ -1,5 +1,13 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
+require File.dirname(__FILE__) + '/../../lib/image_downloader.rb'
+class ImageDownloader
+  def fetch(url)
+    puts "Fake ImageDownloader for test -> fake test #{url}"
+    return SAMPLE_IMAGE, "image/jpeg"
+  end
+end
+
 class RssFeedTest < ActiveSupport::TestCase
   
   context "Rss Feed" do

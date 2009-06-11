@@ -1,11 +1,14 @@
 require 'test_helper'
-
-SAMPLES_DIR = File.expand_path(File.dirname(__FILE__) + "/sample_images")
+require 'fileutils'
 
 class ImageDownloaderTest < ActiveSupport::TestCase
   context "ImageDownloader" do
     setup do
-      @downloader = ImageDownloader.new
+      image_downloader_setup
+              @downloader = ImageDownloader.new
+    end
+    teardown do
+      image_downloader_teardown
     end
     should "be able to download an image and work out the mimetype" do
       url = 'http://www.wmin.ac.uk/sabe/images/marylebone_entrance5%20copy_v_Variation_1.jpg'
@@ -16,10 +19,12 @@ class ImageDownloaderTest < ActiveSupport::TestCase
     end
     
     should "be able to store as a downloaded_image" do
-      f = "#{SAMPLES_DIR}/samplejpg.jpg"
+      f = SAMPLE_IMAGE
       mimetype = "image/jpeg"
-      pi = post_images(:cool_article_image1)
-      @downloader.store_downloaded_image(pi, f, mimetype)
+      downloaded = @downloader.store_downloaded_image(f, mimetype)
+      assert !downloaded.nil?, "should exist now"
+      assert downloaded.is_a?(DownloadedImage)
     end
+    
   end
 end

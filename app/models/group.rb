@@ -3,7 +3,7 @@ class Group < ActiveRecord::Base
   has_many :group_permissions, :include => :user, :uniq => true, :dependent=>:destroy
   has_many :rss_feeds, :dependent => :destroy
   has_many :posts, :dependent => :destroy
-  has_many :post_images, :through => :posts, :order => "updated_at DESC"
+  has_many :post_images, :through => :posts, :order => "post_images.updated_at DESC"
   
   belongs_to :group_category
   

@@ -1,5 +1,5 @@
 <a href="<%= post_path(image.post) %>" class="squareImage">
-  <%= image_tag_for(image, :large_square) %>
+  <%= image_tag_for(image, :crop128) %>
   <span class="label">
     <span class="title"><%= image.post.title %></span>
     <span class="inGroup">by <%= image.post.group.name %></span>

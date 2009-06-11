@@ -73,7 +73,7 @@
       <div class="imageCloud">
       	<% for image in @recent_images %>
         	<a href="<%= post_path(image.post) %>">
-            <%= image_tag_for(image, :medium_square) %>
+            <%= image_tag_for(image, :crop64) %>
           </a>
         <% end %>
         <%= clear_this %>

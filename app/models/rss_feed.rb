@@ -31,7 +31,7 @@ class RssFeed < ActiveRecord::Base
   
   def check_feed
 #    puts 'doing the work of getting and making'
-    open(self.url) do |s|
+    open(self.url.strip) do |s|
       rsscontent = s.read
       make_posts(rsscontent)
     end

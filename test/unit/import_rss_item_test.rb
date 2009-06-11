@@ -26,5 +26,17 @@ class ImportRssItemTest < ActiveSupport::TestCase
       assert_equal 1,got.length
       assert_equal PostImage.new(:src=>'http://somwhereelseentirely').attributes, got[0].attributes 
     end 
-  end
+
+    should "skip too small remote imgs" do
+      html = %Q{some imgs 
+      <img src="http://somwhereelse" />
+      <img src="http://somwhereelse" width="200" height="100" />
+      <img src="http://somwhereelse" width="100" height="100" />
+      <img src="http://somwhereelseentirely" />
+      }
+      got = ImportRssItem.parse_images_from_detail(html)
+      assert_equal 1,got.length
+      assert_equal PostImage.new(:src=>'http://somwhereelseentirely').attributes, got[0].attributes 
+    end 
+end
 end

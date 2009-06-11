@@ -9,6 +9,8 @@ vendor/rails
 .DS_Store
 .local_configuration
 public/.integration_test_output_for_browser.html
+public/downloaded_images
+public/test_downloaded_images
 config/cookie_secret
 deploy_history.txt
 public/avatars

@@ -1,7 +1,7 @@
 <li class="feed <%= rss_feed.has_problem? ? "feed-problem": ""%>">
   <p>
   	  <strong><%if @group.nil?%><%= link_to(rss_feed.group, group_url(rss_feed.group))%><br />Feed: <% end %>
-      <%= rss_feed.url%></strong>
+      <%= h(rss_feed.url)%></strong>
       [<%= link_to 'link', rss_feed.url%>]
 	</p>
   <p class="error"><% if !rss_feed.error_message.nil? && ! rss_feed.error_message.empty?%>

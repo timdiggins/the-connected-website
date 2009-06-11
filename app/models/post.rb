@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
   belongs_to :group
   
   has_many :comments, :order => 'created_at', :dependent => :destroy
-  has_many :post_images, :dependent => :destroy
+  has_many :post_images, :dependent => :destroy, :include => :downloaded_image
   alias_attribute :images, :post_images
 
   has_one  :attachment, :dependent => :destroy
@@ -25,7 +25,7 @@ class Post < ActiveRecord::Base
   has_many :tags, :through => :categorizations, :uniq => true
   
   named_scope :sorted_by_created_at, lambda { { :order => "created_at DESC" }}
-  named_scope :sorted_by_updated_at, lambda { { :order => "updated_at DESC" }}
+  named_scope :sorted_by_updated_at, lambda { { :order => "posts.updated_at DESC" }}
   named_scope :sorted_by_commented_at, lambda { { :order => "commented_at DESC" }}
   named_scope :featured, lambda { { :conditions => [ "featured_at IS NOT NULL" ], :order => "featured_at DESC" }} 
   named_scope :limit_to, lambda { | limit | { :limit => limit } }
