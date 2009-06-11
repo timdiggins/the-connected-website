@@ -31,7 +31,7 @@ class Group < ActiveRecord::Base
     post_images.featured.first
   end
   def latest3_images
-    post_images.featured3
+    post_images.featured.limit_to(3)
   end
   
   def has_feed_problem?
