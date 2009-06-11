@@ -66,8 +66,10 @@ class ImageDownloader
     rescue DownloadedImageTooSmall
       image.destroy
       return "deleted too small image #{image.src}"
+    rescue OpenURI::HTTPError => e
+      return "delete image couldn't find #{image.src} : #{e}"
     rescue Exception => e
-      return "problem with #{image.src} : #{e}"
+      return "problem with #{image.src} : #{e}"	
     end
     image.downloaded = downloaded
     image.save!
