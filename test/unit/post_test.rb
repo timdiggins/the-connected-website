@@ -145,6 +145,17 @@ class PostTest < ActiveSupport::TestCase
     groups(:studio1).posts.new *args
   end
   
+  should "be able to have correct cached count" do
+    post = new_post :title=>'spme title'
+    post.save!
+    assert_equal 0, Post.find(post.id).post_images_count
+    i = post.images.new :src => 'some source'
+    i.save!
+    assert_equal 1, Post.find(post.id).post_images_count
+    i.destroy
+    assert_equal 0, Post.find(post.id).post_images_count
+    
+  end
   should "be able to know whether has images" do
     post_with_images_and_no_text = Post.find(posts(:article_from_rss))
     assert post_with_images_and_no_text.has_images?
