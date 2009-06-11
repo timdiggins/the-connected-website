@@ -22,7 +22,7 @@
 
 <div id="main" class="grid_11 omega">
 	<h1 class="header"><%=h @post %></h1>
-	<div class="posts">
+	<div class="paddedSection">
     <%=render :partial => 'posts/meta', :locals=>{:post=>@post, :with_controls=>true}%>
 
   	<% if @post.has_video? %>

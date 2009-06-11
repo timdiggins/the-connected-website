@@ -63,7 +63,7 @@
 
       <% if @featured_texts.count > 0 %>
         <%= clear_this %>
-        <div id="featuredTexts" class="posts">
+        <div id="featuredTexts" class="paddedSection">
           <h2>Featured works by <%= @group%></h2>
           <%= render :partial=>'post', :collection=>@featured_texts %>
           <%= clear_this %>
@@ -81,7 +81,7 @@
   		
   		<%= clear_this %>
       
-      <div class="posts">
+      <div class="paddedSection">
         <h2>Other recent works by <%= @group%></h2>
         <%= render :partial=>'post', :collection=>@recent_texts %>
         
