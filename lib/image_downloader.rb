@@ -7,9 +7,10 @@ require 'rio'
 # required to use ActionController::TestUploadedFile 
 require 'action_controller'
 require 'action_controller/test_process.rb'
-
+require 'exceptions'
 
 class ImageDownloader
+  include Exceptions
   
   def fetch(url)
     begin
@@ -60,10 +61,21 @@ class ImageDownloader
     image = find_next_to_postprocess
     return false if image.nil?
     filepath, mimetype = fetch(image.src)
-    downloaded = store_downloaded_image(filepath, mimetype)
+    begin
+      downloaded = store_downloaded_image(filepath, mimetype)
+    rescue DownloadedImageTooSmall
+      image.destroy
+      return "deleted too small image #{image.src}"
+    rescue Exception => e
+      return "problem with #{image.src} : #{e}"
+    end
     image.downloaded = downloaded
     image.save!
     return "fetched from #{image.src}"
   end
+
   
+  def seek_one_imageless_text
+    
+  end
 end
