@@ -2,9 +2,18 @@ require File.dirname(__FILE__) + '/../test_helper'
 
 require File.dirname(__FILE__) + '/../../lib/image_downloader.rb'
 class ImageDownloader
+  @@counter = 0
+
   def fetch(url)
-    puts "Fake ImageDownloader for test -> fake test #{url}"
-    return SAMPLE_IMAGE, "image/jpeg"
+    puts "Fake ImageDownloader [#@@counter] for test -> fake test #{url}"
+    @@counter += 1
+    if @@counter % 2==0
+      print '+'
+      return SAMPLE_IMAGE, "image/jpeg"
+    else
+      print '-'
+      return SAMPLE_TOO_SMALL_IMAGE, "image/gif"
+    end
   end
 end
 
@@ -96,4 +105,5 @@ class RssFeedTest < ActiveSupport::TestCase
   def postpone_feed rss_feed 
     rss_feed.update_attributes(:last_fetched=>Time.now, :next_fetch => Time.now + 10.minute)
   end
+  
 end

@@ -47,29 +47,7 @@ class ChangeSettingsTest < ActionController::IntegrationTest
       assert_select "input#user_login[value=duffer]"
     end
   end
-  
-  should "be able to change the bio, homepage, and location" do
-    new_session_as(:duff) do
-      get ""
-      assert_response_ok
-      click_link PROFILE_LINK
-      assert_select "p", /Introduce yourself/
-      assert_link_exists "add a bio"
-      assert_select "p.location", false
-      assert_select "div#bio", false
-      assert_select "p.homepage", false
-      
-      put_via_redirect "settings", { :user => { :home_page => "omelia.org/duff", :profile_text => "Crazy anarcho-capitalist.", :location => "Willow Spring" } }
-      assert_select "p.location", "Willow Spring"
-      assert_select "div#bio", "Crazy anarcho-capitalist."
-      assert_select "p.homepage", /duff is at home/
-      assert_select 'p.homepage>a[href="http://omelia.org/duff"]', "omelia.org/duff"
-      
-      put_via_redirect "settings", { :user => { :home_page => "http://omelia.org/duff", :profile_text => "Crazy anarcho-capitalist.", :location => "Willow Spring" } }
-      assert_select 'p.homepage>a[href="http://omelia.org/duff"]', "http://omelia.org/duff"
-    end
-  end
-  
+    
   should "redirect settings url to bio" do
     new_session_as(:duff) do
       get '/settings'

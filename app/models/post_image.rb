@@ -1,4 +1,6 @@
 class PostImage < ActiveRecord::Base
+  include Exceptions
+  
   belongs_to :post, :counter_cache=> true
   
   named_scope :featured, lambda { { :conditions => [ "post_images.featured_at IS NOT NULL" ], :order => "post_images.featured_at DESC" }} 
@@ -12,7 +14,7 @@ class PostImage < ActiveRecord::Base
   before_save :cache_downloaded_sizes
   
   def cache_downloaded_sizes  
-    return if downloaded?
+    return if !downloaded?
     self.width = downloaded_image.width
     self.height = downloaded_image.height
     self.downloaded_image.thumbnails.each do |thumbnail|
@@ -39,5 +41,20 @@ class PostImage < ActiveRecord::Base
   
   def downloaded?
     !downloaded_image.nil?
+  end
+  
+  def download_and_save!
+    image_downloader = ImageDownloader.new    
+    filepath, mimetype = image_downloader.fetch(src)
+    begin
+      self.downloaded = image_downloader.store_downloaded_image(filepath, mimetype)
+    rescue DownloadedImageTooSmall
+      #should really delete the anomalous downloaded image record'
+      return false
+    rescue Exception => e
+      save!
+      raise DownloadError.new("problem trying to download image \n  src: #{src}\n  e  : #{e}")
+    end
+    save!
   end
 end

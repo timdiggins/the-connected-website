@@ -7,4 +7,7 @@ module Exceptions
   class DownloadedImageTooSmall < StandardError
     #ok
   end
+  class DownloadError < StandardError
+    #ok
+  end
 end

@@ -8,6 +8,7 @@ require 'test_help'
 
 SAMPLE_IMAGES_DIR = File.expand_path(File.dirname(__FILE__) + "/unit/sample_images")
 SAMPLE_IMAGE = "#{SAMPLE_IMAGES_DIR}/samplejpg.jpg"
+SAMPLE_TOO_SMALL_IMAGE = "#{SAMPLE_IMAGES_DIR}/too_small.gif"
 PUBLIC_DIR = File.expand_path(File.dirname(__FILE__) + "/../public")
 DOWNLOADED_IMAGES_DIR = "#{PUBLIC_DIR}/downloaded_images"
 TEST_DOWNLOADED_IMAGES_DIR = "#{PUBLIC_DIR}/test_downloaded_images"

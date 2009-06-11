@@ -15,7 +15,7 @@ class ImageDownloader
     begin
       uri = URI.parse(url)
     rescue
-     raise "problem with url: #{url}"
+      raise "problem with url: #{url}"
     end
     filepath = "#{TMP_DIR}/#{File.basename(uri.path)}"
     File.delete(filepath) if File.exists?(filepath)
@@ -27,7 +27,9 @@ class ImageDownloader
   
   def store_downloaded_image(filepath, mimetype)
     data = ActionController::TestUploadedFile.new(filepath, mimetype)
-    DownloadedImage.create!(:uploaded_data => data)
+    DownloadedImage.transaction do
+      DownloadedImage.create!(:uploaded_data => data)
+    end
   end
   
 end

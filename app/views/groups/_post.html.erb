@@ -3,5 +3,5 @@
 <p class="postDetails">
 		Post by <%= link_to_user(post.group) %> originally posted <%= time_ago_in_words(post.created_at) %> ago.
 </p>
-<p><%= truncate(plain_text(post.text),600) %></p> 
+<p><%= truncate(plain_text(post.text),:length=>600) %></p> 
 </div>

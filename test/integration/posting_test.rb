@@ -41,37 +41,37 @@ class PostingTest < ActionController::IntegrationTest
       
       put_via_redirect "/posts/#{post_id}", :post => { :title => "Government is Really Bogus", :detail => "Here is the body" }
       assert_response 200
-      assert_select "h1.post", "Government is Really Bogus"
+      assert_select "h1.header", "Government is Really Bogus"
       assert_select "div.postBody", "Here is the body"
     end
   end
   
   
-#  context "creating and then editing a post" do
-#    setup do
-#      @duff = new_session_as(:duff)
-#      @duff.post_via_redirect "/posts", :post => { :title => "Something new in sandwiches", :detail => "Sandwich filling", :group_id => groups(:studio3).id }
-#      @post_id = @duff.path.split('/')[-1]
-#      @duff.get_ok("/")
-#      @duff.assert_select ".events .event a[href=/posts/#@post_id]", :count => 1
-#    end
-#    
-#    should "make one event if no comments" do
-#      @duff.put_via_redirect "/posts/#@post_id", :post => { :title => "New Sandwich Title", :detail => "new filling" }
-#      @duff.get_ok("/")
-#      @duff.assert_select ".events .event a[href=/posts/#@post_id]", :count => 1
-#    end
-#    
-#    should "make two events if comment has occurred" do
-#      alex = new_session_as(:alex)
-#      alex.post_via_redirect "/posts/#@post_id/comments", :comment => { :body => "jam tomorrow" }
-#      @duff.put_via_redirect "/posts/#@post_id", :post => { :title => "New Sandwich Title", :detail => "new filling" }
-#      @duff.get_ok("/")
-#      @duff.assert_select ".events .event a[href=/posts/#@post_id]", :count => 3
-#    end
-#    
-#    
-#  end
+  #  context "creating and then editing a post" do
+  #    setup do
+  #      @duff = new_session_as(:duff)
+  #      @duff.post_via_redirect "/posts", :post => { :title => "Something new in sandwiches", :detail => "Sandwich filling", :group_id => groups(:studio3).id }
+  #      @post_id = @duff.path.split('/')[-1]
+  #      @duff.get_ok("/")
+  #      @duff.assert_select ".events .event a[href=/posts/#@post_id]", :count => 1
+  #    end
+  #    
+  #    should "make one event if no comments" do
+  #      @duff.put_via_redirect "/posts/#@post_id", :post => { :title => "New Sandwich Title", :detail => "new filling" }
+  #      @duff.get_ok("/")
+  #      @duff.assert_select ".events .event a[href=/posts/#@post_id]", :count => 1
+  #    end
+  #    
+  #    should "make two events if comment has occurred" do
+  #      alex = new_session_as(:alex)
+  #      alex.post_via_redirect "/posts/#@post_id/comments", :comment => { :body => "jam tomorrow" }
+  #      @duff.put_via_redirect "/posts/#@post_id", :post => { :title => "New Sandwich Title", :detail => "new filling" }
+  #      @duff.get_ok("/")
+  #      @duff.assert_select ".events .event a[href=/posts/#@post_id]", :count => 3
+  #    end
+  #    
+  #    
+  #  end
   
   should "only be able to delete a post if  a the manager of it" do
     new_session_as(:duff) do
@@ -96,10 +96,7 @@ class PostingTest < ActionController::IntegrationTest
       get_ok "/posts/#{post_id}"
       i1 = post_images(:article_from_rss_image1)
       i2 = post_images(:article_from_rss_image2)
-      assert_select "#image-#{i2.id}" do 
-        assert_link_does_not_exist DELETE_IMAGE_LINK
-        assert_link_does_not_exist FEATURE_IMAGE_LINK
-      end
+      assert_select "#image-#{i2.id}", :count=>0
     end
     
     new_session_as(:alex) do
@@ -108,7 +105,7 @@ class PostingTest < ActionController::IntegrationTest
       get_ok "/posts/#{post_id}"
       i1 = post_images(:article_from_rss_image1)
       i2 = post_images(:article_from_rss_image2)
-      assert_select "#image-#{i1.id}" do 
+      assert_select "#image-#{i1.id}" do
         assert_link_exists DELETE_IMAGE_LINK
         assert_link_exists FEATURE_IMAGE_LINK
         assert_link_does_not_exist UNFEATURE_IMAGE_LINK
@@ -122,7 +119,7 @@ class PostingTest < ActionController::IntegrationTest
       get "/posts/#{post_id}"
       assert_select "#image-#{i2.id}", :count=>0
       
-      put_via_redirect "/images/#{i1.id}/feature" 
+      put_via_redirect "/images/#{i1.id}/feature"
       get "/posts/#{post_id}"
       assert_select "#image-#{i1.id}" do 
         assert_link_exists UNFEATURE_IMAGE_LINK
@@ -137,6 +134,6 @@ class PostingTest < ActionController::IntegrationTest
     end
   end
 end
-DELETE_IMAGE_LINK = "Delete?"
-FEATURE_IMAGE_LINK = "Feature"
+DELETE_IMAGE_LINK = "Delete this image?"
+FEATURE_IMAGE_LINK = "Feature on group and home page"
 UNFEATURE_IMAGE_LINK = "Unfeature"

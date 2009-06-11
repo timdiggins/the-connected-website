@@ -30,7 +30,7 @@ class ImageDownloaderTest < ActiveSupport::TestCase
     
     should "be able to store as a downloaded_image" do
       assert_equal 0, DownloadedImage.all.size
-      f = "#{SAMPLE_IMAGES_DIR}/too_small.gif"
+      f = SAMPLE_TOO_SMALL_IMAGE
       mimetype = "image/jpeg"
       begin
         @downloader.store_downloaded_image(f, mimetype)

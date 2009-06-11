@@ -33,40 +33,22 @@ class ImportRssItem
       puts "couldn't validate post for group-#{@group.id}, #@group"
     end
     post.save!
-    
     guid.save
-    image_downloader = ImageDownloader.new
-    self.class.parse_images_from_detail(detail).each do |image|
-      if !image.nil?
-        filepath, mimetype = image_downloader.fetch(image.src)
-        begin
-          downloaded = image_downloader.store_downloaded_image(filepath, mimetype)
-        rescue DownloadedImageTooSmall
-          image = nil#should really delete the anomalous downloaded image record'
-        rescue Exception
-          downloaded = nil
-        end
-        if !image.nil?
-          if !downloaded.nil?
-            image.downloaded = downloaded
-          end
-          image.post_id = post.id
-          post.images << image
-          image.save!
-        end  
+    self.class.parse_images_from_detail(post.detail).each do |src|
+      begin
+        image = post.post_images.new(:src=>src)
+        image.download_and_save!
+      rescue DownloadError => e
+        puts "#{e}\n   from html\n#{detail}"   
       end
     end
   end
   
   def self.parse_images_from_detail detail
     doc = Hpricot(detail)
-    imgs = doc.search("img").collect do |elem| 
-      src = elem['src']
-#      width =  elem['width']
-#      height =  elem['height']
-      PostImage.new(:src=>src)
+    doc.search("img").collect do |elem| 
+      elem['src']
     end 
-    imgs.compact
   end
   
 end
