@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :login_required, :except => [ :index, :show]
+  before_filter :login_required, :except => [ :index, :show, :recent]
   before_filter :find_group, :only => [ :show, :recent, :edit, :update]
   before_filter :find_group_categories, :only => [  :edit, :new]
   #uses_tiny_mce :options => tiny_mce_options, :only => [ :new,:create, :update, :edit ]
