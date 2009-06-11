@@ -64,7 +64,7 @@
       <% if @featured_texts.count > 0 %>
         <%= clear_this %>
         <div id="featuredTexts" class="paddedSection">
-          <h2>Featured works by <%= @group%></h2>
+          <h2>Featured posts by <%= @group%></h2>
           <%= render :partial=>'post', :collection=>@featured_texts %>
           <%= clear_this %>
         </div>
@@ -85,7 +85,7 @@
         <h2>Other recent works by <%= @group%></h2>
         <%= render :partial=>'post', :collection=>@recent_texts %>
         
-        <p><%= link_to "More works by #{@group}", recent_group_path(@group) %></p>
+        <p><%= link_to "All posts by #{@group}", recent_group_path(@group) %></p>
       </div>
 
 </div>

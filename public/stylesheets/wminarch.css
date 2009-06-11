@@ -26,6 +26,7 @@ a {
 #main {
 	background-color: #FFF;
 	padding: 0 0 1em 0;
+	word-wrap:break-word;
 }
 
 

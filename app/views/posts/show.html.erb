@@ -5,7 +5,7 @@
     <div id="largeDescription">
       <p id="meta">
           <% if !@post.remote_url.nil? && !@post.remote_url.empty? %>
-        		<span class="author">Work by <%= link_to_user(@post.group) %> originally posted on an <%= link_to "external site",@post.remote_url %></span>  
+        		<span class="author">Post by <%= link_to_user(@post.group) %> originally posted on an <%= link_to "external site",@post.remote_url %></span>  
       		<% end %>
           <span class="date">
             <%= time_ago_in_words(@post.created_at) %> ago.
