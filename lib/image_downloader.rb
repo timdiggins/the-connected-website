@@ -39,9 +39,9 @@ class ImageDownloader
     if File.extname(filepath)==""
       newfilepath = filepath+"."+(mimetype.split('/')[-1])
       FileUtils.move(filepath, newfilepath)
-      return mimetype, newfilepath
+      return newfilepath, mimetype
     end
-    return mimetype, filepath
+    return filepath, mimetype
   end
   
   def flickr_replacement url
