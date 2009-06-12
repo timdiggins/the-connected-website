@@ -37,7 +37,7 @@ class ImageDownloader
     rio(filepath) < remoteRio
     mimetype = remoteRio.content_type
     if File.extname(filepath)==""
-      newfilepath = filepath+"."+mimetype.split('/')[-1]
+      newfilepath = filepath+"."+(mimetype.split('/')[-1])
       FileUtils.move(filepath, newfilepath)
       return mimetype, newfilepath
     end
