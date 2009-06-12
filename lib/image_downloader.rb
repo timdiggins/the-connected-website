@@ -18,25 +18,29 @@ class ImageDownloader
     rescue
       raise "problem with url: #{url}"
     end
-    filepath = "#{TMP_DIR}/#{File.basename(uri.path)}"
-    File.delete(filepath) if File.exists?(filepath)
     better_flickr = flickr_replacement(url)
     if !better_flickr.nil?
       begin 
-        mimetype = uri_to_filepath(better_flickr, filepath)
-        return filepath, mimetype
+        return uri_to_filepath(better_flickr)
       rescue
         puts "failed with better_flickr #{better_flickr}"
       end
     end
-    mimetype = uri_to_filepath(uri, filepath)
-    return filepath, mimetype
+    return uri_to_filepath(uri)
   end
   
-  def uri_to_filepath(uri, filepath)
+  def uri_to_filepath(uri)
+    filepath = "#{TMP_DIR}/#{File.basename(uri.path)}"
+    File.delete(filepath) if File.exists?(filepath)
     remoteRio = rio(uri)
     rio(filepath) < remoteRio
-    remoteRio.content_type
+    mimetype = remoteRio.content_type
+    if File.extname(filepath)==""
+      newfilepath = filepath+"."+mimetype.split('/')[-1]
+      File.move(filepath, newfilepath)
+      return mimetype, newfilepath
+    end
+    return mimetype, filepath
   end
   
   def flickr_replacement url
@@ -70,7 +74,7 @@ class ImageDownloader
       image.destroy
       return "delete image couldn't find #{image.src} : #{e}"
     rescue Exception => e
-      return "problem with #{image.src} : #{e}"	
+      return "problem with #{image.src} : #{e}\nhttp://openstudiowestminster.org/posts/#{image.post.id}"	
     end
     image.downloaded = downloaded
     image.save!
