@@ -3,6 +3,7 @@ TMP_DIR = File.expand_path(File.dirname(__FILE__) + "/../tmp")
 
 require 'uri'
 #require 'open-uri'
+require 'fileutils'
 require 'rio'
 # required to use ActionController::TestUploadedFile 
 require 'action_controller'
@@ -37,7 +38,7 @@ class ImageDownloader
     mimetype = remoteRio.content_type
     if File.extname(filepath)==""
       newfilepath = filepath+"."+mimetype.split('/')[-1]
-      File.move(filepath, newfilepath)
+      FileUtils.move(filepath, newfilepath)
       return mimetype, newfilepath
     end
     return mimetype, filepath
