@@ -1,43 +1,42 @@
 <% @current_tab = :groups %>
-
+  <% @page_title = "Studios" %>
 		
-<div id="sidebar">
+<div id="sidebar" class="grid_5 alpha">
   <div id="largeDescription">
-    <p>The School of Architecture sports multiple studios ...</p>
+    <p>The School of Architecture sports multiple studios and collectives:</p>
   </div>
+
   
-  <div id="subscribe">
-    <p><a href="<%= formatted_posts_url(:format => :rss) %>" class="rss">Subscribe to all posts</a></p>
-  </div>
-  
-  <% if logged_in? %>
-    <% if  current_user.group_permissions.count > 0 %>
-      <h2>Your open studios...</h2>
-      <ul class="groupsList">
-    	<% current_user.group_permissions.each do |gp| 
-    	  group = gp.group  %>
-    	  <li><%=link_to group, group%></li>
-    	<% end %>
-    	</ul>
-    <% end %>
-	<% end %>
-	
-  <h2>All open studios...</h2>
-	<ul class="groupsList">
-  	<% @groups.each do |group| %>
-  	 <li><%=link_to group, group %></li>
+  <div id="groupsNavigation">
+    <% if logged_in? %>
+      <% if  @your_groups.size > 0 %>
+        <h2>Your open studios...</h2>
+        <ul class="groupsList">
+      	<% @your_groups.each do |group| %>
+      	  <li<% if group.has_feed_problem? %> class="feed-problem"<% end%>>
+					 <%=link_to group, group %></li>
+      	<% end %>
+      	</ul>
+      <% end %>
   	<% end %>
-  </ul>
+	
+    <% @group_categories.each do |category| %>
+  		<h2><%= category %></h2>
+  		<ul class="groupsList">
+  	  	<% category.groups.each do |group| %>
+  	  	 <li><%=link_to group, group %></li>
+  	  	<% end %>
+  	  </ul>
+  	<% end %>
+	</div>
 
   <% if logged_in_as_admin? %>  
     <p><%= link_to 'Setup new studio / group', new_group_path, :class => "buttonLink" %></p>
   <% end %>
 </div>
 
-<div id="main">
-  <h1><%= @page_title = "Open Studio" %></h1>
-  <div id="groups">
+<div id="main" class="grid_11 omega">
+    <h1 class="header">Recently updated</h1>
 	  <%= render :partial => 'group', :collection=> @groups%>
-	</div>
 </div>
 <%= clear_this %>

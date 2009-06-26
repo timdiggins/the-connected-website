@@ -1,24 +1,28 @@
 class GroupsController < ApplicationController
-  before_filter :login_required, :except => [ :index, :show]
-  uses_tiny_mce :options => tiny_mce_options, :only => [ :new,:create, :update, :edit ]
+  before_filter :login_required, :except => [ :index, :show, :recent]
+  before_filter :find_group, :only => [ :show, :recent, :edit, :update]
+  before_filter :find_group_categories, :only => [  :edit, :new]
+  #uses_tiny_mce :options => tiny_mce_options, :only => [ :new,:create, :update, :edit ]
   
+  RECENT_IMAGES_PER_PAGE = 30
+  RECENT_TEXTS_PER_PAGE = 10
   def index
-    @groups = Group.all
-    respond_to do |format|
-      format.html { 
-        @posts = Post.sorted_by_commented_at.paginate(:page => params[:page], :per_page => 15) 
-      }
-      format.rss { 
-        @posts = Post.sorted_by_commented_at.limit_to(15)
-        render :layout => false 
-      }
+    @groups = Group.order_by_contributed_at
+    @group_categories = GroupCategory.all( :include=>:groups)
+    if logged_in?
+      @your_groups = current_user.groups.all( :include=> :rss_feeds)
     end
   end
   
   def show
-    @group = Group.find_by_name!(params[:id])
-    @images = @group.images
-    @posts = @group.posts.paginate(:page => params[:page], :per_page => 15)
+    @recent_images = @group.images.limit_to RECENT_IMAGES_PER_PAGE
+    @recent_texts = @group.posts.with_no_images.limit_to RECENT_TEXTS_PER_PAGE
+    @featured_images = @group.images.featured.limit_to 5 
+    @featured_texts = @group.posts.featured.limit_to 5 
+  end
+
+  def recent
+    @posts = @group.posts(:include=>:images).paginate(:page => params[:page], :per_page => RECENT_TEXTS_PER_PAGE)
   end
   
   def new
@@ -28,12 +32,10 @@ class GroupsController < ApplicationController
   end
   
   def edit
-    @group = Group.find_by_name!(params[:id])    
     raise PermissionDenied if !current_user.can_edit? @group
   end
   
   def update
-    @group = Group.find_by_name!(params[:id])
     raise PermissionDenied if !current_user.can_edit? @group
     @group.attributes = params[:group]
     return render(:action => :edit) unless @group.save
@@ -50,5 +52,10 @@ class GroupsController < ApplicationController
     flash[:notice] = "Group #{@group} created."
   end
   
-  
+  def find_group
+    @group = Group.find_by_name!(params[:id])
+  end
+  def find_group_categories 
+      @group_categories = GroupCategory.all
+  end
 end

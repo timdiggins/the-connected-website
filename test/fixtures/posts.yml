@@ -1,16 +1,16 @@
 alex_interesting_article:
-  user: alex
+  group: studio1
   title: My interesting article
   detail: Some interesting facts about penguins
   commented_at: <%= 1.hour.ago %>
   
 alex_boring_link:
-  user: alex
+  group: studio1
   title: My boring link
-  detail: http://myboringlink.com
+  detail: <a href="http://myboringlink.com">http://myboringlink.com</a>
    
 cool_article:
-  user: duff
+  group: studio3
   title: Government is Bogus
   detail: Whatever
   commented_at: <%= 0.hour.ago %>
@@ -18,5 +18,5 @@ cool_article:
 article_from_rss:
   group: studio1
   title: Some funky thing
-  detail: whatever
+  detail: <img src="http://somefarawaysite.com/items/1234.png"/>
   remote_url: http:/somefarawaysite.com/items/1234

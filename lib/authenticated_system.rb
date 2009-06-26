@@ -31,6 +31,10 @@ module AuthenticatedSystem
       logged_in? && authorized? ? true : access_denied
     end
     
+    def current_user_can_edit it
+      special_login_required { current_user.can_edit? it }
+    end
+
     def editor_login_required
       special_login_required { current_user.editor }
     end

@@ -12,10 +12,10 @@ class User < ActiveRecord::Base
   before_save :encrypt_password
   before_destroy :has_no_creations!
   has_one :avatar, :dependent => :destroy
-  has_many :posts, :order => 'created_at DESC'
   has_many :comments
   has_many :events, :order => 'created_at DESC'
   has_many :group_permissions, :include => :group, :uniq => true, :dependent=>:destroy
+  has_many :groups, :through=>:group_permissions, :order=>"groups.name"
   
   alias_attribute :to_s, :login
   
@@ -96,7 +96,7 @@ class User < ActiveRecord::Base
   
   
   def has_creations
-    posts.count > 0 || comments.count > 0 || events.count > 0
+    comments.count > 0 || events.count > 0
   end
   
   def has_no_creations!
@@ -104,7 +104,6 @@ class User < ActiveRecord::Base
   end
   
   def destroy_creations
-    posts.destroy_all
     comments.destroy_all
     events.destroy_all
   end
@@ -112,7 +111,7 @@ class User < ActiveRecord::Base
   def can_edit? group_or_post_or_user
     if group_or_post_or_user.class == Post
       post = group_or_post_or_user
-      return self.can_edit? post.author
+      return self.can_edit?(post.group)
     end
     if group_or_post_or_user.class==User
       user = group_or_post_or_user

@@ -3,14 +3,14 @@
   <% for post in @featured %>
     <div class="post">
         <p class="avatar">
-            <%= link_to_avatar_for(post.author, :tiny) %>
+            <%= link_to_avatar_for(post.group, :tiny) %>
         </p>
         <div class="postContent">
             <h3>
 							<%= link_to h(post), post %> 
 						</h3>
 						<p class="meta">
-						  Featured <%= link_to post.author, post.author %> work
+						  Featured <%= link_to post.group, post.group %> work
     					<span class="date">
     						<% if post.created_at==post.updated_at%>
     							retrieved <%= time_ago_in_words(post.created_at) %> ago,

@@ -1,3 +1,4 @@
+require 'hpricot'
 class Post < ActiveRecord::Base
   
   include Truncator
@@ -6,13 +7,14 @@ class Post < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :video, :if => :specifying_video
   validate :must_have_attachment
-  validates_tiny_mce_presence_of :detail, :unless => :specifying_video
+  #validates_tiny_mce_presence_of :detail, :unless => :specifying_video
+  validates_presence_of :group
+  validates_associated :group
   
-  belongs_to :user
   belongs_to :group
   
   has_many :comments, :order => 'created_at', :dependent => :destroy
-  has_many :post_images, :dependent => :destroy
+  has_many :post_images, :dependent => :destroy, :include => :downloaded_image
   alias_attribute :images, :post_images
 
   has_one  :attachment, :dependent => :destroy
@@ -23,10 +25,11 @@ class Post < ActiveRecord::Base
   has_many :tags, :through => :categorizations, :uniq => true
   
   named_scope :sorted_by_created_at, lambda { { :order => "created_at DESC" }}
-  named_scope :sorted_by_updated_at, lambda { { :order => "updated_at DESC" }}
+  named_scope :sorted_by_updated_at, lambda { { :order => "posts.updated_at DESC" }}
   named_scope :sorted_by_commented_at, lambda { { :order => "commented_at DESC" }}
-  named_scope :featured, lambda { { :conditions => [ "featured_at IS NOT NULL" ], :order => "featured_at DESC", :limit => 6 }} 
+  named_scope :featured, lambda { { :conditions => [ "featured_at IS NOT NULL" ], :order => "featured_at DESC" }} 
   named_scope :limit_to, lambda { | limit | { :limit => limit } }
+  named_scope :with_no_images, lambda {{:conditions => "post_images_count = 0", :order => "created_at DESC" }}
   
   alias_attribute :to_s, :title
   
@@ -34,14 +37,15 @@ class Post < ActiveRecord::Base
     post.commented_at = post.created_at
   end
   
+  before_create do |post|
+    post.group.contributed_at = Time.now
+    post.group.save!
+  end
+  
   def brief
     truncate_html_text(detail)
   end
-
-  def author
-    return self.user if self.user
-    self.group
-  end
+  
   def featured?
     !featured_at.nil?
   end
@@ -107,26 +111,19 @@ class Post < ActiveRecord::Base
   def has_video?
     !video.blank?
   end
-  
-  def has_contributed?(other_user)
-    if user == other_user
-      return true
-    end
-    comments.each do |comment|
-      return true if comment.user == other_user
-    end
-    false
+    
+  def has_images?
+    images.count>0
   end
   
-  def contributors
-    #users other than author who have commented
-    return @contributors unless @contributors.nil?
-    @contributors = []
-    comments.each do |comment|
-      @contributors << comment.user unless comment.user == user || @contributors.include?(comment.user)
-    end
-    @contributors
+  def text
+    Hpricot(detail).inner_text
   end
+  
+  def has_text?
+    !text.blank?
+  end
+  
   private
   def must_have_attachment
     errors.add_to_base("Must select a file to upload") if @in_upload_mode && (!attachment || attachment.filename.blank?)

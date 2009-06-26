@@ -86,16 +86,6 @@ class UserTest < ActiveSupport::TestCase
       assert_raises(ActiveRecord::RecordNotFound) { test_user! }
     end
     
-    context "with posts" do
-      setup do
-        create_post_for test_user
-      end
-      should "not be destroyed" do
-        assert test_user.has_creations
-        assert_raises(RuntimeError) { test_user.destroy }
-      end
-    end    
-    
     context "with comments" do
       setup do
         create_comment_for test_user
@@ -115,11 +105,10 @@ class UserTest < ActiveSupport::TestCase
         assert_raises(RuntimeError) { test_user.destroy }
       end
     end
-    context "with events posts and comments" do
+    context "with events and comments" do
       setup do
         create_event_for test_user
         create_comment_for test_user
-        create_post_for test_user
       end
       
       should "not be destroyed" do
@@ -135,11 +124,15 @@ class UserTest < ActiveSupport::TestCase
   end
   
  should "be able to find group permissions" do
-   assert_equal 0, users(:duff).group_permissions.length
-   assert_equal 1, users(:alex).group_permissions.length
+   assert_equal 1, users(:duff).groups.length
+   assert_equal 1, users(:alex).groups.length
+   assert_equal 0, users(:fred).groups.length
    assert !users(:duff).can_edit?(groups(:studio1))
    assert users(:alex).can_edit?(groups(:studio1))
    assert !users(:alex).can_edit?(groups(:studio3))
+   assert users(:duff).can_edit?(groups(:studio3))
+   assert !users(:fred).can_edit?(groups(:studio1))
+   assert !users(:fred).can_edit?(groups(:studio3))
  end
   
   private
@@ -149,9 +142,9 @@ class UserTest < ActiveSupport::TestCase
   def test_user!()
     User.find_by_login!("TemporaryUser")
   end
-  def create_post_for u
-    Post.new(:user=>u, :title=>"sometitle",:detail=>"something").save! 
-  end
+#  def create_post_for u
+#    Post.new(:user=>u, :title=>"sometitle",:detail=>"something").save! 
+#  end
   def create_comment_for u
     Comment.new(:post=> Post.all[0], :user=>u,:body=>"something").save!
   end

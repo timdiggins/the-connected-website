@@ -21,4 +21,5 @@ Rails::Initializer.run do |config|
   config.gem "colored", :version => '1.1'
   config.gem "mikehale-daemons", :lib => "daemons", :version => '>=1.0.12.4', :source => "http://gems.github.com"
   config.gem "hpricot", :version => ">= 0.6"
+  config.gem "rio", :verson => ">=0.4.2"
 end

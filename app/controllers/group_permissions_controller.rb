@@ -34,7 +34,7 @@ class GroupPermissionsController < ApplicationController
   def index
     raise PermissionDenied unless logged_in_as_admin? 
     @user = User.find_by_login(params[:user_id])
-    @groups_permitted = @user.group_permissions.collect {|gp| gp.group }
+    @groups_permitted = @user.groups
     @groups = Group.all
   end
   

@@ -1,14 +1,18 @@
-<div class="group">
-    <a href="<%= group_path(group) %>">
+<div class="group grid_11 alpha omega">
+    
+  	  
+  		<div class="grid_7 alpha">
+  	  	<span class="title"><a href="<%= group_path(group) %>"><%= group %></a><span class="category"><%= h(group.category) %></span></span>
+    	  <div class="profileText"><%= truncate(group.desc, :length=>220) %></div>
+    	  <div class="clearRight"> </div>
+  	  </div>
   	  <% if group.latest_image %>
-    		<div class="latestImages">
-         <% group.images.featured.latest3.each do |image| %>
-				    <%= image_tag_for(image, :medium_square) %>
+    		<div class="grid_4 omega">
+         <% group.latest3_images.each do |image| %>
+				    <%= image_tag_for(image, :crop64) %>
 					<% end %>
         </div>
   		<% end %>
-  		<div class="title"><%= group %></div>
-  	  <div class="profileText"><%= group.profile_text %></div>
-  	  <div class="clearRight"> </div>
+  		
 	  </a>
 </div>

@@ -1,6 +1,7 @@
 require 'hpricot'
-MIN_SIZE = 128
+
 class ImportRssItem
+  include Exceptions 
   def initialize rss_feed, group, item
     @rss_feed = rss_feed
     @group = group
@@ -23,33 +24,31 @@ class ImportRssItem
                     :remote_url=>@item.link,
                     :group_id=>@group.id
     )
-    guid.save if post.save
-    self.class.parse_images_from_detail(detail).each do |image|
-      if !image.nil?
-        image.post_id = post.id
-        post.images << image
-        image.save
+    if !post.valid?
+      puts "title: #{title}"
+      puts "detail: #{detail}"
+      puts "detail-sanitized: #{HTML::FullSanitizer.new.sanitize(detail)}"
+      puts "remote_url: #{@item.link}"
+      puts "group.id #{@group.id}"
+      puts "couldn't validate post for group-#{@group.id}, #@group"
+    end
+    post.save!
+    guid.save
+    self.class.parse_images_from_detail(post.detail).each do |src|
+      begin
+        image = post.post_images.new(:src=>src)
+        image.download_and_save!
+      rescue DownloadError => e
+        puts "#{e}\n   from html\n#{detail}"   
       end
     end
   end
   
   def self.parse_images_from_detail detail
     doc = Hpricot(detail)
-    imgs = doc.search("img").collect do |elem| 
-      src = elem['src']
-      width =  elem['width']
-      if !width.nil?
-        width = width.to_i
-        next if width < MIN_SIZE
-      end
-      height =  elem['height']
-      if ! height.nil?
-        height = height.to_i
-        next if height < MIN_SIZE
-      end
-      PostImage.new(:src=>src, :width=>width, :height=>height)
+    doc.search("img").collect do |elem| 
+      elem['src']
     end 
-    imgs.compact
   end
   
 end

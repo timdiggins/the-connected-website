@@ -12,10 +12,11 @@ module PostsHelper
         xml.description post.detail
         xml.pubDate post.created_at.to_s(:rfc822)
         xml.link post_url(post)
-        xml.author(post.user)               
+        xml.author(post.group)               
         xml.guid(post_url(post))
       end
     end
   end
-  
+
+
 end

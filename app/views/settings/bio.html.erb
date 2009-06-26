@@ -2,12 +2,10 @@
 
 		<%= render :partial => 'settings/header' %>
 		
-		<div id="main">		
+		<div id="main" class="grid_11 omega">		
 				<%= error_messages_for(:user) %>
 
 			  <% form_for @user, :url => settings_url do | f | %>
-
-			    <p>
 
 				  <p>
 	    			<%= f.label :profile_text, "Introductory text for your profile (e.g. bio)" %>

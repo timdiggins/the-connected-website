@@ -2,65 +2,90 @@
 
 
 
-<div id="sidebar">
+<div id="sidebar" class="grid_5 alpha">
   
   <div id="largeDescription">
-    <h1><%= @page_title = @group %></h1>
-    <p><%=@group.profile_text%></p>
+    <% if @group.desc != "" %>
+      <h2>More about <%= @group %></h2>
+      <%= simple_format(h(@group.desc))%>   
+    <% end %>
   </div>
-  <% if !@group.home_page.nil?%>
-    <p>Visit studio site: <%=link_to nil, @group.home_page %></p>
-  <% end %>
   
 	
-  <% if logged_in? && current_user.can_edit?(@group) %>
-    <h2>Admin options for this group</h2>
+    <% if logged_in? && (current_user.admin? || current_user.can_edit?(@group))%>
+		<div id="group-admin-controls">
+        <h2>Admin options for this group:</h2>   
+				 <% if !current_user.can_edit?(@group) %>
+          <p class='site-admin'>You are not an administrator of this group.</h2>
+          <% end%>
+            
+        <ul>
+			<% if current_user.can_edit?(@group) %>
+		  	  <li><%= link_to "Edit this group", edit_group_path(@group)%></li>
+		      <li<% if @group.has_feed_problem? %> class="feed-problem"<% end%>>
+		        <%= link_to "Add / remove remote content (feeds)", group_rss_feeds_path(@group)%></li>
+		  <% end %>
 	
-  	<ul>
-  	  <li><%= link_to "Edit group", edit_group_path(@group)%></li>
-  	  <li><%= link_to "Edit feeds", group_rss_feeds_path(@group)%></li>
-    </ul>
-  <% end %>
-	
-	 <% if logged_in? && current_user.admin? %>
-      
-      <% if !current_user.can_edit?(@group) %>
-      <h2 class='site-admin'>You are not an administrator of this group.</h2>
-      <% end%>
-      <p class='site-admin'>As you are an site administrator you can
-      <% if current_user.can_edit?(@group) %>
-       <%= link_to "remove yourself", user_group_permission_path(current_user, :id=>@group, :return_to=>request.path),:method => :delete%>
-      <% else %>
-       <%= link_to "add yourself", user_group_permissions_path(current_user, :id=>@group, :return_to=>request.path),:method => :post%>
+			 <% if current_user.admin? %>
+		      <li class='site-admin'>
+		      <% if current_user.can_edit?(@group) %>
+		       <%= link_to "Remove yourself", user_group_permission_path(current_user, :id=>@group, :return_to=>request.path),:method => :delete%>
+		      <% else %>
+		       <%= link_to "Add yourself", user_group_permissions_path(current_user, :id=>@group, :return_to=>request.path),:method => :post%>
+		      <% end %>
+		      as an administrator of this group.
+		      </li>
+		  <% end %>
+			       </ul>
+      </div>
       <% end %>
-      as an admin of this group.
-      </p>
-  <% end %>
-  
 </div>  
 
-<div id="main">  
-    <h2>Featured works by <%= @group %></h2>
-    <div class="imageStrip">
-    	<% for image in @images%>
-      	<a href="<%= post_path(image.post) %>" class="imageStripImage">
-          <%= image_tag_for(image, :strip) %>
-          <div class="label" style="width:<%= image.width_for_height(128) %>px;">
-            <span class="title"><%= image.post.title %></span>
-          </div>  
-        </a>
+<div id="main" class="grid_11 omega">
+  
+    <div id="groupHeader">
+      <h1><%= @page_title = @group %></h1>
+      <p>
+      <span class="category"><%= h(@group.category) %></span>
+      <% if !@group.home_page.nil?%>
+        <%=link_to "Visit home page", @group.home_page %>
       <% end %>
-    <div class="clearThis"> </div>
-     <p><a href="#">More featured works</a> by <%= @group %></p>
-		</div>
-    <h2>Other works</h2>
-    <div class="imageCloud">
-    	<% for image in @images%>
-      	<a href="<%= post_path(image.post) %>">
-          <%= image_tag_for(image, :small_square) %>
-        </a>
+      </p>
+      
+    </div>
+    
+    
+    <% if @featured_images.count > 0 %>
+		  <%= render :partial=>'image', :collection=>@featured_images %>
+		<% end %>
+    
+
+
+      <% if @featured_texts.count > 0 %>
+        <%= clear_this %>
+        <div id="featuredTexts" class="paddedSection">
+          <h2>Featured posts by <%= @group%></h2>
+          <%= render :partial=>'post', :collection=>@featured_texts %>
+          <%= clear_this %>
+        </div>
       <% end %>
-    <div class="clearThis"> </div>
-    <p><a href="#">Browse all works</a> by <%= @group %></p>
-		</div>
+      
+      <div class="imageCloud">
+      	<% for image in @recent_images %>
+        	<a href="<%= post_path(image.post) %>">
+            <%= image_tag_for(image, :crop64) %>
+          </a>
+        <% end %>
+        <%= clear_this %>
+  		</div>
+  		
+  		<%= clear_this %>
+      
+      <div class="paddedSection">
+        <h2>Other recent works by <%= @group%></h2>
+        <%= render :partial=>'post', :collection=>@recent_texts %>
+        
+        <p><%= link_to "All posts by #{@group}", recent_group_path(@group) %></p>
+      </div>
+
 </div>

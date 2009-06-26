@@ -1,0 +1,14 @@
+ <div id="sidebar" class="grid_5 alpha">
+  <div id="largeDescription">
+    <p>Handy admin page to see all rss feeds.</p>
+  </div>
+</div>  
+
+<div id="main" class="grid_11 omega">
+	<h1 class="header">All RSS Feeds</h1>
+	<div class="paddedSection">
+  	<ul id="feeds">
+  		 <%= render :partial=>'rss_feed', :collection=>@rss_feeds %>
+  	</ul>
+	</div>
+</div>

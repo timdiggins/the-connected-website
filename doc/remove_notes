@@ -18,10 +18,11 @@ Event.delete_all
 puts 'post and comment'
 Post.delete_all
 PostImage.delete_all
-Attachment.delete_all
-Comment.delete_all
-Subscription.delete_all
+DownloadedImage.delete_all
+#Attachment.delete_all
+#Comment.delete_all
+#Subscription.delete_all
 #
-puts 'tagging'
-Categorization.delete_all
-Tag.delete_all
+#puts 'tagging'
+#Categorization.delete_all
+#Tag.delete_all

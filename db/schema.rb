@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090306154504) do
+ActiveRecord::Schema.define(:version => 20090611123720) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "post_id"
@@ -52,10 +52,30 @@ ActiveRecord::Schema.define(:version => 20090306154504) do
     t.datetime "updated_at"
   end
 
+  create_table "downloaded_images", :force => true do |t|
+    t.integer  "post_image_id"
+    t.string   "content_type"
+    t.string   "filename"
+    t.string   "thumbnail"
+    t.string   "caption"
+    t.integer  "size"
+    t.integer  "width"
+    t.integer  "height"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", :force => true do |t|
     t.integer  "user_id"
     t.integer  "detail_id"
     t.string   "detail_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "group_categories", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70,10 +90,12 @@ ActiveRecord::Schema.define(:version => 20090306154504) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
-    t.string   "profile_text"
+    t.text     "desc"
     t.string   "home_page"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "group_category_id"
+    t.datetime "contributed_at"
   end
 
   create_table "imported_guids", :force => true do |t|
@@ -106,10 +128,13 @@ ActiveRecord::Schema.define(:version => 20090306154504) do
     t.datetime "updated_at"
     t.integer  "width"
     t.integer  "height"
+    t.datetime "featured_at"
+    t.integer  "downloaded_image_id"
+    t.integer  "width640_height"
+    t.integer  "height320_width"
   end
 
   create_table "posts", :force => true do |t|
-    t.integer  "user_id"
     t.string   "title"
     t.text     "detail"
     t.datetime "created_at"
@@ -119,6 +144,7 @@ ActiveRecord::Schema.define(:version => 20090306154504) do
     t.datetime "commented_at"
     t.string   "remote_url"
     t.integer  "group_id"
+    t.integer  "post_images_count", :default => 0
   end
 
   create_table "queued_emails", :force => true do |t|

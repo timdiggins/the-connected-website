@@ -8,12 +8,13 @@ ActionController::Routing::Routes.draw do |map|
   map.admin_stats 'admin/stats', :controller => 'admin', :action => 'stats'
   map.info 'info/:action', :controller => 'info'
   
-  map.resources :groups, :requirements => { :id => /.*/ } do |group|
+  map.resources :groups, :member=>{:recent=>:get}, :requirements => { :id => /.*/ } do |group|
     group.resources :rss_feeds, :member=>{:fetch_sooner => :post}
   end
   map.resources :users, :member => { :become => :post }, :collection => { :all => :get }, :requirements => { :id => /.*/ } do |user| 
     user.resources :group_permissions
   end
+  map.resources :rss_feeds 
   map.resources :sessions
   map.resources :events
   map.resources :posts, :has_many => [ :comments ], 
@@ -24,7 +25,7 @@ ActionController::Routing::Routes.draw do |map|
     post.resources :tags, :requirements => { :id => /.*/ }
   end
 
-  map.resources :images
+  map.resources :images, :member => {:feature=>:put, :unfeature=>:put}
   map.resources :tags, :requirements => { :id => /.*/ }
   map.resource  :settings, :collection => { :save_new_avatar => :put, :picture => :get, :username_email => :any, :bio => :any, :password => :any}
   

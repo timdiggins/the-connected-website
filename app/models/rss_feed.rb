@@ -4,12 +4,13 @@ require 'open-uri'
 class RssFeed < ActiveRecord::Base
   belongs_to :group
   has_many :imported_guids
-  
-  before_create do |rss_feed|
-    if rss_feed.next_fetch.nil?
-      rss_feed.next_fetch = Time.now 
-    end
-  end
+  named_scope :sorted_by_next_fetch, lambda { { :order => "next_fetch ASC" }}
+
+  #  before_create do |rss_feed|
+  #    if rss_feed.next_fetch.nil?
+  #      rss_feed.next_fetch = Time.now 
+  #    end
+  #  end
   
   protected
   def validate
@@ -17,24 +18,29 @@ class RssFeed < ActiveRecord::Base
   end
   public
   
-  def self.find_next_to_fetch
-    rss_feed = find(:first, :conditions=>{:last_fetched=>nil})
+  def self.find_next_to_fetch!
+    rss_feed = find(:first, :conditions=>{:next_fetch=>nil})
     return rss_feed unless rss_feed.nil?
-    conditions = sanitize_sql_for_conditions({ :next_fetch=>Time.now.to_s(:db) })
-    conditions = conditions.sub('=', '<=')
-    rss_feed = find(:first, :conditions=>"next_fetch <= '#{Time.now.to_s(:db)}'", :order=>'next_fetch')
+    #    conditions = sanitize_sql_for_conditions({ :next_fetch=>Time.now.to_s(:db) })
+    #    conditions = conditions.sub('=', '<=')
+    conditions ="next_fetch <= '#{Time.now.utc.to_s(:db)}'"
+    rss_feed = find(:first, :conditions=>conditions, :order=>'next_fetch')
     raise ActiveRecord::RecordNotFound if rss_feed.nil?
     rss_feed
   end
   
   def check_feed
-    puts 'doing the work of getting and making'
-    open(self.url) do |s|
+#    puts 'doing the work of getting and making'
+    open(self.url.strip) do |s|
       rsscontent = s.read
       make_posts(rsscontent)
     end
     update_attributes(:last_fetched=>Time.now, :error_message=>"", :next_fetch => Time.now + 10.minute)
   end  
+  
+  def record_error error_message
+    update_attributes(:error_message=> error_message, :next_fetch => Time.now + 1.minute)
+  end
   
   def make_posts(rsscontent)
     #fix for flickr badness:
@@ -50,4 +56,24 @@ class RssFeed < ActiveRecord::Base
     end
   end
   
+  def to_s
+    s = <<TEXT
+Rss Feed(
+  for '%s' 
+  by '%s'
+  last fetched %s%s
+  next fetch at %s
+  )
+TEXT
+    return s %[
+url, group,
+     last_fetched,
+    error_message.blank? ? '': "\n  gave error:#{error_message}",
+    next_fetch
+    ]
+  end
+  
+  def has_problem?
+    !error_message.blank?
+  end
 end

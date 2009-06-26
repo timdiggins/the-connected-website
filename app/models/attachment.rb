@@ -1,6 +1,6 @@
 class Attachment < ActiveRecord::Base
   belongs_to      :post
-  has_attachment  :content_type => [ 'application/pdf' ], :storage => :s3, :max_size => 10.megabytes
+  has_attachment  :content_type => [ 'application/pdf' ], :storage => ATTACHMENT_FU_STORAGE, :max_size => 10.megabytes
   validates_as_attachment
 
   def attachment_attributes_valid?

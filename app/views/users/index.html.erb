@@ -1,6 +1,6 @@
 <h1><%= @page_title = "The Community" %></h1>
 <% @current_tab = :users %>
-<div id="sidebar">
+<div id="sidebar" class="grid_5 alpha">
 	
 	<% if logged_in? %>
 	    <div id="missionStatement">
@@ -35,11 +35,11 @@
 		
   		<p class="more"><%= link_to "See all users", all_users_url %></p>
   		<%if logged_in? && current_user.admin %>
-		  <p class="more"><%= link_to "See all users' email addresses", admin_emails_url %></p>
+		  <p class="more site-admin"><%= link_to "See all users' email addresses", admin_emails_url %></p>
 		  <% end %>
 </div>
 </div>
-  <div id="main">
+  <div id="main" class="grid_11 omega">
       <ul id="memberList">
        <% for user in @users %>
          <li>

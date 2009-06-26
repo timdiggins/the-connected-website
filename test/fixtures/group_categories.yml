@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+degree:
+  name: Degree
+
+diploma:
+  name: Diploma
+  
+ma:
+  name: MA
+  
+research:
+  name: Research
+  
+other:
+  name: Other
+ 

@@ -1,0 +1,2 @@
+#nil posts from images:
+PostImage.find(:all, :conditions=>{:post_id=>nil}).each{|pi| pi.destroy}

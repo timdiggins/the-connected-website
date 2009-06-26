@@ -1,6 +1,6 @@
 <% @page_title = "#{@user.possessive_to_s} Profile" %>
 <div id="profile">
-	<div id="sidebar">
+	<div id="sidebar" class="grid_5 alpha">
 	  <% if logged_in_as_admin? %>
 	    <h2>Admin options for this user</h2>
 			<ul>
@@ -8,11 +8,11 @@
         </li>
       	<li><%= link_to("Add/remove from groups", user_group_permissions_path(@user)) %>
 				</li>
+				</ul>
 		<% end %>
-		<%= render :partial => 'users/recent_posts' %>
 	</div>
 
-	<div id="main">
+	<div id="main" class="grid_11 omega">
 		<%= render :partial => 'users/avatar' %>
 
 		<div id="profileDetails">

@@ -1,10 +1,13 @@
 
 studio1:
   name: Studio 1
-  profile_text: Studio one is such a cool place
+  desc: Studio one is such a cool place
   home_page: MyString
+  contributed_at: <%= 1.day.ago %>
+  group_category: other 
 
 studio3:
   name: Studio Free
-  profile_text: We love ourselves
+  desc: We love ourselves
   home_page: MyString
+  group_category: other 

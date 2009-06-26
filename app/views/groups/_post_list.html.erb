@@ -1,0 +1,30 @@
+<div class="paddedSection">
+	<%= will_paginate(@posts, :prev_label => "Newer", :next_label => "Older", :inner_window => 2)  %>
+	
+	<% for post in @posts %>
+		<div class="truncatedPost">
+			
+			
+			<h3<% if post.has_attachment? %> class="file"<% elsif post.video_embed_tags %> class="video"<%end%>>
+      		<%= link_to h(post), post %>
+      </h3>
+      <p class="postDetails">
+      		Posted <%= time_ago_in_words(post.created_at) %> ago.
+      </p>
+				 
+
+			<p><%= plain_text(truncate(post.text,:length=>200)) %></p>
+      
+      
+      <% post.images.each do |image| %>
+       <p>
+         <%= image_tag_for(image, :crop64) %>
+				</p>
+			<% end %>
+			<%= clear_this %>	
+		</div>
+	<% end %>
+	
+
+  <%= will_paginate @posts, :prev_label => "Newer", :next_label => "Older", :inner_window => 2 %>
+</div>

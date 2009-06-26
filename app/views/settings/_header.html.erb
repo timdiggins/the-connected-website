@@ -1,13 +1,7 @@
 
-<div id="sidebar">
+<div id="sidebar" class="grid_5 alpha">
   <h2><%= @page_title = "Your Settings" %>:</h2>
 	<ul class="settings">
-		<li <%= current_if_context_is(:bio) %>>
-			<%= link_to "Profile info", bio_settings_url %>
-		</li>
-		<li <%= current_if_context_is(:picture) %>>
-			<%= link_to "Picture", picture_settings_url %>
-		</li>
 		<li <%= current_if_context_is(:username_email) %>>
 			<%= link_to "User name and email", username_email_settings_url %>
 		</li>

@@ -2,3 +2,8 @@ alex_can_moderate_studio1:
   user: alex
   group: studio1
   moderator: true
+
+duff_can_moderate_studio3:
+  user: duff
+  group: studio3
+  moderator: true
