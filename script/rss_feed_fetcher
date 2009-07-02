@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+root = File.expand_path(File.dirname(__FILE__) + '/../')
+require 'rubygems'
+require 'daemons'
+require root + '/lib/daemons_patch'
+
+Daemons.run_proc(
+  "rss_feed_fetcher", 
+  :dir_mode => :normal, 
+  :dir => (root + '/tmp/pids'), 
+  :log_output => true, 
+  :log_dir => File.join(root, 'log'),
+  :backtrace => true) do
+
+  require root + '/config/environment'
+  require root + '/lib/fetch_rss_items'
+
+  loop do
+    activity = FetchRssItems.fetch_one
+    if activity
+      #got one... sleep for a bit just not to be a processor hog
+      puts "#{Time.now.to_s :short} "
+      sleep 5
+    else
+      puts "#{Time.now.to_s :short} nothing to do, wait for a bit"
+      sleep 30
+    end
+  end
+  
+end

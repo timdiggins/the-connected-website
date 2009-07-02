@@ -20,13 +20,10 @@ set :deploy_via, :remote_cache
 set :rails_revision, '79f55de9c5e3ff1f8d9e767c5af21ba31be4cfba' # Fri Sep 19 09:06:35 2008 -0500  -   From master branch
 
 namespace :deploy do
-  desc "Restart Application"
-  task :restart, :roles => :app do
-    run "touch #{current_path}/tmp/restart.txt"
+  [:start, :restart].each do |action|
+    task(action, :roles => :app) do
+      run "touch #{current_release}/tmp/restart.txt"
+    end
   end
-
-  [:start, :stop].each do |action|
-    desc "#{action.to_s} is a noop"
-    task action, :roles => :app do;end
-  end
+  task(:stop, :roles => :app) {}
 end
