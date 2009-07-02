@@ -3,6 +3,7 @@ require 'fileutils'
 
 class ImageDownloaderTest < ActiveSupport::TestCase
   include Exceptions
+  self.use_transactional_fixtures = false
   
   context "ImageDownloader" do
     setup do
@@ -12,6 +13,7 @@ class ImageDownloaderTest < ActiveSupport::TestCase
     teardown do
       image_downloader_teardown
     end
+    
     should "be able to download an image and work out the mimetype" do
       url = 'http://www.wmin.ac.uk/sabe/images/marylebone_entrance5%20copy_v_Variation_1.jpg'
       path, mimetype = @downloader.fetch(url)
@@ -37,18 +39,14 @@ class ImageDownloaderTest < ActiveSupport::TestCase
         flunk "shouldn't work"
       rescue DownloadedImageTooSmall
       end
+      DownloadedImage.all.each {|img| puts img}
       assert_equal 0, DownloadedImage.all.size
     end
     
     should "be able to find_next_to_postprocess" do
       image = @downloader.find_next_to_postprocess
       assert !image.nil?
-      assert image.is_a? PostImage
-    end
-    
-    should "be able to figure out better flickr address" do
-      assert_equal nil, @downloader.flickr_replacement('http://somewhereelse.com/somethign.png')
-      assert_equal 'http://farm4.static.flickr.com/3544/3323215853_c366b79672.jpg', @downloader.flickr_replacement('http://farm4.static.flickr.com/3544/3323215853_c366b79672_m.jpg')
+      assert image.is_a?(PostImage)
     end
     
   end

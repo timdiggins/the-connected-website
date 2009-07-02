@@ -3,7 +3,7 @@
 log/*
 config/database.yml
 config/amazon_s3.yml
-config/flickr_secret.*
+config/flickr.yml
 vendor/rails
 .tm_last_run_ruby*
 .DS_Store

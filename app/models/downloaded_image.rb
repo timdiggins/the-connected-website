@@ -19,4 +19,8 @@ class DownloadedImage < ActiveRecord::Base
     raise DownloadedImageTooSmall if (img.width<DOWNLOADED_IMAGE_MIN_SIZE || img.height< DOWNLOADED_IMAGE_MIN_SIZE)
     super(img, size)
   end
+  
+  def to_s
+    "DownloadedImage('#{self.filename}', %s)" % [self.parent_id.nil? ? "original" : ":#{self.thumbnail}"]
+  end
 end

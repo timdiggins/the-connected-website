@@ -10,4 +10,11 @@ module Exceptions
   class DownloadError < StandardError
     #ok
   end
+  
+  class BadFlickrApiUsage < StandardError
+    
+  end
+  class FlickrApiFailure < StandardError
+    
+  end
 end

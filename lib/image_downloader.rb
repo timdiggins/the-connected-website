@@ -13,18 +13,24 @@ require 'exceptions'
 class ImageDownloader
   include Exceptions
   
+  def initialize flickr_api=nil
+    flickr_api = FlickrApi.new if flickr_api.nil?
+    @flickr_api = flickr_api
+  end
+  
   def fetch(url)
     begin
       uri = URI.parse(url)
     rescue
       raise "problem with url: #{url}"
     end
-    better_flickr = flickr_replacement(url)
-    if !better_flickr.nil?
+    @flickr_api.flickr_images_sizes_fromurl(url).each do |flickr_size|
       begin 
-        return uri_to_filepath(better_flickr)
-      rescue
-        puts "failed with better_flickr #{better_flickr}"
+        puts "trying #{flickr_size.source}"
+        return uri_to_filepath(URI.parse(flickr_size.source))
+      rescue Exception => e
+        puts e
+        puts "failed with better_flickr #{flickr_size.source}"
       end
     end
     return uri_to_filepath(uri)
@@ -44,16 +50,13 @@ class ImageDownloader
     return filepath, mimetype
   end
   
-  def flickr_replacement url
-    m = /(http:\/\/farm[0-9].static.flickr.com\/[^\/]+\/[^\/]+)_m(.jpg)/.match(url)
-    return nil if m.nil?
-    m.captures.to_s
-  end
   
   
   def store_downloaded_image(filepath, mimetype)
+    RAILS_DEFAULT_LOGGER.info '***about to start transaction****'
     data = ActionController::TestUploadedFile.new(filepath, mimetype)
     DownloadedImage.transaction do
+      RAILS_DEFAULT_LOGGER.info '***inside transaction****'
       DownloadedImage.create!(:uploaded_data => data)
     end
   end
