@@ -1,3 +1,5 @@
+/* @override http://localhost:3000/stylesheets/wminarch.css?1244724662 */
+
 body {
 	font-family: arial, sans-serif;
 	font-size: 0.8em;
@@ -156,6 +158,10 @@ div.paddedSection {
 label {
   display: block;
   margin-bottom: 0.5em;
+}
+label.radio {
+	display: inline;
+	margin-bottom: inherit;
 }
 
 input {

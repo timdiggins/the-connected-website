@@ -28,6 +28,21 @@
 	  <%= f.label :title, "Title" %>
     <%= f.text_field :title, :class => :largeInput %>
   </p>
+	
+<% if @post.has_images? %>
+  <p>
+    <%= f.label :images_only, "Display as images or as regular post?" %>
+    <%= f.radio_button :images_only, 'true', :class => :largeInput %>
+    <%= f.label :images_only_true, 'Images only', :class =>:radio %>
+    <%= f.radio_button :images_only, 'false', :class => :largeInput %>
+    <%= f.label :images_only_false, 'As regular post', :class =>:radio %>
+		<%= f.radio_button :images_only, '', :class => :largeInput %>
+    <%= f.label :images_only_, '(Use best guess)', :class =>:radio %>
+    
+  </p>
+
+  <%end %>
+
   
 	<p class="<%= @post.specifying_upload || @post.specifying_video ? "description" : "Post" %>">
 	  <%= f.label :detail, @post.specifying_upload || @post.specifying_video ? "Description" : "Text (idea, link, article, provocation)" %>
@@ -39,5 +54,6 @@
   <p class="submitBlock">
     <%= submit_tag  @post.specifying_upload ? "Upload file" : "Save post", :disable_with => "Saving..." %> or <%= link_to "Cancel", @post.new_record? ? new_post_url : @post %>
   </p> 
+	
 
 <% end %>
