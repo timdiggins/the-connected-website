@@ -157,20 +157,14 @@ class PostTest < ActiveSupport::TestCase
     
   end
   should "be able to know whether has images" do
-    post_with_images_and_no_text = Post.find(posts(:article_from_rss))
     assert post_with_images_and_no_text.has_images?
     assert !post_with_images_and_no_text.has_text?
     
-    post_with_text_and_no_images = Post.find(posts(:alex_boring_link))
     assert !post_with_text_and_no_images.has_images?
     assert post_with_text_and_no_images.has_text?
   end
   
   should "be able to act as  display_as_images" do
-    post_with_images_and_no_text = Post.find(posts(:article_from_rss))
-    post_with_text_and_no_images = Post.find(posts(:alex_boring_link))
-    post_with_images_and_text = Post.find(posts(:cool_article))
-    
     #initially
     assert_equal nil, post_with_text_and_no_images.images_only
     assert_equal nil, post_with_images_and_text.images_only
@@ -208,7 +202,8 @@ class PostTest < ActiveSupport::TestCase
       posts = Post.with_no_images.all
       assert_equal 2, posts.size
       assert posts.include?(posts(:alex_boring_link))
-      assert ! posts.include?(posts(:article_from_rss))
+      assert ! posts.include?(post_with_images_and_text)
+      assert ! posts.include?(post_with_images_and_no_text)
     end
     
   end

@@ -39,6 +39,16 @@ class Test::Unit::TestCase
       File.move(@previous_downloaded_images_dir, DOWNLOADED_IMAGES_DIR)
     end
   end
+  
+  def post_with_images_and_no_text 
+    Post.find(posts(:article_from_rss))
+  end
+  def post_with_text_and_no_images 
+    Post.find(posts(:alex_boring_link))
+  end
+  def post_with_images_and_text 
+    Post.find(posts(:cool_article))
+  end
 end
 
 class TestUtil

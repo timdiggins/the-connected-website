@@ -5,9 +5,7 @@
 
 		<% if with_controls && logged_in? && current_user.can_edit?(post) %>
 		<p class="postControls">
-      <%= link_to("Edit post", edit_post_url(post), :class => "option") %> 
-      <%= link_to("Delete post", post_url(post), :class => "option", :method => :delete, :confirm => "Are you sure you'd like to delete this post?") %>
-			<%= link_to("Featuring...", "#featuring-controls")%>
+			<%= link_to("Edit or feature...", "#featuring-controls")%>
 			</p>
 		<% end %> 
   

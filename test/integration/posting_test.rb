@@ -25,11 +25,11 @@ class PostingTest < ActionController::IntegrationTest
   should "not be able to edit a post if  the author" do
     post_id = posts(:cool_article).id
     get_ok "/posts/#{post_id}"
-    assert_link_does_not_exist "Edit post"
+    assert_link_does_not_exist EDIT_POST_LINK
     
     new_session_as(:alex) do
       get_ok "/posts/#{post_id}"
-      assert_link_does_not_exist "Edit post"
+      assert_link_does_not_exist EDIT_POST_LINK
     end
   end
   
@@ -37,7 +37,7 @@ class PostingTest < ActionController::IntegrationTest
     new_session_as(:duff) do
       post_id = posts(:cool_article).id
       get_ok "/posts/#{post_id}"
-      click_link "Edit post"
+      click_link EDIT_POST_LINK
       
       put_via_redirect "/posts/#{post_id}", :post => { :title => "Government is Really Bogus", :detail => "Here is the body" }
       assert_response 200
@@ -106,13 +106,13 @@ class PostingTest < ActionController::IntegrationTest
       i1 = post_images(:article_from_rss_image1)
       i2 = post_images(:article_from_rss_image2)
       assert_select "#image-#{i1.id}" do
-        assert_link_exists DELETE_IMAGE_LINK
         assert_link_exists FEATURE_IMAGE_LINK
         assert_link_does_not_exist UNFEATURE_IMAGE_LINK
+        assert_link_exists DELETE_IMAGE_LINK
       end
       assert_select "#image-#{i2.id}" do 
-        assert_link_exists DELETE_IMAGE_LINK
         assert_link_exists UNFEATURE_IMAGE_LINK
+        assert_link_does_not_exist DELETE_IMAGE_LINK
         assert_link_does_not_exist FEATURE_IMAGE_LINK
       end
       delete_via_redirect "/images/#{i2.id}"
@@ -134,6 +134,7 @@ class PostingTest < ActionController::IntegrationTest
     end
   end
 end
+EDIT_POST_LINK = "Edit post details"
 DELETE_IMAGE_LINK = "Delete this image?"
 FEATURE_IMAGE_LINK = "Feature on group and home page"
 UNFEATURE_IMAGE_LINK = "Unfeature"

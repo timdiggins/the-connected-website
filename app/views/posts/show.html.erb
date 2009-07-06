@@ -25,66 +25,42 @@
 	<div class="paddedSection">
     <%=render :partial => 'posts/meta', :locals=>{:post=>@post, :with_controls=>true}%>
 
-  	<% if @post.has_video? %>
-  	  <div class="video">
-  	    <%= @post.video_embed_tags %>
-  	  </div>
-  	<% end %>
-	
-  	<% if @post.has_attachment? %>
-  	  <%= link_to "<img src=\"/images/pdf.gif\" width=\"54px\" height=\"66px\" alt=\"PDF preview\" />", @post.attachment.public_filename, :class => "PDFpreview" %>
-    	<div class="fileBody">
-    		<%= @post.detail %>
-      	<p class="download"><%= link_to "Download this PDF file", @post.attachment.public_filename %></p>
-    	</div>
-  	<% else %>
-  	  <div class="postBody">
-    		<%= @post.detail %>
-    	</div>
-  	<% end %>
-
+  	<% if !@post.display_as_images? %>
+				<% if @post.has_video? %>
+		  	  <div class="video">
+		  	    <%= @post.video_embed_tags %>
+		  	  </div>
+		  	<% end %>
+			
+		  	<% if @post.has_attachment? %>
+		  	  <%= link_to "<img src=\"/images/pdf.gif\" width=\"54px\" height=\"66px\" alt=\"PDF preview\" />", @post.attachment.public_filename, :class => "PDFpreview" %>
+		    	<div class="fileBody">
+		    		<%= @post.detail %>
+		      	<p class="download"><%= link_to "Download this PDF file", @post.attachment.public_filename %></p>
+		    	</div>
+		  	<% else %>
+		  	  <div class="postBody">
+		    		<%= @post.detail %>
+		    	</div>
+		  	<% end %>
+		<% end%>
+   </div>
+	 
+	  <% if @post.display_as_images? %>
+       	<% @post.images.each do |image| %>
+       <div class="wide_image">
+       	  <% if image.width >= 640 %>
+            <%= image_tag_for(image, :width640) %>
+					<% else %>
+            <%= image_tag_for(image, :original) %>
+					<% end %>
+ 				</div>
+       <% end%>
+			 
+    <% end %>
 
    <% if logged_in? && current_user.can_edit?(@post) %>
-	 <div id="featuring-controls">
-   <% if !@post.has_images?%>
-		  <p>(No images to feature).</p>
-		 <% else %>
-		   <h2>Feature images:</h2>
-		   <p>You can feature images from a post on the group's page and on the main home page</p>
-			 <div class='image-controls'>
-		  	 <% @post.images.each do |image| %>
-		  	   <p id="image-<%=image.id%>">
-		         <%= link_to image_tag_for(image, :crop64), image.src, :title => "Open orignal image on remote site" %>
-		         <% if logged_in? && current_user.can_edit?(@post) %>
-			      	 <%= link_to 'Delete this image?', image_path(image), :method=>:delete, :class=>'admin', :confirm=>'Delete this image?' %>
-							 <% if image.featured? %>
-		             <%= link_to 'Unfeature', unfeature_image_path(image), :method=>:put, :class=>'admin' %>
-							 <% else %>
-		             <%= link_to 'Feature on group and home page', feature_image_path(image), :method=>:put, :class=>'admin' %>
-							 <% end %>
-		      	 <% end %>	
-		  		 </p>
-		  	 <% end %>
-			   <div class="clearThis"> </div>
-			 </div>
-			 <% end %>
-   <% if !@post.has_text?%>
-      <p>(No text to feature).</p>
-   <% else %>
-	   <div>
-	    <h2>Feature text content: (<%if @post.featured?%>currently featured<%else%>currently not featured<%end%>)</h2>
-			<div><p><%=plain_text(@post.text) %></p></div>
-		   <div class="clearThis"> </div>
-     </div> 
-      <%if @post.featured?%>
-        <%= link_to("Unfeature post text", unfeature_post_url(@post), :class => "admin", :method => :put) %>
-      <% else %>
-        <%= link_to("Feature post text", feature_post_url(@post), :class => "admin", :method => :put) %>
-      <% end %>
-   <% end %>
-   <%= link_to("Edit text", edit_post_url(@post), :class => "admin") %> 
-
-  	 <% end %>
-  </div>	 
+    <%= render :partial=>'posts/controls' %> 
+	 <% end %>
 </div>
 

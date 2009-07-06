@@ -16,6 +16,7 @@
 		<%= hidden_field_tag("post[specifying_upload]", @post.specifying_upload) %>
 	<% end %>
 	
+	
 	<% if @post.specifying_video %>
 		<p>
 			<%= f.label :video, "YouTube video URL or the raw Embed-tag from any video/flash site" %>
@@ -28,26 +29,14 @@
 	  <%= f.label :title, "Title" %>
     <%= f.text_field :title, :class => :largeInput %>
   </p>
-	
-<% if @post.has_images? %>
-  <p>
-    <%= f.label :images_only, "Display as images or as regular post?" %>
-    <%= f.radio_button :images_only, 'true', :class => :largeInput %>
-    <%= f.label :images_only_true, 'Images only', :class =>:radio %>
-    <%= f.radio_button :images_only, 'false', :class => :largeInput %>
-    <%= f.label :images_only_false, 'As regular post', :class =>:radio %>
-		<%= f.radio_button :images_only, '', :class => :largeInput %>
-    <%= f.label :images_only_, '(Use best guess)', :class =>:radio %>
-    
-  </p>
+	  
+  <% if @post.new_record? || !@post.display_as_images?%>
 
-  <%end %>
-
-  
 	<p class="<%= @post.specifying_upload || @post.specifying_video ? "description" : "Post" %>">
 	  <%= f.label :detail, @post.specifying_upload || @post.specifying_video ? "Description" : "Text (idea, link, article, provocation)" %>
     <%= f.text_area :detail, :class => "mceEditor" %>
   </p>
+  <% end %>
 
 	<%= hidden_field_tag(:tag, @initial_tag.id) if @initial_tag  %>
 
