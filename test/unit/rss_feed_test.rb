@@ -1,11 +1,11 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 require File.dirname(__FILE__) + '/../../lib/image_downloader.rb'
-class ImageDownloader
+class ImageDownloaderStubbed
   @@counter = 0
-
+  
   def fetch(url)
-    puts "Fake ImageDownloader [#@@counter] for test -> fake test #{url}"
+    #    puts "Fake ImageDownloader [#@@counter] for test -> fake test #{url}"
     @@counter += 1
     if @@counter % 2==0
       print '+'
@@ -18,7 +18,12 @@ class ImageDownloader
 end
 
 class RssFeedTest < ActiveSupport::TestCase
-  
+  setup do
+    PostImage.image_downloader_class = ImageDownloaderStubbed
+  end
+  teardown do
+    PostImage.image_downloader_class = ImageDownloader
+  end
   context "Rss Feed" do
     should "be initialized with a next fetch nil" do
       rss_feed = never_fetched_feed!
@@ -85,7 +90,7 @@ class RssFeedTest < ActiveSupport::TestCase
     rss_feed = RssFeed.find_next_to_fetch!
     assert_equal rss_feeds(:recently_fetched_feed), rss_feed 
     postpone_feed rss_feed
-        
+    
     begin 
       rss_feed = RssFeed.find_next_to_fetch!
       flunk "expected error but at #{Time.now} got #{rss_feed}"

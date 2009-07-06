@@ -13,6 +13,11 @@ class PostImage < ActiveRecord::Base
   
   before_save :cache_downloaded_sizes
   
+  @@image_downloader_class = ImageDownloader 
+  
+  cattr_accessor :image_downloader_class
+  
+  
   def cache_downloaded_sizes  
     return if !downloaded?
     self.width = downloaded_image.width
@@ -44,7 +49,7 @@ class PostImage < ActiveRecord::Base
   end
   
   def download_and_save!
-    image_downloader = ImageDownloader.new    
+    image_downloader = @@image_downloader_class.new    
     filepath, mimetype = image_downloader.fetch(src)
     begin
       self.downloaded = image_downloader.store_downloaded_image(filepath, mimetype)
