@@ -116,6 +116,13 @@ class Post < ActiveRecord::Base
     images.count>0
   end
   
+  def display_as_images?
+    return false unless has_images?
+#    return true unless has_text?
+    return images_only unless images_only.nil?
+    return ! has_text?    
+  end
+  
   def text
     Hpricot(detail).inner_text
   end

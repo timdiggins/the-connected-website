@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090611123720) do
+ActiveRecord::Schema.define(:version => 20090706110757) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "post_id"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20090611123720) do
     t.string   "remote_url"
     t.integer  "group_id"
     t.integer  "post_images_count", :default => 0
+    t.boolean  "images_only"
   end
 
   create_table "queued_emails", :force => true do |t|

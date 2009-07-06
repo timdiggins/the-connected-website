@@ -166,6 +166,39 @@ class PostTest < ActiveSupport::TestCase
     assert post_with_text_and_no_images.has_text?
   end
   
+  should "be able to act as  display_as_images" do
+    post_with_images_and_no_text = Post.find(posts(:article_from_rss))
+    post_with_text_and_no_images = Post.find(posts(:alex_boring_link))
+    post_with_images_and_text = Post.find(posts(:cool_article))
+    
+    #initially
+    assert_equal nil, post_with_text_and_no_images.images_only
+    assert_equal nil, post_with_images_and_text.images_only
+    assert_equal nil, post_with_images_and_no_text.images_only
+    
+    #should depend on whether there are images and no text
+    assert_equal true, post_with_images_and_no_text.display_as_images?
+    assert_equal false, post_with_images_and_text.display_as_images?
+    assert_equal false, post_with_text_and_no_images.display_as_images?
+    
+    #with explicit false all should be false
+    post_with_images_and_no_text.update_attributes(:images_only => false)
+    post_with_images_and_text.update_attributes(:images_only => false)
+    post_with_text_and_no_images.update_attributes(:images_only => false)
+    assert_equal false, post_with_images_and_no_text.display_as_images?
+    assert_equal false, post_with_images_and_text.display_as_images?
+    assert_equal false, post_with_text_and_no_images.display_as_images?
+    
+    #with explicit true all should be true
+    post_with_images_and_no_text.update_attributes(:images_only => true)
+    post_with_images_and_text.update_attributes(:images_only => true)
+    post_with_text_and_no_images.update_attributes(:images_only => true)
+    assert_equal true, post_with_images_and_no_text.display_as_images?
+    assert_equal true, post_with_images_and_text.display_as_images?
+    assert_equal false, post_with_text_and_no_images.display_as_images?
+    
+  end
+  
   context "Post class" do
     setup do
       TestUtil.recalculate_counters
@@ -180,5 +213,4 @@ class PostTest < ActiveSupport::TestCase
     
   end
   
-
 end
