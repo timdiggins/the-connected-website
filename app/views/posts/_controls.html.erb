@@ -1,0 +1,70 @@
+  <div id="featuring-controls">
+   <% if !@post.has_images?%>
+      <p>(No images to feature).</p>
+   <% else %>
+		 <h2>Display as images or as regular post?</h2>
+		 <% form_for @post, :html => { :multipart => true } do | f | %>
+
+			  <%= error_messages_for(:post, :object => @post.has_attachment? ? [@post.attachment, @post] : @post ) %>
+			  
+			  <p class="submitBlock">  <%= f.radio_button :images_only, 'true', :onchange=>"form.hide();form.submit()" %>
+			    <%= f.label :images_only_true, 'Images only', :class =>:radio %>
+			    <%= f.radio_button :images_only, 'false', :onchange=>"form.hide();form.submit()" %>
+			    <%= f.label :images_only_false, 'As regular post', :class =>:radio %>
+			    <% if @post.images_only.nil? %>
+					 <%= f.radio_button :images_only, '', :onchange=>"form.hide();form.submit()"  %>
+			     <%= f.label :images_only_, '(Use best guess)', :class =>:radio %>
+					 <% end %>			
+			    <%= submit_tag "Change" %>
+				</p> 
+			  
+			<% end %>
+
+       <h2>Images:</h2>
+       <p>Featured images appear on the group's page and on the main home page. 
+			 Deleted images don't appear anywhere. 
+			 (You can unfeature and re-feature, but once deleted an image is gone for good).</p>
+       <div class='image-controls'>
+         <% @post.images.each do |image| %>
+           <p id="image-<%=image.id%>">
+             <%= image_tag_for(image, :crop64) %>
+             <% if logged_in? && current_user.can_edit?(@post) %>
+               <% if image.featured? %>
+							   Featured image
+                 <%= link_to 'Unfeature', unfeature_image_path(image), :method=>:put, :class=>'admin' %>
+               <% else %>
+                 <%= link_to 'Feature on group and home page', feature_image_path(image), :method=>:put, :class=>'admin' %>
+								  <%= link_to 'Delete this image?', image_path(image), :method=>:delete, :class=>'admin', :confirm=>'Delete this image?' %>
+                
+               <% end %>
+             <% end %>  
+           </p>
+         <% end %>
+         <div class="clearThis"> </div>
+       </div>
+       <% end %>
+   <% unless @post.display_as_images? %>
+	    <% if !@post.has_text?%>
+	      <p>(No text to feature).</p>
+	   <% else %>
+	     <div>
+	      <h2>Textual content: (<%if @post.featured?%>currently featured<%else%>currently not featured<%end%>)</h2>
+	      <div><p><%=plain_text(@post.text) %></p></div>
+	       <div class="clearThis"> </div>
+	     </div> 
+	      <%if @post.featured?%>
+	        <%= link_to("Unfeature post text", unfeature_post_url(@post), :class => "admin", :method => :put) %>
+	      <% else %>
+	        <%= link_to("Feature post text", feature_post_url(@post), :class => "admin", :method => :put) %>
+	      <% end %>
+	   <% end %>
+   <% end %>
+
+<h2>Edit or delete</h2>
+<p class="postControls">
+      <%= link_to("Edit post details", edit_post_url(@post), :class => "option") %> 
+      <%= link_to("Delete post", post_url(@post), :class => "option", :method => :delete, :confirm => "Are you sure you'd like to delete this post?") %>
+    </p>
+   
+  	 	
+</div>
