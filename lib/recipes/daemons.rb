@@ -12,7 +12,7 @@ daemons.each do |daemon|
 end
 
 namespace :daemons do
-  %w(start stop).each do |action|
+  %w(start stop restart).each do |action|
     desc "#{action} the app daemons"
     task action.to_sym do
       daemons.each do |daemons|
@@ -21,13 +21,13 @@ namespace :daemons do
     end
   end
 
-  desc "restart the app daemons"
-  task :restart do
-    daemons.each do |daemons|
-      find_and_execute_task("#{daemons}:stop")
-      find_and_execute_task("#{daemons}:start")
-    end
-  end
+  # desc "restart the app daemons"
+  # task :restart do
+  #   daemons.each do |daemons|
+  #     find_and_execute_task("#{daemons}:stop")
+  #     find_and_execute_task("#{daemons}:start")
+  #   end
+  # end
 end
 
 before "deploy:stop",    "daemons:stop"
