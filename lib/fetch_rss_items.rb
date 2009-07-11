@@ -6,8 +6,8 @@ class FetchRssItems
     rss_feed = activity = nil
     begin
       rss_feed = next_rss_feed
-      rss_feed.check_feed()
-      activity = "checked #{rss_feed.url}"
+      created_msg = rss_feed.check_feed()
+      activity = "checked #{rss_feed.url}. #{created_msg}"
     rescue ActiveRecord::StaleObjectError
       #do nothing
       activity = "had a conflict with another rssfeedfetcher"

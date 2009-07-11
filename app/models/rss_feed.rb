@@ -16,6 +16,7 @@ class RssFeed < ActiveRecord::Base
   def validate
     errors.add('url', "must begin with either http:// or https://") unless url =~ /https?\:\/\//
   end
+  
   public
   
   def self.find_next_to_fetch!
@@ -30,12 +31,13 @@ class RssFeed < ActiveRecord::Base
   end
   
   def check_feed
-#    puts 'doing the work of getting and making'
+    created_msg = 'nothing'
     open(self.url.strip) do |s|
       rsscontent = s.read
-      make_posts(rsscontent)
+      created_msg = make_posts(rsscontent)
     end
     update_attributes(:last_fetched=>Time.now, :error_message=>"", :next_fetch => Time.now + 10.minute)
+    created_msg
   end  
   
   def record_error error_message
@@ -49,11 +51,19 @@ class RssFeed < ActiveRecord::Base
     
     result = RSS::Parser.parse(rsscontent, false)
     #    attrs[:title] = result.channel.title
+    created = 0
+    ignored = 0
     group = self.group
     result.items.each_with_index do |item, i|
       import_item = ImportRssItem.new(self, group, item)
-      import_item.save() unless import_item.exists?    
+      if import_item.exists?
+        ignored+=1
+       else      
+        import_item.save()
+        created+=1
+        end
     end
+    "%s created, %s ignored" % [created, ignored]
   end
   
   def to_s

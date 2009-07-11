@@ -51,8 +51,8 @@ class FlickrApiTest < ActiveSupport::TestCase
     end
 
     should "be able to figure out flickr stuff" do
-      assert_equal [nil,nil], @flickr_api.flickr_photo_id_and_secret_fromurl('http://somewhereelse.com/somethign.png')
-      assert_equal ['3323215853', 'c366b79672'], @flickr_api.flickr_photo_id_and_secret_fromurl('http://farm4.static.flickr.com/3544/3323215853_c366b79672_m.jpg')
+      assert_equal [nil,nil], FlickrApi.flickr_photo_id_and_secret_fromurl('http://somewhereelse.com/somethign.png')
+      assert_equal ['3323215853', 'c366b79672'], FlickrApi.flickr_photo_id_and_secret_fromurl('http://farm4.static.flickr.com/3544/3323215853_c366b79672_m.jpg')
     end
 
   end

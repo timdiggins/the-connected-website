@@ -20,7 +20,7 @@ Daemons.run_proc(
     activity = FetchRssItems.fetch_one
     if activity
       #got one... sleep for a bit just not to be a processor hog
-      puts "#{Time.now.to_s :short} "
+      puts "#{Time.now.to_s :short} #{activity}"
       sleep 5
     else
       puts "#{Time.now.to_s :short} nothing to do, wait for a bit"

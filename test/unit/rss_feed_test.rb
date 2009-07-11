@@ -107,8 +107,11 @@ class RssFeedTest < ActiveSupport::TestCase
     rss_feed.save!
     rss_feed
   end
+  
   def postpone_feed rss_feed 
     rss_feed.update_attributes(:last_fetched=>Time.now, :next_fetch => Time.now + 10.minute)
   end
+  
+  
   
 end

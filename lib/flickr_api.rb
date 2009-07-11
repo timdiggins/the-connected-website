@@ -22,27 +22,59 @@ class FlickrApi
     open(url) do |response|
       doc = Nokogiri::XML(response)
       rsp = doc.xpath('/rsp')[0]
-#      p "resp: #{rsp}"
+      #      p "resp: #{rsp}"
       stat = rsp['stat']
-#      p "stat: #{stat}"
-      raise FlickrApiFailure.new('some problem') unless stat == 'ok'
+      #      p "stat: #{stat}"
+      raise FlickrApiFailure.new('Problem using flickrapi with %s' % url) unless stat == 'ok'
       yield rsp
     end
   end
   
   def flickr_images_sizes_fromurl url
-    photo_id, photo_secret = flickr_photo_id_and_secret_fromurl(url)
+    photo_id, photo_secret = FlickrApi.flickr_photo_id_and_secret_fromurl(url)
     return [] if photo_id.nil?
-    flickr_image_sizes(photo_id, photo_secret)
+    begin
+      flickr_image_sizes(photo_id, photo_secret)
+    rescue FlickrApiFailure
+      []
+    end
   end
-
-  def flickr_photo_id_and_secret_fromurl url
+  
+  def self.flickr_photo_id_and_secret_fromurl url
     m = /http:\/\/farm[^\/.]+.static.flickr.com\/[^\/]+\/([^_\/]+)_([^_\/]+)(?:_[mstb])?.jpg/.match(url)
     return [nil, nil] if m.nil?
     return m.captures[0], m.captures[1]
   end
   
-  def flickr_image_sizes(photo_id, photo_secret)
+  def self.base58_encode(n)
+    alphabet = %w(
+      1 2 3 4 5 6 7 8 9 
+      a b c d e f g h i 
+      j k m n o p q r s 
+      t u v w x y z A B 
+      C D E F G H J K L 
+      M N P Q R S T U V 
+      W X Y Z
+    )
+    
+    return alphabet[0] if n == 0
+    
+    result = ''
+    base = alphabet.length
+    
+    while n > 0
+      remainder = n % base
+      n = n / base
+      result = alphabet[remainder] + result
+    end
+    result
+  end
+  
+  def self.short_url(photo_id)
+    "http://flic.kr/p/%s" % self.base58_encode(photo_id.to_i)
+end
+
+def flickr_image_sizes(photo_id, photo_secret)
     call(:method=>"flickr.photos.getSizes", :photo_id=>photo_id, :secret=>photo_secret) do |rsp|
       sizes = rsp.xpath("./sizes/size").collect { |size_node| FlickrImageSize.new(size_node)}
       sizes.sort!.reverse!
