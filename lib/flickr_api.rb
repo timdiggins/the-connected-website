@@ -62,7 +62,7 @@ class FlickrApi
     result = ''
     base = alphabet.length
     
-    while n > 0
+    while n > 0 
       remainder = n % base
       n = n / base
       result = alphabet[remainder] + result
@@ -72,9 +72,9 @@ class FlickrApi
   
   def self.short_url(photo_id)
     "http://flic.kr/p/%s" % self.base58_encode(photo_id.to_i)
-end
-
-def flickr_image_sizes(photo_id, photo_secret)
+  end
+  
+  def flickr_image_sizes(photo_id, photo_secret)
     call(:method=>"flickr.photos.getSizes", :photo_id=>photo_id, :secret=>photo_secret) do |rsp|
       sizes = rsp.xpath("./sizes/size").collect { |size_node| FlickrImageSize.new(size_node)}
       sizes.sort!.reverse!

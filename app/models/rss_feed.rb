@@ -25,8 +25,12 @@ class RssFeed < ActiveRecord::Base
   
   def fixed_url
     u = url.strip
-    return u unless is_flickr?
-    uri = URI.parse(u)
+    return self.class.fix_url_for_flickr(u) if is_flickr?
+    u
+  end
+  
+  def self.fix_url_for_flickr url
+    uri = URI.parse(url)
     puts 'flickr url', url
     puts uri
     puts uri.query
