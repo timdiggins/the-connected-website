@@ -18,6 +18,7 @@ class ImageDownloaderStubbed
   
   def store_downloaded_image filepath, mimetype
     RAILS_DEFAULT_LOGGER.info "ImageDownloaderStubbed.store_downloaded_image('#{filepath}', '#{mimetype}')"
+    nil
   end
 end
 

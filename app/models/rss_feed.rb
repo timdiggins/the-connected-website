@@ -31,10 +31,6 @@ class RssFeed < ActiveRecord::Base
   
   def self.fix_url_for_flickr url
     uri = URI.parse(url)
-    puts 'flickr url', url
-    puts uri
-    puts uri.query
-    puts uri.query.class
     fixed_query = uri.query.split('&').find_all{|q|
       name = q.split('=')[0]
       name!='format'
