@@ -1,8 +1,11 @@
 <li class="feed <%= rss_feed.has_problem? ? "feed-problem": ""%>">
   <p>
   	  <strong><%if @group.nil?%><%= link_to(rss_feed.group, group_url(rss_feed.group))%><br />Feed: <% end %>
-      <%= h(rss_feed.url)%></strong>
-      [<%= link_to 'link', rss_feed.url%>]
+      <%= h(rss_feed.fixed_url)%></strong>
+      [<%= link_to 'link', rss_feed.fixed_url%>]
+			<% if rss_feed.is_flickr? %>
+			(a Flickr feed)
+			<% end %>
 	</p>
   <p class="error"><% if !rss_feed.error_message.nil? && ! rss_feed.error_message.empty?%>
        <strong>Last fetch gave error: <%= rss_feed.error_message%></strong>
