@@ -22,8 +22,8 @@
      <%= rss_feed.next_fetch>Time.now ? 'will be in' : 'should have been' %> 
      <%= time_ago_in_words(rss_feed.next_fetch) %>
      <%= rss_feed.next_fetch>Time.now ? '' : ' ago'%>
-     <% if rss_feed.next_fetch>Time.now %>
-       <%= link_to 'Fetch Sooner', fetch_sooner_group_rss_feed_path(@group, rss_feed), :method=>:post %>
+     <% if rss_feed.next_fetch>Time.now && !@group.nil?%>
+       <%= link_to 'Fetch Sooner', fetch_sooner_group_rss_feed_url(@group, rss_feed), :method=>:post %>
      <% end %>
      
    <% end %>
