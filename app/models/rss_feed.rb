@@ -12,6 +12,7 @@ class RssFeed < ActiveRecord::Base
   #    end
   #  end
   
+
   protected
   def validate
     errors.add('url', "must begin with either http:// or https://") unless url =~ /https?\:\/\//
@@ -19,6 +20,32 @@ class RssFeed < ActiveRecord::Base
   
   public
   
+#class methods
+  def self.fetch_one
+    #return whether worth checking again soon
+    rss_feed = activity = nil
+    begin
+      rss_feed = find_next_to_fetch!
+      created_msg = rss_feed.check_feed()
+      activity = "checked #{rss_feed.url}. #{created_msg}"
+    rescue ActiveRecord::StaleObjectError
+      #do nothing
+      activity = "had a conflict with another rssfeedfetcher"
+    rescue ActiveRecord::RecordNotFound
+      #not worth checking again for a while
+    rescue
+      activity = "error #{$!} %s" % rss_feed
+      puts activity 
+      rss_feed.record_error("Unexpected error: #{$!}") if rss_feed
+    end
+    return activity
+  end
+  
+  def self.fetch_one_unchecked
+    rss_feed = find_next_to_fetch!
+    rss_feed.check_feed()
+  end
+
   def self.find_next_to_fetch!
     rss_feed = find(:first, :conditions=>{:next_fetch=>nil})
     return rss_feed unless rss_feed.nil?
@@ -29,6 +56,9 @@ class RssFeed < ActiveRecord::Base
     raise ActiveRecord::RecordNotFound if rss_feed.nil?
     rss_feed
   end
+  
+  
+  #instance methods
   
   def check_feed
     created_msg = 'nothing'
