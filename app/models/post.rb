@@ -2,6 +2,7 @@ require 'hpricot'
 class Post < ActiveRecord::Base
   
   include Truncator
+  include Exceptions
   
   attr_accessor :specifying_video, :specifying_upload
   validates_presence_of :title
@@ -16,7 +17,7 @@ class Post < ActiveRecord::Base
   has_many :comments, :order => 'created_at', :dependent => :destroy
   has_many :post_images, :dependent => :destroy, :include => :downloaded_image
   alias_attribute :images, :post_images
-
+  
   has_one  :attachment, :dependent => :destroy
   has_many :subscriptions, :dependent => :destroy
   has_many :subscribers, :through => :subscriptions, :source => :user, :uniq => true
@@ -111,14 +112,14 @@ class Post < ActiveRecord::Base
   def has_video?
     !video.blank?
   end
-    
+  
   def has_images?
     images.count>0
   end
   
   def display_as_images?
     return false unless has_images?
-#    return true unless has_text?
+    #    return true unless has_text?
     return images_only unless images_only.nil?
     return ! has_text?    
   end
@@ -129,6 +130,25 @@ class Post < ActiveRecord::Base
   
   def has_text?
     !text.blank?
+  end
+  
+  def download_and_save_images_in_detail
+    self.class.parse_images_from_detail(detail).each do |src|
+      begin
+        image = post_images.new(:src=>src)
+        image.download_and_save!
+      rescue DownloadError => e
+        puts "#{e}\n   from html\n#{detail}"   
+      end
+    end
+  end
+ 
+  #class methods
+  def self.parse_images_from_detail detail
+    doc = Hpricot(detail)
+    doc.search("img").collect do |elem| 
+      elem['src']
+    end 
   end
   
   private

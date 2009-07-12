@@ -1,6 +1,6 @@
 require 'hpricot'
 
-class ImportRssItem
+class RssItem
   include Exceptions 
   def initialize rss_feed, group, item
     @rss_feed = rss_feed
@@ -13,7 +13,7 @@ class ImportRssItem
     !guid.nil? #we have already imported this item
   end
   
-  def save
+  def import
     guid = ImportedGuid.new(:rss_feed_id=>@rss_feed.id, :guid=>@item.guid) 
     title = @item.title 
     title = 'untitled' if title.nil? || title.strip.empty?
@@ -34,21 +34,7 @@ class ImportRssItem
     end
     post.save!
     guid.save
-    self.class.parse_images_from_detail(post.detail).each do |src|
-      begin
-        image = post.post_images.new(:src=>src)
-        image.download_and_save!
-      rescue DownloadError => e
-        puts "#{e}\n   from html\n#{detail}"   
-      end
-    end
-  end
-  
-  def self.parse_images_from_detail detail
-    doc = Hpricot(detail)
-    doc.search("img").collect do |elem| 
-      elem['src']
-    end 
+    post.download_and_save_images_in_detail
   end
   
 end

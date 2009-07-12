@@ -85,11 +85,11 @@ class RssFeed < ActiveRecord::Base
     ignored = 0
     group = self.group
     result.items.each_with_index do |item, i|
-      import_item = ImportRssItem.new(self, group, item)
-      if import_item.exists?
+      rss_item = RssItem.new(self, group, item)
+      if rss_item.exists?
         ignored+=1
        else      
-        import_item.save()
+        rss_item.import()
         created+=1
         end
     end

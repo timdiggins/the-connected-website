@@ -99,6 +99,8 @@ class RssFeedTest < ActiveSupport::TestCase
     
   end
   
+
+  
   def never_fetched_feed! for_group = nil
     if for_group.nil?
       for_group = groups(:studio1)
