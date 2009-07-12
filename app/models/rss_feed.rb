@@ -5,22 +5,42 @@ class RssFeed < ActiveRecord::Base
   belongs_to :group
   has_many :imported_guids
   named_scope :sorted_by_next_fetch, lambda { { :order => "next_fetch ASC" }}
-
+  
   #  before_create do |rss_feed|
   #    if rss_feed.next_fetch.nil?
   #      rss_feed.next_fetch = Time.now 
   #    end
   #  end
   
-
+  
   protected
   def validate
     errors.add('url', "must begin with either http:// or https://") unless url =~ /https?\:\/\//
   end
   
   public
+  def is_flickr?
+    url.strip.starts_with? 'http://api.flickr.com'
+  end
   
-#class methods
+  def fixed_url
+    u = url.strip
+    return u unless is_flickr?
+    uri = URI.parse(u)
+    puts 'flickr url', url
+    puts uri
+    puts uri.query
+    puts uri.query.class
+    fixed_query = uri.query.split('&').find_all{|q|
+      name = q.split('=')[0]
+      name!='format'
+    }
+    fixed_query << "format=rss_200"
+    uri.query = fixed_query.join '&'
+    uri.to_s
+  end
+  
+  #class methods
   def self.fetch_one
     #return whether worth checking again soon
     rss_feed = activity = nil
@@ -45,7 +65,7 @@ class RssFeed < ActiveRecord::Base
     rss_feed = find_next_to_fetch!
     rss_feed.check_feed()
   end
-
+  
   def self.find_next_to_fetch!
     rss_feed = find(:first, :conditions=>{:next_fetch=>nil})
     return rss_feed unless rss_feed.nil?
@@ -62,7 +82,7 @@ class RssFeed < ActiveRecord::Base
   
   def check_feed
     created_msg = 'nothing'
-    open(self.url.strip) do |s|
+    open(self.fixed_url) do |s|
       rsscontent = s.read
       created_msg = make_posts(rsscontent)
     end
@@ -88,10 +108,10 @@ class RssFeed < ActiveRecord::Base
       rss_item = RssItem.new(self, group, item)
       if rss_item.exists?
         ignored+=1
-       else      
+      else      
         rss_item.import()
         created+=1
-        end
+      end
     end
     "%s created, %s ignored" % [created, ignored]
   end

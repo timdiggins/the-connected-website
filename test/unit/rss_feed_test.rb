@@ -15,6 +15,10 @@ class ImageDownloaderStubbed
       return SAMPLE_TOO_SMALL_IMAGE, "image/gif"
     end
   end
+  
+  def store_downloaded_image filepath, mimetype
+    RAILS_DEFAULT_LOGGER.info "ImageDownloaderStubbed.store_downloaded_image('#{filepath}', '#{mimetype}')"
+  end
 end
 
 class RssFeedTest < ActiveSupport::TestCase
@@ -99,7 +103,22 @@ class RssFeedTest < ActiveSupport::TestCase
     
   end
   
-
+  should "be able to correct flickr format" do
+    correct_format_url = 'http://api.flickr.com/services/feeds/photoset.gne?set=72157620858460628&nsid=38307979@N05&lang=en-us&format=rss_200'
+    rightformat = RssFeed.new(:url=>correct_format_url)
+    assert_equal correct_format_url, rightformat.fixed_url
+    
+    extraspaces = RssFeed.new(:url=>'  http://api.flickr.com/services/feeds/photoset.gne?set=72157620858460628&nsid=38307979@N05&lang=en-us&format=rss_200  ')
+    assert_equal correct_format_url, extraspaces.fixed_url
+    
+    noformat = RssFeed.new(:url=>'http://api.flickr.com/services/feeds/photoset.gne?set=72157620858460628&nsid=38307979@N05&lang=en-us')
+    assert_equal correct_format_url, noformat.fixed_url
+    
+    wrongformat = RssFeed.new(:url=>'http://api.flickr.com/services/feeds/photoset.gne?set=72157620858460628&format=rss2&nsid=38307979@N05&lang=en-us')
+    assert_equal correct_format_url, wrongformat.fixed_url
+    
+  end
+  
   
   def never_fetched_feed! for_group = nil
     if for_group.nil?
