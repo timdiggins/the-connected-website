@@ -24,6 +24,7 @@ class RssItem
                     :remote_url=>@item.link,
                     :group_id=>@group.id
     )
+    post.images_only = true if @rss_feed.is_flickr? 
     if !post.valid?
       puts "title: #{title}"
       puts "detail: #{detail}"

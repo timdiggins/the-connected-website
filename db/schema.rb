@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090706110757) do
+ActiveRecord::Schema.define(:version => 20090712150203) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "post_id"
@@ -132,6 +132,7 @@ ActiveRecord::Schema.define(:version => 20090706110757) do
     t.integer  "downloaded_image_id"
     t.integer  "width640_height"
     t.integer  "height320_width"
+    t.text     "caption"
   end
 
   create_table "posts", :force => true do |t|

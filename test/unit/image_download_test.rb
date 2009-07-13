@@ -1,22 +1,21 @@
 require 'test_helper'
 require 'fileutils'
 
-class ImageDownloaderTest < ActiveSupport::TestCase
+class ImageDownloadTest < ActiveSupport::TestCase
   include Exceptions
   self.use_transactional_fixtures = false
   
-  context "ImageDownloader" do
+  context "ImageDownload" do
     setup do
-      image_downloader_setup
-      @downloader = ImageDownloader.new
+      image_download_setup
     end
     teardown do
-      image_downloader_teardown
+      image_download_teardown
     end
     
     should "be able to download an image and work out the mimetype" do
       url = 'http://www.wmin.ac.uk/sabe/images/marylebone_entrance5%20copy_v_Variation_1.jpg'
-      path, mimetype = @downloader.fetch(url)
+      path, mimetype = ImageDownload.new(url).fetch
       assert_equal "#{TMP_DIR}/marylebone_entrance5%20copy_v_Variation_1.jpg", path
       assert File.exists?(path)
       assert_equal "image/jpeg", mimetype
@@ -25,7 +24,7 @@ class ImageDownloaderTest < ActiveSupport::TestCase
     should "be able to store as a downloaded_image" do
       f = SAMPLE_IMAGE
       mimetype = "image/jpeg"
-      downloaded = @downloader.store_downloaded_image(f, mimetype)
+      downloaded = ImageDownload.store_downloaded_image(f, mimetype)
       assert !downloaded.nil?, "should exist now"
       assert downloaded.is_a?(DownloadedImage)
     end
@@ -35,7 +34,7 @@ class ImageDownloaderTest < ActiveSupport::TestCase
       f = SAMPLE_TOO_SMALL_IMAGE
       mimetype = "image/jpeg"
       begin
-        @downloader.store_downloaded_image(f, mimetype)
+        ImageDownload.store_downloaded_image(f, mimetype)
         flunk "shouldn't work"
       rescue DownloadedImageTooSmall
       end
@@ -44,7 +43,7 @@ class ImageDownloaderTest < ActiveSupport::TestCase
     end
     
     should "be able to find_next_to_postprocess" do
-      image = @downloader.find_next_to_postprocess
+      image = ImageDownload.find_next_to_postprocess
       assert !image.nil?
       assert image.is_a?(PostImage)
     end

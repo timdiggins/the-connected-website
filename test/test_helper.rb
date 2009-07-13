@@ -19,7 +19,7 @@ class Test::Unit::TestCase
   
   fixtures :all
   
-  def image_downloader_setup
+  def image_download_setup
     assert File.exists?(PUBLIC_DIR), "expected #{PUBLIC_DIR} to exist"
     if !File.exists?(DOWNLOADED_IMAGES_DIR)
       @previous_downloaded_images_dir = nil
@@ -29,7 +29,7 @@ class Test::Unit::TestCase
       File.move(DOWNLOADED_IMAGES_DIR, @previous_downloaded_images_dir)
     end
   end
-  def image_downloader_teardown
+  def image_download_teardown
     FileUtils.mkdir(TEST_DOWNLOADED_IMAGES_DIR) if !File.exists?(TEST_DOWNLOADED_IMAGES_DIR)
     if File.exists?(DOWNLOADED_IMAGES_DIR)
       FileUtils.cp_r("#{DOWNLOADED_IMAGES_DIR}/.", TEST_DOWNLOADED_IMAGES_DIR) 

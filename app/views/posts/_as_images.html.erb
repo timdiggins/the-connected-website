@@ -1,0 +1,12 @@
+<% @post.images.each do |image| %>
+   <div class="wide_image">
+      <% if image.width >= 640 %>
+        <%= image_tag_for(image, :width640) %>
+      <% else %>
+        <%= image_tag_for(image, :original) %>
+      <% end %>
+    <% if ! image.caption.blank? %>
+       <p class="caption"><%= image.caption %></p>
+    <% end %>
+    </div>
+ <% end%>

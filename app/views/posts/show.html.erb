@@ -47,16 +47,7 @@
    </div>
 	 
 	  <% if @post.display_as_images? %>
-       	<% @post.images.each do |image| %>
-       <div class="wide_image">
-       	  <% if image.width >= 640 %>
-            <%= image_tag_for(image, :width640) %>
-					<% else %>
-            <%= image_tag_for(image, :original) %>
-					<% end %>
- 				</div>
-       <% end%>
-			 
+       <%= render :partial=>'as_images' %>			 
     <% end %>
 
    <% if logged_in? && current_user.can_edit?(@post) %>

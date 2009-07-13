@@ -13,9 +13,9 @@ class PostImage < ActiveRecord::Base
   
   before_save :cache_downloaded_sizes
   
-  @@image_downloader_class = ImageDownloader 
+  @@image_download_class = ImageDownload 
   
-  cattr_accessor :image_downloader_class
+  cattr_accessor :image_download_class
   
   
   def cache_downloaded_sizes  
@@ -49,10 +49,10 @@ class PostImage < ActiveRecord::Base
   end
   
   def download_and_save!
-    image_downloader = @@image_downloader_class.new    
-    filepath, mimetype = image_downloader.fetch(src)
+    image_download = @@image_download_class.new src  
+    filepath, mimetype = image_download.fetch
     begin
-      self.downloaded = image_downloader.store_downloaded_image(filepath, mimetype)
+      self.downloaded = @@image_download_class.store_downloaded_image(filepath, mimetype)
     rescue DownloadedImageTooSmall
       #should really delete the anomalous downloaded image record'
       return false
@@ -60,6 +60,7 @@ class PostImage < ActiveRecord::Base
       save!
       raise DownloadError.new("problem trying to download image \n  src: #{src}\n  e  : #{e}")
     end
+    self.caption = image_download.fetch_caption
     save!
   end
 end

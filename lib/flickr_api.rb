@@ -40,6 +40,17 @@ class FlickrApi
     end
   end
   
+  def caption_from_url url
+    photo_id, photo_secret = FlickrApi.flickr_photo_id_and_secret_fromurl(url)
+    return nil if photo_id.nil?
+    begin
+      caption(photo_id, photo_secret)
+    rescue FlickrApiFailure
+      nil
+    end
+    
+  end
+  
   def self.flickr_photo_id_and_secret_fromurl url
     m = /http:\/\/farm[^\/.]+.static.flickr.com\/[^\/]+\/([^_\/]+)_([^_\/]+)(?:_[mstb])?.jpg/.match(url)
     return [nil, nil] if m.nil?
@@ -47,6 +58,7 @@ class FlickrApi
   end
   
   def self.base58_encode(n)
+    #ripped off from http://gist.github.com/101753
     alphabet = %w(
       1 2 3 4 5 6 7 8 9 
       a b c d e f g h i 
@@ -79,7 +91,12 @@ class FlickrApi
       sizes = rsp.xpath("./sizes/size").collect { |size_node| FlickrImageSize.new(size_node)}
       sizes.sort!.reverse!
     end
-    
+  end
+  
+  def caption(photo_id, photo_secret)
+    call(:method=>"flickr.photos.getInfo", :photo_id=>photo_id, :secret=>photo_secret) do |rsp|
+      rsp.xpath("./photo/description")[0].content
+    end
   end
 end
 

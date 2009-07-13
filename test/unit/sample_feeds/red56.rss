@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+        xmlns:media="http://search.yahoo.com/mrss/"
+	    xmlns:dc="http://purl.org/dc/elements/1.1/"
+	    	    xmlns:flickr="urn:flickr:" >
+	<channel>
+
+
+		<title>Uploads from red56</title>
+		<link>http://www.flickr.com/photos/red56/</link>
+ 		<description></description>
+		<pubDate>Mon, 08 Dec 2008 06:38:56 -0800</pubDate>
+		<lastBuildDate>Mon, 08 Dec 2008 06:38:56 -0800</lastBuildDate>
+		<generator>http://www.flickr.com/</generator>
+		<image>
+			<url>http://farm1.static.flickr.com/7/buddyicons/69886255@N00.jpg?1112079999#69886255@N00</url>
+			<title>Uploads from red56</title>
+			<link>http://www.flickr.com/photos/red56/</link>
+		</image>
+
+		<item>
+			<title>I was a useful visitor at sicamp08</title>
+			<link>http://www.flickr.com/photos/red56/3092917232/</link>
+			<description>&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/people/red56/&quot;&gt;red56&lt;/a&gt; posted a photo:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.flickr.com/photos/red56/3092917232/&quot; title=&quot;I was a useful visitor at sicamp08&quot;&gt;&lt;img src=&quot;http://farm4.static.flickr.com/3027/3092917232_8977a71645_m.jpg&quot; width=&quot;240&quot; height=&quot;173&quot; alt=&quot;I was a useful visitor at sicamp08&quot; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+</description>
+			<pubDate>Mon, 08 Dec 2008 06:38:56 -0800</pubDate>
+			                        <dc:date.Taken>2008-12-08T14:38:56-08:00</dc:date.Taken>
+            			<author flickr:profile="http://www.flickr.com/people/red56/">nobody@flickr.com (red56)</author>
+			<guid isPermaLink="false">tag:flickr.com,2004:/photo/3092917232</guid>
+                            			<media:content url="http://farm4.static.flickr.com/3027/3092917232_8977a71645_m.jpg" 
+				       type="image/jpeg"
+				       height="173"
+				       width="240"/>
+            <media:title>I was a useful visitor at sicamp08</media:title>
+        <media:thumbnail url="http://farm4.static.flickr.com/3027/3092917232_8977a71645_s.jpg" height="75" width="75" />
+        <media:credit role="photographer">red56</media:credit>
+		<media:category scheme="urn:flickr:tags">sicamp sicamp08 usefulvisitors</media:category>
+
+
+		</item>
+
+	</channel>
+</rss>

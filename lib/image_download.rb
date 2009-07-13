@@ -10,21 +10,22 @@ require 'action_controller'
 require 'action_controller/test_process.rb'
 require 'exceptions'
 
-class ImageDownloader
+class ImageDownload
   include Exceptions
   
-  def initialize flickr_api=nil
+  def initialize url, flickr_api=nil
+    @url = url
+    begin
+      @uri = URI.parse(url)
+    rescue
+      raise "problem with url: #{url}"
+    end
     flickr_api = FlickrApi.new if flickr_api.nil?
     @flickr_api = flickr_api
   end
   
-  def fetch(url)
-    begin
-      uri = URI.parse(url)
-    rescue
-      raise "problem with url: #{url}"
-    end
-    @flickr_api.flickr_images_sizes_fromurl(url).each do |flickr_size|
+  def fetch
+    @flickr_api.flickr_images_sizes_fromurl(@url).each do |flickr_size|
       begin 
         puts "trying #{flickr_size.source}"
         return uri_to_filepath(URI.parse(flickr_size.source))
@@ -33,7 +34,16 @@ class ImageDownloader
         puts "failed with better_flickr #{flickr_size.source}"
       end
     end
-    return uri_to_filepath(uri)
+    return uri_to_filepath(@uri)
+  end
+  
+  def fetch_caption
+    begin 
+      return @flickr_api.caption_from_url(@url)
+    rescue Exception => e
+      puts "fetch_caption from #{@url} raised '#{e}'"
+    end
+    return nil
   end
   
   def uri_to_filepath(uri)
@@ -52,7 +62,7 @@ class ImageDownloader
   
   
   
-  def store_downloaded_image(filepath, mimetype)
+  def self.store_downloaded_image(filepath, mimetype)
     RAILS_DEFAULT_LOGGER.info '***about to start transaction****'
     data = ActionController::TestUploadedFile.new(filepath, mimetype)
     DownloadedImage.transaction do
@@ -61,15 +71,16 @@ class ImageDownloader
     end
   end
   
-  def find_next_to_postprocess
+  def self.find_next_to_postprocess
     PostImage.find(:first, :conditions=>"downloaded_image_id is NULL")
   end
   
-  def fetch_one
+  def self.fetch_one
     image = find_next_to_postprocess
     return false if image.nil?
     begin
-      filepath, mimetype = fetch(image.src)
+      image_download = self.new
+      filepath, mimetype = image_download.fetch(image.src)
       downloaded = store_downloaded_image(filepath, mimetype)
     rescue DownloadedImageTooSmall
       image.destroy
@@ -85,8 +96,4 @@ class ImageDownloader
     return "fetched from #{image.src}"
   end
   
-  
-  def seek_one_imageless_text
-    
-  end
 end

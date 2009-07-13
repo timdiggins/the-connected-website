@@ -27,14 +27,14 @@ class PostImageTest < ActiveSupport::TestCase
   
   context "after assigning downloaded image post_image" do
     setup do
-      image_downloader_setup
+      image_download_setup
     end
     teardown do
-      image_downloader_teardown
+      image_download_teardown
     end
     should "cache downloaded image sizes" do
       f = SAMPLE_IMAGE
-      downloaded = ImageDownloader.new.store_downloaded_image(f, "image/jpeg")
+      downloaded = ImageDownload.store_downloaded_image(f, "image/jpeg")
       pi = post_images(:cool_article_image1)
       
       assert !pi.downloaded?, "precondition"

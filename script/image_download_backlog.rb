@@ -2,11 +2,10 @@
 
 root = File.expand_path(File.dirname(__FILE__) + '/../')
 require root + '/config/environment'
-require root + '/lib/image_downloader'
+require root + '/lib/image_download'
 
-downloader = ImageDownloader.new
 loop do
-  activity = downloader.fetch_one
+  activity = ImageDownload.fetch_one
   if activity
     #got one... sleep for a bit just not to be a processor hog
     puts "#{Time.now.to_s :short} #{activity}"

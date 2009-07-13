@@ -43,17 +43,20 @@ class FlickrApiTest < ActiveSupport::TestCase
       sizes = @flickr_api.flickr_image_sizes(photo_id, photo_secret)
       assert_equal "Original", sizes[0].label 
     end
-
-        should "be able to figure out better flickr sizes" do
+    
+    should "be able to figure out better flickr sizes" do
       assert_equal [], @flickr_api.flickr_images_sizes_fromurl('http://somewhereelse.com/somethign.png')
       sizes = @flickr_api.flickr_images_sizes_fromurl('http://farm4.static.flickr.com/3544/3323215853_c366b79672_m.jpg')
       assert_equal "Original", sizes[0].label
     end
-
+    
     should "be able to figure out flickr stuff" do
       assert_equal [nil,nil], FlickrApi.flickr_photo_id_and_secret_fromurl('http://somewhereelse.com/somethign.png')
       assert_equal ['3323215853', 'c366b79672'], FlickrApi.flickr_photo_id_and_secret_fromurl('http://farm4.static.flickr.com/3544/3323215853_c366b79672_m.jpg')
     end
-
+    
+    should "be able to get caption from flickr" do
+      assert_equal 'Hordes surging up to the acropolis', @flickr_api.caption_from_url('http://farm3.static.flickr.com/2204/2474805529_6153a0ec02.jpg')
+    end
   end
 end
