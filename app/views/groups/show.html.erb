@@ -10,6 +10,7 @@
       <%= simple_format(h(@group.desc))%>   
     <% end %>
   </div>
+  <p class="backLink">Open Studio is a project by <%= link_to "<strong>The School of Architecture</strong> University of Westminster", 'http://www.westminster.ac.uk/sabe' %></p>
   
 	
     <% if logged_in? && (current_user.admin? || current_user.can_edit?(@group))%>
