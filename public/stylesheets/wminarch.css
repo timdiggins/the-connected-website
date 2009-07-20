@@ -14,23 +14,24 @@ body {
 
 p.backLink {
   	color: #666;
-  	margin-top: 2em;
+  	margin-top: 3em;
 }
 
 p.backLink a {
   	display: block;
   	line-height: 1.5em;
-  	background-color: #FFF;
-  	padding: 0.5em 0.8em;
+  	padding: 0;
+background-color:#FFF;
+padding:0.5em 0.8em;
   	text-decoration: none;
-  	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	margin-top: 0.4em;
+	margin-top: 0.5em;
+	color:#666;
 }
 
 p.backLink a strong {
   	display: block;
   	font-size: 1.2em;
+	color: #4889e9;
   	text-decoration: underline;
 }
 

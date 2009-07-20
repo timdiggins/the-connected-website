@@ -10,10 +10,10 @@
           <span class="date">
             <%= time_ago_in_words(@post.created_at) %> ago.
           </span>
-      </p>
+      <br /><br /><%= link_to "View more works by #{@post.group}", @post.group %></p>
     </div>
     
-    <p><%= link_to "View more works by #{@post.group}", @post.group %></p>
+    
     <p class="backLink">Open Studio is a project by <%= link_to "<strong>The School of Architecture</strong> University of Westminster", 'http://www.westminster.ac.uk/sabe' %></p>
   <% else %>  
     <%= render :partial => 'posts/author' %>
