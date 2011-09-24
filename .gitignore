@@ -19,3 +19,5 @@ db/*.sqlite3
 doc/coverage
 coverage
 public/attachments
+
+attachment_fu_plugin.sqlite3.db
