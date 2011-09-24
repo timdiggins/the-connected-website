@@ -43,30 +43,8 @@ task :link_shared_stuff do
   run "mkdir -p #{release_path}/db"
 end
 
-namespace :backup do
-  desc "List database backups in S3"
-  task :list do
-    run "cd #{current_path} && rake s3:manage:list RAILS_ENV=#{rails_env}"
-  end
-
-  desc "Retrieve a database backup"
-  task :retrieve do
-    command = "cd #{current_path} && rake s3:retrieve RAILS_ENV=#{rails_env}"
-    command << " VERSION=#{ENV['VERSION']}" if ENV['VERSION']
-    run command
-    
-    filename = nil
-    run("ls #{current_path}/*.tar.gz") do |channel,identifier,data|
-      filename = File.basename(data).chomp
-    end
-    get "#{current_path}/#{filename}", "tmp/#{filename}"
-    run "rm #{current_path}/#{filename}"
-  end
-end
 
 after "deploy:symlink", "link_shared_stuff"
 after "deploy:symlink", "install_gem_dependencies"
 before "deploy:update_code", "deploy:git:pending"
-#before "deploy:migrate", "backup_to_s3"
-#before "backup_to_s3", "link_s3_yml"
 before "deploy:migrate", "link_s3_yml"
