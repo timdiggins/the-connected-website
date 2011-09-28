@@ -1,5 +1,5 @@
 module AuthenticatedSystem
-  protected
+ protected
     def logged_in?
       current_user != :false
     end
@@ -68,10 +68,20 @@ module AuthenticatedSystem
       base.send :helper_method, :current_user, :logged_in?, :logged_in_as_editor?, :logged_in_as_admin?
     end
 
+    def logins_allowed_by(user)
+      return false unless user
+      return true if @@allow_anyone
+      return true if user.admin
+    end
+    @@allow_anyone = false
+    def self.allow_anyone=(allow=true)
+      @@allow_anyone = allow
+    end
+    
     def login_from_cookie
       return unless cookies[:auth_token] && !logged_in?
       user = User.find_by_remember_token(cookies[:auth_token])
-      if user && user.remember_token?
+      if user && user.remember_token? && logins_allowed_by(user) 
         user.remember_me
         self.current_user = user
         user.track_login

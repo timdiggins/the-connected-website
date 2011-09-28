@@ -15,6 +15,7 @@ module BasicsDsl
     result
   end
   
+  
   # performs a get request and checks that the response is under 400 (ok or redirected)
   def get_ok(path, parameters = nil, headers = nil)
     r = get(path, parameters, headers)

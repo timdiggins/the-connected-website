@@ -21,7 +21,7 @@ class ChangeSettingsTest < ActionController::IntegrationTest
       follow_redirect!
       assert_flash 'Saved password'
     end
-    
+    logout
     assert !login(:duff)
   end
   

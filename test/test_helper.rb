@@ -58,4 +58,5 @@ module ActionController
 end
 
 
-
+AuthenticatedSystem.send :allow_anyone=, true
+    
