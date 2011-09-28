@@ -4,7 +4,7 @@
 	<div id="peopleInfo">
   <p>All of the members of the Connected Republic.</p>
 	<% if !logged_in? %>
-     <p><%= link_to "Join?", signup_url, :id => 'joinButton' %><br />
+     <p>
 			<%= link_to "login", login_url %>, if you're already a member.</p>
 	<% end %>
 	

@@ -16,9 +16,6 @@
     <div class="loginRequired">
 			<p><%= link_to "Login to #{@post.comments.count>0 ?'add your view':'start this discussion off.'}", login_url(:return_to=>post_path(@post, :anchor=>'commentForm')), :class=>'button'%>
 	    </p>
-			<p>
-		 	No account yet? <%= link_to "Join now", signup_url(:return_to=>post_path(@post, :anchor=>'commentForm')) %> - it's quick and easy.
-			</p>
 		</div>
   <% end %>
 </div>
