@@ -1,11 +1,12 @@
 module BasicsDsl
   
-  def view
+  def view!
     filename = File.dirname(__FILE__) + "/../../../public/.integration_test_output_for_browser.html"
     flunk("There was no response to view") unless response
     File.open(filename, "w+") { | file | file.write(response.body) }
     `open #{filename}`
   end
+  
   
   def login(login, password = "test")
     post sessions_url, { :login => login, :password => password }
@@ -26,7 +27,12 @@ module BasicsDsl
     if @response.redirect?
       #should be ok to be a redirect of somekind... could make an option to fail if redirect
     else
-      assert_response :success
+      begin
+        assert_response :success
+      rescue
+        view!
+        raise
+      end
     end
   end
   

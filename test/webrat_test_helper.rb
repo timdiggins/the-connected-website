@@ -18,7 +18,7 @@ class ActiveSupport::TestCase
 end
 
 class ActionController::IntegrationTest
-  def view
+  def view!
     filename = File.dirname(__FILE__) + "/../public/.integration_test_output_for_browser.html"
     flunk("There was no response to view") unless response
     File.open(filename, "w+") { | file | file.write(response.body) }
