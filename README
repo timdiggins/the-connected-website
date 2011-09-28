@@ -6,3 +6,13 @@ Development sponsored by Cisco IBSG Public Sector
 Current version: http://www.theconnectedrepublic.org/
 
 Contact tim@red56.co.uk for further information
+
+Going into archive mode...
+
+Currently requires:
+ree 
+rubygems (1.3.6)
+rails (2.3.2)
+capistrano (2.5.21)
+capistrano-ext (1.2.1)
+
